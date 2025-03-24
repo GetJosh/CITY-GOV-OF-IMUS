@@ -60,11 +60,12 @@ nav ul li a:hover {
 
 /* Carousel Styling*/
 
-.carousel-caption:hover{
-    background-color: green;
+.carousel-caption:hover {
+    background-color: rgba(0, 128, 0, 0.8); /* Glossy green effect */
     color: white;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.5s ease, transform 0.5s ease; /* Slow zoom effect */
     border-radius: 40px;
+    transform: scale(1.1); /* Slight zoom */
 }
 /* Main Section */
 main {
@@ -79,16 +80,17 @@ main {
 footer {
     background: #053774;
     color: #fff;
-    text-align: center;
+    text-align: right;
     padding: 10px 0;
     margin-top: 20px;
 }
-footer a{
+footer a {
     color: green;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
-footer a:hover{
-    color: green;
+footer a:hover {
+    color: #00ff00; /* Brighter green on hover */
+    transform: scale(1.1); /* Slight zoom effect */
 }
 footer .bi {
     display: inline-block;
