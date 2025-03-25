@@ -83,9 +83,12 @@ updateDateTime();
                     About Imus
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                    <li><a class="dropdown-item" href="#">City Profile</a></li>
+                    <li><a class="dropdown-item" href="#">City Government</a></li>
+                    <li><a class="dropdown-item" href="#">Barangay Officials</a></li>
                     <li><a class="dropdown-item" href="#">History</a></li>
-                    <li><a class="dropdown-item" href="#">Government</a></li>
-                    <li><a class="dropdown-item" href="#">Demographics</a></li>
+                    <li><a class="dropdown-item" href="#">Past Mayors</a></li>
+                    <li><a class="dropdown-item" href="#">Departments and Units</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -93,20 +96,34 @@ updateDateTime();
                     Services
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
-                    <li><a class="dropdown-item" href="#">Health</a></li>
-                    <li><a class="dropdown-item" href="#">Education</a></li>
-                    <li><a class="dropdown-item" href="#">Transportation</a></li>
+                    <li><a class="dropdown-item" href="#">City Public Library</a></li>
+                    <li><a class="dropdown-item" href="#">Assistance</a></li>
+                    <li><a class="dropdown-item" href="#">Citizen's Charter</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Tourism</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="tourismDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tourism</a>
+                    <ul class="dropdown-menu" aria-labelledby="tourismDropdown">
+                    <li><a class="dropdown-item" href="#">History and Culture</a></li>
+                    <li><a class="dropdown-item" href="#">Visiting Imus</a></li>
+                    <li><a class="dropdown-item" href="#">Heroes of Imus</a></li>
+                    <li><a class="dropdown-item" href="#">Notable Persons</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Business</a>
                 </li>
                 </ul>
             </div>
-            </div>
+        </div>
+<style>
+    .navbar-nav .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+    .navbar-nav .dropdown-menu {
+        margin-top: 0;
+    }
+</style>
         </nav>
     <!-- Navbar -->
 
@@ -148,17 +165,132 @@ updateDateTime();
     <!-- Carousel -->
 
     <!-- Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <h1>City of Imus</h1>
-                <p>Imus, officially the City of Imus, is a 3rd class component city in the province of Cavite, Philippines. According to the 2020 census, it has a population of 403,785 people.</p>
-                <p>Imus was the site of two major Katipunan battles during the Philippine Revolution. The Battle of Imus was fought in 1896 and the Battle of Alapan, in 1898. The Alapan site is also the location of the Philippine flag's first unfurling, an act that symbolized the country's declaration of independence from Spain.</p>
+    <div class="container my-5">
+        <div class="row align-items-center">
+            <div class="col-md-4 text-center">
+                <img src="/IMG/MayorStanding.png" alt="Mayor of Imus" class="img-fluid rounded-circle mb-3" style="max-width: 300px;">
+                <h3><strong>Hon. Alex "AA" L. Advincula</strong></h3>
+                <p>City Mayor</p>
+            </div>
+            <div class="col-md-8">
+                <h2 style="color:#15934a">Message from the Mayor</h2>
+                <p>
+                    Welcome to the City of Imus!<br><br>
+
+                    Explore the official website of the City Government of Imus, where we showcase our commitment to good governance and transparency. Here, you'll find essential information about our programs, services, and projects aligned with our mission, AAngat ang Imus.
+                    <br><br>
+                    We warmly invite you to dive into our City's rich history and vibrant culture, taste our local flavors, visit our must-see attractions, and feel the genuine hospitality that makes Imuseños proud.
+                    <br><br>
+                    Start planning your visit today, and experience the charm of Imus—proudly known as the Flag Capital of the Philippines!
+                </p>
             </div>
         </div>
     </div>
     <div class="container">
-
+        <h2 class="text-center mb-4">News and Updates</h2>
+        <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="/IMG/Card1.jpg" class="card-img-top" alt="Card 1">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card Title 1</h5>
+                                    <p class="card-text">Description for Card 1.</p>
+                                    <a href="#" class="btn btn-primary">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="/IMG/Card2.jpg" class="card-img-top" alt="Card 2">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card Title 2</h5>
+                                    <p class="card-text">Description for Card 2.</p>
+                                    <a href="#" class="btn btn-primary">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="/IMG/Card3.jpg" class="card-img-top" alt="Card 3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card Title 3</h5>
+                                    <p class="card-text">Description for Card 3.</p>
+                                    <a href="#" class="btn btn-primary">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="/IMG/Card4.jpg" class="card-img-top" alt="Card 4">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card Title 4</h5>
+                                    <p class="card-text">Description for Card 4.</p>
+                                    <a href="#" class="btn btn-primary">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="/IMG/Card5.jpg" class="card-img-top" alt="Card 5">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card Title 5</h5>
+                                    <p class="card-text">Description for Card 5.</p>
+                                    <a href="#" class="btn btn-primary">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="/IMG/Card6.jpg" class="card-img-top" alt="Card 6">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card Title 6</h5>
+                                    <p class="card-text">Description for Card 6.</p>
+                                    <a href="#" class="btn btn-primary">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <div class="container" style="background-color: #15934a;">
+        <div class="row my-5">
+            <div class="col-md-6" style="color: white;">
+                <h2 class="text-center"><i>Our Mission</i></h2>
+                <p>
+                    To provide efficient and effective public service that promotes the general welfare of the people of Imus, 
+                    ensuring sustainable development, good governance, and a high quality of life for all.
+                </p>
+            </div>
+            <div class="col-md-6" style="color: white;">
+                <h2 class="text-center"><i>Our Vision</i></h2>
+                <p>
+                    A progressive and inclusive City of Imus, recognized as a center of excellence in governance, 
+                    culture, and economic development, where every citizen thrives in a safe, healthy, and vibrant community.
+                </p>
+            </div>
+        </div>
     </div>
     <!-- Content -->
     <!-- Footer -->
@@ -180,11 +312,11 @@ updateDateTime();
                 <div class="col-6 col-md-2 mb-3">
                   <h5>SITE MAPS</h5>
                   <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">About</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Full Disclosures</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Bids and Awards</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">City Mayor</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">City Council</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">News</a></li>
                   </ul>
                 </div>
           
@@ -202,7 +334,7 @@ updateDateTime();
               </div>
           
               <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-                <p>&copy; 2024 Company, Inc. All rights reserved.</p>
+                <p>City of Imus &copy; 2025  | All Rights Reserved Terms of Use and Privacy Policy</p>
                 <ul class="list-unstyled d-flex">
                   <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="bi bi-twitter" style="font-size: 1.5rem; color: white;"></i></a></li>
                   <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="bi bi-instagram" style="font-size: 1.5rem; color: white;"></i></a></li>
