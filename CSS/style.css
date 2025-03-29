@@ -99,9 +99,9 @@ nav ul li a:hover {
 .carousel-caption:hover {
     background-color: rgba(0, 128, 0, 0.8); /* Glossy green effect */
     color: white;
-    transition: background-color 0.5s ease, transform 0.8s ease; /* Slow zoom effect */
+    transition: background-color 0.5s ease-in, transform 0.8s ease-in-out; /* Slow zoom effect */
     border-radius: 40px;
-    transform: scale(1.1); /* Slight zoom */
+    transform: scale(1.1); /* Slight zoom */ 
 }
 /* Main Section */
 main {
