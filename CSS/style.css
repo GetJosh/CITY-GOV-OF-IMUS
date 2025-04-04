@@ -20,7 +20,7 @@ body {
 /* Header Styling */
 header {
     background-color: #053774; /* Example color */
-    color: white;
+    color: #f8f9fa;
     padding: 15px 20px;
     display: flex;
     justify-content: space-between;
@@ -50,7 +50,7 @@ nav ul li a {
     text-decoration: none;
     padding: 8px 15px;
     background-color: #0056b3; /* Button background color */
-    border-radius: 30px; /* Rounded corners */
+    border-radius: 10px; /* Rounded corners */
     transition: background-color 0.3s ease; /* Smooth hover effect */
 }
 
@@ -107,7 +107,7 @@ nav ul li a:hover {
 /* Main Section */
 main {
     padding: 20px;
-    background: #fff;
+    background: #f8f9fa;
     margin: 20px auto;
     max-width: 1200px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);

@@ -65,69 +65,265 @@ updateDateTime();
     <!-- Header -->
 
     <!-- Navbar -->
-    <section>
-      <div class="flex-shrink-0 p-3" style="width: 310px; background-color: #053774; color: white;">
-          <a class="navbar-brand me-auto" href="./index.html">
-              <div style="text-align: center;">
-                  <img src="/IMG/seal_imus_sm100.png" alt="City of Imus" width="40%" class="d-inline-block align-text-top">
-              </div>
-              <span class="fs-5 fw-bold">CITY GOVERNMENT OF IMUS</span>
-          </a>
-          <ul class="list-unstyled ps-3">
-            <li class="mb-1">
-          <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-white" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
-            About Imus
-          </button>
-          <div class="collapse show" id="home-collapse">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-5 small">
-              <li><a href="#" class="text-white d-inline-flex text-decoration-none rounded">City Profile</a></li>
-              <li><a href="#" class="text-white d-inline-flex text-decoration-none rounded">City Government</a></li>
-              <li><a href="#" class="text-white d-inline-flex text-decoration-none rounded">Barangay Officials</a></li>
-              <li><a href="#" class="text-white d-inline-flex text-decoration-none rounded">History</a></li>
-              <li><a href="#" class="text-white d-inline-flex text-decoration-none rounded">Past Mayors</a></li>
-              <li><a href="#" class="text-white d-inline-flex text-decoration-none rounded">Departments and Units</a></li>
-            </ul>
-          </div>
-            </li>
-            <li class="mb-1">
-          <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-white" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-            Services
-          </button>
-          <div class="collapse" id="dashboard-collapse">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="./Services.html" class="text-white d-inline-flex text-decoration-none rounded">City Public Library</a></li>
-              <li><a href="#" class="text-white d-inline-flex text-decoration-none rounded">Assistance</a></li>
-              <li><a href="#" class="text-white d-inline-flex text-decoration-none rounded">Citizen's Charter</a></li>
-              <li><a href="#" class="text-white d-inline-flex text-decoration-none rounded">EBOSS</a></li>
-            </ul>
-          </div>
-            </li>
-            <li class="mb-1">
-          <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-white" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-            Tourism
-          </button>
-          <div class="collapse" id="orders-collapse">
-            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="./Tourism.html" class="text-white d-inline-flex text-decoration-none rounded">History and Culture</a></li>
-              <li><a href="#" class="text-white d-inline-flex text-decoration-none rounded">Visiting Imus</a></li>
-              <li><a href="#" class="text-white d-inline-flex text-decoration-none rounded">Heroes of Imus</a></li>
-              <li><a href="#" class="text-white d-inline-flex text-decoration-none rounded">Notable Persons</a></li>
-            </ul>
-          </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+      <a class="navbar-brand me-auto" href="./index.html">
+          <img src="/IMG/Logo_City_Government_of_Imuss.png" alt="City of Imus" width="60%" class="d-inline-block align-text-top"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+          <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
           </li>
-              <li class="mb-1">
-          <a href="./Business.html" class="text-white d-inline-flex text-decoration-none rounded"><button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-white" data-bs-toggle="collapse" aria-expanded="false">
-            Business
-        </button></a>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              About Imus
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+              <li><a class="dropdown-item" href="./AboutImus.html">City Profile</a></li>
+              <li><a class="dropdown-item" href="#">City Government</a>
+                  <ul class="dropdown-menu" aria-labelledby="CityGovernmentDropdown">
+                  <li><a class="dropdown-item" href="#">City Mayor</a></li>
+                  <li><a class="dropdown-item" href="#">City Council</a></li>
+                  </ul>
+              </li>
+              <li><a class="dropdown-item" href="#">Barangay Officials</a></li>
+              <li><a class="dropdown-item" href="#">History</a></li>
+              <li><a class="dropdown-item" href="#">Past Mayors</a></li>
+              <li><a class="dropdown-item" href="#">Departments and Units</a></li>
+              </ul>
           </li>
-            <li class="border-top my-3"></li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Services
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+              <li><a class="dropdown-item" href="./Services.html">City Public Library</a></li>
+              <li><a class="dropdown-item" href="#">Assistance</a></li>
+              <li><a class="dropdown-item" href="#">Citizen's Charter</a></li>
+              </ul>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="tourismDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tourism</a>
+              <ul class="dropdown-menu" aria-labelledby="tourismDropdown">
+              <li><a class="dropdown-item" href="./Tourism.html">History and Culture</a></li>
+              <li><a class="dropdown-item" href="#">Visiting Imus</a></li>
+              <li><a class="dropdown-item" href="#">Heroes of Imus</a></li>
+              <li><a class="dropdown-item" href="#">Notable Persons</a></li>
+              </ul>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="./Business.html">Business</a>
+          </li>
           </ul>
-        </div>
-  </section>
+      </div>
+  </div>
+  <style>
+  .navbar-nav .dropdown:hover .dropdown-menu {
+      display: block;
+  }
+  .navbar-nav .dropdown-menu {
+      margin-top: 0;
+  }
+  </style>
+</nav>
     <!-- Navbar -->
     <!-- Content (City Profile)-->
       <section class="city-profile">
-        
+        <div class="container py-5"></div>
+          <h2 class="text-center mb-4">City Profile</h2>
+          <p>
+            Imus, officially the City of Imus, is a first-class component city in the province of Cavite, Philippines. 
+            Known as the "Flag Capital of the Philippines," Imus is rich in historical significance, being the site of 
+            two major battles during the Philippine Revolution against Spanish rule.
+          </p>
+          <p>
+            The city is a thriving urban center with a mix of residential, commercial, and industrial areas. It is home 
+            to various landmarks, including the Imus Cathedral, the Imus Heritage Park, and the Battle of Alapan Monument. 
+            Imus also boasts a vibrant local culture, with festivals such as the Wagayway Festival celebrating its historical 
+            heritage.
+          </p>
+          <p>
+            With its strategic location near Metro Manila, Imus serves as a gateway to the southern provinces of Luzon. 
+            The city continues to grow and develop, offering opportunities for business, education, and tourism while 
+            preserving its historical and cultural identity.
+          </p>
+        </div>
+      </section>
+      <!--Content (City Government)-->
+      <section class="city-government" id="city-government">
+        <div class="container py-5">
+          <h2 class="text-center mb-4">City Government</h2>
+          <p>
+            The City Government of Imus is dedicated to providing efficient and transparent public service to its citizens. 
+            It is composed of various departments and units that work together to address the needs of the community, 
+            promote development, and uphold the city's rich heritage.
+          </p>
+          <p>
+            The local government is headed by the City Mayor, who is supported by the City Vice Mayor and the City Council. 
+            Together, they create and implement policies that aim to improve the quality of life for all residents of Imus.
+          </p>
+          <p>
+            The City Government also collaborates with barangay officials, non-governmental organizations, and private sectors 
+            to ensure inclusive growth and sustainable development. Through its programs and initiatives, the government strives 
+            to make Imus a model city in governance, innovation, and community engagement.
+          </p>
+        </div>
+      </section>
+      <!--Content (Barangay Officials)-->
+      <section class="barangay-officials">
+        <div class="container py-5">
+          <h2 class="text-center mb-4">Barangay Officials</h2>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Barangay</th>
+                <th>Officials</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Generate 106 rows -->
+              <!-- Example row -->
+              <tr>
+                <td>Barangay 1</td>
+                <td>Official Name 1</td>
+              </tr>
+              <tr>
+                <td>Barangay 2</td>
+                <td>Official Name 2</td>
+              </tr>
+              <!-- Repeat similar rows up to Barangay 106 -->
+              <!-- Placeholder for remaining rows -->
+              <tr>
+                <td>Barangay 106</td>
+                <td>Official Name 106</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <!--Content (History)-->
+      <section class="history">
+        <div class="container py-5">
+          <h2 class="text-center mb-4">History</h2>
+          <p>
+            Imus has a rich history that dates back to the Spanish colonial period. It played a significant role in the 
+            Philippine Revolution, particularly during the Battle of Alapan in 1898, where the Philippine flag was first 
+            raised in battle. The city is also known for its historical landmarks, such as the Imus Cathedral and the 
+            Battle of Alapan Monument, which commemorate its contributions to the country's fight for independence.
+          </p>
+          <p>
+            Over the years, Imus has transformed from a rural town into a bustling urban center, while still preserving 
+            its historical and cultural heritage. The city celebrates various festivals that showcase its rich traditions 
+            and vibrant community spirit.
+          </p>
+        </div>
+      </section>
+      <!--Content (Past Mayors)-->
+      <section class="past-mayors">
+        <div id="pastMayorsCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row">
+          <div class="col-md-4">
+            <img src="/IMG/mayor1.jpg" class="d-block w-100" alt="Mayor 1">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Mayor 1</h5>
+              <p>Served from 1990 to 1995</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <img src="/IMG/mayor2.jpg" class="d-block w-100" alt="Mayor 2">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Mayor 2</h5>
+              <p>Served from 1996 to 2001</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <img src="/IMG/mayor3.jpg" class="d-block w-100" alt="Mayor 3">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Mayor 3</h5>
+              <p>Served from 2002 to 2007</p>
+            </div>
+          </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+          <div class="col-md-4">
+            <img src="/IMG/mayor4.jpg" class="d-block w-100" alt="Mayor 4">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Mayor 4</h5>
+              <p>Served from 2008 to 2013</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <img src="/IMG/mayor5.jpg" class="d-block w-100" alt="Mayor 5">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Mayor 5</h5>
+              <p>Served from 2014 to 2019</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <img src="/IMG/mayor6.jpg" class="d-block w-100" alt="Mayor 6">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Mayor 6</h5>
+              <p>Served from 2020 to Present</p>
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#pastMayorsCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#pastMayorsCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </section>
+      <!--Content (Departments and Units)-->
+      <section class="deptandunits">
+        <div class="container py-5">
+          <h2 class="text-center mb-4">Departments and Units</h2>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Department/Unit</th>
+                <th>Head</th>
+                <th>Contact Number</th>
+                <th>Email Address</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Generate 63 rows -->
+              <!-- Example row -->
+              <tr>
+                <td>Department 1</td>
+                <td>Head Name 1</td>
+                <td>Contact 1</td>
+                <td>Email 1</td>
+              </tr>
+              <tr>
+                <td>Department 2</td>
+                <td>Head Name 2</td>
+                <td>Contact 2</td>
+                <td>Email 2</td>
+              </tr>
+              <!-- Repeat similar rows up to Department 63 -->
+              <tr>
+                <td>Department 63</td>
+                <td>Head Name 63</td>
+                <td>Contact 63</td>
+                <td>Email 63</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
     <!-- Content -->
     <!-- Footer -->
