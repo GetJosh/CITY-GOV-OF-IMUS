@@ -75,7 +75,7 @@ updateDateTime();
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
           <ul class="navbar-nav">
           <li class="nav-item">
-              <a class="nav-link" href="#">Home</a>
+              <a class="nav-link" href="./index.html">Home</a>
           </li>
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -120,36 +120,27 @@ updateDateTime();
           </ul>
       </div>
   </div>
-  <style>
-  .navbar-nav .dropdown:hover .dropdown-menu {
-      display: block;
-  }
-  .navbar-nav .dropdown-menu {
-      margin-top: 0;
-  }
-  </style>
 </nav>
     <!-- Navbar -->
     <!-- Content (City Profile)-->
       <section class="city-profile">
-        <div class="container py-5"></div>
-          <h2 class="text-center mb-4">City Profile</h2>
+        <div class="container py-5"><h2 class="text-center mb-4">City Profile</h2>
           <p>
-            Imus, officially the City of Imus, is a first-class component city in the province of Cavite, Philippines. 
-            Known as the "Flag Capital of the Philippines," Imus is rich in historical significance, being the site of 
-            two major battles during the Philippine Revolution against Spanish rule.
+        Imus, officially known as the City of Imus, is a first-class component city in the province of Cavite, Philippines. 
+        Renowned as the "Flag Capital of the Philippines," it holds a significant place in history as the site of 
+        pivotal battles during the Philippine Revolution against Spanish colonization.
           </p>
           <p>
-            The city is a thriving urban center with a mix of residential, commercial, and industrial areas. It is home 
-            to various landmarks, including the Imus Cathedral, the Imus Heritage Park, and the Battle of Alapan Monument. 
-            Imus also boasts a vibrant local culture, with festivals such as the Wagayway Festival celebrating its historical 
-            heritage.
+        Today, Imus thrives as a dynamic urban hub, blending residential, commercial, and industrial developments. 
+        The city is home to iconic landmarks such as the Imus Cathedral, the Imus Heritage Park, and the Battle of Alapan Monument. 
+        Its vibrant culture is showcased through festivals like the Wagayway Festival, which honors its rich historical legacy.
           </p>
           <p>
-            With its strategic location near Metro Manila, Imus serves as a gateway to the southern provinces of Luzon. 
-            The city continues to grow and develop, offering opportunities for business, education, and tourism while 
-            preserving its historical and cultural identity.
-          </p>
+        Strategically located near Metro Manila, Imus serves as a vital gateway to the southern provinces of Luzon. 
+        The city continues to progress, fostering opportunities in business, education, and tourism while steadfastly 
+        preserving its historical and cultural heritage.
+          </p></div>
+          
         </div>
       </section>
       <!--Content (City Government)-->
@@ -176,33 +167,45 @@ updateDateTime();
       <section class="barangay-officials">
         <div class="container py-5">
           <h2 class="text-center mb-4">Barangay Officials</h2>
+          <input type="text" id="barangayFilterInput" class="form-control mb-3" placeholder="Search for barangays or officials...">
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th>Barangay</th>
-                <th>Officials</th>
+          <th>Barangay</th>
+          <th>Officials</th>
               </tr>
             </thead>
-            <tbody>
-              <!-- Generate 106 rows -->
+            <tbody id="barangayTableBody">
               <!-- Example row -->
               <tr>
-                <td>Barangay 1</td>
-                <td>Official Name 1</td>
+          <td>Barangay 1</td>
+          <td>Official Name 1</td>
               </tr>
               <tr>
-                <td>Barangay 2</td>
-                <td>Official Name 2</td>
+          <td>Barangay 2</td>
+          <td>Official Name 2</td>
               </tr>
               <!-- Repeat similar rows up to Barangay 106 -->
-              <!-- Placeholder for remaining rows -->
               <tr>
-                <td>Barangay 106</td>
-                <td>Official Name 106</td>
+          <td>Barangay 106</td>
+          <td>Official Name 106</td>
               </tr>
             </tbody>
           </table>
         </div>
+
+        <script>
+          document.getElementById('barangayFilterInput').addEventListener('keyup', function () {
+            const filter = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#barangayTableBody tr');
+
+            rows.forEach(row => {
+              const cells = row.querySelectorAll('td');
+              const match = Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(filter));
+              row.style.display = match ? '' : 'none';
+            });
+          });
+        </script>
       </section>
       <!--Content (History)-->
       <section class="history">
@@ -223,73 +226,100 @@ updateDateTime();
       </section>
       <!--Content (Past Mayors)-->
       <section class="past-mayors">
-        <div id="pastMayorsCarousel" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="row">
-          <div class="col-md-4">
-            <img src="/IMG/mayor1.jpg" class="d-block w-100" alt="Mayor 1">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Mayor 1</h5>
-              <p>Served from 1990 to 1995</p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <img src="/IMG/mayor2.jpg" class="d-block w-100" alt="Mayor 2">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Mayor 2</h5>
-              <p>Served from 1996 to 2001</p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <img src="/IMG/mayor3.jpg" class="d-block w-100" alt="Mayor 3">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Mayor 3</h5>
-              <p>Served from 2002 to 2007</p>
-            </div>
-          </div>
+        <div class="container">
+          <h2 class="text-center mb-4" style="color: #fff;">PAST MAYORS</h2>
+          <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
               </div>
-            </div>
-            <div class="carousel-item">
-              <div class="row">
-          <div class="col-md-4">
-            <img src="/IMG/mayor4.jpg" class="d-block w-100" alt="Mayor 4">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Mayor 4</h5>
-              <p>Served from 2008 to 2013</p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <img src="/IMG/mayor5.jpg" class="d-block w-100" alt="Mayor 5">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Mayor 5</h5>
-              <p>Served from 2014 to 2019</p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <img src="/IMG/mayor6.jpg" class="d-block w-100" alt="Mayor 6">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Mayor 6</h5>
-              <p>Served from 2020 to Present</p>
-            </div>
-          </div>
+              <div class="carousel-inner">
+                  <div class="carousel-item active">
+                      <div class="row">
+                          <div class="col-md-4 mb-4">
+                              <div class="card">
+                                  <img src="/IMG/2025_Dec_Medical_Dental_mission_vice_gov_jaro.jpg" class="card-img-top" alt="Card 1">
+                                  <div class="card-body">
+                                      <h5 class="card-title text-center">Medical Mission ni Vice Gov. Jaro sa mga Imuseño</h5>
+                                      <p class="card-text text-left">Medical at Dental Mission, dinala ni Vice Governor Shernan Jaro sa Imus</p>
+                                      <a href="#" class="btn btn-primary">Learn More</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-4 mb-4">
+                              <div class="card">
+                                  <img src="/IMG/2025_Jan_tulong_pinansyal_Cavite_LGU.jpg" class="card-img-top" alt="Card 2">
+                                  <div class="card-body">
+                                      <h5 class="card-title text-center">2,000 kababaihang Imuseño, pinagkalooban ng tulong pinansyal ng Cavite LGU</h5></h5>
+                                      <p class="card-text text-left">Description for Card 2.</p>
+                                      <a href="#" class="btn btn-primary">Learn More</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-4 mb-4">
+                              <div class="card">
+                                  <img src="/IMG/2025_Jan_fluVax_senior_citizen.jpg" class="card-img-top" alt="Card 3">
+                                  <div class="card-body">
+                                      <h5 class="card-title text-center">Bakuna kontra Influenza, pinabahagi ni Cong. AJ</h5>
+                                      <p class="card-text">Cong. AJ naghatid ng bakuna kontra influenza sa 5,011 lolo’t lola</p>
+                                      <a href="#" class="btn btn-primary">Learn More</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="carousel-item">
+                      <div class="row">
+                          <div class="col-md-4 mb-4">
+                              <div class="card">
+                                  <img src="/IMG/2025_Jan_Sports_Complex.jpg" class="card-img-top" alt="Card 4">
+                                  <div class="card-body">
+                                      <h5 class="card-title">Card Title 4</h5>
+                                      <p class="card-text">Description for Card 4.</p>
+                                      <a href="#" class="btn btn-primary">Learn More</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-4 mb-4">
+                              <div class="card">
+                                  <img src="/IMG/2025_Jan_job_matching.jpg" class="card-img-top" alt="Card 5">
+                                  <div class="card-body">
+                                      <h5 class="card-title">Card Title 5</h5>
+                                      <p class="card-text">Description for Card 5.</p>
+                                      <a href="#" class="btn btn-primary">Learn More</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-4 mb-4">
+                              <div class="card">
+                                  <img src="/IMG/2025_Jan_opisyal_nanumpa_eleksyon.jpg" class="card-img-top" alt="Card 6">
+                                  <div class="card-body">
+                                      <h5 class="card-title">Card Title 6</h5>
+                                      <p class="card-text">Description for Card 6.</p>
+                                      <a href="#" class="btn btn-primary">Learn More</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
               </div>
-            </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+              </button>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#pastMayorsCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#pastMayorsCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
+      </div>
       </section>
       <!--Content (Departments and Units)-->
       <section class="deptandunits">
         <div class="container py-5">
           <h2 class="text-center mb-4">Departments and Units</h2>
+          <input type="text" id="filterInput" class="form-control mb-3" placeholder="Search for departments, heads, contact numbers, or emails...">
           <table class="table table-bordered">
             <thead>
               <tr>
@@ -299,9 +329,8 @@ updateDateTime();
                 <th>Email Address</th>
               </tr>
             </thead>
-            <tbody>
-              <!-- Generate 63 rows -->
-              <!-- Example row -->
+            <tbody id="tableBody">
+              <!-- Example rows -->
               <tr>
                 <td>Department 1</td>
                 <td>Head Name 1</td>
@@ -324,6 +353,19 @@ updateDateTime();
             </tbody>
           </table>
         </div>
+
+        <script>
+          document.getElementById('filterInput').addEventListener('keyup', function () {
+            const filter = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#tableBody tr');
+
+            rows.forEach(row => {
+              const cells = row.querySelectorAll('td');
+              const match = Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(filter));
+              row.style.display = match ? '' : 'none';
+            });
+          });
+        </script>
       </section>
     <!-- Content -->
     <!-- Footer -->
