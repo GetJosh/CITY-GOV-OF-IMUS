@@ -83,12 +83,7 @@ updateDateTime();
               </a>
               <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
               <li><a class="dropdown-item" href="./AboutImus.html">City Profile</a></li>
-              <li><a class="dropdown-item" href="#">City Government</a>
-                  <ul class="dropdown-menu" aria-labelledby="CityGovernmentDropdown">
-                  <li><a class="dropdown-item" href="#">City Mayor</a></li>
-                  <li><a class="dropdown-item" href="#">City Council</a></li>
-                  </ul>
-              </li>
+              <li><a class="dropdown-item" href="#">City Government</a></li>
               <li><a class="dropdown-item" href="#">Barangay Officials</a></li>
               <li><a class="dropdown-item" href="#">History</a></li>
               <li><a class="dropdown-item" href="#">Past Mayors</a></li>
@@ -120,22 +115,30 @@ updateDateTime();
           </ul>
       </div>
   </div>
+  <style>
+  .navbar-nav .dropdown:hover .dropdown-menu {
+      display: block;
+  }
+  .navbar-nav .dropdown-menu {
+      margin-top: 0;
+  }
+  </style>
 </nav>
     <!-- Navbar -->
     <!-- Content (City Profile)-->
       <section class="city-profile">
-        <div class="container py-5"><h2 class="text-center mb-4">City Profile</h2>
-          <p>
+        <div class="container py-5"><h2 class="text-center mb-4" style="color: #fff;"><strong>City Profile</strong></h2>
+          <p style="color: #fff;">
         Imus, officially known as the City of Imus, is a first-class component city in the province of Cavite, Philippines. 
         Renowned as the "Flag Capital of the Philippines," it holds a significant place in history as the site of 
         pivotal battles during the Philippine Revolution against Spanish colonization.
           </p>
-          <p>
+          <p style="color: #fff;">
         Today, Imus thrives as a dynamic urban hub, blending residential, commercial, and industrial developments. 
         The city is home to iconic landmarks such as the Imus Cathedral, the Imus Heritage Park, and the Battle of Alapan Monument. 
         Its vibrant culture is showcased through festivals like the Wagayway Festival, which honors its rich historical legacy.
           </p>
-          <p>
+          <p style="color: #fff;">
         Strategically located near Metro Manila, Imus serves as a vital gateway to the southern provinces of Luzon. 
         The city continues to progress, fostering opportunities in business, education, and tourism while steadfastly 
         preserving its historical and cultural heritage.
@@ -146,17 +149,17 @@ updateDateTime();
       <!--Content (City Government)-->
       <section class="city-government" id="city-government">
         <div class="container py-5">
-          <h2 class="text-center mb-4">City Government</h2>
-          <p>
+          <h2 class="text-center mb-4" style="color: #fff;"><strong>City Government</strong></h2>
+          <p style="color: #fff;">
             The City Government of Imus is dedicated to providing efficient and transparent public service to its citizens. 
             It is composed of various departments and units that work together to address the needs of the community, 
             promote development, and uphold the city's rich heritage.
           </p>
-          <p>
+          <p style="color: #fff;">
             The local government is headed by the City Mayor, who is supported by the City Vice Mayor and the City Council. 
             Together, they create and implement policies that aim to improve the quality of life for all residents of Imus.
           </p>
-          <p>
+          <p style="color: #fff;">
             The City Government also collaborates with barangay officials, non-governmental organizations, and private sectors 
             to ensure inclusive growth and sustainable development. Through its programs and initiatives, the government strives 
             to make Imus a model city in governance, innovation, and community engagement.
@@ -166,13 +169,14 @@ updateDateTime();
       <!--Content (Barangay Officials)-->
       <section class="barangay-officials">
         <div class="container py-5">
-          <h2 class="text-center mb-4">Barangay Officials</h2>
+          <h2 class="text-center mb-4" style="color: #fff;"><strong>Barangay Officials</strong></h2>
           <input type="text" id="barangayFilterInput" class="form-control mb-3" placeholder="Search for barangays or officials...">
           <table class="table table-bordered">
             <thead>
               <tr>
           <th>Barangay</th>
           <th>Officials</th>
+          <th>Cluster</th>
               </tr>
             </thead>
             <tbody id="barangayTableBody">
@@ -180,15 +184,18 @@ updateDateTime();
               <tr>
           <td>Barangay 1</td>
           <td>Official Name 1</td>
+          <td>Cluster 8</td>
               </tr>
               <tr>
           <td>Barangay 2</td>
           <td>Official Name 2</td>
+          <td>Cluster 4</td>
               </tr>
               <!-- Repeat similar rows up to Barangay 106 -->
               <tr>
           <td>Barangay 106</td>
           <td>Official Name 106</td>
+          <td>Cluster 2</td>
               </tr>
             </tbody>
           </table>
@@ -210,14 +217,14 @@ updateDateTime();
       <!--Content (History)-->
       <section class="history">
         <div class="container py-5">
-          <h2 class="text-center mb-4">History</h2>
-          <p>
+          <h2 class="text-center mb-4" style="color: #fff;"><strong>History</strong></h2>
+          <p style="color: #fff;">
             Imus has a rich history that dates back to the Spanish colonial period. It played a significant role in the 
             Philippine Revolution, particularly during the Battle of Alapan in 1898, where the Philippine flag was first 
             raised in battle. The city is also known for its historical landmarks, such as the Imus Cathedral and the 
             Battle of Alapan Monument, which commemorate its contributions to the country's fight for independence.
           </p>
-          <p>
+          <p style="color: #fff;">
             Over the years, Imus has transformed from a rural town into a bustling urban center, while still preserving 
             its historical and cultural heritage. The city celebrates various festivals that showcase its rich traditions 
             and vibrant community spirit.
@@ -227,7 +234,7 @@ updateDateTime();
       <!--Content (Past Mayors)-->
       <section class="past-mayors">
         <div class="container">
-          <h2 class="text-center mb-4" style="color: #fff;">PAST MAYORS</h2>
+          <h2 class="text-center mb-4" style="color: #fff;"><strong>PAST MAYORS</strong></h2>
           <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-indicators">
                   <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -318,24 +325,24 @@ updateDateTime();
       <!--Content (Departments and Units)-->
       <section class="deptandunits">
         <div class="container py-5">
-          <h2 class="text-center mb-4">Departments and Units</h2>
+          <h2 class="text-center mb-4" style="color: #fff;"><strong>Departments and Units</strong></h2>
           <input type="text" id="filterInput" class="form-control mb-3" placeholder="Search for departments, heads, contact numbers, or emails...">
           <table class="table table-bordered">
             <thead>
               <tr>
                 <th>Department/Unit</th>
                 <th>Head</th>
-                <th>Contact Number</th>
-                <th>Email Address</th>
+                <th>Local</th>
+                <th>Floor</th>
               </tr>
             </thead>
             <tbody id="tableBody">
               <!-- Example rows -->
               <tr>
-                <td>Department 1</td>
-                <td>Head Name 1</td>
+                <td>Office of the City Mayor</td>
+                <td>Hon. Alex L. Advincula</td>
                 <td>Contact 1</td>
-                <td>Email 1</td>
+                <td>3rd Floor</td>
               </tr>
               <tr>
                 <td>Department 2</td>
@@ -370,44 +377,52 @@ updateDateTime();
     <!-- Content -->
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <footer class="py-5">
-              <div class="row">
-                <div class="col-6 col-md-2 mb-3">
-                  <h5>SITE MAPS</h5>
-                  <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Full Disclosures</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Bids and Awards</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">City Mayor</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">City Council</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">News</a></li>
-                  </ul>
-                </div>
-          
-                <div class="col-6 col-md-2 mb-3">
-                  <h5>GOVERNMENT LINKS</h5>
-                  <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="https://www.officialgazette.gov.ph/" target="_blank" class="nav-link p-0 text-white">Official Gazette</a></li>
-                    <li class="nav-item mb-2"><a href="https://www.gov.ph/the-government/directory-of-departments-and-agencies/" target="_blank" class="nav-link p-0 text-white">Official Directory</a></li>
-                    <li class="nav-item mb-2"><a href="https://www.officialgazette.gov.ph/calendar/" target="_blank" class="nav-link p-0 text-white">Official Calendar</a></li>
-                    <li class="nav-item mb-2"><a href="https://op-proper.gov.ph/" target="_blank" class="nav-link p-0 text-white">Office of the President</a></li>
-                    <li class="nav-item mb-2"><a href="http://www.senate.gov.ph/" target="_blank" class="nav-link p-0 text-white">Senate of the Philippines</a></li>
-                    <li class="nav-item mb-2"><a href="https://www.congress.gov.ph/" class="nav-link p-0 text-white">House of the Representatives</a></li>
-                  </ul>
-                </div>
-              </div>
-          
-              <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-                <p>City of Imus &copy; 2025  | All Rights Reserved Terms of Use and Privacy Policy</p>
-                <ul class="list-unstyled d-flex">
-                  <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="bi bi-twitter" style="font-size: 1.5rem; color: white;"></i></a></li>
-                  <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="bi bi-instagram" style="font-size: 1.5rem; color: white;"></i></a></li>
-                  <li class="ms-3"><a class="link-body-emphasis" href="https://www.facebook.com/alexladvincula"><i class="bi bi-facebook" style="font-size: 1.5rem; color: white;"></i></a></li>
+      <div class="container">
+          <footer class="py-5">
+            <div class="row">
+              <div class="col-6 col-md-2 mb-3">
+                <h5>SITE MAPS</h5>
+                <ul class="nav flex-column">
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Full Disclosures</a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Bids and Awards</a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">City Mayor</a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">City Council</a></li>
+                  <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">News</a></li>
                 </ul>
               </div>
-            </footer>
-          </div>
-    </footer>
+        
+              <div class="col-6 col-md-2 mb-3">
+                <h5>GOVERNMENT LINKS</h5>
+                <ul class="nav flex-column">
+                  <li class="nav-item mb-2"><a href="https://www.officialgazette.gov.ph/" target="_blank" class="nav-link p-0 text-white">Official Gazette</a></li>
+                  <li class="nav-item mb-2"><a href="https://www.gov.ph/the-government/directory-of-departments-and-agencies/" target="_blank" class="nav-link p-0 text-white">Official Directory</a></li>
+                  <li class="nav-item mb-2"><a href="https://www.officialgazette.gov.ph/calendar/" target="_blank" class="nav-link p-0 text-white">Official Calendar</a></li>
+                  <li class="nav-item mb-2"><a href="https://op-proper.gov.ph/" target="_blank" class="nav-link p-0 text-white">Office of the President</a></li>
+                  <li class="nav-item mb-2"><a href="http://www.senate.gov.ph/" target="_blank" class="nav-link p-0 text-white">Senate of the Philippines</a></li>
+                  <li class="nav-item mb-2"><a href="https://www.congress.gov.ph/" class="nav-link p-0 text-white">House of the Representatives</a></li>
+                </ul>
+              </div>
+
+              <div class="col-md-6 mt-md-0 mt-3 pb-4 text-end">
+                  <img src="/IMG/seal_imus_sm100.png" alt="City Seal" class="img-fluid mb-3" style="max-width: 100px;">
+                  <p>The Official Website of the City of Imus is <br> maintained and operated by <br> the City Information Office.</p>
+                  <a href="https://www.facebook.com/CityofImus" target="_blank" class="btn btn-primary">
+                      <i class="bi bi-facebook"></i> Follow Us on Facebook
+                  </a>
+              </div>
+            </div>
+        
+            <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+              <p>City of Imus &copy; 2025  | All Rights Reserved Terms of Use and Privacy Policy</p>
+              <ul class="list-unstyled d-flex">
+                <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="bi bi-twitter" style="font-size: 1.5rem; color: white;"></i></a></li>
+                <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="bi bi-instagram" style="font-size: 1.5rem; color: white;"></i></a></li>
+                <li class="ms-3"><a class="link-body-emphasis" href="https://www.facebook.com/CityofImus"><i class="bi bi-facebook" style="font-size: 1.5rem; color: white;"></i></a></li>
+              </ul>
+            </div>
+          </footer>
+        </div>
+  </footer>
 <!-- Footer -->
 <!-- SCRIPTS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
