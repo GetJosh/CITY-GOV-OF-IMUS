@@ -82,12 +82,12 @@ updateDateTime();
               About Imus
               </a>
               <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-              <li><a class="dropdown-item" href="./AboutImus.html">City Profile</a></li>
-              <li><a class="dropdown-item" href="#">City Government</a></li>
-              <li><a class="dropdown-item" href="#">Barangay Officials</a></li>
-              <li><a class="dropdown-item" href="#">History</a></li>
-              <li><a class="dropdown-item" href="#">Past Mayors</a></li>
-              <li><a class="dropdown-item" href="#">Departments and Units</a></li>
+                <li><a class="dropdown-item" href="./AboutImus.html#City-Profile">City Profile</a></li>
+                <li><a class="dropdown-item" href="./AboutImus.html#City-Government">City Government</a></li>
+                <li><a class="dropdown-item" href="./AboutImus.html#Brgy-Officials">Barangay Officials</a></li>
+                <li><a class="dropdown-item" href="./AboutImus.html#History">History</a></li>
+                <li><a class="dropdown-item" href="./AboutImus.html#Past-Mayors">Past Mayors</a></li>
+                <li><a class="dropdown-item" href="./AboutImus.html#Dept-and-Units">Departments and Units</a></li>
               </ul>
           </li>
           <li class="nav-item dropdown">
@@ -128,14 +128,14 @@ updateDateTime();
     
     <section class="History-and-Culture">
         <div class="container">
-            <h1 style="color: #fff;">History and Culture</h1>
+            <h1 style="color: #fff;"><strong>History and Culture</strong></h1>
             <p style="color: #fff;">Imus, a city in the Philippines, has a rich history and vibrant culture. It played a significant role during the Philippine Revolution against Spanish colonial rule. The Battle of Imus in 1896 was a pivotal event that contributed to the country's fight for independence. Today, Imus is known for its historical landmarks, such as the Imus Cathedral and the Aguinaldo Shrine, which commemorate its revolutionary past.</p>
             <p style="color: #fff;">The culture of Imus is a blend of traditional Filipino customs and modern influences. Festivals like the "Pahimis Festival" celebrate local heritage, showcasing colorful parades, street dancing, and culinary delights. The city's cuisine features local delicacies, including "puto" (rice cake) and "kakanin" (rice-based snacks), reflecting the region's agricultural roots.</p>
         </div>
     </section>
     <section class="Visiting-Imus">
         <div class="container">
-            <h1 style="color: #fff;">Visiting Imus</h1>
+            <h1 style="color: #fff;"><strong>Visiting Imus</strong></h1>
             <p style="color: #fff;">Imus is a city in the Philippines that offers a blend of historical and modern attractions. Visitors can explore the Aguinaldo Shrine, a significant site in Philippine history, and the Imus Cathedral, known for its stunning architecture. The city also hosts various festivals, such as the Pahimis Festival, showcasing local culture and traditions.</p>
             <p style="color: #fff;">For those interested in shopping and dining, Imus has several malls and local markets where visitors can experience the vibrant local cuisine. The city's strategic location near Metro Manila makes it easily accessible for day trips or longer stays.</p>
         </div>
@@ -201,44 +201,88 @@ updateDateTime();
         </div>
     </section>
     <section class="Notable-Persons">
-        <div id="notablePersonsCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="container">
+        <h2 class="text-center mb-4" style="color: #fff;"><strong>Notable Persons</strong></h2>
+        <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
           <div class="carousel-indicators">
-            <button type="button" data-bs-target="#notablePersonsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#notablePersonsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#notablePersonsCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="color: #18a54a;"></button>
+            <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="/IMG/notable1.jpg" class="d-block w-100" alt="Notable Person 1">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>Notable Person 1</h5>
-                <p>A brief description of Notable Person 1's achievements.</p>
+              <div class="row">
+                <div class="col-md-4 mb-4">
+                  <div class="card">
+                    <img src="/IMG/2025_Dec_Medical_Dental_mission_vice_gov_jaro.jpg" class="card-img-top" alt="Card 1">
+                    <div class="card-body">
+                      <h5 class="card-title text-center">Medical Mission ni Vice Gov. Jaro sa mga Imuseño</h5>
+                      <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                  <div class="card">
+                    <img src="/IMG/2025_Jan_tulong_pinansyal_Cavite_LGU.jpg" class="card-img-top" alt="Card 2">
+                    <div class="card-body">
+                      <h5 class="card-title text-center">2,000 kababaihang Imuseño, pinagkalooban ng tulong pinansyal ng Cavite LGU</h5>
+                      <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                  <div class="card">
+                    <img src="/IMG/2025_Jan_fluVax_senior_citizen.jpg" class="card-img-top" alt="Card 3">
+                    <div class="card-body">
+                      <h5 class="card-title text-center">Bakuna kontra Influenza, pinabahagi ni Cong. AJ</h5>
+                      <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="carousel-item">
-              <img src="/IMG/notable2.jpg" class="d-block w-100" alt="Notable Person 2">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>Notable Person 2</h5>
-                <p>A brief description of Notable Person 2's achievements.</p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img src="/IMG/notable3.jpg" class="d-block w-100" alt="Notable Person 3">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>Notable Person 3</h5>
-                <p>A brief description of Notable Person 3's achievements.</p>
+              <div class="row">
+                <div class="col-md-4 mb-4">
+                  <div class="card">
+                    <img src="/IMG/2025_Jan_Sports_Complex.jpg" class="card-img-top" alt="Card 4">
+                    <div class="card-body">
+                      <h5 class="card-title text-center">City of Imus Sports Complex nagbagong-bihis</h5><br>
+                      <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                  <div class="card">
+                    <img src="/IMG/2025_Jan_job_matching.jpg" class="card-img-top" alt="Card 5">
+                    <div class="card-body">
+                      <h5 class="card-title text-center">Job Matching Activity para sa Landers Imus, nakapagtala ng 488 aplikante</h5><br>
+                      <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                  <div class="card">
+                    <img src="/IMG/2025_Jan_opisyal_nanumpa_eleksyon.jpg" class="card-img-top" alt="Card 6">
+                    <div class="card-body">
+                      <h5 class="card-title text-center">Mga opisyal ng Imus LGU, nanumpa sa isang malinis at payapang eleksyon</h5>
+                      <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#notablePersonsCarousel" data-bs-slide="prev">
+          <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#notablePersonsCarousel" data-bs-slide="next">
+          <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
         </div>
+      </div>
     </section>
     <!-- Content -->
     <!-- Footer -->

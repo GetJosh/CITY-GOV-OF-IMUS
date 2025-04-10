@@ -82,12 +82,12 @@ updateDateTime();
               About Imus
               </a>
               <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-              <li><a class="dropdown-item" href="./AboutImus.html">City Profile</a></li>
-              <li><a class="dropdown-item" href="#">City Government</a></li>
-              <li><a class="dropdown-item" href="#">Barangay Officials</a></li>
-              <li><a class="dropdown-item" href="#">History</a></li>
-              <li><a class="dropdown-item" href="#">Past Mayors</a></li>
-              <li><a class="dropdown-item" href="#">Departments and Units</a></li>
+              <li><a class="dropdown-item" href="./AboutImus.html#City-Profile">City Profile</a></li>
+              <li><a class="dropdown-item" href="./AboutImus.html#City-Government">City Government</a></li>
+              <li><a class="dropdown-item" href="./AboutImus.html#Brgy-Officials">Barangay Officials</a></li>
+              <li><a class="dropdown-item" href="./AboutImus.html#History">History</a></li>
+              <li><a class="dropdown-item" href="./AboutImus.html#Past-Mayors">Past Mayors</a></li>
+              <li><a class="dropdown-item" href="./AboutImus.html#Dept-and-Units">Departments and Units</a></li>
               </ul>
           </li>
           <li class="nav-item dropdown">
@@ -126,7 +126,7 @@ updateDateTime();
 </nav>
     <!-- Navbar -->
     <!-- Content (City Profile)-->
-      <section class="city-profile">
+      <section class="city-profile" id="City-Profile">
         <div class="container py-5"><h2 class="text-center mb-4" style="color: #fff;"><strong>City Profile</strong></h2>
           <p style="color: #fff;">
         Imus, officially known as the City of Imus, is a first-class component city in the province of Cavite, Philippines. 
@@ -147,7 +147,7 @@ updateDateTime();
         </div>
       </section>
       <!--Content (City Government)-->
-      <section class="city-government" id="city-government">
+      <section class="city-government" id="City-Government">
         <div class="container py-5">
           <h2 class="text-center mb-4" style="color: #fff;"><strong>City Government</strong></h2>
           <p style="color: #fff;">
@@ -167,7 +167,7 @@ updateDateTime();
         </div>
       </section>
       <!--Content (Barangay Officials)-->
-      <section class="barangay-officials">
+      <section class="barangay-officials" id="Brgy-Officials">
         <div class="container py-5">
           <h2 class="text-center mb-4" style="color: #fff;"><strong>Barangay Officials</strong></h2>
           <input type="text" id="barangayFilterInput" class="form-control mb-3" placeholder="Search for barangays or officials...">
@@ -175,32 +175,215 @@ updateDateTime();
             <thead>
               <tr>
           <th>Barangay</th>
-          <th>Officials</th>
+          <th>Barangay Captain</th>
           <th>Cluster</th>
               </tr>
             </thead>
             <tbody id="barangayTableBody">
-              <!-- Example row -->
+              <!-- CLUSTER 1 -->
               <tr>
-          <td>Barangay 1</td>
-          <td>Official Name 1</td>
-          <td>Cluster 8</td>
+          <td>Alapan I-A</td>
+          <td>Aman, Jeffrey Primero</td>
+          <td>Cluster 1</td>
               </tr>
               <tr>
-          <td>Barangay 2</td>
-          <td>Official Name 2</td>
-          <td>Cluster 4</td>
+          <td>Alapan I-B</td>
+          <td>Santos, Rico David</td>
+          <td>Cluster 1</td>
               </tr>
-              <!-- Repeat similar rows up to Barangay 106 -->
               <tr>
-          <td>Barangay 106</td>
-          <td>Official Name 106</td>
+          <td>Alapan I-C</td>
+          <td>Marcial, Noriel Santiaguel</td>
+          <td>Cluster 1</td>
+              </tr>
+              <tr>
+          <td>Alapan II-A</td>
+          <td>Barzaga, Marc Albert Didal</td>
+          <td>Cluster 1</td>
+              </tr>
+              <tr>
+          <td>Alapan II-B</td>
+          <td>Camia, Benedicto Dayrit</td>
+          <td>Cluster 1</td>
+              </tr>
+              <tr>
+          <td>Bucandala I</td>
+          <td>Santiaguel, Ferdinand Apolinar</td>
+          <td>Cluster 1</td>
+              </tr>
+              <tr>
+          <td>Bucandala II</td>
+          <td>Vilbar, Mark Jefferson Legaspi</td>
+          <td>Cluster 1</td>
+              </tr>
+              <tr>
+          <td>Bucandala III</td>
+          <td>Sarreal, Amado Saria</td>
+          <td>Cluster 1</td>
+              </tr>
+              <tr>
+          <td>Bucandala IV</td>
+          <td>Bacos, Gary Olaes</td>
+          <td>Cluster 1</td>
+              </tr>
+              <tr>
+          <td>Bucandala V</td>
+          <td>Saliba, Reynaldo Obispo</td>
+          <td>Cluster 1</td>
+              </tr>
+              <!-- CLUSTER 2 -->
+              <tr>
+          <td>Carsadang Bago I</td>
+          <td>Cubillo, Laila Papa</td>
           <td>Cluster 2</td>
               </tr>
+              <tr>
+          <td>Carsadang Bago II</td>
+          <td>Candalla, Eliseo Jarin</td>
+          <td>Cluster 2</td>
+              </tr>
+              <tr>
+          <td>Pag-Asa I</td>
+          <td>Galang, Rolito Jarin</td>
+          <td>Cluster 2</td>
+              </tr>
+              <tr>
+          <td>Pag-Asa II</td>
+          <td>Medina, Ernesto Jarin</td>
+          <td>Cluster 2</td>
+              </tr>
+              <tr>
+          <td>Pag-Asa III</td>
+          <td>Dagumboy, Joemar Felix</td>
+          <td>Cluster 2</td>
+              </tr>
+              <tr>
+          <td>Medicion I-A</td>
+          <td>Camat, Leomar Viña</td>
+          <td>Cluster 2</td>
+              </tr>
+              <tr>
+          <td>Medicion I-B</td>
+          <td>Condalor, Ferdinand Dayson</td>
+          <td>Cluster 2</td>
+              </tr>
+              <tr>
+          <td>Medicion I-C</td>
+          <td>Dominguez, Roberto Toledo</td>
+          <td>Cluster 2</td>
+              </tr>
+              <tr>
+          <td>Medicion I-D</td>
+          <td>Igtiben, Mark Luigi Monreal</td>
+          <td>Cluster 2</td>
+              </tr>
+              <tr>
+          <td>Medicion II-A</td>
+          <td>Jarin, Alexander Monzon</td>
+          <td>Cluster 2</td>
+              </tr>
+              <tr>
+          <td>Medicion II-B</td>
+          <td>Monzon, Eduardo Frias</td>
+          <td>Cluster 2</td>
+              </tr>
+              <tr>
+          <td>Medicion II-C</td>
+          <td>Bella, Riciel Barzaga</td>
+          <td>Cluster 2</td>
+              </tr>
+              <tr>
+          <td>Medicion II-D</td>
+          <td>Nas, Rommel Cairme</td>
+          <td>Cluster 2</td>
+              </tr>
+              <tr>
+          <td>Medicion II-E</td>
+          <td>Monzon, Lamberto Episioco</td>
+          <td>Cluster 2</td>
+              </tr>
+              <tr>
+          <td>Medicion II-F</td>
+          <td>Octavo, Eugenio Risco</td>
+          <td>Cluster 2</td>
+              </tr>
+              <!-- CLUSTER 3-->
+        <tr>
+          <td>Anabu I-A</td>
+          <td>Saratan, Jan Wilmher Cuenca</td>
+          <td>Cluster 3</td>
+              </tr>
+              <tr>
+          <td>Anabu I-B</td>
+          <td>Minaldo, Rafael Ochoa</td>
+          <td>Cluster 3</td>
+              </tr>
+              <tr>
+          <td>Anabu I-C</td>
+          <td>Ramos, Romeo Ignacio</td>
+          <td>Cluster 3</td>
+              </tr>
+              <tr>
+          <td>Anabu I-D</td>
+          <td>Advincula, Jordan Roxas</td>
+          <td>Cluster 3</td>
+              </tr>
+              <tr>
+          <td>Anabu I-E</td>
+          <td>Cammungol, Antonio Barco</td>
+          <td>Cluster 3</td>
+              </tr>
+              <tr>
+          <td>Anabu I-F</td>
+          <td>Sarte, Rocky Marciano</td>
+          <td>Cluster 3</td>
+              </tr>
+              <tr>
+          <td>Anabu I-G</td>
+          <td>Silla, Robinson Papa</td>
+          <td>Cluster 3</td>
+              </tr>
+        <!-- CLUSTER 4-->
+              <tr>
+          <td>Anabu II-A</td>
+          <td>Atanacio, James Bryan Remulla</td>
+          <td>Cluster 4</td>
+              </tr>
+              <tr>
+          <td>Anabu II-B</td>
+          <td>Diato, Christian Rementilla</td>
+          <td>Cluster 4</td>
+              </tr>
+              <tr>
+          <td>Anabu II-C</td>
+          <td>Sarte, Joey Bernardo</td>
+          <td>Cluster 4</td>
+              </tr>
+              <tr>
+          <td>Anabu II-D</td>
+          <td>Lares, Geraldo Calitis</td>
+          <td>Cluster 4</td>
+              </tr>
+              <tr>
+          <td>Anabu II-E</td>
+          <td>Paredes, Lorenzo Genido</td>
+          <td>Cluster 4</td>
+              </tr>
+              <tr>
+          <td>Anabu II-F</td>
+          <td>Parreñas, Bernadette Gaborro</td>
+          <td>Cluster 4</td>
+              </tr>
+        <!-- CLUSTER 5-->
+            
+        <!-- CLUSTER 6-->
+        <!-- CLUSTER 7-->
+        <!-- CLUSTER 8-->
+        <!-- CLUSTER 9--> 
             </tbody>
           </table>
         </div>
-
+        
         <script>
           document.getElementById('barangayFilterInput').addEventListener('keyup', function () {
             const filter = this.value.toLowerCase();
@@ -215,7 +398,7 @@ updateDateTime();
         </script>
       </section>
       <!--Content (History)-->
-      <section class="history">
+      <section class="history" id="History">
         <div class="container py-5">
           <h2 class="text-center mb-4" style="color: #fff;"><strong>History</strong></h2>
           <p style="color: #fff;">
@@ -232,98 +415,93 @@ updateDateTime();
         </div>
       </section>
       <!--Content (Past Mayors)-->
-      <section class="past-mayors">
+      <section class="past-mayors" id="Past-Mayors">
         <div class="container">
-          <h2 class="text-center mb-4" style="color: #fff;"><strong>PAST MAYORS</strong></h2>
-          <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-indicators">
-                  <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-              </div>
-              <div class="carousel-inner">
-                  <div class="carousel-item active">
-                      <div class="row">
-                          <div class="col-md-4 mb-4">
-                              <div class="card">
-                                  <img src="/IMG/2025_Dec_Medical_Dental_mission_vice_gov_jaro.jpg" class="card-img-top" alt="Card 1">
-                                  <div class="card-body">
-                                      <h5 class="card-title text-center">Medical Mission ni Vice Gov. Jaro sa mga Imuseño</h5>
-                                      <p class="card-text text-left">Medical at Dental Mission, dinala ni Vice Governor Shernan Jaro sa Imus</p>
-                                      <a href="#" class="btn btn-primary">Learn More</a>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-md-4 mb-4">
-                              <div class="card">
-                                  <img src="/IMG/2025_Jan_tulong_pinansyal_Cavite_LGU.jpg" class="card-img-top" alt="Card 2">
-                                  <div class="card-body">
-                                      <h5 class="card-title text-center">2,000 kababaihang Imuseño, pinagkalooban ng tulong pinansyal ng Cavite LGU</h5></h5>
-                                      <p class="card-text text-left">Description for Card 2.</p>
-                                      <a href="#" class="btn btn-primary">Learn More</a>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-md-4 mb-4">
-                              <div class="card">
-                                  <img src="/IMG/2025_Jan_fluVax_senior_citizen.jpg" class="card-img-top" alt="Card 3">
-                                  <div class="card-body">
-                                      <h5 class="card-title text-center">Bakuna kontra Influenza, pinabahagi ni Cong. AJ</h5>
-                                      <p class="card-text">Cong. AJ naghatid ng bakuna kontra influenza sa 5,011 lolo’t lola</p>
-                                      <a href="#" class="btn btn-primary">Learn More</a>
-                                  </div>
-                              </div>
-                          </div>
+          <h2 class="text-center mb-4" style="color: #fff;"><strong>Past Mayors</strong></h2>
+          <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="color: #18a54a;"></button>
+              <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row">
+                  <div class="col-md-4 mb-4">
+                    <div class="card">
+                      <img src="/IMG/2025_Dec_Medical_Dental_mission_vice_gov_jaro.jpg" class="card-img-top" alt="Card 1">
+                      <div class="card-body">
+                        <h5 class="card-title text-center">Medical Mission ni Vice Gov. Jaro sa mga Imuseño</h5>
+                        <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
                       </div>
+                    </div>
                   </div>
-                  <div class="carousel-item">
-                      <div class="row">
-                          <div class="col-md-4 mb-4">
-                              <div class="card">
-                                  <img src="/IMG/2025_Jan_Sports_Complex.jpg" class="card-img-top" alt="Card 4">
-                                  <div class="card-body">
-                                      <h5 class="card-title">Card Title 4</h5>
-                                      <p class="card-text">Description for Card 4.</p>
-                                      <a href="#" class="btn btn-primary">Learn More</a>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-md-4 mb-4">
-                              <div class="card">
-                                  <img src="/IMG/2025_Jan_job_matching.jpg" class="card-img-top" alt="Card 5">
-                                  <div class="card-body">
-                                      <h5 class="card-title">Card Title 5</h5>
-                                      <p class="card-text">Description for Card 5.</p>
-                                      <a href="#" class="btn btn-primary">Learn More</a>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="col-md-4 mb-4">
-                              <div class="card">
-                                  <img src="/IMG/2025_Jan_opisyal_nanumpa_eleksyon.jpg" class="card-img-top" alt="Card 6">
-                                  <div class="card-body">
-                                      <h5 class="card-title">Card Title 6</h5>
-                                      <p class="card-text">Description for Card 6.</p>
-                                      <a href="#" class="btn btn-primary">Learn More</a>
-                                  </div>
-                              </div>
-                          </div>
+                  <div class="col-md-4 mb-4">
+                    <div class="card">
+                      <img src="/IMG/2025_Jan_tulong_pinansyal_Cavite_LGU.jpg" class="card-img-top" alt="Card 2">
+                      <div class="card-body">
+                        <h5 class="card-title text-center">2,000 kababaihang Imuseño, pinagkalooban ng tulong pinansyal ng Cavite LGU</h5>
+                        <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
                       </div>
+                    </div>
                   </div>
+                  <div class="col-md-4 mb-4">
+                    <div class="card">
+                      <img src="/IMG/2025_Jan_fluVax_senior_citizen.jpg" class="card-img-top" alt="Card 3">
+                      <div class="card-body">
+                        <h5 class="card-title text-center">Bakuna kontra Influenza, pinabahagi ni Cong. AJ</h5>
+                        <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-              </button>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="col-md-4 mb-4">
+                    <div class="card">
+                      <img src="/IMG/2025_Jan_Sports_Complex.jpg" class="card-img-top" alt="Card 4">
+                      <div class="card-body">
+                        <h5 class="card-title text-center">City of Imus Sports Complex nagbagong-bihis</h5><br>
+                        <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-4">
+                    <div class="card">
+                      <img src="/IMG/2025_Jan_job_matching.jpg" class="card-img-top" alt="Card 5">
+                      <div class="card-body">
+                        <h5 class="card-title text-center">Job Matching Activity para sa Landers Imus, nakapagtala ng 488 aplikante</h5><br>
+                        <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-4">
+                    <div class="card">
+                      <img src="/IMG/2025_Jan_opisyal_nanumpa_eleksyon.jpg" class="card-img-top" alt="Card 6">
+                      <div class="card-body">
+                        <h5 class="card-title text-center">Mga opisyal ng Imus LGU, nanumpa sa isang malinis at payapang eleksyon</h5>
+                        <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
           </div>
-      </div>
+        </div>
+  
       </section>
       <!--Content (Departments and Units)-->
-      <section class="deptandunits">
+      <section class="deptandunits" id="Dept-and-Units">
         <div class="container py-5">
           <h2 class="text-center mb-4" style="color: #fff;"><strong>Departments and Units</strong></h2>
           <input type="text" id="filterInput" class="form-control mb-3" placeholder="Search for departments, heads, contact numbers, or emails...">
@@ -340,7 +518,7 @@ updateDateTime();
               <!-- Example rows -->
               <tr>
                 <td>Office of the City Mayor</td>
-                <td>Hon. Alex L. Advincula</td>
+                <td>Hon. Alex L. Advincula / Arturo Pangilinan</td>
                 <td>Contact 1</td>
                 <td>3rd Floor</td>
               </tr>
