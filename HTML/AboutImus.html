@@ -171,8 +171,9 @@ updateDateTime();
         <div class="container py-5">
           <h2 class="text-center mb-4" style="color: #fff;"><strong>Barangay Officials</strong></h2>
           <input type="text" id="barangayFilterInput" class="form-control mb-3" placeholder="Search for barangays or officials...">
+          <div style="height: 400px; overflow-y: auto;">
           <table class="table table-bordered">
-            <thead>
+            <thead style="position: sticky; top: 0; background-color: white;">
               <tr>
           <th>Barangay</th>
           <th>Barangay Captain</th>
@@ -377,9 +378,13 @@ updateDateTime();
         <!-- CLUSTER 5-->
             
         <!-- CLUSTER 6-->
+
         <!-- CLUSTER 7-->
+
         <!-- CLUSTER 8-->
-        <!-- CLUSTER 9--> 
+
+        <!-- CLUSTER 9-->
+
             </tbody>
           </table>
         </div>
@@ -416,132 +421,225 @@ updateDateTime();
       </section>
       <!--Content (Past Mayors)-->
       <section class="past-mayors" id="Past-Mayors">
-        <div class="container">
-          <h2 class="text-center mb-4" style="color: #fff;"><strong>Past Mayors</strong></h2>
-          <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="color: #18a54a;"></button>
-              <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="row">
-                  <div class="col-md-4 mb-4">
-                    <div class="card">
-                      <img src="/IMG/2025_Dec_Medical_Dental_mission_vice_gov_jaro.jpg" class="card-img-top" alt="Card 1">
-                      <div class="card-body">
-                        <h5 class="card-title text-center">Medical Mission ni Vice Gov. Jaro sa mga Imuseño</h5>
-                        <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-4 mb-4">
-                    <div class="card">
-                      <img src="/IMG/2025_Jan_tulong_pinansyal_Cavite_LGU.jpg" class="card-img-top" alt="Card 2">
-                      <div class="card-body">
-                        <h5 class="card-title text-center">2,000 kababaihang Imuseño, pinagkalooban ng tulong pinansyal ng Cavite LGU</h5>
-                        <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-4 mb-4">
-                    <div class="card">
-                      <img src="/IMG/2025_Jan_fluVax_senior_citizen.jpg" class="card-img-top" alt="Card 3">
-                      <div class="card-body">
-                        <h5 class="card-title text-center">Bakuna kontra Influenza, pinabahagi ni Cong. AJ</h5>
-                        <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+        <div class="container py-5">
+              <h2 class="text-center mb-4" style="color: #fff;"><strong>Past Mayors</strong></h2>
+              <input type="text" id="pastMayorsFilter" class="form-control mb-3" placeholder="Search for past mayors...">
+              <div style="height: 400px; overflow-y: auto;">
+              <table class="table table-bordered">
+                <thead style="position: sticky; top: 0; background-color: white;">
+                <tr>
+                  <th>Name</th>
+                  <th>Term Start</th>
+                  <th>Term End</th>
+                </tr>
+                </thead>
+                <tbody id="pastMayorsTableBody">
+                <tr>
+                  <td>Juan Topacio</td>
+                  <td>1901</td>
+                  <td>1903</td>
+                </tr>
+                <tr>
+                  <td>Jose Tagle</td>
+                  <td>1903</td>
+                  <td>1905</td>
+                </tr>
+                <tr>
+                  <td>Leonidas Tagle</td>
+                  <td>1905</td>
+                  <td>1907</td>
+                </tr>
+                <tr>
+                  <td>Cornelio Felizardo</td>
+                  <td>1907</td>
+                  <td>1909</td>
+                </tr>
+                <tr>
+                  <td>Arcadio Tagle</td>
+                  <td>1909</td>
+                  <td>1912</td>
+                </tr>
+                <tr>
+                  <td>Alfonso Villanueva</td>
+                  <td>1912</td>
+                  <td>1916</td>
+                </tr>
+                <tr>
+                  <td>Jose Tagle</td>
+                  <td>1916</td>
+                  <td>1919</td>
+                </tr>
+                <tr>
+                  <td>Gregorio Custodio</td>
+                  <td>1919</td>
+                  <td>1922</td>
+                </tr>
+                <tr>
+                  <td>Rafael Trias</td>
+                  <td>1922</td>
+                  <td>1925</td>
+                </tr>
+                <tr>
+                  <td>Gregorio Custodio</td>
+                  <td>1925</td>
+                  <td>1928</td>
+                </tr>
+                <tr>
+                  <td>Damaso Tria Tirona</td>
+                  <td>1928</td>
+                  <td>1931</td>
+                </tr>
+                <tr>
+                  <td>Arturo T. Reyes</td>
+                  <td>1931</td>
+                  <td>1934</td>
+                </tr>
+                <tr>
+                  <td>Damaso Tria Tirona</td>
+                  <td>1934</td>
+                  <td>1937</td>
+                </tr>
+                <tr>
+                  <td>Arturo T. Reyes</td>
+                  <td>1937</td>
+                  <td>1940</td>
+                </tr>
+                <tr>
+                  <td>Damaso Tria Tirona</td>
+                  <td>1940</td>
+                  <td>1946</td>
+                </tr>
+                <tr>
+                  <td>Horacio T. Rodriguez</td>
+                  <td>1946</td>
+                  <td>1947</td>
+                </tr>
+                <tr>
+                  <td>Damaso Tria Tirona</td>
+                  <td>1948</td>
+                  <td>1951</td>
+                </tr>
+                <tr>
+                  <td>Felix Q. Samonte</td>
+                  <td>1952</td>
+                  <td>1955</td>
+                </tr>
+                <tr>
+                  <td>Damaso Tria Tirona</td>
+                  <td>1956</td>
+                  <td>1959</td>
+                </tr>
+                <tr>
+                  <td>Benjamin F. Remulla</td>
+                  <td>1960</td>
+                  <td>1963</td>
+                </tr>
+                <tr>
+                  <td>Cesar C. Climaco Jr.</td>
+                  <td>1964</td>
+                  <td>1967</td>
+                </tr>
+                <tr>
+                  <td>Benjamin F. Remulla</td>
+                  <td>1968</td>
+                  <td>1986</td>
+                </tr>
+                <tr>
+                  <td>Erleo V. Pore</td>
+                  <td>1986</td>
+                  <td>1987</td>
+                </tr>
+                <tr>
+                  <td>Lilia M. de Leon</td>
+                  <td>1987</td>
+                  <td>1988</td>
+                </tr>
+                <tr>
+                  <td>Rodolfo M. Nazareno</td>
+                  <td>1988</td>
+                  <td>1998</td>
+                </tr>
+                <tr>
+                  <td>Oscar A. Jaro</td>
+                  <td>1998</td>
+                  <td>2007</td>
+                </tr>
+                <tr>
+                  <td>Emmanuel L. Maliksi</td>
+                  <td>2007</td>
+                  <td>2016</td>
+                </tr>
+                <tr>
+                  <td>Emmanuel L. Maliksi</td>
+                  <td>2016</td>
+                  <td>2022</td>
+                </tr>
+                <tr>
+                  <td>Alex L. Advincula</td>
+                  <td>2022</td>
+                  <td>Present</td>
+                </tr>
+                </tbody>
+              </table>
               </div>
-              <div class="carousel-item">
-                <div class="row">
-                  <div class="col-md-4 mb-4">
-                    <div class="card">
-                      <img src="/IMG/2025_Jan_Sports_Complex.jpg" class="card-img-top" alt="Card 4">
-                      <div class="card-body">
-                        <h5 class="card-title text-center">City of Imus Sports Complex nagbagong-bihis</h5><br>
-                        <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-4 mb-4">
-                    <div class="card">
-                      <img src="/IMG/2025_Jan_job_matching.jpg" class="card-img-top" alt="Card 5">
-                      <div class="card-body">
-                        <h5 class="card-title text-center">Job Matching Activity para sa Landers Imus, nakapagtala ng 488 aplikante</h5><br>
-                        <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-4 mb-4">
-                    <div class="card">
-                      <img src="/IMG/2025_Jan_opisyal_nanumpa_eleksyon.jpg" class="card-img-top" alt="Card 6">
-                      <div class="card-body">
-                        <h5 class="card-title text-center">Mga opisyal ng Imus LGU, nanumpa sa isang malinis at payapang eleksyon</h5>
-                        <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
-        </div>
+              <script>
+              document.getElementById('pastMayorsFilter').addEventListener('keyup', function () {
+                const filter = this.value.toLowerCase();
+                const rows = document.querySelectorAll('#pastMayorsTableBody tr');
+          
+                rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const match = Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(filter));
+                row.style.display = match ? '' : 'none';
+                });
+              });
+              </script>
+        
   
-      </section>
+      </div></section>
       <!--Content (Departments and Units)-->
       <section class="deptandunits" id="Dept-and-Units">
         <div class="container py-5">
           <h2 class="text-center mb-4" style="color: #fff;"><strong>Departments and Units</strong></h2>
           <input type="text" id="filterInput" class="form-control mb-3" placeholder="Search for departments, heads, contact numbers, or emails...">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>Department/Unit</th>
-                <th>Head</th>
-                <th>Local</th>
-                <th>Floor</th>
-              </tr>
-            </thead>
-            <tbody id="tableBody">
-              <!-- Example rows -->
-              <tr>
-                <td>Office of the City Mayor</td>
-                <td>Hon. Alex L. Advincula / Arturo Pangilinan</td>
-                <td>Contact 1</td>
-                <td>3rd Floor</td>
-              </tr>
-              <tr>
-                <td>Department 2</td>
-                <td>Head Name 2</td>
-                <td>Contact 2</td>
-                <td>Email 2</td>
-              </tr>
-              <tr>
-                <td>Department 3</td>
-                <td>Head Name 3</td>
-                <td>Contact 3</td>
-                <td>Email 3</td>
-              </tr>
-              <tr>
-                <td>Department 4</td>
-                <td>Head Name 4</td>
-                <td>Contact 4</td>
-                <td>Email 4</td>
-              </tr>
-              <tr>
-                <td>Department 5</td>
+          <div style="height: 400px; overflow-y: auto;">
+            <table class="table table-bordered">
+              <thead style="position: sticky; top: 0; background-color: white;">
+                <tr>
+                  <th>Department/Unit</th>
+                  <th>Head</th>
+                  <th>Local</th>
+                  <th>Floor</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody">
+                <!-- Example rows -->
+                <tr>
+                  <td>Office of the City Mayor</td>
+                  <td>Hon. Alex L. Advincula / Mr. Arturo Pangilinan</td>
+                  <td>Contact 1</td>
+                  <td>3rd Floor</td>
+                </tr>
+                <tr>
+                  <td>Office of the City Vice Mayor</td>
+                  <td>Hon. Homer T. Saquilayan / Mr. Alan Dexter C. Jamir</td>
+                  <td>Contact 2</td>
+                  <td>5th Floor</td>
+                </tr>
+                <tr>
+                  <td>Office of the Congressman</td>
+                  <td>Hon. Adrian Jay C. Advincula / Mr. Allen Bryan R. Atienza</td>
+                  <td>Contact 3</td>
+                  <td>3rd Floor</td>
+                </tr>
+                <tr>
+                  <td>Department 4</td>
+                  <td>Head Name 4</td>
+                  <td>Contact 4</td>
+                  <td>Email 4</td>
+                </tr>
+                <tr>
+                  <td>Department 5</td>
                 <td>Head Name 5</td>
                 <td>Contact 5</td>
                 <td>Email 5</td>
@@ -897,6 +995,7 @@ updateDateTime();
             </tbody>
           </table>
         </div>
+
 
         <script>
           document.getElementById('filterInput').addEventListener('keyup', function () {
