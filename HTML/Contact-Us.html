@@ -197,74 +197,24 @@ updateDateTime();
         </style>
     </nav>
     <!-- Navbar -->
-    <section class="downloadable-forms">
-        <div class="container py-5">
-            <h2 class="mb-4 fw-bold text-primary">Downloadable Forms</h2>
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover align-middle bg-white shadow-sm">
-                    <thead class="table-primary">
-                        <tr>
-                            <th scope="col" style="width: 5%;">#</th>
-                            <th scope="col" style="width: 45%;">Form Name</th>
-                            <th scope="col" style="width: 30%;">Description</th>
-                            <th scope="col" style="width: 20%;">Download</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Business Permit Application Form</td>
-                            <td>For new and renewal of business permits in the City of Imus.</td>
-                            <td>
-                                <a href="/FORMS/Business-Permit-Application.pdf" class="btn btn-success btn-sm" download>
-                                    <i class="bi bi-download me-1"></i> PDF
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Barangay Clearance Form</td>
-                            <td>Required for various local transactions and applications.</td>
-                            <td>
-                                <a href="/FORMS/Barangay-Clearance.pdf" class="btn btn-success btn-sm" download>
-                                    <i class="bi bi-download me-1"></i> PDF
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Community Tax Certificate (Cedula) Form</td>
-                            <td>Application form for securing a Community Tax Certificate.</td>
-                            <td>
-                                <a href="/FORMS/Cedula-Application.pdf" class="btn btn-success btn-sm" download>
-                                    <i class="bi bi-download me-1"></i> PDF
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>Building Permit Application Form</td>
-                            <td>For construction, renovation, or demolition permits.</td>
-                            <td>
-                                <a href="/FORMS/Building-Permit-Application.pdf" class="btn btn-success btn-sm" download>
-                                    <i class="bi bi-download me-1"></i> PDF
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>Job Application Form</td>
-                            <td>For applicants seeking employment with the City Government of Imus.</td>
-                            <td>
-                                <a href="/FORMS/Job-Application.pdf" class="btn btn-success btn-sm" download>
-                                    <i class="bi bi-download me-1"></i> PDF
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+    <!-- Contact Us -->
+    <section class="container my-5">
+        <h2 class="fw-bold mb-4">Contact Us</h2>
+        <form>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" required>
             </div>
-        </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
     </section>
     <!-- Footer -->
     <footer class="footer-custom mt-0 pt-0">
@@ -320,7 +270,7 @@ updateDateTime();
             <hr class="border-secondary my-4">
             <div class="row">
                 <div class="col text-center small text-white-50">
-                   All Rights Reserved &nbsp;|&nbsp; 2025 Terms of Use and Privacy Policy
+                    All Rights Reserved &nbsp;|&nbsp; 2025 Terms of Use and Privacy Policy
                 </div>
             </div>
         </div>
