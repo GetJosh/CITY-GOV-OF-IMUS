@@ -1031,414 +1031,326 @@ updateDateTime();
       <section class="deptandunits" id="Dept-and-Units">
         <div class="container py-5">
           <h2 class="text-center mb-4" style="color: #fff; text-shadow: 2px 2px 4px #000000;"><strong>Departments and Units</strong></h2>
-          <input type="text" id="filterInput" class="form-control mb-3" placeholder="Search for departments, heads, contact numbers, or emails...">
+          <input type="text" id="barangayFilterInput" class="form-control mb-3" placeholder="Search for departments or units...">
           <div style="height: 400px; overflow-y: auto;">
-            <table class="table table-bordered">
-              <thead style="position: sticky; top: 0; background-color: white;">
+            <table class="table table-bordered table-striped table-hover align-middle text-center">
+              <thead class="table-dark" style="position: sticky; top: 0;">
                 <tr>
-                  <th>Department/Unit</th>
-                  <th>Head</th>
-                  <th>Local</th>
-                  <th>Floor</th>
+                  <th style="width: 30%;">Department/Unit</th>
+                  <th style="width: 40%;">Department Head</th>
+                  <th style="width: 20%;">Floor</th>
+                  <th style="width: 10%;">Local</th>
                 </tr>
               </thead>
-              <tbody id="tableBody">
-                <!-- Example rows -->
-                <tr>
-                  <td>Office of the City Mayor</td>
-                  <td>Hon. Alex L. Advincula / Mr. Arturo Pangilinan</td>
-                  <td>Contact 1</td>
-                  <td>3rd Floor</td>
+              <tbody id="barangayTableBody">
+                <!-- CLUSTER 1 -->
+                <tr class="table-primary">
+                  <td colspan="4" class="text-start"><strong>Lower Ground and Ground Floor</strong></td>
                 </tr>
                 <tr>
-                  <td>Office of the City Vice Mayor</td>
-                  <td>Hon. Homer T. Saquilayan / Mr. Alan Dexter C. Jamir</td>
-                  <td>Contact 2</td>
-                  <td>5th Floor</td>
+                  <td>Office of the City Mayor - City of Imus Public Library</td>
+                  <td>Ms. Rosena V. Roman</td>
+                  <td>Lower Ground Floor</td>
+                  <td>001</td>
                 </tr>
                 <tr>
-                  <td>Office of the Congressman</td>
-                  <td>Hon. Adrian Jay C. Advincula / Mr. Allen Bryan R. Atienza</td>
-                  <td>Contact 3</td>
-                  <td>3rd Floor</td>
+                  <td>Office of the City Assessor</td>
+                  <td>Mr. Elmer Camerino</td>
+                  <td>Ground Floor</td>
+                  <td>106</td>
                 </tr>
                 <tr>
-                  <td>Department 4</td>
-                  <td>Head Name 4</td>
-                  <td>Contact 4</td>
-                  <td>Email 4</td>
+                  <td>Office of the Local Economic Development and Investment Promotions Officer</td>
+                  <td>Ms. Marie Jenneth Vilbar-Lungcay</td>
+                  <td>Ground Floor</td>
+                  <td>142</td>
                 </tr>
                 <tr>
-                  <td>Department 5</td>
-                <td>Head Name 5</td>
-                <td>Contact 5</td>
-                <td>Email 5</td>
-              </tr>
-              <tr>
-                <td>Department 6</td>
-                <td>Head Name 6</td>
-                <td>Contact 6</td>
-                <td>Email 6</td>
-              </tr>
-              <tr>
-                <td>Department 7</td>
-                <td>Head Name 7</td>
-                <td>Contact 7</td>
-                <td>Email 7</td>
-              </tr>
-              <tr>
-                <td>Department 8</td>
-                <td>Head Name 8</td>
-                <td>Contact 8</td>
-                <td>Email 8</td>
-              </tr>
-              <tr>
-                <td>Department 9</td>
-                <td>Head Name 9</td>
-                <td>Contact 9</td>
-                <td>Email 9</td>
-              </tr>
-              <tr>
-                <td>Department 10</td>
-                <td>Head Name 10</td>
-                <td>Contact 10</td>
-                <td>Email 10</td>
-              </tr>
-              <tr>
-                <td>Department 11</td>
-                <td>Head Name 11</td>
-                <td>Contact 11</td>
-                <td>Email 11</td>
-              </tr>
-              <tr>
-                <td>Department 12</td>
-                <td>Head Name 12</td>
-                <td>Contact 12</td>
-                <td>Email 12</td>
-              </tr>
-              <tr>
-                <td>Department 13</td>
-                <td>Head Name 13</td>
-                <td>Contact 13</td>
-                <td>Email 13</td>
-              </tr>
-              <tr>
-                <td>Department 14</td>
-                <td>Head Name 14</td>
-                <td>Contact 14</td>
-                <td>Email 14</td>
-              </tr>
-              <tr>
-                <td>Department 15</td>
-                <td>Head Name 15</td>
-                <td>Contact 15</td>
-                <td>Email 15</td>
-              </tr>
-              <tr>
-                <td>Department 16</td>
-                <td>Head Name 16</td>
-                <td>Contact 16</td>
-                <td>Email 16</td>
-              </tr>
-              <tr>
-                <td>Department 17</td>
-                <td>Head Name 17</td>
-                <td>Contact 17</td>
-                <td>Email 17</td>
-              </tr>
-              <tr>
-                <td>Department 18</td>
-                <td>Head Name 18</td>
-                <td>Contact 18</td>
-                <td>Email 18</td>
-              </tr>
-              <tr>
-                <td>Department 19</td>
-                <td>Head Name 19</td>
-                <td>Contact 19</td>
-                <td>Email 19</td>
-              </tr>
-              <tr>
-                <td>Department 20</td>
-                <td>Head Name 20</td>
-                <td>Contact 20</td>
-                <td>Email 20</td>
-              </tr>
-              <tr>
-                <td>Department 21</td>
-                <td>Head Name 21</td>
-                <td>Contact 21</td>
-                <td>Email 21</td>
-              </tr>
-              <tr>
-                <td>Department 22</td>
-                <td>Head Name 22</td>
-                <td>Contact 22</td>
-                <td>Email 22</td>
-              </tr>
-              <tr>
-                <td>Department 23</td>
-                <td>Head Name 23</td>
-                <td>Contact 23</td>
-                <td>Email 23</td>
-              </tr>
-              <tr>
-                <td>Department 24</td>
-                <td>Head Name 24</td>
-                <td>Contact 24</td>
-                <td>Email 24</td>
-              </tr>
-              <tr>
-                <td>Department 25</td>
-                <td>Head Name 25</td>
-                <td>Contact 25</td>
-                <td>Email 25</td>
-              </tr>
-              <tr>
-                <td>Department 26</td>
-                <td>Head Name 26</td>
-                <td>Contact 26</td>
-                <td>Email 26</td>
-              </tr>
-              <tr>
-                <td>Department 27</td>
-                <td>Head Name 27</td>
-                <td>Contact 27</td>
-                <td>Email 27</td>
-              </tr>
-              <tr>
-                <td>Department 28</td>
-                <td>Head Name 28</td>
-                <td>Contact 28</td>
-                <td>Email 28</td>
-              </tr>
-              <tr>
-                <td>Department 29</td>
-                <td>Head Name 29</td>
-                <td>Contact 29</td>
-                <td>Email 29</td>
-              </tr>
-              <tr>
-                <td>Department 30</td>
-                <td>Head Name 30</td>
-                <td>Contact 30</td>
-                <td>Email 30</td>
-              </tr>
-              <tr>
-                <td>Department 31</td>
-                <td>Head Name 31</td>
-                <td>Contact 31</td>
-                <td>Email 31</td>
-              </tr>
-              <tr>
-                <td>Department 32</td>
-                <td>Head Name 32</td>
-                <td>Contact 32</td>
-                <td>Email 32</td>
-              </tr>
-              <tr>
-                <td>Department 33</td>
-                <td>Head Name 33</td>
-                <td>Contact 33</td>
-                <td>Email 33</td>
-              </tr>
-              <tr>
-                <td>Department 34</td>
-                <td>Head Name 34</td>
-                <td>Contact 34</td>
-                <td>Email 34</td>
-              </tr>
-              <tr>
-                <td>Department 35</td>
-                <td>Head Name 35</td>
-                <td>Contact 35</td>
-                <td>Email 35</td>
-              </tr>
-              <tr>
-                <td>Department 36</td>
-                <td>Head Name 36</td>
-                <td>Contact 36</td>
-                <td>Email 36</td>
-              </tr>
-              <tr>
-                <td>Department 37</td>
-                <td>Head Name 37</td>
-                <td>Contact 37</td>
-                <td>Email 37</td>
-              </tr>
-              <tr>
-                <td>Department 38</td>
-                <td>Head Name 38</td>
-                <td>Contact 38</td>
-                <td>Email 38</td>
-              </tr>
-              <tr>
-                <td>Department 39</td>
-                <td>Head Name 39</td>
-                <td>Contact 39</td>
-                <td>Email 39</td>
-              </tr>
-              <tr>
-                <td>Department 40</td>
-                <td>Head Name 40</td>
-                <td>Contact 40</td>
-                <td>Email 40</td>
-              </tr>
-              <tr>
-                <td>Department 41</td>
-                <td>Head Name 41</td>
-                <td>Contact 41</td>
-                <td>Email 41</td>
-              </tr>
-              <tr>
-                <td>Department 42</td>
-                <td>Head Name 42</td>
-                <td>Contact 42</td>
-                <td>Email 42</td>
-              </tr>
-              <tr>
-                <td>Department 43</td>
-                <td>Head Name 43</td>
-                <td>Contact 43</td>
-                <td>Email 43</td>
-              </tr>
-              <tr>
-                <td>Department 44</td>
-                <td>Head Name 44</td>
-                <td>Contact 44</td>
-                <td>Email 44</td>
-              </tr>
-              <tr>
-                <td>Department 45</td>
-                <td>Head Name 45</td>
-                <td>Contact 45</td>
-                <td>Email 45</td>
-              </tr>
-              <tr>
-                <td>Department 46</td>
-                <td>Head Name 46</td>
-                <td>Contact 46</td>
-                <td>Email 46</td>
-              </tr>
-              <tr>
-                <td>Department 47</td>
-                <td>Head Name 47</td>
-                <td>Contact 47</td>
-                <td>Email 47</td>
-              </tr>
-              <tr>
-                <td>Department 48</td>
-                <td>Head Name 48</td>
-                <td>Contact 48</td>
-                <td>Email 48</td>
-              </tr>
-              <tr>
-                <td>Department 49</td>
-                <td>Head Name 49</td>
-                <td>Contact 49</td>
-                <td>Email 49</td>
-              </tr>
-              <tr>
-                <td>Department 50</td>
-                <td>Head Name 50</td>
-                <td>Contact 50</td>
-                <td>Email 50</td>
-              </tr>
-              <tr>
-                <td>Department 51</td>
-                <td>Head Name 51</td>
-                <td>Contact 51</td>
-                <td>Email 51</td>
-              </tr>
-              <tr>
-                <td>Department 52</td>
-                <td>Head Name 52</td>
-                <td>Contact 52</td>
-                <td>Email 52</td>
-              </tr>
-              <tr>
-                <td>Department 53</td>
-                <td>Head Name 53</td>
-                <td>Contact 53</td>
-                <td>Email 53</td>
-              </tr>
-              <tr>
-                <td>Department 54</td>
-                <td>Head Name 54</td>
-                <td>Contact 54</td>
-                <td>Email 54</td>
-              </tr>
-              <tr>
-                <td>Department 55</td>
-                <td>Head Name 55</td>
-                <td>Contact 55</td>
-                <td>Email 55</td>
-              </tr>
-              <tr>
-                <td>Department 56</td>
-                <td>Head Name 56</td>
-                <td>Contact 56</td>
-                <td>Email 56</td>
-              </tr>
-              <tr>
-                <td>Department 57</td>
-                <td>Head Name 57</td>
-                <td>Contact 57</td>
-                <td>Email 57</td>
-              </tr>
-              <tr>
-                <td>Department 58</td>
-                <td>Head Name 58</td>
-                <td>Contact 58</td>
-                <td>Email 58</td>
-              </tr>
-              <tr>
-                <td>Department 59</td>
-                <td>Head Name 59</td>
-                <td>Contact 59</td>
-                <td>Email 59</td>
-              </tr>
-              <tr>
-                <td>Department 60</td>
-                <td>Head Name 60</td>
-                <td>Contact 60</td>
-                <td>Email 60</td>
-              </tr>
-              <tr>
-                <td>Department 61</td>
-                <td>Head Name 61</td>
-                <td>Contact 61</td>
-                <td>Email 61</td>
-              </tr>
-              <tr>
-                <td>Department 62</td>
-                <td>Head Name 62</td>
-                <td>Contact 62</td>
-                <td>Email 62</td>
-              </tr>
-              <tr>
-                <td>Department 63</td>
-                <td>Head Name 63</td>
-                <td>Contact 63</td>
-                <td>Email 63</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-
-        <script>
-          document.getElementById('filterInput').addEventListener('keyup', function () {
-            const filter = this.value.toLowerCase();
-            const rows = document.querySelectorAll('#tableBody tr');
-
-            rows.forEach(row => {
-              const cells = row.querySelectorAll('td');
-              const match = Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(filter));
-              row.style.display = match ? '' : 'none';
+                  <td>Office of the City Treasurer</td>
+                  <td>Mr. Manuel Reynold W. Dela Fuente</td>
+                  <td>Ground Floor</td>
+                  <td>131</td>
+                </tr>
+                <tr>
+                  <td>Office of the Business Permits and Licensing Officer</td>
+                  <td>Ms. Jasmin C. Ramos</td>
+                  <td>Ground Floor</td>
+                  <td>101</td>
+                </tr>
+                <tr>
+                  <td>Office of the Civil Registrar</td>
+                  <td>Mr. Randy B. Gonzales</td>
+                  <td>Ground Floor</td>
+                  <td>121</td>
+                </tr>
+                <tr>
+                  <td>Office of the City Mayor - Office of the Senior Citizens Affairs </td>
+                  <td>Mr. Arturo B. Pangilinan</td>
+                  <td>Ground Floor</td>
+                  <td>136</td>
+                </tr>
+                <tr>
+                  <td>Office of the Persons with Disability Affairs Officer</td>
+                  <td>Ms. Josephine G. Villanueva</td>
+                  <td>Ground Floor</td>
+                  <td>138</td>
+                </tr>
+                <tr>
+                  <td>Local Housing Board	</td>
+                  <td>Mr. Jose Froilan G. Abad</td>
+                  <td>Ground Floor</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Office of the City Social Welfare and Development Officer</td>
+                  <td>Ms. Josephine G. Villanueva, RSW</td>
+                  <td>Ground Floor</td>
+                  <td>126</td>
+                </tr>
+                <!-- CLUSTER 2 -->
+                <tr class="table-primary">
+                  <td colspan="4" class="text-start"><strong>2nd Floor</strong></td>
+                </tr>
+                <tr>
+                  <td>Office of the Building Official</td>
+                  <td>Engr. Alvin S. Saitanan</td>
+                  <td>2nd Floor</td>
+                  <td>231</td>
+                </tr>
+                <tr>
+                  <td>Office of the City Planning and Development Officer</td>
+                  <td>Engr. Guiana F. Monzon</td>
+                  <td>2nd Floor</td>
+                  <td>221</td>
+                </tr>
+                <tr>
+                  <td>Office of the City Mayor - Public Employment Service Office</td>
+                  <td>Ms. Clarita T. Casing</td>
+                  <td>2nd Floor</td>
+                  <td>241</td>
+                </tr>
+                <tr>
+                  <td>Office of the City Information Officer</td>
+                  <td>Mr. Ervin Ace H. Navarette</td>
+                  <td>2nd Floor</td>
+                  <td>213</td>
+                </tr>
+                <tr>
+                  <td>Office of the City Tourism and Heritage Officer</td>
+                  <td>Dr. Emanuel R. Paredes</td>
+                  <td>2nd Floor</td>
+                  <td>225</td>
+                </tr>
+                <tr>
+                  <td>Office of the City Disaster Risk Reduction and Management Officer</td>
+                  <td>Ms. Marisel R. Cayetano</td>
+                  <td>2nd Floor</td>
+                  <td>206</td>
+                </tr>
+                <tr>
+                  <td>Office of the City Health Officer - City Sanitation Unit</td>
+                  <td>Dr. Ferdinand P. Mina</td>
+                  <td>2nd Floor</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Office of the City Veterinarian</td>
+                  <td>Dr. Maribel Depayso-Reyes</td>
+                  <td>2nd Floor</td>
+                  <td>227</td>
+                </tr>
+                <tr>
+                  <td>Office of the City Cooperatives Development Officer</td>
+                  <td>Mr. Generoso F. Ramos, Jr.</td>
+                  <td>2nd Floor</td>
+                  <td>215</td>
+                </tr>
+                <tr>
+                  <td>Office of the City Population Officer</td>
+                  <td>Ms. Maria Theresa C. Sañez</td>
+                  <td>2nd Floor</td>
+                  <td>236</td>
+                </tr>
+                <tr>
+                  <td>Office of the City Mayor - Tricycle Regulatory Unit</td>
+                  <td>Mr. Nestor C. Sauquillo</td>
+                  <td>2nd Floor</td>
+                  <td>243</td>
+                </tr>
+                <tr>
+                  <td>Office of the City Agriculturist</td>
+                  <td>Mr. Robert R. Marges</td>
+                  <td>2nd Floor</td>
+                  <td>201</td>
+                </tr>
+                <tr>
+                  <td>Office of the City Mayor - City of Imus Traffic Management Unit</td>
+                  <td>Mr. Rizaldy T. Nato</td>
+                  <td>2nd Floor</td>
+                  <td>219</td>
+                </tr>
+                <tr>
+                  <td>Office of the City Health Officer</td>
+                  <td>Dr. Ferdinand P. Mina	</td>
+                  <td>2nd Floor</td>
+                  <td>248</td>
+                </tr>
+                <tr>
+                  <td>Office of the City Mayor - City of Imus Sports Development Unit</td>
+                  <td>Mr. Jericho F. Reyes</td>
+                  <td>2nd Floor</td>
+                  <td>217</td>
+                </tr>
+                <tr>
+                  <td>City Local Government Operations Office</td>
+                  <td>Ms. Mary Roxanne T. Vicedo</td>
+                  <td>2nd Floor</td>
+                  <td>229</td>
+                </tr>
+                <tr>
+                  <td>City Chaplain Office</td>
+                  <td>Mr. Sancho R. Sampot</td>
+                  <td>2nd Floor</td>
+                  <td>247</td>
+                </tr>
+                <!-- CLUSTER 3 -->
+                <tr class="table-primary">
+                  <td colspan="4" class="text-start"><strong>3rd Floor</strong></td>
+                </tr>
+                <tr>
+                  <td>Anabu I-A</td>
+                  <td>Saratan, Jan Wilmher Cuenca</td>
+                  <td>Cluster 3</td>
+                </tr>
+                <tr>
+                  <td>Anabu I-B</td>
+                  <td>Minaldo, Rafael Ochoa</td>
+                  <td>Cluster 3</td>
+                </tr>
+                <tr>
+                  <td>Anabu I-C</td>
+                  <td>Ramos, Romeo Ignacio</td>
+                  <td>Cluster 3</td>
+                </tr>
+                <tr>
+                  <td>Anabu I-D</td>
+                  <td>Advincula, Jordan Roxas</td>
+                  <td>Cluster 3</td>
+                </tr>
+                <tr>
+                  <td>Anabu I-E</td>
+                  <td>Cammungol, Antonio Barco</td>
+                  <td>Cluster 3</td>
+                </tr>
+                <tr>
+                  <td>Anabu I-F</td>
+                  <td>Sarte, Rocky Marciano</td>
+                  <td>Cluster 3</td>
+                </tr>
+                <tr>
+                  <td>Anabu I-G</td>
+                  <td>Silla, Robinson Papa</td>
+                  <td>Cluster 3</td>
+                </tr>
+                <!-- CLUSTER 4 -->
+                <tr class="table-primary">
+                  <td colspan="3" class="text-start"><strong>Cluster 4</strong></td>
+                </tr>
+                <tr>
+                  <td>Anabu II-A</td>
+                  <td>Atanacio, James Bryan Remulla</td>
+                  <td>Cluster 4</td>
+                </tr>
+                <tr>
+                  <td>Anabu II-B</td>
+                  <td>Diato, Christian Rementilla</td>
+                  <td>Cluster 4</td>
+                </tr>
+                <tr>
+                  <td>Anabu II-C</td>
+                  <td>Sarte, Joey Bernardo</td>
+                  <td>Cluster 4</td>
+                </tr>
+                <tr>
+                  <td>Anabu II-D</td>
+                  <td>Lares, Geraldo Calitis</td>
+                  <td>Cluster 4</td>
+                </tr>
+                <tr>
+                  <td>Anabu II-E</td>
+                  <td>Paredes, Lorenzo Genido</td>
+                  <td>Cluster 4</td>
+                </tr>
+                <tr>
+                  <td>Anabu II-F</td>
+                  <td>Parreñas, Bernadette Gaborro</td>
+                  <td>Cluster 4</td>
+                </tr>
+                <!-- CLUSTER 5 -->
+                <tr class="table-primary">
+                  <td colspan="3" class="text-start"><strong>Cluster 5</strong></td>
+                </tr>
+                <!-- Add Cluster 5 barangays here -->
+                <!-- CLUSTER 6 -->
+                <tr class="table-primary">
+                  <td colspan="3" class="text-start"><strong>Cluster 6</strong></td>
+                </tr>
+                <!-- Add Cluster 6 barangays here -->
+                <!-- CLUSTER 7 -->
+                <tr class="table-primary">
+                  <td colspan="3" class="text-start"><strong>Cluster 7</strong></td>
+                </tr>
+                <!-- Add Cluster 7 barangays here -->
+                <!-- CLUSTER 8 -->
+                <tr class="table-primary">
+                  <td colspan="3" class="text-start"><strong>Cluster 8</strong></td>
+                </tr>
+                <!-- Add Cluster 8 barangays here -->
+                <!-- CLUSTER 9 -->
+                <tr class="table-primary">
+                  <td colspan="3" class="text-start"><strong>Cluster 9</strong></td>
+                </tr>
+                <!-- Add Cluster 9 barangays here -->
+              </tbody>
+            </table>
+          </div>
+          <script>
+            document.getElementById('barangayFilterInput').addEventListener('keyup', function () {
+              const filter = this.value.toLowerCase();
+              const rows = document.querySelectorAll('#barangayTableBody tr');
+              let currentClusterRow = null;
+              rows.forEach(row => {
+                // If this is a cluster header row, always show it for now
+                if (row.classList.contains('table-primary')) {
+                  row.style.display = '';
+                  currentClusterRow = row;
+                  row.setAttribute('data-has-visible', 'false');
+                } else {
+                  const cells = row.querySelectorAll('td');
+                  const match = Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(filter));
+                  row.style.display = match ? '' : 'none';
+                  // Mark cluster header if any of its rows are visible
+                  if (match && currentClusterRow) {
+                    currentClusterRow.setAttribute('data-has-visible', 'true');
+                  }
+                }
+              });
+              // Hide cluster headers if none of their rows are visible
+              let clusterRow = null;
+              rows.forEach(row => {
+                if (row.classList.contains('table-primary')) {
+                  clusterRow = row;
+                  if (row.getAttribute('data-has-visible') === 'true') {
+                    row.style.display = '';
+                  } else {
+                    row.style.display = 'none';
+                  }
+                  row.setAttribute('data-has-visible', 'false');
+                }
+              });
             });
-          });
-        </script>
+          </script>
+        </div>
       </section>
     <!-- Content -->
     <!-- Footer -->
