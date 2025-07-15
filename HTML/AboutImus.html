@@ -1031,7 +1031,7 @@ updateDateTime();
       <section class="deptandunits" id="Dept-and-Units">
         <div class="container py-5">
           <h2 class="text-center mb-4" style="color: #fff; text-shadow: 2px 2px 4px #000000;"><strong>Departments and Units</strong></h2>
-          <input type="text" id="barangayFilterInput" class="form-control mb-3" placeholder="Search for departments or units...">
+          <input type="text" id="departmentsFilterInput" class="form-control mb-3" placeholder="Search for departments or units...">
           <div style="height: 400px; overflow-y: auto;">
             <table class="table table-bordered table-striped table-hover align-middle text-center">
               <thead class="table-dark" style="position: sticky; top: 0;">
@@ -1042,8 +1042,8 @@ updateDateTime();
                   <th style="width: 10%;">Local</th>
                 </tr>
               </thead>
-              <tbody id="barangayTableBody">
-                <!-- CLUSTER 1 -->
+              <tbody id="departmentsTableBody">
+                <!-- LOWER GROUND AND GROUND FLOOR -->
                 <tr class="table-primary">
                   <td colspan="4" class="text-start"><strong>Lower Ground and Ground Floor</strong></td>
                 </tr>
@@ -1107,7 +1107,7 @@ updateDateTime();
                   <td>Ground Floor</td>
                   <td>126</td>
                 </tr>
-                <!-- CLUSTER 2 -->
+                <!-- 2ND FLOOR -->
                 <tr class="table-primary">
                   <td colspan="4" class="text-start"><strong>2nd Floor</strong></td>
                 </tr>
@@ -1213,7 +1213,7 @@ updateDateTime();
                   <td>2nd Floor</td>
                   <td>247</td>
                 </tr>
-                <!-- CLUSTER 3 -->
+                <!-- 3RD FLOOR -->
                 <tr class="table-primary">
                   <td colspan="4" class="text-start"><strong>3rd Floor</strong></td>
                 </tr>
@@ -1283,7 +1283,7 @@ updateDateTime();
                   <td>3rd Floor</td>
                   <td>805</td>
                 </tr>
-                <!-- CLUSTER 4 -->
+                <!-- 4TH FLOOR -->
                 <tr class="table-primary">
                   <td colspan="4" class="text-start"><strong>4th Floor</strong></td>
                 </tr>
@@ -1335,61 +1335,86 @@ updateDateTime();
                   <td>4th Floor</td>
                   <td>425</td>
                 </tr>
-                <!-- CLUSTER 5 -->
+                <!-- 5TH FLOOR -->
                 <tr class="table-primary">
                   <td colspan="4" class="text-start"><strong>5th Floor</strong></td>
                 </tr>
                 <tr>
-                  <td>Office of the City Mayor - City of Imus Public Information Office</td>
-                  <td>Mr. Ervin Ace H. Navarette</td>
+                  <td>Office of the Sangguniang Panlungsod</td>
+                  <td>Mr. Jose Rafael C. Alarcon</td>
                   <td>5th Floor</td>
-                  <td>501</td>
+                  <td></td>
                 </tr>
                 <tr>
-                  <td>Office of the City Mayor - City of Imus Public Affairs Unit</td>
-                  <td>Mr. Ervin Ace H. Navarette</td>
+                  <td>Office of the City Vice Mayor</td>
+                  <td>Hon. Homer T. Saquilayan / Mr. Alan Dexter C. Jamir</td>
                   <td>5th Floor</td>
-                  <td>505</td>
+                  <td>701</td>
                 </tr>
                 <tr>
-                  <td>Office of the City Mayor - City of Imus Public Relations Unit</td>
-                  <td>Mr. Ervin Ace H. Navarette</td>
+                  <td>Office of the Sangguniang Panlungsod Secretary (Records and Legislative Section)</td>
+                  <td>Ms. Mary Jemeny V. Yulo</td>
                   <td>5th Floor</td>
-                  <td>503</td>
+                  <td>703</td>
                 </tr>
                 <tr>
-                  <td>Office of the City Mayor - City of Imus Public Affairs Unit</td>
-                  <td>Mr. Ervin Ace H. Navarette</td>
+                  <td>Liga ng mga Barangay ng Imus</td>
+                  <td>Hon. Reymundo G. Ramirez</td>
                   <td>5th Floor</td>
-                  <td>505</td>
+                  <td></td>
                 </tr>
-                <!-- CLUSTER 6 -->
+                <!-- OUTSIDE OFFICES -->
                 <tr class="table-primary">
-                  <td colspan="3" class="text-start"><strong>Cluster 6</strong></td>
+                  <td colspan="4" class="text-start"><strong>Outside Offices</strong></td>
                 </tr>
-                <!-- Add Cluster 6 barangays here -->
-                <!-- CLUSTER 7 -->
-                <tr class="table-primary">
-                  <td colspan="3" class="text-start"><strong>Cluster 7</strong></td>
+                <tr>
+                  <td>City College of Imus</td>
+                  <td>Mr. Generoso F. Ramos, Jr.</td>
+                  <td>Outside</td>
+                  <td></td>
                 </tr>
-                <!-- Add Cluster 7 barangays here -->
-                <!-- CLUSTER 8 -->
-                <tr class="table-primary">
-                  <td colspan="3" class="text-start"><strong>Cluster 8</strong></td>
+                <tr>
+                  <td>Office of the City Health Officer - City Epidemiology and Surveillance Unit</td>
+                  <td>Ms. Donabelle R. Melo, RN</td>
+                  <td>Outside</td>
+                  <td></td>
                 </tr>
-                <!-- Add Cluster 8 barangays here -->
-                <!-- CLUSTER 9 -->
-                <tr class="table-primary">
-                  <td colspan="3" class="text-start"><strong>Cluster 9</strong></td>
+                <tr>
+                  <td>Office of the City Health Officer - City of Imus Diagnostic Laboratory</td>
+                  <td>Ms. Alexandra Regilyne M. Romero, RMT</td>
+                  <td>Outside</td>
+                  <td></td>
                 </tr>
-                <!-- Add Cluster 9 barangays here -->
+                <tr>
+                  <td>Office of the City Mayor - Economic Enterprise Management Unit</td>
+                  <td rowspan="2">Mr. Peter Simon C. Lara</td>
+                  <td>Outside</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Office of the City Mayor - Extension Unit</td>
+                  <td>Outside</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Ospital ng Imus</td>
+                  <td>Dr. Gabriel G. Gabriel</td>
+                  <td>Outside</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Robinsons and District Satellite Offices</td>
+                  <td>Mr. Reynaldo A. Villanueva</td>
+                  <td>Outside</td>
+                  <td></td>
+                </tr>
               </tbody>
             </table>
           </div>
           <script>
-            document.getElementById('barangayFilterInput').addEventListener('keyup', function () {
+            document.getElementById('departmentsFilterInput').addEventListener('keyup', function () {
               const filter = this.value.toLowerCase();
-              const rows = document.querySelectorAll('#barangayTableBody tr');
+              const rows = document.querySelectorAll('#departmentsTableBody tr');
               let currentClusterRow = null;
               rows.forEach(row => {
                 // If this is a cluster header row, always show it for now
