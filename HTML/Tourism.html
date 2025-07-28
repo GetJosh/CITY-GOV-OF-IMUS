@@ -122,6 +122,9 @@ updateDateTime();
                             <i class="bi bi-facebook me-1"></i> Facebook
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3 fw-semibold" href="./Business.html">Employees</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -473,86 +476,174 @@ updateDateTime();
     <section class="Notable-Persons" id="Notable-Persons">
       <div class="container">
         <h2 class="text-center mb-4" style="color: #fff; text-shadow: 2px 2px 4px #000000;"><strong>Notable Persons</strong></h2>
-        <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1" style="color: #18a54a;"></button>
-            <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          </div>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="row">
-                <div class="col-md-4 mb-4">
-                  <div class="card">
-                    <img src="/IMG/2025_Dec_Medical_Dental_mission_vice_gov_jaro.jpg" class="card-img-top" alt="Card 1">
-                    <div class="card-body">
-                      <h5 class="card-title text-center">Medical Mission ni Vice Gov. Jaro sa mga Imuseño</h5>
-                      <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                  <div class="card">
-                    <img src="/IMG/2025_Jan_tulong_pinansyal_Cavite_LGU.jpg" class="card-img-top" alt="Card 2">
-                    <div class="card-body">
-                      <h5 class="card-title text-center">2,000 kababaihang Imuseño, pinagkalooban ng tulong pinansyal ng Cavite LGU</h5>
-                      <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                  <div class="card">
-                    <img src="/IMG/2025_Jan_fluVax_senior_citizen.jpg" class="card-img-top" alt="Card 3">
-                    <div class="card-body">
-                      <h5 class="card-title text-center">Bakuna kontra Influenza, pinabahagi ni Cong. AJ</h5>
-                      <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
-                    </div>
-                  </div>
-                </div>
+        <div id="infiniteCarousel" class="position-relative overflow-hidden" style="background:rgba(0,0,0,0.15); border-radius:1rem; padding:2rem 0;">
+          <div class="d-flex flex-nowrap" id="carouselTrack" style="transition: transform 0.6s cubic-bezier(.4,0,.2,1); will-change:transform;">
+            <!-- Card 1 -->
+            <div class="card mx-3" style="min-width:320px; max-width:320px;">
+              <img src="/IMG/2025_Dec_Medical_Dental_mission_vice_gov_jaro.jpg" class="card-img-top" alt="Card 1">
+              <div class="card-body">
+                <h5 class="card-title text-center">Medical Mission ni Vice Gov. Jaro sa mga Imuseño</h5>
+                <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
               </div>
             </div>
-            <div class="carousel-item">
-              <div class="row">
-                <div class="col-md-4 mb-4">
-                  <div class="card">
-                    <img src="/IMG/2025_Jan_Sports_Complex.jpg" class="card-img-top" alt="Card 4">
-                    <div class="card-body">
-                      <h5 class="card-title text-center">City of Imus Sports Complex nagbagong-bihis</h5><br>
-                      <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                  <div class="card">
-                    <img src="/IMG/2025_Jan_job_matching.jpg" class="card-img-top" alt="Card 5">
-                    <div class="card-body">
-                      <h5 class="card-title text-center">Job Matching Activity para sa Landers Imus, nakapagtala ng 488 aplikante</h5><br>
-                      <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                  <div class="card">
-                    <img src="/IMG/2025_Jan_opisyal_nanumpa_eleksyon.jpg" class="card-img-top" alt="Card 6">
-                    <div class="card-body">
-                      <h5 class="card-title text-center">Mga opisyal ng Imus LGU, nanumpa sa isang malinis at payapang eleksyon</h5>
-                      <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
-                    </div>
-                  </div>
-                </div>
+            <!-- Card 2 -->
+            <div class="card mx-3" style="min-width:320px; max-width:320px;">
+              <img src="/IMG/2025_Jan_tulong_pinansyal_Cavite_LGU.jpg" class="card-img-top" alt="Card 2">
+              <div class="card-body">
+                <h5 class="card-title text-center">2,000 kababaihang Imuseño, pinagkalooban ng tulong pinansyal ng Cavite LGU</h5>
+                <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
               </div>
             </div>
+            <!-- Card 3 -->
+            <div class="card mx-3" style="min-width:320px; max-width:320px;">
+              <img src="/IMG/2025_Jan_fluVax_senior_citizen.jpg" class="card-img-top" alt="Card 3">
+              <div class="card-body">
+                <h5 class="card-title text-center">Bakuna kontra Influenza, pinabahagi ni Cong. AJ</h5>
+                <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="card mx-3" style="min-width:320px; max-width:320px;">
+              <img src="/IMG/2025_Jan_Sports_Complex.jpg" class="card-img-top" alt="Card 4">
+              <div class="card-body">
+                <h5 class="card-title text-center">City of Imus Sports Complex nagbagong-bihis</h5>
+                <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
+              </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="card mx-3" style="min-width:320px; max-width:320px;">
+              <img src="/IMG/2025_Jan_job_matching.jpg" class="card-img-top" alt="Card 5">
+              <div class="card-body">
+                <h5 class="card-title text-center">Job Matching Activity para sa Landers Imus, nakapagtala ng 488 aplikante</h5>
+                <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
+              </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="card mx-3" style="min-width:320px; max-width:320px;">
+              <img src="/IMG/2025_Jan_opisyal_nanumpa_eleksyon.jpg" class="card-img-top" alt="Card 6">
+              <div class="card-body">
+                <h5 class="card-title text-center">Mga opisyal ng Imus LGU, nanumpa sa isang malinis at payapang eleksyon</h5>
+                <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
+              </div>
+            </div>
+            <!-- Duplicate cards for infinite effect -->
+            <div class="card mx-3" style="min-width:320px; max-width:320px;">
+              <img src="/IMG/2025_Dec_Medical_Dental_mission_vice_gov_jaro.jpg" class="card-img-top" alt="Card 1">
+              <div class="card-body">
+                <h5 class="card-title text-center">Medical Mission ni Vice Gov. Jaro sa mga Imuseño</h5>
+                <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
+              </div>
+            </div>
+            <div class="card mx-3" style="min-width:320px; max-width:320px;">
+              <img src="/IMG/2025_Jan_tulong_pinansyal_Cavite_LGU.jpg" class="card-img-top" alt="Card 2">
+              <div class="card-body">
+                <h5 class="card-title text-center">2,000 kababaihang Imuseño, pinagkalooban ng tulong pinansyal ng Cavite LGU</h5>
+                <a href="#" class="btn btn-primary d-block text-center">Learn More</a>
+              </div>
+            </div>
+            <!-- ...repeat as needed for smooth looping -->
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
+          <button id="carouselPrev" class="btn btn-success position-absolute top-50 start-0 translate-middle-y" style="z-index:2; border-radius:50%; width:48px; height:48px;"></button>
+            <i class="bi bi-chevron-left"></i>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
+          <button id="carouselNext" class="btn btn-success position-absolute top-50 end-0 translate-middle-y" style="z-index:2; border-radius:50%; width:48px; height:48px;">
+            <i class="bi bi-chevron-right"></i>
           </button>
         </div>
       </div>
+      <style>
+        #infiniteCarousel {
+          min-height: 420px;
+        }
+        #carouselTrack {
+          display: flex;
+          align-items: stretch;
+        }
+        #infiniteCarousel .card {
+          background: rgba(24, 165, 74, 0.15);
+          border-radius: 1rem;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+          min-width: 320px;
+          max-width: 320px;
+          flex: 0 0 320px;
+        }
+        @media (max-width: 767.98px) {
+          #infiniteCarousel .card {
+            min-width: 90vw;
+            max-width: 90vw;
+            flex: 0 0 90vw;
+          }
+        }
+      </style>
+      <script>
+        // Infinite scroll carousel logic
+        (function() {
+          const track = document.getElementById('carouselTrack');
+          const cards = track.children;
+          const cardCount = 6; // original cards
+          let currentIndex = 0;
+          let cardWidth = cards[0].offsetWidth + 24; // 24px margin (mx-3)
+          let autoScroll;
+
+          function updateCardWidth() {
+            cardWidth = cards[0].offsetWidth + 24;
+          }
+
+          function moveTo(index, animate = true) {
+            if (!animate) track.style.transition = 'none';
+            else track.style.transition = 'transform 0.6s cubic-bezier(.4,0,.2,1)';
+            track.style.transform = `translateX(-${index * cardWidth}px)`;
+            currentIndex = index;
+          }
+
+          function nextCard() {
+            moveTo(currentIndex + 1);
+            if (currentIndex >= cardCount) {
+              setTimeout(() => {
+                moveTo(0, false);
+              }, 650);
+            }
+          }
+
+          function prevCard() {
+            if (currentIndex === 0) {
+              moveTo(cardCount, false);
+              setTimeout(() => {
+                moveTo(cardCount - 1);
+              }, 20);
+            } else {
+              moveTo(currentIndex - 1);
+            }
+          }
+
+          document.getElementById('carouselNext').onclick = function() {
+            nextCard();
+            resetAuto();
+          };
+          document.getElementById('carouselPrev').onclick = function() {
+            prevCard();
+            resetAuto();
+          };
+
+          function auto() {
+            autoScroll = setInterval(nextCard, 3500);
+          }
+          function resetAuto() {
+            clearInterval(autoScroll);
+            auto();
+          }
+
+          window.addEventListener('resize', () => {
+            updateCardWidth();
+            moveTo(currentIndex, false);
+          });
+
+          // Initialize
+          updateCardWidth();
+          moveTo(0, false);
+          auto();
+        })();
+      </script>
     </section>
     <!-- Content -->
     <!-- Footer -->
