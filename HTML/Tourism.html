@@ -543,12 +543,12 @@ updateDateTime();
             </div>
             <!-- ...repeat as needed for smooth looping -->
           </div>
-          <button id="carouselPrev" class="btn btn-success position-absolute top-50 start-0 translate-middle-y" style="z-index:2; border-radius:50%; width:48px; height:48px;"></button>
-            <i class="bi bi-chevron-left"></i>
-          </button>
-          <button id="carouselNext" class="btn btn-success position-absolute top-50 end-0 translate-middle-y" style="z-index:2; border-radius:50%; width:48px; height:48px;">
-            <i class="bi bi-chevron-right"></i>
-          </button>
+            <button id="carouselPrev" class="btn btn-success position-absolute top-50 start-0 translate-middle-y" style="z-index:2; border-radius:50%; width:48px; height:48px;"></button>
+              <i class="bi bi-chevron-left"></i>
+            </button>
+            <button id="carouselNext" class="btn btn-success position-absolute top-50 end-0 translate-middle-y" style="z-index:2; border-radius:50%; width:48px; height:48px;">
+              <i class="bi bi-chevron-right"></i>
+            </button>
         </div>
       </div>
       <style>
@@ -578,71 +578,69 @@ updateDateTime();
       <script>
         // Infinite scroll carousel logic
         (function() {
-          const track = document.getElementById('carouselTrack');
-          const cards = track.children;
-          const cardCount = 6; // original cards
-          let currentIndex = 0;
-          let cardWidth = cards[0].offsetWidth + 24; // 24px margin (mx-3)
-          let autoScroll;
+  const track = document.getElementById('carouselTrack');
+  const cards = track.children;
+  const cardCount = 6; // original cards
+  let cardWidth = cards[0].offsetWidth + 24; // 24px margin (mx-3)
+  let position = 0;
+  let speed = 0.5; // pixels per frame, adjust for faster/slower scroll
+  let animationId;
+  let isPaused = false;
 
-          function updateCardWidth() {
-            cardWidth = cards[0].offsetWidth + 24;
-          }
+  function updateCardWidth() {
+    cardWidth = cards[0].offsetWidth + 24;
+  }
 
-          function moveTo(index, animate = true) {
-            if (!animate) track.style.transition = 'none';
-            else track.style.transition = 'transform 0.6s cubic-bezier(.4,0,.2,1)';
-            track.style.transform = `translateX(-${index * cardWidth}px)`;
-            currentIndex = index;
-          }
+  function animate() {
+    if (!isPaused) {
+      position += speed;
+      if (position >= cardWidth * cardCount) {
+        position = 0;
+      }
+      track.style.transition = 'none';
+      track.style.transform = `translateX(-${position}px)`;
+    }
+    animationId = requestAnimationFrame(animate);
+  }
 
-          function nextCard() {
-            moveTo(currentIndex + 1);
-            if (currentIndex >= cardCount) {
-              setTimeout(() => {
-                moveTo(0, false);
-              }, 650);
-            }
-          }
+  function pause() {
+    isPaused = true;
+  }
 
-          function prevCard() {
-            if (currentIndex === 0) {
-              moveTo(cardCount, false);
-              setTimeout(() => {
-                moveTo(cardCount - 1);
-              }, 20);
-            } else {
-              moveTo(currentIndex - 1);
-            }
-          }
+  function resume() {
+    isPaused = false;
+  }
 
-          document.getElementById('carouselNext').onclick = function() {
-            nextCard();
-            resetAuto();
-          };
-          document.getElementById('carouselPrev').onclick = function() {
-            prevCard();
-            resetAuto();
-          };
+  // Manual controls: jump one card left/right
+  document.getElementById('carouselNext').onclick = function() {
+    position += cardWidth;
+    if (position >= cardWidth * cardCount) {
+      position = 0;
+    }
+    track.style.transition = 'transform 0.6s cubic-bezier(.4,0,.2,1)';
+    track.style.transform = `translateX(-${position}px)`;
+  };
+  document.getElementById('carouselPrev').onclick = function() {
+    position -= cardWidth;
+    if (position < 0) {
+      position = cardWidth * (cardCount - 1);
+    }
+    track.style.transition = 'transform 0.6s cubic-bezier(.4,0,.2,1)';
+    track.style.transform = `translateX(-${position}px)`;
+  };
 
-          function auto() {
-            autoScroll = setInterval(nextCard, 3500);
-          }
-          function resetAuto() {
-            clearInterval(autoScroll);
-            auto();
-          }
+  // Pause on hover
+  track.addEventListener('mouseenter', pause);
+  track.addEventListener('mouseleave', resume);
 
-          window.addEventListener('resize', () => {
-            updateCardWidth();
-            moveTo(currentIndex, false);
-          });
+  window.addEventListener('resize', () => {
+    updateCardWidth();
+  });
 
-          // Initialize
-          updateCardWidth();
-          moveTo(0, false);
-          auto();
-        })();
+  // Initialize
+  updateCardWidth();
+  animate();
+})();
       </script>
     </section>
     <!-- Content -->
