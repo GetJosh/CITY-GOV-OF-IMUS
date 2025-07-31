@@ -69,7 +69,6 @@ updateDateTime();
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
                 <img src="/IMG/Logo_City_Government_of_Imuss.png" alt="City of Imus" height="54" class="me-2" style="background:rgba(255,255,255,0.85); border-radius:8px; padding:2px 8px;">
-                <span class="fw-bold fs-5 d-none d-md-inline" style="letter-spacing:1px;">City of Imus</span>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
@@ -130,7 +129,7 @@ updateDateTime();
         </div>
         <style>
             .navbar {
-                background: linear-gradient(90deg, #053774 80%, #18a54a 100%) !important;
+                background-color: rgb(24, 8, 163) !important;
             }
             .navbar .navbar-brand img {
                 box-shadow: 0 2px 8px rgba(5,55,116,0.10);
@@ -252,8 +251,8 @@ updateDateTime();
         .carousel-inner .carousel-img {
             min-height: 320px;
             max-height: 480px;
-            object-fit: cover;
-            transition: transform 0.4s cubic-bezier(.4,2,.6,1);
+            object-fit: contain;
+            transition: transform 0.9s cubic-bezier(.4,2,.6,1);
         }
         .carousel-inner .carousel-item.active .carousel-img,
         .carousel-inner .carousel-item-next .carousel-img,
@@ -268,20 +267,20 @@ updateDateTime();
             background: none;
         }
         .bg-gradient-custom {
-            background: linear-gradient(120deg, rgba(5,55,116,0.85) 70%, rgba(24,165,74,0.7) 100%);
+            background: rgb(24, 8, 163);
         }
         .carousel-indicators [data-bs-target] {
-            width: 14px;
-            height: 14px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            background-color: #18a54a;
+            background-color: #fff;
             opacity: 0.7;
-            border: 2px solid #fff;
-            margin: 0 6px;
+            border: 0px solid #fff;
+            margin: 0 6px -10px ;
             transition: background 0.2s;
         }
         .carousel-indicators .active {
-            background-color: #053774;
+            background-color: blue;
             opacity: 1;
         }
         .carousel-control-prev-icon,
