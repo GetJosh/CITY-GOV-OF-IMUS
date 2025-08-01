@@ -12,14 +12,14 @@
 /* Body Styling */
 body {
     line-height: 1.6;
-    background: linear-gradient(to right, #053774, #15934a);
+    background: linear-gradient(to right, #4c8a15, #80bb4c);
     margin: 0;
     padding: 0;
 }
 
 /* Header Styling */
 header {
-    background-color: #053774; /* Example color */
+    background-color: #00489a; /* Example color */
     color: #f8f9fa;
     padding: 15px 20px;
     display: flex;
@@ -55,7 +55,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    background-color: green; /* Darker shade on hover */
+    background-color: #4c8a15; /* Darker shade on hover */
     color: white;
 }
 
@@ -115,7 +115,7 @@ main {
 
 /* Footer Styling */
 footer {
-    background: #053774;
+    background: #00489a;
     color: #fff;
     text-align: right;
     padding: 10px 0;
