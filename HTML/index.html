@@ -267,7 +267,7 @@ updateDateTime();
             background: none;
         }
         .bg-gradient-custom {
-            background-color:#4c8a15;
+            background-color:#00489a;
         }
         .carousel-indicators [data-bs-target] {
             width: 10px;
@@ -313,7 +313,7 @@ updateDateTime();
     </section>
     <!-- Carousel -->
 
-    <section class="mayor" style="background-color: #4c8a15;">
+    <section class="mayor" style="background-color: #00489a;">
         <div class="container py-5">
             <div class="row align-items-center flex-md-row flex-column-reverse">
                 <div class="col-md-7">
@@ -330,14 +330,14 @@ updateDateTime();
                 <div class="col-md-5 text-center mb-4 mb-md-0">
                     <div class="position-relative d-inline-block">
                         <img src="/IMG/MayorStanding.png" alt="Mayor of Imus" class="img-fluid" style="max-width: 320px;">
-                        <div class="position-absolute bottom-0 start-50 translate-middle-x px-4 py-2 rounded-3 shadow-lg border border-success" style="background:#00489a; color:#fff; font-weight:700; font-size:1.08rem; margin-bottom:-18px; letter-spacing:0.5px; box-shadow:0 4px 18px rgba(24,165,74,0.15);">
+                        <div class="position-absolute bottom-0 start-50 translate-middle-x px-4 py-2 rounded-3 shadow-lg border border-success" style="background:#80bb4c; color:#fff; font-weight:700; font-size:1.08rem; margin-bottom:-18px; letter-spacing:0.5px; box-shadow:0 4px 18px rgba(0,0,0,0.18);">
                             <span class="d-flex align-items-center gap-2">
                                 Hon. Alex "AA" L. Advincula
                             </span>
                         </div>
                     </div>
                     <div class="mt-4">
-                        <span class="badge fs-6 px-3 py-2" style="background-color: #00489a;">City Mayor</span>
+                        <span class="badge fs-6 px-3 py-2" style="background-color: #80bb4c;">City Mayor</span>
                     </div>
                 </div>
             </div>
@@ -434,7 +434,7 @@ updateDateTime();
             </div>
             <style>
                 .news {
-                    background-color: #00489a;
+                    background-color: #80bb4c;
                 }
                 .news-card {
                     border-radius: 1rem;
@@ -485,20 +485,76 @@ updateDateTime();
     <section class="missionnvision">
         <div class="container">
             <div class="row my-5">
-                <div class="col-md-6" style="color: white; text-shadow: 2px 2px 4px #000000;">
-                    <h2 class="text-center"><i>Mission</i></h2>
-                    <p>
-                        The City Government of Imus is committed to delivering a transparent, reliable, and efficient public service that is proactive to the needs of its people while actively pursuing development for a dynamic and unified Imus.
-                    </p>
+                <div class="col-md-6">
+                    <div class="card bg-primary bg-opacity-75 text-white shadow rounded-4 h-100">
+                        <div class="card-body">
+                            <h2 class="card-title text-center">Mission</h2>
+                            <p class="card-text">
+                                The City Government of Imus is committed to delivering a transparent, reliable, and efficient public service that is proactive to the needs of its people while actively pursuing development for a dynamic and unified Imus.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6" style="color: white; text-shadow: 2px 2px 4px #000000; font-family: 'Archivo', sans-serif;">
-                    <h2 class="text-center"><i>Vision</i></h2>
-                    <p>
-                        The model city in the region, with secured and healthy citizenry, living in a smart, green and sustainable environment in a technology-driven economy, governed with integrity and transparency.
-                    </p>
+                <div class="col-md-6">
+                    <div class="card bg-primary bg-opacity-75 text-white shadow rounded-4 h-100" style="font-family: 'Archivo', sans-serif;">
+                        <div class="card-body">
+                            <h2 class="card-title text-center">Vision</h2>
+                            <p class="card-text">
+                                The model city in the region, with secured and healthy citizenry, living in a smart, green and sustainable environment in a technology-driven economy, governed with integrity and transparency.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <style>
+        .missionnvision {
+            background-color: #00489a;
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+        .missionnvision h2 {
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 1.2rem;
+        }
+        .missionnvision p {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            background: rgba(0,72,154,0.10);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 2px 12px rgba(5,55,116,0.10);
+        }
+        @media (max-width: 767px) {
+            .missionnvision {
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+            }
+            .missionnvision h2 {
+                font-size: 1.2rem;
+            }
+            .missionnvision p {
+                font-size: 1rem;
+                padding: 1rem;
+            }
+            .missionnvision .card {
+                border-radius: 1.5rem;
+                box-shadow: 0 4px 18px rgba(5,55,116,0.12);
+                border: none;
+                margin-bottom: 1.2rem;
+            }
+            .missionnvision .card-title {
+                font-size: 1.1rem;
+                font-weight: 700;
+                letter-spacing: 0.5px;
+            }
+            .missionnvision .card-text {
+                font-size: 1rem;
+                padding: 1rem;
+            }
+        }
+        </style>
     </section>
     <section class="embedded-sites">
         <div id="fb-root"></div>
