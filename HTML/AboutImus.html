@@ -339,316 +339,350 @@ updateDateTime();
           </style>
           <!-- Councilors -->
           <h4 class="mt-5 mb-3 text-white" style="text-shadow: 1px 1px 2px #000;">City Councilors</h4>
-          <div class="row g-4">
-            <!-- Example: Use a loop or repeat for all councilors -->
-            <div class="col-md-6 col-lg-3">
-              <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
-                <div class="councilor-img-wrapper bg-gradient">
-                  <img src="/IMG/officials-and-councilors/Konsi-Shernan.png" class="card-img-top rounded-circle mx-auto d-block" alt="Councilor 1">
-                </div>
-                <div class="card-body text-center bg-white rounded-bottom-4">
+            <div id="councilorsCarousel" class="carousel slide carousel-dark" data-bs-ride="carousel" data-bs-interval="4000">
+            <div class="carousel-inner">
+              <!-- Slide 1 -->
+              <div class="carousel-item active">
+              <div class="row justify-content-center g-4">
+                <div class="col-12 col-sm-6 col-lg-3">
+                <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
+                  <div class="councilor-img-wrapper bg-gradient">
+                  <img src="/IMG/officials-and-councilors/Konsi-Shernan.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Shernan S. Jaro">
+                  </div>
+                  <div class="card-body text-center bg-white rounded-bottom-4">
                   <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Shernan S. Jaro</h6>
                   <p class="card-text small text-secondary councilor-role">City Councilor</p>
                   <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
                   <p class="card-text small councilor-desc">Committee on Finance, Budget and Appropriations/ Committee on Ways and Means</p>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-              <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
-                <div class="councilor-img-wrapper bg-gradient">
-                  <img src="/IMG/officials-and-councilors/Konsi-Dennis.png" class="card-img-top rounded-circle mx-auto d-block" alt="Councilor 2">
                 </div>
-                <div class="card-body text-center bg-white rounded-bottom-4">
+                <div class="col-12 col-sm-6 col-lg-3">
+                <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
+                  <div class="councilor-img-wrapper bg-gradient">
+                  <img src="/IMG/officials-and-councilors/Konsi-Dennis.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Dennis T. Lacson">
+                  </div>
+                  <div class="card-body text-center bg-white rounded-bottom-4">
                   <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Dennis T. Lacson</h6>
                   <p class="card-text small text-secondary councilor-role">City Councilor</p>
                   <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
                   <p class="card-text small councilor-desc">Committee on Land Utilization, Zoning, and Housing/ Human Settlements</p>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-              <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
-                <div class="councilor-img-wrapper bg-gradient">
-                  <img src="/IMG/officials-and-councilors/Konsi-Wency.png" class="card-img-top rounded-circle mx-auto d-block" alt="Councilor 3">
                 </div>
-                <div class="card-body text-center bg-white rounded-bottom-4">
-                  <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Peter Emmanuel C. Lara</h6>
-                  <p class="card-text small text-secondary councilor-role">City Councilor</p>
-                  <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
-                  <p class="card-text small councilor-desc">Committee on Ordinances, Rules, Privileges, and Legal Matters</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-              <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
-                <div class="councilor-img-wrapper bg-gradient">
-                  <img src="/IMG/officials-and-councilors/Konsi-Sherwin.png" class="card-img-top rounded-circle mx-auto d-block" alt="Councilor 4">
-                </div>
-                <div class="card-body text-center bg-white rounded-bottom-4">
-                  <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Sherwin L. Comia</h6>
-                  <p class="card-text small text-secondary councilor-role">City Councilor</p>
-                  <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
-                  <p class="card-text small councilor-desc">Committee on Public Works and Infrastructures, Special Projects</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-              <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
-                <div class="councilor-img-wrapper bg-gradient">
-                  <img src="/IMG/officials-and-councilors/Konsi-Yen.png" class="card-img-top rounded-circle mx-auto d-block" alt="Councilor 5">
-                </div>
-                <div class="card-body text-center bg-white rounded-bottom-4">
-                  <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Lloren Dionella G. Saquilayan</h6>
-                  <p class="card-text small text-secondary councilor-role">City Councilor</p>
-                  <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
-                  <p class="card-text small councilor-desc">Committee on Social Services, Family, Women, and Children</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-              <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
-                <div class="councilor-img-wrapper bg-gradient">
-                  <img src="/IMG/officials-and-councilors/Konsi-Larry.png" class="card-img-top rounded-circle mx-auto d-block" alt="Councilor 6">
-                </div>
-                <div class="card-body text-center bg-white rounded-bottom-4">
-                  <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Larry Boy S. Nato</h6>
-                  <p class="card-text small text-secondary councilor-role">City Councilor</p>
-                  <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
-                  <p class="card-text small councilor-desc">Committee on Games and Amusement/ Franchise/ Transportations and Communications/ Information and Communication Technology</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-              <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
-                <div class="councilor-img-wrapper bg-gradient">
-                  <img src="/IMG/officials-and-councilors/Konsi-Darwin.png" class="card-img-top rounded-circle mx-auto d-block" alt="Councilor 7">
-                </div>
-                <div class="card-body text-center bg-white rounded-bottom-4">
-                  <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Darwin Marti M. Remulla</h6>
-                  <p class="card-text small text-secondary councilor-role">City Councilor</p>
-                  <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
-                  <p class="card-text small councilor-desc">Committee on Agriculture and Agrarian Reforms/ Environment Protection and Ecology/ Market and Slaughterhouses</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-              <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
-                <div class="councilor-img-wrapper bg-gradient">
-                  <img src="/IMG/officials-and-councilors/Konsi-Enzo.png" class="card-img-top rounded-circle mx-auto d-block" alt="Councilor 8">
-                </div>
-                <div class="card-body text-center bg-white rounded-bottom-4">
-                  <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Enzo Gaston A. Asistio</h6>
-                  <p class="card-text small text-secondary councilor-role">City Councilor</p>
-                  <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
-                  <p class="card-text small councilor-desc">Committee on Health, Nutrition, Population, and Sanitation;</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-              <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
-                <div class="councilor-img-wrapper bg-gradient">
-                  <img src="/IMG/officials-and-councilors/Konsi-Jelyn.png" class="card-img-top rounded-circle mx-auto d-block" alt="Councilor 9">
-                </div>
-                <div class="card-body text-center bg-white rounded-bottom-4">
-                  <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Jogie Lyn L. Maliksi</h6>
-                  <p class="card-text small text-secondary councilor-role">City Councilor</p>
-                  <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
-                  <p class="card-text small councilor-desc">Committee on Tourism and Culture</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-              <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
-                <div class="councilor-img-wrapper bg-gradient">
-                  <img src="/IMG/officials-and-councilors/Konsi-Mark.png" class="card-img-top rounded-circle mx-auto d-block" alt="Councilor 10">
-                </div>
-                <div class="card-body text-center bg-white rounded-bottom-4">
-                  <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Mark Anthony P. Villanueva</h6>
-                  <p class="card-text small text-secondary councilor-role">City Councilor</p>
-                  <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
-                  <p class="card-text small councilor-desc">Committee on Trade, Commerce, and Industry/ Labor and Employment and Industrial Peace</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-              <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
-                <div class="councilor-img-wrapper bg-gradient">
-                  <img src="/IMG/officials-and-councilors/Konsi-David.png" class="card-img-top rounded-circle mx-auto d-block" alt="Councilor 11">
-                </div>
-                <div class="card-body text-center bg-white rounded-bottom-4">
-                  <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. David Sapitan Jr.</h6>
-                  <p class="card-text small text-secondary councilor-role">City Councilor</p>
-                  <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
-                  <p class="card-text small councilor-desc">Committee on Cooperatives/ People's Organization Accreditation Livelihood/ Elderly</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-              <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
-                <div class="councilor-img-wrapper bg-gradient">
-                  <img src="/IMG/officials-and-councilors/Konsi-Igi.png" class="card-img-top rounded-circle mx-auto d-block" alt="Councilor 12">
-                </div>
-                <div class="card-body text-center bg-white rounded-bottom-4">
-                  <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Gregorio Miguel B. Ocampo Jr.</h6>
-                  <p class="card-text small text-secondary councilor-role">City Councilor</p>
-                  <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
-                  <p class="card-text small councilor-desc">Committee on Education</p>
-                </div>
-              </div>
-            </div>
-            <div class="w-100 d-flex justify-content-center align-items-stretch gap-4 my-4 flex-wrap">
-              <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+                <div class="col-12 col-sm-6 col-lg-3 d-none d-lg-block">
                 <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
                   <div class="councilor-img-wrapper bg-gradient">
-                    <img src="/IMG/officials-and-councilors/Konsi-Capt-RR.png" class="card-img-top rounded-circle mx-auto d-block" alt="Councilor 10">
+                        <img src="/IMG/officials-and-councilors/Konsi-Wency.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Peter Emmanuel C. Lara">
+                      </div>
+                      <div class="card-body text-center bg-white rounded-bottom-4">
+                        <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Peter Emmanuel C. Lara</h6>
+                        <p class="card-text small text-secondary councilor-role">City Councilor</p>
+                        <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
+                        <p class="card-text small councilor-desc">Committee on Ordinances, Rules, Privileges, and Legal Matters</p>
+                      </div>
+                    </div>
                   </div>
-                  <div class="card-body text-center bg-white rounded-bottom-4">
-                    <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Reymundo G. Ramirez</h6>
-                    <p class="card-text small text-secondary councilor-role">LNB President</p>
-                    <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
-                    <p class="card-text small councilor-desc">Committee on Peace and Order, Public Welfare and Safety and Fire Protection/ Human Rights/ Barangay Affairs</p>
+                  <div class="col-12 col-sm-6 col-lg-3 d-none d-lg-block">
+                    <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
+                      <div class="councilor-img-wrapper bg-gradient">
+                        <img src="/IMG/officials-and-councilors/Konsi-Sherwin.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Sherwin L. Comia">
+                      </div>
+                      <div class="card-body text-center bg-white rounded-bottom-4">
+                        <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Sherwin L. Comia</h6>
+                        <p class="card-text small text-secondary councilor-role">City Councilor</p>
+                        <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
+                        <p class="card-text small councilor-desc">Committee on Public Works and Infrastructures, Special Projects</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-                <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
-                  <div class="councilor-img-wrapper bg-gradient">
-                    <img src="/IMG/officials-and-councilors/Konsi-SK-Glian.png" class="card-img-top rounded-circle mx-auto d-block" alt="Councilor 11">
+              <!-- Slide 2 -->
+              <div class="carousel-item">
+                <div class="row justify-content-center g-4">
+                  <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
+                      <div class="councilor-img-wrapper bg-gradient">
+                        <img src="/IMG/officials-and-councilors/Konsi-Yen.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Lloren Dionella G. Saquilayan">
+                      </div>
+                      <div class="card-body text-center bg-white rounded-bottom-4">
+                        <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Lloren Dionella G. Saquilayan</h6>
+                        <p class="card-text small text-secondary councilor-role">City Councilor</p>
+                        <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
+                        <p class="card-text small councilor-desc">Committee on Social Services, Family, Women, and Children</p>
+                      </div>
+                    </div>
                   </div>
-                  <div class="card-body text-center bg-white rounded-bottom-4">
-                    <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Glian Piolo P. Ilagan</h6>
-                    <p class="card-text small text-secondary councilor-role">SK Federation President</p>
-                    <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
-                    <p class="card-text small councilor-desc">Committee on Sports and Youth Development</p>
+                  <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
+                      <div class="councilor-img-wrapper bg-gradient">
+                        <img src="/IMG/officials-and-councilors/Konsi-Larry.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Larry Boy S. Nato">
+                      </div>
+                      <div class="card-body text-center bg-white rounded-bottom-4">
+                        <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Larry Boy S. Nato</h6>
+                        <p class="card-text small text-secondary councilor-role">City Councilor</p>
+                        <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
+                        <p class="card-text small councilor-desc">Committee on Games and Amusement/ Franchise/ Transportations and Communications/ Information and Communication Technology</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-6 col-lg-3 d-none d-lg-block">
+                    <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
+                      <div class="councilor-img-wrapper bg-gradient">
+                        <img src="/IMG/officials-and-councilors/Konsi-Darwin.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Darwin Marti M. Remulla">
+                      </div>
+                      <div class="card-body text-center bg-white rounded-bottom-4">
+                        <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Darwin Marti M. Remulla</h6>
+                        <p class="card-text small text-secondary councilor-role">City Councilor</p>
+                        <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
+                        <p class="card-text small councilor-desc">Committee on Agriculture and Agrarian Reforms/ Environment Protection and Ecology/ Market and Slaughterhouses</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-6 col-lg-3 d-none d-lg-block">
+                    <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
+                      <div class="councilor-img-wrapper bg-gradient">
+                        <img src="/IMG/officials-and-councilors/Konsi-Enzo.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Enzo Gaston A. Asistio">
+                      </div>
+                      <div class="card-body text-center bg-white rounded-bottom-4">
+                        <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Enzo Gaston A. Asistio</h6>
+                        <p class="card-text small text-secondary councilor-role">City Councilor</p>
+                        <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
+                        <p class="card-text small councilor-desc">Committee on Health, Nutrition, Population, and Sanitation;</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Slide 3 -->
+              <div class="carousel-item">
+                <div class="row justify-content-center g-4">
+                  <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
+                      <div class="councilor-img-wrapper bg-gradient">
+                        <img src="/IMG/officials-and-councilors/Konsi-Jelyn.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Jogie Lyn L. Maliksi">
+                      </div>
+                      <div class="card-body text-center bg-white rounded-bottom-4">
+                        <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Jogie Lyn L. Maliksi</h6>
+                        <p class="card-text small text-secondary councilor-role">City Councilor</p>
+                        <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
+                        <p class="card-text small councilor-desc">Committee on Tourism and Culture</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
+                      <div class="councilor-img-wrapper bg-gradient">
+                        <img src="/IMG/officials-and-councilors/Konsi-Mark.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Mark Anthony P. Villanueva">
+                      </div>
+                      <div class="card-body text-center bg-white rounded-bottom-4">
+                        <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Mark Anthony P. Villanueva</h6>
+                        <p class="card-text small text-secondary councilor-role">City Councilor</p>
+                        <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
+                        <p class="card-text small councilor-desc">Committee on Trade, Commerce, and Industry/ Labor and Employment and Industrial Peace</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-6 col-lg-3 d-none d-lg-block">
+                    <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
+                      <div class="councilor-img-wrapper bg-gradient">
+                        <img src="/IMG/officials-and-councilors/Konsi-David.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. David Sapitan Jr.">
+                      </div>
+                      <div class="card-body text-center bg-white rounded-bottom-4">
+                        <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. David Sapitan Jr.</h6>
+                        <p class="card-text small text-secondary councilor-role">City Councilor</p>
+                        <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
+                        <p class="card-text small councilor-desc">Committee on Cooperatives/ People's Organization Accreditation Livelihood/ Elderly</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-6 col-lg-3 d-none d-lg-block">
+                    <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
+                      <div class="councilor-img-wrapper bg-gradient">
+                        <img src="/IMG/officials-and-councilors/Konsi-Igi.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Gregorio Miguel B. Ocampo Jr.">
+                      </div>
+                      <div class="card-body text-center bg-white rounded-bottom-4">
+                        <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Gregorio Miguel B. Ocampo Jr.</h6>
+                        <p class="card-text small text-secondary councilor-role">City Councilor</p>
+                        <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
+                        <p class="card-text small councilor-desc">Committee on Education</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Slide 4 -->
+              <div class="carousel-item">
+                <div class="row justify-content-center g-4">
+                  <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
+                      <div class="councilor-img-wrapper bg-gradient">
+                        <img src="/IMG/officials-and-councilors/Konsi-Capt-RR.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Reymundo G. Ramirez">
+                      </div>
+                      <div class="card-body text-center bg-white rounded-bottom-4">
+                        <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Reymundo G. Ramirez</h6>
+                        <p class="card-text small text-secondary councilor-role">LNB President</p>
+                        <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
+                        <p class="card-text small councilor-desc">Committee on Peace and Order, Public Welfare and Safety and Fire Protection/ Human Rights/ Barangay Affairs</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
+                      <div class="councilor-img-wrapper bg-gradient">
+                        <img src="/IMG/officials-and-councilors/Konsi-SK-Glian.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Glian Piolo P. Ilagan">
+                      </div>
+                      <div class="card-body text-center bg-white rounded-bottom-4">
+                        <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Glian Piolo P. Ilagan</h6>
+                        <p class="card-text small text-secondary councilor-role">SK Federation President</p>
+                        <hr class="my-2" style="width: 40px; margin: 0 auto; border-top: 2px solid #18a54a;">
+                        <p class="card-text small councilor-desc">Committee on Sports and Youth Development</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            </div>
-            
-            
-            </div>
-            <style>
-              .councilor-card {
-              background: #f8fafc;
-              border-radius: 1.25rem;
-              transition: transform 0.16s, box-shadow 0.16s;
-              min-height: 390px;
-              box-shadow: 0 4px 18px rgba(5,55,116,0.10);
-              }
-              .councilor-card:hover {
-              transform: translateY(-6px) scale(1.04);
-              box-shadow: 0 14px 40px rgba(24,165,74,0.20);
-              z-index: 2;
-              }
-              .councilor-img-wrapper {
-              background: linear-gradient(120deg, #18a54a 0%, #053774 100%);
-              padding: 2rem 0 1.2rem 0;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              min-height: 180px;
-              }
-              .councilor-card .card-img-top {
-              width: 160px;
-              height: 160px;
-              object-fit: cover;
-              border: 6px solid #fff;
-              box-shadow: 0 2px 12px rgba(5,55,116,0.13);
-              background: #e9ecef;
-              margin-bottom: 0.5rem;
-              transition: transform 0.18s;
-              }
-              .councilor-card:hover .card-img-top {
-              transform: scale(1.10) rotate(-2deg);
-              }
-              .councilor-card .card-body {
-              padding: 1.3rem 1.1rem 1.1rem 1.1rem;
-              border-radius: 0 0 1.25rem 1.25rem;
-              min-height: 200px;
-              }
-              .councilor-name {
-              font-size: 1.13rem;
-              letter-spacing: 0.5px;
-              }
-              .councilor-role {
-              font-size: 0.98rem;
-              color: #18a54a !important;
-              margin-bottom: 0.2rem;
-              }
-              .councilor-desc {
-              font-size: 1rem;
-              color: #444;
-              margin-top: 0.5rem;
-              }
-              @media (max-width: 991.98px) {
-              .councilor-card {
-                min-height: 350px;
-              }
-              .councilor-card .card-img-top {
-                width: 120px;
-                height: 120px;
-              }
-              .councilor-img-wrapper {
-                min-height: 120px;
-                padding: 1.2rem 0 0.8rem 0;
-              }
-              .councilor-card .card-body {
-                padding: 1rem 0.7rem 0.9rem 0.7rem;
-                min-height: 150px;
-              }
-              }
-              @media (max-width: 767.98px) {
-              .councilor-card {
-                min-height: 0;
-              }
-              .councilor-card .card-img-top {
-                width: 90px;
-                height: 90px;
-              }
-              .councilor-img-wrapper {
-                min-height: 80px;
-                padding: 0.7rem 0 0.5rem 0;
-              }
-              .councilor-card .card-body {
-                padding: 0.8rem 0.5rem 0.7rem 0.5rem;
-              }
-              .councilor-name {
-                font-size: 1rem;
-              }
-              .councilor-desc {
-                font-size: 0.93rem;
-              }
-              }
-            </style>
-        </div>
-        <style>
-          .card-img-top {
-            background: #e9ecef;
+            <button class="carousel-control-prev" type="button" data-bs-target="#councilorsCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: invert(1);"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#councilorsCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true" style="filter: invert(1);"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          <style>
+          .councilor-card {
+            background: #f8fafc;
+            border-radius: 1.25rem;
+            transition: transform 0.16s, box-shadow 0.16s;
+            min-height: 390px;
+            box-shadow: 0 4px 18px rgba(5,55,116,0.10);
           }
-          .card {
-            transition: transform 0.12s, box-shadow 0.12s;
-          }
-          .card:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 8px 32px rgba(5,55,116,0.18);
+          .councilor-card:hover {
+            transform: translateY(-6px) scale(1.04);
+            box-shadow: 0 14px 40px rgba(24,165,74,0.20);
             z-index: 2;
           }
-          .card-title, .card-text {
-            word-break: break-word;
+          .councilor-img-wrapper {
+            background: linear-gradient(120deg, #18a54a 0%, #053774 100%);
+            padding: 2rem 0 1.2rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 180px;
+          }
+          .councilor-card .card-img-top {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border: 6px solid #fff;
+            box-shadow: 0 2px 12px rgba(5,55,116,0.13);
+            background: #e9ecef;
+            margin-bottom: 0.5rem;
+            transition: transform 0.18s;
+          }
+          .councilor-card:hover .card-img-top {
+            transform: scale(1.10) rotate(-2deg);
+          }
+          .councilor-card .card-body {
+            padding: 1.3rem 1.1rem 1.1rem 1.1rem;
+            border-radius: 0 0 1.25rem 1.25rem;
+            min-height: 200px;
+          }
+          .councilor-name {
+            font-size: 1.13rem;
+            letter-spacing: 0.5px;
+          }
+          .councilor-role {
+            font-size: 0.98rem;
+            color: #18a54a !important;
+            margin-bottom: 0.2rem;
+          }
+          .councilor-desc {
+            font-size: 1rem;
+            color: #444;
+            margin-top: 0.5rem;
           }
           @media (max-width: 991.98px) {
-            .card-img-top {
-              height: 160px !important;
+            .councilor-card {
+              min-height: 350px;
+            }
+            .councilor-card .card-img-top {
+              width: 120px;
+              height: 120px;
+            }
+            .councilor-img-wrapper {
+              min-height: 120px;
+              padding: 1.2rem 0 0.8rem 0;
+            }
+            .councilor-card .card-body {
+              padding: 1rem 0.7rem 0.9rem 0.7rem;
+              min-height: 150px;
+            }
+            /* Show only 2 cards per slide on tablet */
+            #councilorsCarousel .carousel-item .col-lg-3.d-none.d-lg-block {
+              display: none !important;
             }
           }
           @media (max-width: 767.98px) {
-            .card-img-top {
-              height: 120px !important;
+            .councilor-card {
+              min-height: 0;
+            }
+            .councilor-card .card-img-top {
+              width: 90px;
+              height: 90px;
+            }
+            .councilor-img-wrapper {
+              min-height: 80px;
+              padding: 0.7rem 0 0.5rem 0;
+            }
+            .councilor-card .card-body {
+              padding: 0.8rem 0.5rem 0.7rem 0.5rem;
+            }
+            .councilor-name {
+              font-size: 1rem;
+            }
+            .councilor-desc {
+              font-size: 0.93rem;
+            }
+            /* Show only 1 card per slide on mobile */
+            #councilorsCarousel .carousel-item .col-lg-3,
+            #councilorsCarousel .carousel-item .col-sm-6:not(:first-child) {
+              display: none !important;
+            }
+            #councilorsCarousel .carousel-item .col-12 {
+              display: block !important;
+              width: 100%;
             }
           }
-        </style>
+          </style>
+          <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            // Make carousel infinite (wrap-around)
+            var carousel = document.getElementById('councilorsCarousel');
+            if (carousel) {
+              carousel.addEventListener('slide.bs.carousel', function (e) {
+                var items = carousel.querySelectorAll('.carousel-item');
+                var activeIndex = Array.from(items).indexOf(carousel.querySelector('.carousel-item.active'));
+                if (e.direction === 'left' && activeIndex === items.length - 1) {
+                  setTimeout(function () {
+                    items[0].classList.add('active');
+                    items[items.length - 1].classList.remove('active');
+                  }, 600);
+                }
+                if (e.direction === 'right' && activeIndex === 0) {
+                  setTimeout(function () {
+                    items[items.length - 1].classList.add('active');
+                    items[0].classList.remove('active');
+                  }, 600);
+                }
+              });
+            }
+          });
+          </script>
       </section>
       <!--Content (Barangay Officials)-->
       <section class="barangay-officials" id="Brgy-Officials">
