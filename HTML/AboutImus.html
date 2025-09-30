@@ -682,550 +682,617 @@ updateDateTime();
       <!--Content (Barangay Officials)-->
       <section class="barangay-officials" id="Brgy-Officials">
         <div class="container py-5">
-          <h2 class="text-center mb-4" style="color: #fff; text-shadow: 2px 2px 4px #000000;"><strong>Barangay Officials</strong></h2>
-          <input type="text" id="barangayFilterInput" class="form-control mb-3" placeholder="Search for barangays or officials...">
-          <div style="height: 400px; overflow-y: auto;">
-            <table class="table table-bordered table-striped table-hover align-middle text-center">
-              <thead class="table-dark" style="position: sticky; top: 0;">
+          <h2 class="text-center mb-4 text-white" style="text-shadow: 2px 2px 4px #000;"><strong>Barangay Officials</strong></h2>
+          <div class="row justify-content-center mb-3">
+            <div class="col-12 col-md-8 col-lg-6">
+              <input type="text" id="barangayFilterInput" class="form-control form-control-lg rounded-pill shadow-sm" placeholder="🔍 Search barangay or official...">
+            </div>
+          </div>
+          <div class="table-responsive-lg">
+            <table class="table table-hover align-middle bg-white rounded-4 overflow-hidden shadow-sm" style="border-radius: 1.25rem;">
+              <thead class="table-primary sticky-top" style="z-index: 2;">
                 <tr>
-                  <th style="width: 35%;">Barangay</th>
-                  <th style="width: 45%;">Barangay Captain</th>
-                  <th style="width: 20%;">Cluster</th>
+                  <th class="text-start" style="width: 32%; font-size: 1.08rem;">Barangay</th>
+                  <th class="text-start" style="width: 38%; font-size: 1.08rem;">Barangay Captain</th>
+                  <th class="text-center" style="width: 18%; font-size: 1.08rem;">Cluster</th>
                 </tr>
               </thead>
               <tbody id="barangayTableBody">
                 <!-- CLUSTER 1 -->
-                <tr class="table-primary">
-                  <td colspan="3" class="text-start"><strong>Cluster 1</strong></td>
+                <tr class="table-light cluster-row">
+                  <td colspan="3" class="text-primary fw-bold text-uppercase py-2 ps-3" style="background: #eaf4fb; letter-spacing: 1px;">
+                    <i class="bi bi-diagram-3 me-2"></i>Cluster 1
+                  </td>
                 </tr>
                 <tr>
-                  <td>Alapan I-A</td>
-                  <td>Aman, Jeffrey Primero</td>
-                  <td>Cluster 1</td>
+                  <td class="text-start">Alapan I-A</td>
+                  <td class="text-start">Aman, Jeffrey Primero</td>
+                  <td class="text-center">Cluster 1</td>
                 </tr>
                 <tr>
-                  <td>Alapan I-B</td>
-                  <td>Santos, Rico David</td>
-                  <td>Cluster 1</td>
+                  <td class="text-start">Alapan I-B</td>
+                  <td class="text-start">Santos, Rico David</td>
+                  <td class="text-center">Cluster 1</td>
                 </tr>
                 <tr>
-                  <td>Alapan I-C</td>
-                  <td>Marcial, Noriel Santiaguel</td>
-                  <td>Cluster 1</td>
+                  <td class="text-start">Alapan I-C</td>
+                  <td class="text-start">Marcial, Noriel Santiaguel</td>
+                  <td class="text-center">Cluster 1</td>
                 </tr>
                 <tr>
-                  <td>Alapan II-A</td>
-                  <td>Barzaga, Marc Albert Didal</td>
-                  <td>Cluster 1</td>
+                  <td class="text-start">Alapan II-A</td>
+                  <td class="text-start">Barzaga, Marc Albert Didal</td>
+                  <td class="text-center">Cluster 1</td>
                 </tr>
                 <tr>
-                  <td>Alapan II-B</td>
-                  <td>Camia, Benedicto Dayrit</td>
-                  <td>Cluster 1</td>
+                  <td class="text-start">Alapan II-B</td>
+                  <td class="text-start">Camia, Benedicto Dayrit</td>
+                  <td class="text-center">Cluster 1</td>
                 </tr>
                 <tr>
-                  <td>Bucandala I</td>
-                  <td>Santiaguel, Ferdinand Apolinar</td>
-                  <td>Cluster 1</td>
+                  <td class="text-start">Bucandala I</td>
+                  <td class="text-start">Santiaguel, Ferdinand Apolinar</td>
+                  <td class="text-center">Cluster 1</td>
                 </tr>
                 <tr>
-                  <td>Bucandala II</td>
-                  <td>Vilbar, Mark Jefferson Legaspi</td>
-                  <td>Cluster 1</td>
+                  <td class="text-start">Bucandala II</td>
+                  <td class="text-start">Vilbar, Mark Jefferson Legaspi</td>
+                  <td class="text-center">Cluster 1</td>
                 </tr>
                 <tr>
-                  <td>Bucandala III</td>
-                  <td>Sarreal, Amado Saria</td>
-                  <td>Cluster 1</td>
+                  <td class="text-start">Bucandala III</td>
+                  <td class="text-start">Sarreal, Amado Saria</td>
+                  <td class="text-center">Cluster 1</td>
                 </tr>
                 <tr>
-                  <td>Bucandala IV</td>
-                  <td>Bacos, Gary Olaes</td>
-                  <td>Cluster 1</td>
+                  <td class="text-start">Bucandala IV</td>
+                  <td class="text-start">Bacos, Gary Olaes</td>
+                  <td class="text-center">Cluster 1</td>
                 </tr>
                 <tr>
-                  <td>Bucandala V</td>
-                  <td>Saliba, Reynaldo Obispo</td>
-                  <td>Cluster 1</td>
+                  <td class="text-start">Bucandala V</td>
+                  <td class="text-start">Saliba, Reynaldo Obispo</td>
+                  <td class="text-center">Cluster 1</td>
                 </tr>
                 <!-- CLUSTER 2 -->
-                <tr class="table-primary">
-                  <td colspan="3" class="text-start"><strong>Cluster 2</strong></td>
+                <tr class="table-light cluster-row"></tr>
+                  <td colspan="3" class="text-primary fw-bold text-uppercase py-2 ps-3" style="background: #eaf4fb; letter-spacing: 1px;">
+                    <i class="bi bi-diagram-3 me-2"></i>Cluster 2
+                  </td>
                 </tr>
                 <tr>
-                  <td>Carsadang Bago I</td>
-                  <td>Cubillo, Laila Papa</td>
-                  <td>Cluster 2</td>
+                  <td class="text-start">Carsadang Bago I</td>
+                  <td class="text-start">Cubillo, Laila Papa</td>
+                  <td class="text-center">Cluster 2</td>
                 </tr>
                 <tr>
-                  <td>Carsadang Bago II</td>
-                  <td>Candalla, Eliseo Jarin</td>
-                  <td>Cluster 2</td>
+                  <td class="text-start">Carsadang Bago II</td>
+                  <td class="text-start">Candalla, Eliseo Jarin</td>
+                  <td class="text-center">Cluster 2</td>
                 </tr>
                 <tr>
-                  <td>Pag-Asa I</td>
-                  <td>Galang, Rolito Jarin</td>
-                  <td>Cluster 2</td>
+                  <td class="text-start">Pag-Asa I</td>
+                  <td class="text-start">Galang, Rolito Jarin</td>
+                  <td class="text-center">Cluster 2</td>
                 </tr>
                 <tr>
-                  <td>Pag-Asa II</td>
-                  <td>Medina, Ernesto Jarin</td>
-                  <td>Cluster 2</td>
+                  <td class="text-start">Pag-Asa II</td>
+                  <td class="text-start">Medina, Ernesto Jarin</td>
+                  <td class="text-center">Cluster 2</td>
                 </tr>
                 <tr>
-                  <td>Pag-Asa III</td>
-                  <td>Dagumboy, Joemar Felix</td>
-                  <td>Cluster 2</td>
+                  <td class="text-start">Pag-Asa III</td>
+                  <td class="text-start">Dagumboy, Joemar Felix</td>
+                  <td class="text-center">Cluster 2</td>
                 </tr>
                 <tr>
-                  <td>Medicion I-A</td>
-                  <td>Camat, Leomar Viña</td>
-                  <td>Cluster 2</td>
+                  <td class="text-start">Medicion I-A</td>
+                  <td class="text-start">Camat, Leomar Viña</td>
+                  <td class="text-center">Cluster 2</td>
                 </tr>
                 <tr>
-                  <td>Medicion I-B</td>
-                  <td>Condalor, Ferdinand Dayson</td>
-                  <td>Cluster 2</td>
+                  <td class="text-start">Medicion I-B</td>
+                  <td class="text-start">Condalor, Ferdinand Dayson</td>
+                  <td class="text-center">Cluster 2</td>
                 </tr>
                 <tr>
-                  <td>Medicion I-C</td>
-                  <td>Dominguez, Roberto Toledo</td>
-                  <td>Cluster 2</td>
+                  <td class="text-start">Medicion I-C</td>
+                  <td class="text-start">Dominguez, Roberto Toledo</td>
+                  <td class="text-center">Cluster 2</td>
                 </tr>
                 <tr>
-                  <td>Medicion I-D</td>
-                  <td>Igtiben, Mark Luigi Monreal</td>
-                  <td>Cluster 2</td>
+                  <td class="text-start">Medicion I-D</td>
+                  <td class="text-start">Igtiben, Mark Luigi Monreal</td>
+                  <td class="text-center">Cluster 2</td>
                 </tr>
                 <tr>
-                  <td>Medicion II-A</td>
-                  <td>Jarin, Alexander Monzon</td>
-                  <td>Cluster 2</td>
+                  <td class="text-start">Medicion II-A</td>
+                  <td class="text-start">Jarin, Alexander Monzon</td>
+                  <td class="text-center">Cluster 2</td>
                 </tr>
                 <tr>
-                  <td>Medicion II-B</td>
-                  <td>Monzon, Eduardo Frias</td>
-                  <td>Cluster 2</td>
+                  <td class="text-start">Medicion II-B</td>
+                  <td class="text-start">Monzon, Eduardo Frias</td>
+                  <td class="text-center">Cluster 2</td>
                 </tr>
                 <tr>
-                  <td>Medicion II-C</td>
-                  <td>Bella, Riciel Barzaga</td>
-                  <td>Cluster 2</td>
+                  <td class="text-start">Medicion II-C</td>
+                  <td class="text-start">Bella, Riciel Barzaga</td>
+                  <td class="text-center">Cluster 2</td>
                 </tr>
                 <tr>
-                  <td>Medicion II-D</td>
-                  <td>Nas, Rommel Cairme</td>
-                  <td>Cluster 2</td>
+                  <td class="text-start">Medicion II-D</td>
+                  <td class="text-start">Nas, Rommel Cairme</td>
+                  <td class="text-center">Cluster 2</td>
                 </tr>
                 <tr>
-                  <td>Medicion II-E</td>
-                  <td>Monzon, Lamberto Episioco</td>
-                  <td>Cluster 2</td>
+                  <td class="text-start">Medicion II-E</td>
+                  <td class="text-start">Monzon, Lamberto Episioco</td>
+                  <td class="text-center">Cluster 2</td>
                 </tr>
                 <tr>
-                  <td>Medicion II-F</td>
-                  <td>Octavo, Eugenio Risco</td>
-                  <td>Cluster 2</td>
+                  <td class="text-start">Medicion II-F</td>
+                  <td class="text-start">Octavo, Eugenio Risco</td>
+                  <td class="text-center">Cluster 2</td>
                 </tr>
                 <!-- CLUSTER 3 -->
-                <tr class="table-primary">
-                  <td colspan="3" class="text-start"><strong>Cluster 3</strong></td>
+                <tr class="table-light cluster-row">
+                  <td colspan="3" class="text-primary fw-bold text-uppercase py-2 ps-3" style="background: #eaf4fb; letter-spacing: 1px;">
+                    <i class="bi bi-diagram-3 me-2"></i>Cluster 3
+                  </td>
                 </tr>
                 <tr>
-                  <td>Anabu I-A</td>
-                  <td>Saratan, Jan Wilmher Cuenca</td>
-                  <td>Cluster 3</td>
+                  <td class="text-start">Anabu I-A</td>
+                  <td class="text-start">Saratan, Jan Wilmher Cuenca</td>
+                  <td class="text-center">Cluster 3</td>
                 </tr>
                 <tr>
-                  <td>Anabu I-B</td>
-                  <td>Minaldo, Rafael Ochoa</td>
-                  <td>Cluster 3</td>
+                  <td class="text-start">Anabu I-B</td>
+                  <td class="text-start">Minaldo, Rafael Ochoa</td>
+                  <td class="text-center">Cluster 3</td>
                 </tr>
                 <tr>
-                  <td>Anabu I-C</td>
-                  <td>Ramos, Romeo Ignacio</td>
-                  <td>Cluster 3</td>
+                  <td class="text-start">Anabu I-C</td>
+                  <td class="text-start">Ramos, Romeo Ignacio</td>
+                  <td class="text-center">Cluster 3</td>
                 </tr>
                 <tr>
-                  <td>Anabu I-D</td>
-                  <td>Advincula, Jordan Roxas</td>
-                  <td>Cluster 3</td>
+                  <td class="text-start">Anabu I-D</td>
+                  <td class="text-start">Advincula, Jordan Roxas</td>
+                  <td class="text-center">Cluster 3</td>
                 </tr>
                 <tr>
-                  <td>Anabu I-E</td>
-                  <td>Cammungol, Antonio Barco</td>
-                  <td>Cluster 3</td>
+                  <td class="text-start">Anabu I-E</td>
+                  <td class="text-start">Cammungol, Antonio Barco</td>
+                  <td class="text-center">Cluster 3</td>
                 </tr>
                 <tr>
-                  <td>Anabu I-F</td>
-                  <td>Sarte, Rocky Marciano</td>
-                  <td>Cluster 3</td>
+                  <td class="text-start">Anabu I-F</td>
+                  <td class="text-start">Sarte, Rocky Marciano</td>
+                  <td class="text-center">Cluster 3</td>
                 </tr>
                 <tr>
-                  <td>Anabu I-G</td>
-                  <td>Silla, Robinson Papa</td>
-                  <td>Cluster 3</td>
+                  <td class="text-start">Anabu I-G</td>
+                  <td class="text-start">Silla, Robinson Papa</td>
+                  <td class="text-center">Cluster 3</td>
                 </tr>
                 <!-- CLUSTER 4 -->
-                <tr class="table-primary">
-                  <td colspan="3" class="text-start"><strong>Cluster 4</strong></td>
+                <tr class="table-light cluster-row">
+                  <td colspan="3" class="text-primary fw-bold text-uppercase py-2 ps-3" style="background: #eaf4fb; letter-spacing: 1px;">
+                    <i class="bi bi-diagram-3 me-2"></i>Cluster 4
+                  </td>
                 </tr>
                 <tr>
-                  <td>Anabu II-A</td>
-                  <td>Atanacio, James Bryan Remulla</td>
-                  <td>Cluster 4</td>
+                  <td class="text-start">Anabu II-A</td>
+                  <td class="text-start">Atanacio, James Bryan Remulla</td>
+                  <td class="text-center">Cluster 4</td>
                 </tr>
                 <tr>
-                  <td>Anabu II-B</td>
-                  <td>Diato, Christian Rementilla</td>
-                  <td>Cluster 4</td>
+                  <td class="text-start">Anabu II-B</td>
+                  <td class="text-start">Diato, Christian Rementilla</td>
+                  <td class="text-center">Cluster 4</td>
                 </tr>
                 <tr>
-                  <td>Anabu II-C</td>
-                  <td>Sarte, Joey Bernardo</td>
-                  <td>Cluster 4</td>
+                  <td class="text-start">Anabu II-C</td>
+                  <td class="text-start">Sarte, Joey Bernardo</td>
+                  <td class="text-center">Cluster 4</td>
                 </tr>
                 <tr>
-                  <td>Anabu II-D</td>
-                  <td>Lares, Geraldo Calitis</td>
-                  <td>Cluster 4</td>
+                  <td class="text-start">Anabu II-D</td>
+                  <td class="text-start">Lares, Geraldo Calitis</td>
+                  <td class="text-center">Cluster 4</td>
                 </tr>
                 <tr>
-                  <td>Anabu II-E</td>
-                  <td>Paredes, Lorenzo Genido</td>
-                  <td>Cluster 4</td>
+                  <td class="text-start">Anabu II-E</td>
+                  <td class="text-start">Paredes, Lorenzo Genido</td>
+                  <td class="text-center">Cluster 4</td>
                 </tr>
                 <tr>
-                  <td>Anabu II-F</td>
-                  <td>Parreñas, Bernadette Gaborro</td>
-                  <td>Cluster 4</td>
+                  <td class="text-start">Anabu II-F</td>
+                  <td class="text-start">Parreñas, Bernadette Gaborro</td>
+                  <td class="text-center">Cluster 4</td>
                 </tr>
                 <!-- CLUSTER 5 -->
-                <tr class="table-primary">
-                  <td colspan="3" class="text-start"><strong>Cluster 5</strong></td>
+                <tr class="table-light cluster-row">
+                  <td colspan="3" class="text-primary fw-bold text-uppercase py-2 ps-3" style="background: #eaf4fb; letter-spacing: 1px;">
+                    <i class="bi bi-diagram-3 me-2"></i>Cluster 5
+                  </td>
                 </tr>
                 <tr>
-                  <td>Bayan Luma I</td>
-                  <td>Canaynay, Melquiades Tala Tala</td>
-                  <td>Cluster 5</td>
+                  <td class="text-start">Bayan Luma I</td>
+                  <td class="text-start">Canaynay, Melquiades Tala Tala</td>
+                  <td class="text-center">Cluster 5</td>
                 </tr>
                 <tr>
-                  <td>Bayan Luma II</td>
-                  <td>Bautista, Reuben Jesse Magsaysay</td>
-                  <td>Cluster 5</td>
+                  <td class="text-start">Bayan Luma II</td>
+                  <td class="text-start">Bautista, Reuben Jesse Magsaysay</td>
+                  <td class="text-center">Cluster 5</td>
                 </tr>
                 <tr>
-                  <td>Bayan Luma III</td>
-                  <td>Borromeo, Reynaldo Pastor</td>
-                  <td>Cluster 5</td>
+                  <td class="text-start">Bayan Luma III</td>
+                  <td class="text-start">Borromeo, Reynaldo Pastor</td>
+                  <td class="text-center">Cluster 5</td>
                 </tr>
                 <tr>
-                  <td>Bayan Luma IV</td>
-                  <td>Aquilino, Natividad Chua</td>
-                  <td>Cluster 5</td>
+                  <td class="text-start">Bayan Luma IV</td>
+                  <td class="text-start">Aquilino, Natividad Chua</td>
+                  <td class="text-center">Cluster 5</td>
                 </tr>
                 <tr>
-                  <td>Bayan Luma V</td>
-                  <td>Reyes, Edgardo Dela Cruz</td>
-                  <td>Cluster 5</td>
+                  <td class="text-start">Bayan Luma V</td>
+                  <td class="text-start">Reyes, Edgardo Dela Cruz</td>
+                  <td class="text-center">Cluster 5</td>
                 </tr>
                 <tr>
-                  <td>Bayan Luma VI</td>
-                  <td>Salvador, Kent Lewis Cani</td>
-                  <td>Cluster 5</td>
+                  <td class="text-start">Bayan Luma VI</td>
+                  <td class="text-start">Salvador, Kent Lewis Cani</td>
+                  <td class="text-center">Cluster 5</td>
                 </tr>
                 <tr>
-                  <td>Bayan Luma VII</td>
-                  <td>Camia, Zosimo Jr. Cruz</td>
-                  <td>Cluster 5</td>
+                  <td class="text-start">Bayan Luma VII</td>
+                  <td class="text-start">Camia, Zosimo Jr. Cruz</td>
+                  <td class="text-center">Cluster 5</td>
                 </tr>
                 <tr>
-                  <td>Bayan Luma VIII</td>
-                  <td>Esguerra, Efren Jr. Bautista</td>
-                  <td>Cluster 5</td>
+                  <td class="text-start">Bayan Luma VIII</td>
+                  <td class="text-start">Esguerra, Efren Jr. Bautista</td>
+                  <td class="text-center">Cluster 5</td>
                 </tr>
                 <tr>
-                  <td>Bayan Luma IX</td>
-                  <td>Tined, Ruben Jr. De Guzman</td>
-                  <td>Cluster 5</td>
+                  <td class="text-start">Bayan Luma IX</td>
+                  <td class="text-start">Tined, Ruben Jr. De Guzman</td>
+                  <td class="text-center">Cluster 5</td>
                 </tr>
                 <!-- CLUSTER 6 -->
-                <tr class="table-primary">
-                  <td colspan="3" class="text-start"><strong>Cluster 6</strong></td>
+                <tr class="table-light cluster-row">
+                  <td colspan="3" class="text-primary fw-bold text-uppercase py-2 ps-3" style="background: #eaf4fb; letter-spacing: 1px;">
+                    <i class="bi bi-diagram-3 me-2"></i>Cluster 6
+                  </td>
                 </tr>
                 <tr>
-                  <td>Bagong Silang</td>
-                  <td>Cariño, Carlito Dumalanta</td>
-                  <td>Cluster 6</td>
+                  <td class="text-start">Bagong Silang</td>
+                  <td class="text-start">Cariño, Carlito Dumalanta</td>
+                  <td class="text-center">Cluster 6</td>
                 </tr>
                 <tr>
-                  <td>Magdalo</td>
-                  <td>Jardin, Kaizer Lozada</td>
-                  <td>Cluster 6</td>
+                  <td class="text-start">Magdalo</td>
+                  <td class="text-start">Jardin, Kaizer Lozada</td>
+                  <td class="text-center">Cluster 6</td>
                 </tr>
                 <tr>
-                  <td>Maharlika</td>
-                  <td>Hynson, Gina Delos Reyes</td>
-                  <td>Cluster 6</td>
+                  <td class="text-start">Maharlika</td>
+                  <td class="text-start">Hynson, Gina Delos Reyes</td>
+                  <td class="text-center">Cluster 6</td>
                 </tr>
                 <tr>
-                  <td>Mariano Espeleta I</td>
-                  <td>Cruz, Alnair Macahilig</td>
-                  <td>Cluster 6</td>
+                  <td class="text-start">Mariano Espeleta I</td>
+                  <td class="text-start">Cruz, Alnair Macahilig</td>
+                  <td class="text-center">Cluster 6</td>
                 </tr>
                 <tr>
-                  <td>Mariano Espeleta II</td>
-                  <td>Punzalan, Nelson Jr. Dagum</td>
-                  <td>Cluster 6</td>
+                  <td class="text-start">Mariano Espeleta II</td>
+                  <td class="text-start">Punzalan, Nelson Jr. Dagum</td>
+                  <td class="text-center">Cluster 6</td>
                 </tr>
                 <tr>
-                  <td>Mariano Espeleta III</td>
-                  <td>Nato, Silvestre Campaña</td>
-                  <td>Cluster 6</td>
+                  <td class="text-start">Mariano Espeleta III</td>
+                  <td class="text-start">Nato, Silvestre Campaña</td>
+                  <td class="text-center">Cluster 6</td>
                 </tr>
                 <tr>
-                  <td>Pinagbuklod</td>
-                  <td>Ocampo, Ricardo Salvador</td>
-                  <td>Cluster 6</td>
+                  <td class="text-start">Pinagbuklod</td>
+                  <td class="text-start">Ocampo, Ricardo Salvador</td>
+                  <td class="text-center">Cluster 6</td>
                 </tr>
                 <tr>
-                  <td>Pasong Buaya I</td>
-                  <td>Ramos, Wilfredo Esguerra</td>
-                  <td>Cluster 6</td>
+                  <td class="text-start">Pasong Buaya I</td>
+                  <td class="text-start">Ramos, Wilfredo Esguerra</td>
+                  <td class="text-center">Cluster 6</td>
                 </tr>
                 <tr>
-                  <td>Pasong Buaya II</td>
-                  <td>Tagle, Carlito Camantigue</td>
-                  <td>Cluster 6</td>
+                  <td class="text-start">Pasong Buaya II</td>
+                  <td class="text-start">Tagle, Carlito Camantigue</td>
+                  <td class="text-center">Cluster 6</td>
                 </tr>
                 <!-- CLUSTER 7 -->
-                <tr class="table-primary">
-                  <td colspan="3" class="text-start"><strong>Cluster 7</strong></td>
+                <tr class="table-light cluster-row">
+                  <td colspan="3" class="text-primary fw-bold text-uppercase py-2 ps-3" style="background: #eaf4fb; letter-spacing: 1px;">
+                    <i class="bi bi-diagram-3 me-2"></i>Cluster 7
+                  </td>
                 </tr>
                 <tr>
-                  <td>Buhay na Tubig</td>
-                  <td>Ramirez, Reymundo De Guzman</td>
-                  <td>Cluster 7</td>
+                  <td class="text-start">Buhay na Tubig</td>
+                  <td class="text-start">Ramirez, Reymundo De Guzman</td>
+                  <td class="text-center">Cluster 7</td>
                 </tr>
                 <tr>
-                  <td>Palico I</td>
-                  <td>Olives, Nicanor Zaragosa</td>
-                  <td>Cluster 7</td>
+                  <td class="text-start">Palico I</td>
+                  <td class="text-start">Olives, Nicanor Zaragosa</td>
+                  <td class="text-center">Cluster 7</td>
                 </tr>
                 <tr>
-                  <td>Palico II</td>
-                  <td>Sapanghila, Ryan Jay Gayamo</td>
-                  <td>Cluster 7</td>
+                  <td class="text-start">Palico II</td>
+                  <td class="text-start">Sapanghila, Ryan Jay Gayamo</td>
+                  <td class="text-center">Cluster 7</td>
                 </tr>
                 <tr>
-                  <td>Palico III</td>
-                  <td>Dominguez, Luisito Zapanta</td>
-                  <td>Cluster 7</td>
+                  <td class="text-start">Palico III</td>
+                  <td class="text-start">Dominguez, Luisito Zapanta</td>
+                  <td class="text-center">Cluster 7</td>
                 </tr>
                 <tr>
-                  <td>Palico IV</td>
-                  <td>Dominguez, Marlo Espiritu</td>
-                  <td>Cluster 7</td>
+                  <td class="text-start">Palico IV</td>
+                  <td class="text-start">Dominguez, Marlo Espiritu</td>
+                  <td class="text-center">Cluster 7</td>
                 </tr>
                 <tr>
-                  <td>Tanzang Luma I</td>
-                  <td>Dones, Reynante Dominguez</td>
-                  <td>Cluster 7</td>
+                  <td class="text-start">Tanzang Luma I</td>
+                  <td class="text-start">Dones, Reynante Dominguez</td>
+                  <td class="text-center">Cluster 7</td>
                 </tr>
                 <tr>
-                  <td>Tanzang Luma II</td>
-                  <td>Lacson, Carlo Rey Perez</td>
-                  <td>Cluster 7</td>
+                  <td class="text-start">Tanzang Luma II</td>
+                  <td class="text-start">Lacson, Carlo Rey Perez</td>
+                  <td class="text-center">Cluster 7</td>
                 </tr>
                 <tr>
-                  <td>Tanzang Luma III</td>
-                  <td>Manela, Marty Landas</td>
-                  <td>Cluster 7</td>
+                  <td class="text-start">Tanzang Luma III</td>
+                  <td class="text-start">Manela, Marty Landas</td>
+                  <td class="text-center">Cluster 7</td>
                 </tr>
                 <tr>
-                  <td>Tanzang Luma IV</td>
-                  <td>Cinto, Jhun Gaña</td>
-                  <td>Cluster 7</td>
+                  <td class="text-start">Tanzang Luma IV</td>
+                  <td class="text-start">Cinto, Jhun Gaña</td>
+                  <td class="text-center">Cluster 7</td>
                 </tr>
                 <tr>
-                  <td>Tanzang Luma V</td>
-                  <td>Acuña, Bienvenido Camaclang</td>
-                  <td>Cluster 7</td>
+                  <td class="text-start">Tanzang Luma V</td>
+                  <td class="text-start">Acuña, Bienvenido Camaclang</td>
+                  <td class="text-center">Cluster 7</td>
                 </tr>
                 <tr>
-                  <td>Tanzang Luma VI</td>
-                  <td>Crisologo, Redentor Magsakay</td>
-                  <td>Cluster 7</td>
+                  <td class="text-start">Tanzang Luma VI</td>
+                  <td class="text-start">Crisologo, Redentor Magsakay</td>
+                  <td class="text-center">Cluster 7</td>
                 </tr>
                 <!-- CLUSTER 8 -->
-                <tr class="table-primary">
-                  <td colspan="3" class="text-start"><strong>Cluster 8</strong></td>
+                <tr class="table-light cluster-row">
+                  <td colspan="3" class="text-primary fw-bold text-uppercase py-2 ps-3" style="background: #eaf4fb; letter-spacing: 1px;">
+                    <i class="bi bi-diagram-3 me-2"></i>Cluster 8
+                  </td>
                 </tr>
                 <tr>
-                  <td>Poblacion I-A</td>
-                  <td>Tacus, Gregorio Escobido</td>
-                  <td>Cluster 8</td>
+                  <td class="text-start">Poblacion I-A</td>
+                  <td class="text-start">Tacus, Gregorio Escobido</td>
+                  <td class="text-center">Cluster 8</td>
                 </tr>
                 <tr>
-                  <td>Poblacion I-B</td>
-                  <td>Dominguez, Kristel Joy De Leon</td>
-                  <td>Cluster 8</td>
+                  <td class="text-start">Poblacion I-B</td>
+                  <td class="text-start">Dominguez, Kristel Joy De Leon</td>
+                  <td class="text-center">Cluster 8</td>
                 </tr>
                 <tr>
-                  <td>Poblacion I-C</td>
-                  <td>Constantino, Hilario Sapin</td>
-                  <td>Cluster 8</td>
+                  <td class="text-start">Poblacion I-C</td>
+                  <td class="text-start">Constantino, Hilario Sapin</td>
+                  <td class="text-center">Cluster 8</td>
                 </tr>
                 <tr>
-                  <td>Poblacion II-A</td>
-                  <td>Sauler, Gary Dela Cruz</td>
-                  <td>Cluster 8</td>
+                  <td class="text-start">Poblacion II-A</td>
+                  <td class="text-start">Sauler, Gary Dela Cruz</td>
+                  <td class="text-center">Cluster 8</td>
                 </tr>
                 <tr>
-                  <td>Poblacion II-B</td>
-                  <td>Ravelo, Ferdinand Tambio</td>
-                  <td>Cluster 8</td>
+                  <td class="text-start">Poblacion II-B</td>
+                  <td class="text-start">Ravelo, Ferdinand Tambio</td>
+                  <td class="text-center">Cluster 8</td>
                 </tr>
                 <tr>
-                  <td>Poblacion III-A</td>
-                  <td>Maluto, Carlos Serviano</td>
-                  <td>Cluster 8</td>
+                  <td class="text-start">Poblacion III-A</td>
+                  <td class="text-start">Maluto, Carlos Serviano</td>
+                  <td class="text-center">Cluster 8</td>
                 </tr>
                 <tr>
-                  <td>Poblacion III-B</td>
-                  <td>Ramirez, Elmer Diones</td>
-                  <td>Cluster 8</td>
+                  <td class="text-start">Poblacion III-B</td>
+                  <td class="text-start">Ramirez, Elmer Diones</td>
+                  <td class="text-center">Cluster 8</td>
                 </tr>
                 <tr>
-                  <td>Poblacion IV-A</td>
-                  <td>Figueras, Perpetua Fernandez</td>
-                  <td>Cluster 8</td>
+                  <td class="text-start">Poblacion IV-A</td>
+                  <td class="text-start">Figueras, Perpetua Fernandez</td>
+                  <td class="text-center">Cluster 8</td>
                 </tr>
                 <tr>
-                  <td>Poblacion IV-B</td>
-                  <td>Caimol, John Orly Gonzaga</td>
-                  <td>Cluster 8</td>
+                  <td class="text-start">Poblacion IV-B</td>
+                  <td class="text-start">Caimol, John Orly Gonzaga</td>
+                  <td class="text-center">Cluster 8</td>
                 </tr>
                 <tr>
-                  <td>Poblacion IV-C</td>
-                  <td>Kamantigue, Imelda Gacos</td>
-                  <td>Cluster 8</td>
+                  <td class="text-start">Poblacion IV-C</td>
+                  <td class="text-start">Kamantigue, Imelda Gacos</td>
+                  <td class="text-center">Cluster 8</td>
                 </tr>
                 <tr>
-                  <td>Poblacion IV-D</td>
-                  <td>Virata, Michael Samonte</td>
-                  <td>Cluster 8</td>
+                  <td class="text-start">Poblacion IV-D</td>
+                  <td class="text-start">Virata, Michael Samonte</td>
+                  <td class="text-center">Cluster 8</td>
                 </tr>
                 <tr>
-                  <td>Toclong I-A</td>
-                  <td>Sañez, Oktubre Camandang</td>
-                  <td>Cluster 8</td>
+                  <td class="text-start">Toclong I-A</td>
+                  <td class="text-start">Sañez, Oktubre Camandang</td>
+                  <td class="text-center">Cluster 8</td>
                 </tr>
                 <tr>
-                  <td>Toclong I-B</td>
-                  <td>Badion, Nerrie Salem</td>
-                  <td>Cluster 8</td>
+                  <td class="text-start">Toclong I-B</td>
+                  <td class="text-start">Badion, Nerrie Salem</td>
+                  <td class="text-center">Cluster 8</td>
                 </tr>
                 <tr>
-                  <td>Toclong I-C</td>
-                  <td>Santos, Joey Remulla</td>
-                  <td>Cluster 8</td>
+                  <td class="text-start">Toclong I-C</td>
+                  <td class="text-start">Santos, Joey Remulla</td>
+                  <td class="text-center">Cluster 8</td>
                 </tr>
                 <tr>
-                  <td>Toclong II-A</td>
-                  <td>Sañez, Abraham Jr. Santos</td>
-                  <td>Cluster 8</td>
+                  <td class="text-start">Toclong II-A</td>
+                  <td class="text-start">Sañez, Abraham Jr. Santos</td>
+                  <td class="text-center">Cluster 8</td>
                 </tr>
                 <tr>
-                  <td>Toclong II-B</td>
-                  <td>Remulla, Joseph Regalado</td>
-                  <td>Cluster 8</td>
+                  <td class="text-start">Toclong II-B</td>
+                  <td class="text-start">Remulla, Joseph Regalado</td>
+                  <td class="text-center">Cluster 8</td>
                 </tr>
                 <!-- CLUSTER 9 -->
-                <tr class="table-primary">
-                  <td colspan="3" class="text-start"><strong>Cluster 9</strong></td>
+                <tr class="table-light cluster-row">
+                  <td colspan="3" class="text-primary fw-bold text-uppercase py-2 ps-3" style="background: #eaf4fb; letter-spacing: 1px;">
+                    <i class="bi bi-diagram-3 me-2"></i>Cluster 9
+                  </td>
                 </tr>
                 <tr>
-                  <td>Malagasang I-A</td>
-                  <td>Parnala, Pedro Manimbao</td>
-                  <td>Cluster 9</td>
+                  <td class="text-start">Malagasang I-A</td>
+                  <td class="text-start">Parnala, Pedro Manimbao</td>
+                  <td class="text-center">Cluster 9</td>
                 </tr>
                 <tr>
-                  <td>Malagasang I-B</td>
-                  <td>Reyes, Mario Jr. Palajos</td>
-                  <td>Cluster 9</td>
+                  <td class="text-start">Malagasang I-B</td>
+                  <td class="text-start">Reyes, Mario Jr. Palajos</td>
+                  <td class="text-center">Cluster 9</td>
                 </tr>
                 <tr>
-                  <td>Malagasang I-C</td>
-                  <td>Saulog, Gerardo Sanchez</td>
-                  <td>Cluster 9</td>
+                  <td class="text-start">Malagasang I-C</td>
+                  <td class="text-start">Saulog, Gerardo Sanchez</td>
+                  <td class="text-center">Cluster 9</td>
                 </tr>
                 <tr>
-                  <td>Malagasang I-D</td>
-                  <td>Tapawan, Manuel Saquilayan</td>
-                  <td>Cluster 9</td>
+                  <td class="text-start">Malagasang I-D</td>
+                  <td class="text-start">Tapawan, Manuel Saquilayan</td>
+                  <td class="text-center">Cluster 9</td>
                 </tr>
                 <tr>
-                  <td>Malagasang I-E</td>
-                  <td>Sayaman, Josefino Macalawa</td>
-                  <td>Cluster 9</td>
+                  <td class="text-start">Malagasang I-E</td>
+                  <td class="text-start">Sayaman, Josefino Macalawa</td>
+                  <td class="text-center">Cluster 9</td>
                 </tr>
                 <tr>
-                  <td>Malagasang I-F</td>
-                  <td>Lara, Randy Sapinoso</td>
-                  <td>Cluster 9</td>
+                  <td class="text-start">Malagasang I-F</td>
+                  <td class="text-start">Lara, Randy Sapinoso</td>
+                  <td class="text-center">Cluster 9</td>
                 </tr>
                 <tr>
-                  <td>Malagasang I-G</td>
-                  <td>Valerio, Mark Oliver Jarin</td>
-                  <td>Cluster 9</td>
+                  <td class="text-start">Malagasang I-G</td>
+                  <td class="text-start">Valerio, Mark Oliver Jarin</td>
+                  <td class="text-center">Cluster 9</td>
                 </tr>
                 <tr>
-                  <td>Malagasang II-A</td>
-                  <td>Progoso, Aldrin Olivarez</td>
-                  <td>Cluster 9</td>
+                  <td class="text-start">Malagasang II-A</td>
+                  <td class="text-start">Progoso, Aldrin Olivarez</td>
+                  <td class="text-center">Cluster 9</td>
                 </tr>
                 <tr>
-                  <td>Malagasang II-B</td>
-                  <td>Andallon, Lenie Herrera</td>
-                  <td>Cluster 9</td>
+                  <td class="text-start">Malagasang II-B</td>
+                  <td class="text-start">Andallon, Lenie Herrera</td>
+                  <td class="text-center">Cluster 9</td>
                 </tr>
                 <tr>
-                  <td>Malagasang II-C</td>
-                  <td>Herrera, Danilo Magsino</td>
-                  <td>Cluster 9</td>
+                  <td class="text-start">Malagasang II-C</td>
+                  <td class="text-start">Herrera, Danilo Magsino</td>
+                  <td class="text-center">Cluster 9</td>
                 </tr>
                 <tr>
-                  <td>Malagasang II-D</td>
-                  <td>Servida, Alexander Vasquez</td>
-                  <td>Cluster 9</td>
+                  <td class="text-start">Malagasang II-D</td>
+                  <td class="text-start">Servida, Alexander Vasquez</td>
+                  <td class="text-center">Cluster 9</td>
                 </tr>
                 <tr>
-                  <td>Malagasang II-E</td>
-                  <td>Topacio, Jose Zanido Camarce</td>
-                  <td>Cluster 9</td>
+                  <td class="text-start">Malagasang II-E</td>
+                  <td class="text-start">Topacio, Jose Zanido Camarce</td>
+                  <td class="text-center">Cluster 9</td>
                 </tr>
                 <tr>
-                  <td>Malagasang II-F</td>
-                  <td>Fauni, Edward Dayuta</td>
-                  <td>Cluster 9</td>
+                  <td class="text-start">Malagasang II-F</td>
+                  <td class="text-start">Fauni, Edward Dayuta</td>
+                  <td class="text-center">Cluster 9</td>
                 </tr>
                 <tr>
-                  <td>Malagasang II-G</td>
-                  <td>Fauni, Armando Saquilayan</td>
-                  <td>Cluster 9</td>
+                  <td class="text-start">Malagasang II-G</td>
+                  <td class="text-start">Fauni, Armando Saquilayan</td>
+                  <td class="text-center">Cluster 9</td>
                 </tr>
               </tbody>
             </table>
           </div>
+          <style>
+            #barangayTableBody tr td,
+            #barangayTableBody tr th {
+              vertical-align: middle;
+              font-size: 1.04rem;
+              padding-top: 0.55rem;
+              padding-bottom: 0.55rem;
+            }
+            .cluster-row td {
+              font-size: 1.02rem;
+              background: #eaf4fb !important;
+              border-top: 2px solid #18a54a;
+              border-bottom: 1px solid #b6d4fa;
+              color: #053774 !important;
+              letter-spacing: 1px;
+            }
+            .table thead th {
+              background: linear-gradient(90deg, #18a54a 0%, #00489a 100%) !important;
+              color: #fff !important;
+              border: none;
+              font-weight: 700;
+              letter-spacing: 0.5px;
+              text-shadow: 1px 1px 2px #0002;
+            }
+            .table tbody tr:hover:not(.cluster-row) {
+              background: #f3f8f3 !important;
+              transition: background 0.15s;
+            }
+            @media (max-width: 767.98px) {
+              .table-responsive-lg {
+                border-radius: 0.7rem;
+              }
+              .table thead th {
+                font-size: 0.98rem;
+                padding: 0.6rem 0.3rem;
+              }
+              #barangayTableBody tr td {
+                font-size: 0.97rem;
+                padding: 0.45rem 0.3rem;
+              }
+              .cluster-row td {
+                font-size: 0.95rem;
+                padding: 0.4rem 0.3rem;
+              }
+            }
+          </style>
           <script>
             document.getElementById('barangayFilterInput').addEventListener('keyup', function () {
               const filter = this.value.toLowerCase();
               const rows = document.querySelectorAll('#barangayTableBody tr');
               let currentClusterRow = null;
               rows.forEach(row => {
-                // If this is a cluster header row, always show it for now
-                if (row.classList.contains('table-primary')) {
+                if (row.classList.contains('cluster-row')) {
                   row.style.display = '';
                   currentClusterRow = row;
                   row.setAttribute('data-has-visible', 'false');
@@ -1233,17 +1300,14 @@ updateDateTime();
                   const cells = row.querySelectorAll('td');
                   const match = Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(filter));
                   row.style.display = match ? '' : 'none';
-                  // Mark cluster header if any of its rows are visible
                   if (match && currentClusterRow) {
                     currentClusterRow.setAttribute('data-has-visible', 'true');
                   }
                 }
               });
               // Hide cluster headers if none of their rows are visible
-              let clusterRow = null;
               rows.forEach(row => {
-                if (row.classList.contains('table-primary')) {
-                  clusterRow = row;
+                if (row.classList.contains('cluster-row')) {
                   if (row.getAttribute('data-has-visible') === 'true') {
                     row.style.display = '';
                   } else {
@@ -1346,65 +1410,99 @@ updateDateTime();
       <section class="past-mayors" id="Past-Mayors">
         <div class="container py-5">
           <h2 class="text-center mb-4" style="color: #fff; text-shadow: 2px 2px 4px #000000;"><strong>Past Mayors</strong></h2>
-          <input type="text" id="pastMayorsFilter" class="form-control mb-3" placeholder="Search for past mayors...">
-          <div style="height: 400px; overflow-y: auto;">
-            <table class="table table-striped table-bordered align-middle text-center">
-              <thead class="table-dark" style="position: sticky; top: 0;">
+          <input type="text" id="pastMayorsFilter" class="form-control mb-4 rounded-pill shadow-sm" placeholder="🔍 Search for past mayors...">
+          <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
+            <table class="table table-hover table-bordered align-middle text-center rounded-4 overflow-hidden shadow-sm" style="border-radius: 1.25rem;">
+              <thead class="table-primary sticky-top" style="z-index: 2;">
                 <tr>
-                  <th style="width: 40%;">Name</th>
-                  <th style="width: 30%;">Status of Appointment</th>
-                  <th style="width: 30%;">Year</th>
+                  <th style="width: 36%; font-size: 1.08rem;">Name</th>
+                  <th style="width: 28%; font-size: 1.08rem;">Status</th>
+                  <th style="width: 36%; font-size: 1.08rem;">Term</th>
                 </tr>
               </thead>
               <tbody id="pastMayorsTableBody">
-                <tr><td>Licerio Topacio</td><td>Appointed</td><td>1888 - 1890</td></tr>
-                <tr><td>Cayetano Topacio</td><td>Appointed</td><td>1890 - 1892</td></tr>
-                <tr><td>Angel Buenaventura Paredes</td><td>Appointed</td><td>1892 - 1894</td></tr>
-                <tr><td>Bernardino Paredes</td><td>Appointed</td><td>1894 - 1896</td></tr>
-                <tr><td>Jose Tagle</td><td>Appointed</td><td>1896 - 1898</td></tr>
-                <tr><td>Valentin Conejo</td><td>Appointed</td><td>1898</td></tr>
-                <tr><td>Juan Castañeda</td><td>Appointed</td><td>1899</td></tr>
-                <tr><td>Donato Virata</td><td>Appointed</td><td>1900</td></tr>
-                <tr><td>Juan Fajardo</td><td>Appointed</td><td>Jan - April 1903</td></tr>
-                <tr><td>Licerio Topacio</td><td>Appointed</td><td>1903</td></tr>
-                <tr><td>Pedro Buenaventura</td><td>Appointed</td><td>Sept - Dec 1903</td></tr>
-                <tr><td>Pantaleon Garcia</td><td>Appointed</td><td>1904 - 1905</td></tr>
-                <tr><td>Felipe Topacio</td><td>Appointed</td><td>June - 05</td></tr>
-                <tr><td></td><td>Elected</td><td>Nov 1905 - 1910</td></tr>
-                <tr><td>Maximo Abad</td><td>Elected</td><td>1910 - 1912</td></tr>
-                <tr><td>Felipe Topacio</td><td>Elected</td><td>1912 - 1915</td></tr>
-                <tr><td>Blas Mallari</td><td>Elected</td><td>1925 - 1928</td></tr>
-                <tr><td>Epifanio Gabriel</td><td>Elected</td><td>1928 - 1931</td></tr>
-                <tr><td>Dominador Camerino</td><td>Elected</td><td>1931 - 1940</td></tr>
-                <tr><td>Dr. Elpidio Osteria</td><td>Elected</td><td>1940 - 1944</td></tr>
-                <tr><td>Dr. Alfredo Saqui</td><td>Appointed</td><td>Dec 1944 - Feb 1945</td></tr>
-                <tr><td>Fortunato Remulla</td><td>Appointed</td><td>Mar 1945 - Oct 1945</td></tr>
-                <tr><td>Dominador Ilano</td><td>Appointed</td><td>Nov 1945 - Feb 1946</td></tr>
-                <tr><td>Epifanio Gabriel</td><td>Appointed</td><td>Mar 1946 - June 1946</td></tr>
-                <tr><td>Dominador Ilano</td><td>Appointed</td><td>June 1946 - 1947</td></tr>
-                <tr><td></td><td>Elected</td><td>Nov 1947 - 1963</td></tr>
-                <tr><td>Rodrigo Camia</td><td>Acting</td><td>Jan 8 - Feb 28, 1960</td></tr>
-                <tr><td>Dominador Camerino</td><td>Elected</td><td>Jan 1946 - Sept 1967</td></tr>
-                <tr><td>Atty. Manuel Paredes</td><td>Acting</td><td>Sept 15 - Dec 31, 1967</td></tr>
-                <tr><td>Mariano Reyes</td><td>Acting</td><td>Mar 15 - Apr 1968</td></tr>
-                <tr><td></td><td></td><td>Sept 15 - Oct 15, 1968</td></tr>
-                <tr><td></td><td></td><td>Sept 1 - 30, 1969</td></tr>
-                <tr><td></td><td></td><td>Feb 1 - April 10, 1971</td></tr>
-                <tr><td>Jose Jamir</td><td>Elected</td><td>1968 - May 15, 1986</td></tr>
-                <tr><td>Atty. Damian Villaseca</td><td>OIC</td><td>May 1986 - Oct 1986</td></tr>
-                <tr><td>Wilfredo Garde</td><td>OIC</td><td>Oct 1986 - Feb 1988</td></tr>
-                <tr><td>Erineo S. Maliksi</td><td>Elected</td><td>Feb 1988 - Mar 1988</td></tr>
-                <tr><td>Ricardo Paredes</td><td>Appointed</td><td>April - June 1998</td></tr>
-                <tr><td>Oscar A. Jaro</td><td>Elected</td><td>July 1998 - June 2001</td></tr>
-                <tr><td>Homer T. Saquilayan</td><td>Elected</td><td>July 2001 - March 2007</td></tr>
-                <tr><td>Oscar A. Jaro</td><td>Elected</td><td>April - June 2007</td></tr>
-                <tr><td>Emmanuel L. Maliksi</td><td>Elected</td><td>July 2007 - June 2010</td></tr>
-                <tr><td>Homer T. Saquilayan</td><td>Elected</td><td>July 2010 - Dec 2011</td></tr>
-                <tr><td>Emmanuel L. Maliksi</td><td>Elected</td><td>Jan 2012 - 2022</td></tr>
                 <tr><td>Alex L. Advincula</td><td>Elected</td><td>July 2022 - Present</td></tr>
+                <tr><td>Emmanuel L. Maliksi</td><td>Elected</td><td>Jan 2012 - 2022</td></tr>
+                <tr><td>Homer T. Saquilayan</td><td>Elected</td><td>July 2010 - Dec 2011</td></tr>
+                <tr><td>Emmanuel L. Maliksi</td><td>Elected</td><td>July 2007 - June 2010</td></tr>
+                <tr><td>Oscar A. Jaro</td><td>Elected</td><td>April - June 2007</td></tr>
+                <tr><td>Homer T. Saquilayan</td><td>Elected</td><td>July 2001 - March 2007</td></tr>
+                <tr><td>Oscar A. Jaro</td><td>Elected</td><td>July 1998 - June 2001</td></tr>
+                <tr><td>Ricardo Paredes</td><td>Appointed</td><td>April - June 1998</td></tr>
+                <tr><td>Erineo S. Maliksi</td><td>Elected</td><td>Feb 1988 - Mar 1988</td></tr>
+                <tr><td>Wilfredo Garde</td><td>OIC</td><td>Oct 1986 - Feb 1988</td></tr>
+                <tr><td>Atty. Damian Villaseca</td><td>OIC</td><td>May 1986 - Oct 1986</td></tr>
+                <tr><td>Jose Jamir</td><td>Elected</td><td>1968 - May 15, 1986</td></tr>
+                <tr><td></td><td></td><td>Feb 1 - April 10, 1971</td></tr>
+                <tr><td></td><td></td><td>Sept 1 - 30, 1969</td></tr>
+                <tr><td></td><td></td><td>Sept 15 - Oct 15, 1968</td></tr>
+                <tr><td>Mariano Reyes</td><td>Acting</td><td>Mar 15 - Apr 1968</td></tr>
+                <tr><td>Atty. Manuel Paredes</td><td>Acting</td><td>Sept 15 - Dec 31, 1967</td></tr>
+                <tr><td>Dominador Camerino</td><td>Elected</td><td>Jan 1946 - Sept 1967</td></tr>
+                <tr><td>Rodrigo Camia</td><td>Acting</td><td>Jan 8 - Feb 28, 1960</td></tr>
+                <tr><td></td><td>Elected</td><td>Nov 1947 - 1963</td></tr>
+                <tr><td>Dominador Ilano</td><td>Appointed</td><td>June 1946 - 1947</td></tr>
+                <tr><td>Epifanio Gabriel</td><td>Appointed</td><td>Mar 1946 - June 1946</td></tr>
+                <tr><td>Dominador Ilano</td><td>Appointed</td><td>Nov 1945 - Feb 1946</td></tr>
+                <tr><td>Fortunato Remulla</td><td>Appointed</td><td>Mar 1945 - Oct 1945</td></tr>
+                <tr><td>Dr. Alfredo Saqui</td><td>Appointed</td><td>Dec 1944 - Feb 1945</td></tr>
+                <tr><td>Dr. Elpidio Osteria</td><td>Elected</td><td>1940 - 1944</td></tr>
+                <tr><td>Dominador Camerino</td><td>Elected</td><td>1931 - 1940</td></tr>
+                <tr><td>Epifanio Gabriel</td><td>Elected</td><td>1928 - 1931</td></tr>
+                <tr><td>Blas Mallari</td><td>Elected</td><td>1925 - 1928</td></tr>
+                <tr><td>Felipe Topacio</td><td>Elected</td><td>1912 - 1915</td></tr>
+                <tr><td>Maximo Abad</td><td>Elected</td><td>1910 - 1912</td></tr>
+                <tr><td></td><td>Elected</td><td>Nov 1905 - 1910</td></tr>
+                <tr><td>Felipe Topacio</td><td>Appointed</td><td>June - 05</td></tr>
+                <tr><td>Pantaleon Garcia</td><td>Appointed</td><td>1904 - 1905</td></tr>
+                <tr><td>Pedro Buenaventura</td><td>Appointed</td><td>Sept - Dec 1903</td></tr>
+                <tr><td>Licerio Topacio</td><td>Appointed</td><td>1903</td></tr>
+                <tr><td>Juan Fajardo</td><td>Appointed</td><td>Jan - April 1903</td></tr>
+                <tr><td>Donato Virata</td><td>Appointed</td><td>1900</td></tr>
+                <tr><td>Juan Castañeda</td><td>Appointed</td><td>1899</td></tr>
+                <tr><td>Valentin Conejo</td><td>Appointed</td><td>1898</td></tr>
+                <tr><td>Jose Tagle</td><td>Appointed</td><td>1896 - 1898</td></tr>
+                <tr><td>Bernardino Paredes</td><td>Appointed</td><td>1894 - 1896</td></tr>
+                <tr><td>Angel Buenaventura Paredes</td><td>Appointed</td><td>1892 - 1894</td></tr>
+                <tr><td>Cayetano Topacio</td><td>Appointed</td><td>1890 - 1892</td></tr>
+                <tr><td>Licerio Topacio</td><td>Appointed</td><td>1888 - 1890</td></tr>
               </tbody>
             </table>
           </div>
+          <style>
+            #pastMayorsTableBody tr td,
+            #pastMayorsTableBody tr th {
+              vertical-align: middle;
+              font-size: 1.04rem;
+              padding-top: 0.55rem;
+              padding-bottom: 0.55rem;
+            }
+            .table thead th {
+              background: linear-gradient(90deg, #18a54a 0%, #00489a 100%) !important;
+              color: #fff !important;
+              border: none;
+              font-weight: 700;
+              letter-spacing: 0.5px;
+              text-shadow: 1px 1px 2px #0002;
+            }
+            .table tbody tr:hover {
+              background: #f3f8f3 !important;
+              transition: background 0.15s;
+            }
+            @media (max-width: 767.98px) {
+              .table-responsive {
+                border-radius: 0.7rem;
+              }
+              .table thead th {
+                font-size: 0.98rem;
+                padding: 0.6rem 0.3rem;
+              }
+              #pastMayorsTableBody tr td {
+                font-size: 0.97rem;
+                padding: 0.45rem 0.3rem;
+              }
+            }
+          </style>
           <script>
             document.getElementById('pastMayorsFilter').addEventListener('keyup', function () {
               const filter = this.value.toLowerCase();
