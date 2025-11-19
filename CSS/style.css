@@ -13,7 +13,7 @@
 /* Body Styling */
 body {
     line-height: 1.6;
-    background: linear-gradient(to right, #4c8a15, #80bb4c);
+    background-color: #f8f9fa; 
     margin: 0;
     padding: 0;
 }

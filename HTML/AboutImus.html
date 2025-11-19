@@ -202,14 +202,14 @@ updateDateTime();
     <!-- Content (City Profile)-->
       <section class="city-profile" id="City-Profile">
         <div class="container py-5">
-          <h2 class="text-center mb-4 text-white" style="text-shadow: 2px 2px 4px #000;"><strong>City Profile</strong></h2>
+          <h2 class="text-center mb-4" style="color: #00489a;"><strong>City Profile</strong></h2>
           <div class="row align-items-center g-4">
             <div class="col-lg-6 text-center">
               <img src="/IMG/Cathedral Aerial View.png" alt="Imus Cathedral Aerial View" class="img-fluid rounded shadow" style="max-width: 90%; border: 3px solid #fff;">
             </div>
             <div class="col-lg-6">
               <div class="bg-dark bg-opacity-75 rounded p-4 h-100 d-flex flex-column justify-content-center" style="min-height: 300px;">
-                <h4 class="mb-3 text-success fw-bold" style="letter-spacing:1px;">Flag Capital of the Philippines</h4>
+                <h4 class="mb-3 fw-bold" style="letter-spacing:1px; color: #fff;">Flag Capital of the Philippines</h4>
                 <p class="text-white mb-3">
                   Imus, officially the City of Imus, is a first-class component city in Cavite, Philippines. Renowned as the "Flag Capital of the Philippines," it played a pivotal role in the Philippine Revolution, serving as the site of historic battles for independence.
                 </p>
@@ -227,118 +227,138 @@ updateDateTime();
       <!--Content (City Government)-->
       <section class="city-government" id="City-Government">
         <div class="container py-5">
-          <h2 class="text-center mb-4 text-white" style="text-shadow: 2px 2px 4px #000;"><strong>City Government</strong></h2>
-          <div class="row g-4 justify-content-center">
-            <!-- Mayor -->
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100 border-0 shadow-lg">
-                <img src="/IMG/officials-and-councilors/Mayor-AA.jpg" class="card-img-top rounded-top" alt="Mayor Alex L. Advincula" style="object-fit:contain; height:260px;">
-                <div class="card-body text-center bg-light">
-                  <h5 class="card-title mb-1 fw-bold text-primary">Hon. Alex L. Advincula</h5>
-                  <p class="card-text text-secondary mb-2">City Mayor</p>
-                  <p class="card-text small">Leads the city government, oversees all executive functions, and ensures the welfare of Imus residents.</p>
+          <h2 class="text-center mb-4" style="color: #00489a;"><strong>City Government</strong></h2>
+            <div class="row g-4 justify-content-center">
+            <!-- City Executives (improved responsive cards) -->
+            <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+              <article class="card gov-card h-100 shadow-sm border-0" aria-labelledby="mayor-name" role="group">
+              <div class="ratio ratio-4x3 overflow-hidden rounded-top">
+                <img src="/IMG/officials-and-councilors/Mayor-AA.jpg" alt="Hon. Alex L. Advincula — City Mayor" class="card-img-top w-100 h-100" style="object-fit:contain;">
+              </div>
+              <div class="card-body d-flex flex-column">
+                <h3 id="mayor-name" class="h5 mb-1 fw-bold" style="color: #00489a;">Hon. Alex L. Advincula</h3>
+                <p class="mb-2 text-muted small official-role" aria-hidden="true">City Mayor</p>
+                <p class="mb-3 small text-secondary flex-grow-1">Leads the city government and oversees executive functions to ensure the welfare and services for Imus residents.</p>
+                <div class="d-flex gap-2">
+                <a class="btn btn-outline-primary btn-sm rounded-pill" href="#" aria-label="Mayor profile">Profile</a>
+                <button class="btn btn-success btn-sm rounded-pill" type="button" aria-pressed="false">Contact Office</button>
                 </div>
               </div>
+              <style>
+                .gov-card { border-radius: .75rem; overflow: hidden; }
+                .gov-card .ratio { background-color: #18a54a; }
+                .gov-card .card-body { padding: 1rem; background: #f8fbfd; }
+                .gov-card .official-role { color: #6c757d; letter-spacing: .2px; }
+                @media (max-width: 575.98px) {
+                .gov-card .card-body { padding: .85rem; }
+                }
+              </style>
+              </article>
             </div>
-            <!-- Vice Mayor -->
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100 border-0 shadow-lg">
-                <img src="/IMG/officials-and-councilors/VM-Saki.jpg" class="card-img-top rounded-top" alt="Vice Mayor Homer T. Saquilayan" style="object-fit:contain; height:260px;">
-                <div class="card-body text-center bg-light">
-                  <h5 class="card-title mb-1 fw-bold text-primary">Hon. Homer T. Saquilayan</h5>
-                  <p class="card-text text-secondary mb-2">City Vice Mayor</p>
-                  <p class="card-text small">Presides over the City Council and supports legislative initiatives for the city's progress.</p>
+
+            <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+              <article class="card gov-card h-100 shadow-sm border-0" aria-labelledby="vice-mayor-name" role="group">
+              <div class="ratio ratio-4x3 overflow-hidden rounded-top">
+                <img src="/IMG/officials-and-councilors/VM-Saki.jpg" alt="Hon. Homer T. Saquilayan — City Vice Mayor" class="card-img-top w-100 h-100" style="object-fit: contain;">
+              </div>
+              <div class="card-body d-flex flex-column">
+                <h3 id="vice-mayor-name" class="h5 mb-1 fw-bold" style="color: #00489a;">Hon. Homer T. Saquilayan</h3>
+                <p class="mb-2 text-muted small official-role" aria-hidden="true">City Vice Mayor</p>
+                <p class="mb-3 small text-secondary flex-grow-1">Presides over the Sangguniang Panlungsod and champions legislative initiatives that drive local development.</p>
+                <div class="d-flex gap-2">
+                <a class="btn btn-outline-primary btn-sm rounded-pill" href="#" aria-label="Vice Mayor profile">Profile</a>
+                <button class="btn btn-success btn-sm rounded-pill" type="button" aria-pressed="false">Office Contact</button>
                 </div>
               </div>
+              </article>
             </div>
-            <!-- Congressman -->
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100 border-0 shadow-lg">
-                <img src="/IMG/officials-and-councilors/Cong-AJ.jpg" class="card-img-top rounded-top" alt="Congressman Adrian Jay C. Advincula" style="object-fit:contain; height:260px;">
-                <div class="card-body text-center bg-light">
-                  <h5 class="card-title mb-1 fw-bold text-primary">Hon. Adrian Jay C. Advincula</h5>
-                  <p class="card-text text-secondary mb-2">Congressman</p>
-                  <p class="card-text small">Represents Imus in the House of Representatives and advocates for national legislation benefiting the city.</p>
+
+            <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+              <article class="card gov-card h-100 shadow-sm border-0" aria-labelledby="congressman-name" role="group">
+              <div class="ratio ratio-4x3 overflow-hidden rounded-top">
+                <img src="/IMG/officials-and-councilors/Cong-AJ.jpg" alt="Hon. Adrian Jay C. Advincula — Congressman" class="card-img-top w-100 h-100" style="object-fit: contain;">
+              </div>
+              <div class="card-body d-flex flex-column">
+                <h3 id="congressman-name" class="h5 mb-1 fw-bold" style="color: #00489a;">Hon. Adrian Jay C. Advincula</h3>
+                <p class="mb-2 text-muted small official-role" aria-hidden="true">Congressman</p>
+                <p class="mb-3 small text-secondary flex-grow-1">Represents Imus in the House of Representatives and advocates for legislation and national resources that benefit the city.</p>
+                <div class="d-flex gap-2">
+                <a class="btn btn-outline-primary btn-sm rounded-pill" href="#" aria-label="Congressman profile">Profile</a>
+                <button class="btn btn-success btn-sm rounded-pill" type="button" aria-pressed="false">Legislative Office</button>
                 </div>
               </div>
+              </article>
             </div>
-          </div>
+            </div>
           <!-- Board Members -->
-          <h4 class="mt-2 mb-5 text-white" style="text-shadow: 1px 1px 2px #000;">Board Members & SK Provincial Federation President</h4>
-          <div id="boardMembersCarousel" class="carousel slide carousel-dark" data-bs-ride="carousel" data-bs-interval="3500">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="d-flex justify-content-center">
-                  <div class="card h-100 border-0 shadow mx-2" style="width: 18rem;">
-                    <img src="/IMG/officials-and-councilors/BM-Lloyd.png" class="card-img-top rounded-top" alt="Hon. Lloyd Emman D. Jaro" style="object-fit:contain; height:230px;">
-                    <div class="card-body text-center bg-light">
-                      <h6 class="card-title mb-1 fw-semibold text-primary">Hon. Lloyd Emman D. Jaro</h6>
-                      <p class="card-text small">Represents Imus at the provincial board, supporting local and provincial policies.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="d-flex justify-content-center">
-                  <div class="card h-100 border-0 shadow mx-2" style="width: 18rem;">
-                    <img src="/IMG/officials-and-councilors/BM-Oni.png" class="card-img-top rounded-top" alt="Hon. Arnel M. Cantimbuhan" style="object-fit:contain; height:200px;">
-                    <div class="card-body text-center bg-light">
-                      <h6 class="card-title mb-1 fw-semibold text-primary">Hon. Arnel M. Cantimbuhan</h6>
-                      <p class="card-text small">Works with city and provincial officials to advance community interests.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="d-flex justify-content-center">
-                  <div class="card h-100 border-0 shadow mx-2" style="width: 18rem;">
-                    <img src="/IMG/officials-and-councilors/SK-Pres-Chelsea.png" class="card-img-top rounded-top" alt="Hon. Chelsea Jillian Sarno" style="object-fit:contain; height:200px;">
-                    <div class="card-body text-center bg-light">
-                      <h6 class="card-title mb-1 fw-semibold text-primary">Hon. Chelsea Jillian Sarno</h6>
-                      <p class="card-text small">Leads the Sangguniang Kabataan Federation at the provincial level, advocating for youth issues and programs.</p>
-                    </div>
-                  </div>
+          <h4 class="mt-2 mb-5" style="color: #00489a;">Board Members & SK Provincial Federation President</h4>
+          <div id="boardMembersCards" class="row g-4 justify-content-center">
+            <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+              <div class="card h-100 border-10 shadow-sm board-member-card">
+                <img src="/IMG/officials-and-councilors/BM-Lloyd.png" class="card-img-top board-member-img" alt="Hon. Lloyd Emman D. Jaro">
+                <div class="card-body text-center">
+                  <h6 class="card-title mb-1 fw-semibold text-primary">Hon. Lloyd Emman D. Jaro</h6>
+                  <p class="card-text small">Represents Imus at the provincial board, supporting local and provincial policies.</p>
                 </div>
               </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#boardMembersCarousel" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: invert(1);"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#boardMembersCarousel" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true" style="filter: invert(1);"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
+
+            <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+              <div class="card h-100 border-10 shadow-sm board-member-card">
+                <img src="/IMG/officials-and-councilors/BM-Oni.png" class="card-img-top board-member-img" alt="Hon. Arnel M. Cantimbuhan">
+                <div class="card-body text-center">
+                  <h6 class="card-title mb-1 fw-semibold text-primary">Hon. Arnel M. Cantimbuhan</h6>
+                  <p class="card-text small">Works with city and provincial officials to advance community interests.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+              <div class="card h-100 border-10 shadow-sm board-member-card">
+                <img src="/IMG/officials-and-councilors/SK-Pres-Chelsea.png" class="card-img-top board-member-img" alt="Hon. Chelsea Jillian Sarno">
+                <div class="card-body text-center">
+                  <h6 class="card-title mb-1 fw-semibold text-primary">Hon. Chelsea Jillian Sarno</h6>
+                  <p class="card-text small">Leads the Sangguniang Kabataan Federation at the provincial level, advocating for youth issues and programs.</p>
+                </div>
+              </div>
+            </div>
           </div>
+
           <style>
-            #boardMembersCarousel .card {
-              min-height: 370px;
-              border-radius: 1.25rem;
-              transition: transform 0.16s, box-shadow 0.16s;
-              box-shadow: 0 4px 18px rgba(5,55,116,0.10);
+            /* Board members card grid */
+            #boardMembersCards .board-member-card {
+              border-radius: 1rem;
+              overflow: hidden;
+              transition: transform .12s ease, box-shadow .12s ease;
+              min-height: 340px;
+              background: #fff;
             }
-            #boardMembersCarousel .card-img-top {
-              background: #e9ecef;
+            #boardMembersCards .board-member-card:hover {
+              transform: translateY(-6px);
+              box-shadow: 0 10px 30px rgba(5,55,116,0.12);
+            }
+            #boardMembersCards .board-member-img {
               width: 100%;
-              height: 200px;
+              height: 260px;
               object-fit: contain;
-              border-radius: 1.25rem 1.25rem 0 0;
+              background: #18a54a;
+              padding: 1.25rem;
             }
-            #boardMembersCarousel .card-body {
-              border-radius: 0 0 1.25rem 1.25rem;
+            #boardMembersCards .card-body {
+              padding: 1rem;
             }
             @media (max-width: 767.98px) {
-              #boardMembersCarousel .card {
-                width: 90vw !important;
-                min-height: 0;
+              #boardMembersCards .board-member-img {
+                height: 140px;
+                padding: .75rem;
               }
-              #boardMembersCarousel .card-img-top {
-                height: 140px !important;
+              #boardMembersCards .board-member-card {
+                min-height: auto;
               }
             }
           </style>
           <!-- Councilors -->
-          <h4 class="mt-5 mb-3 text-white" style="text-shadow: 1px 1px 2px #000;">City Councilors</h4>
+          <h4 class="mt-5 mb-3" style="color: #00489a;">City Councilors</h4>
             <div id="councilorsCarousel" class="carousel slide carousel-dark" data-bs-ride="carousel" data-bs-interval="4000">
             <div class="carousel-inner">
               <!-- Slide 1 -->
@@ -555,11 +575,11 @@ updateDateTime();
           </div>
           <style>
           .councilor-card {
-            background: #f8fafc;
+            background: #18a54a;
             border-radius: 1.25rem;
             transition: transform 0.16s, box-shadow 0.16s;
             min-height: 390px;
-            box-shadow: 0 4px 18px rgba(5,55,116,0.10);
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
           }
           .councilor-img-wrapper {
             background: linear-gradient(120deg, #18a54a 0%, #053774 100%);
@@ -682,7 +702,7 @@ updateDateTime();
       <!--Content (Barangay Officials)-->
       <section class="barangay-officials" id="Brgy-Officials">
         <div class="container py-5">
-          <h2 class="text-center mb-4 text-white" style="text-shadow: 2px 2px 4px #000;"><strong>Barangay Officials</strong></h2>
+          <h2 class="text-center mb-4" style="color: #00489a;"><strong>Barangay Officials</strong></h2>
           <div class="row justify-content-center mb-3">
             <div class="col-12 col-md-8 col-lg-6">
               <input type="text" id="barangayFilterInput" class="form-control form-control-lg rounded-pill shadow-sm" placeholder="🔍 Search barangay or official...">
@@ -1323,13 +1343,13 @@ updateDateTime();
       <!--Content (History)-->
       <section class="history" id="History">
         <div class="container py-5">
-          <h2 class="text-center mb-5 text-white fw-bold" style="text-shadow: 2px 2px 8px #053774, 0 1px 0 #18a54a;">
+          <h2 class="text-center mb-5 fw-bold" style="color: #00489a;">
             <i class="bi bi-clock-history me-2"></i>History of Imus
           </h2>
           <div class="row align-items-center mb-5">
             <div class="col-lg-6 mb-4 mb-lg-0">
               <div class="bg-dark bg-opacity-75 rounded-4 p-4 shadow-lg h-100">
-                <h4 class="text-success fw-bold mb-3" style="letter-spacing:1px;">Origins and Early Years</h4>
+                <h4 class="text-white fw-bold mb-3" style="letter-spacing:1px;">Origins and Early Years</h4>
                 <p class="text-white mb-2">
                   Imus began as a "visita" of Cavite Viejo (now Kawit), administered by Jesuits until 1686, then by the Recollects. The Recollects guided Imus toward independence from Cavite Viejo's ecclesiastical and civil authority.
                 </p>
@@ -1345,7 +1365,7 @@ updateDateTime();
           <div class="row align-items-center flex-lg-row-reverse mb-5">
             <div class="col-lg-6 mb-4 mb-lg-0">
               <div class="bg-dark bg-opacity-75 rounded-4 p-4 shadow-lg h-100">
-                <h4 class="text-success fw-bold mb-3" style="letter-spacing:1px;">Growth and Modernization</h4>
+                <h4 class="text-white fw-bold mb-3" style="letter-spacing:1px;">Growth and Modernization</h4>
                 <p class="text-white mb-2">
                   The Imus Municipal Building opened in 1935 at the town center, with a new building inaugurated in 2003 to accommodate the city's growth.
                 </p>
@@ -1361,7 +1381,7 @@ updateDateTime();
           <div class="row">
             <div class="col-lg-10 mx-auto">
               <div class="bg-dark bg-opacity-75 rounded-4 p-4 shadow-lg">
-                <h4 class="text-success fw-bold mb-3" style="letter-spacing:1px;">Imus Today</h4>
+                <h4 class="text-white fw-bold mb-3" style="letter-spacing:1px;">Imus Today</h4>
                 <p class="text-white mb-2">
                   Imus is now a first-class city celebrated for its rich history, vibrant culture, and rapid development. Landmarks such as the Imus Cathedral, Heritage Park, and Battle of Alapan Monument, along with the annual Wagayway Festival, highlight its enduring legacy and dynamic community.
                 </p>
@@ -1409,7 +1429,7 @@ updateDateTime();
       <!--Content (Past Mayors)-->
       <section class="past-mayors" id="Past-Mayors">
         <div class="container py-5">
-          <h2 class="text-center mb-4" style="color: #fff; text-shadow: 2px 2px 4px #000000;"><strong>Past Mayors</strong></h2>
+          <h2 class="text-center mb-4" style="color: #00489a;"><strong>Past Mayors</strong></h2>
           <input type="text" id="pastMayorsFilter" class="form-control mb-4 rounded-pill shadow-sm" placeholder="🔍 Search for past mayors...">
           <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
             <table class="table table-hover table-bordered align-middle text-center rounded-4 overflow-hidden shadow-sm" style="border-radius: 1.25rem;">
@@ -1519,7 +1539,7 @@ updateDateTime();
       <!--Content (Departments and Units)-->
       <section class="deptandunits" id="Dept-and-Units">
         <div class="container py-5">
-          <h2 class="text-center mb-4" style="color: #fff; text-shadow: 2px 2px 4px #000000;"><strong>Departments and Units</strong></h2>
+          <h2 class="text-center mb-4" style="color: #00489a;"><strong>Departments and Units</strong></h2>
           <input type="text" id="departmentsFilterInput" class="form-control mb-3" placeholder="Search for departments or units...">
           <div style="height: 400px; overflow-y: auto;">
             <table class="table table-bordered table-striped table-hover align-middle text-center">
