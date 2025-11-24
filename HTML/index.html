@@ -363,7 +363,7 @@ updateDateTime();
 
     <section class="news">
         <div class="container py-5">
-            <h2 class="text-center mb-5" style="color: #000; text-shadow: 2px 2px 8px #00489a;">Latest News & Updates</h2>
+            <h2 class="text-center mb-5" style="color: #00489a;"><strong>Latest News & Updates</strong></h2>
             <div id="newsGrid" class="row row-cols-1 row-cols-md-3 g-4">
                 <div class="col">
                     <div class="card h-100 shadow border-0 news-card">
@@ -484,75 +484,93 @@ updateDateTime();
     </section>
     <section class="missionnvision">
         <div class="container">
-            <div class="row my-5">
-                <div class="col-md-6">
-                    <div class="card bg-primary bg-opacity-75 text-white shadow rounded-4 h-100">
-                        <div class="card-body">
-                            <h2 class="card-title text-center">Mission</h2>
-                            <p class="card-text">
-                                The City Government of Imus is committed to delivering a transparent, reliable, and efficient public service that is proactive to the needs of its people while actively pursuing development for a dynamic and unified Imus.
-                            </p>
-                        </div>
+            <div class="text-center mb-4">
+            <h2 class="section-title text-white fw-bold" style="text-shadow: 2px 2px 8px #000;">Mission &amp; Vision</h2>
+            <!-- <p class="section-lead text-white-50 mb-0">Committed to transparent, reliable and efficient public service.</p> -->
+            </div>
+
+            <div class="row g-4 align-items-stretch">
+            <div class="col-md-6">
+                <article class="mv-card h-100 p-4 rounded-4 shadow-lg" aria-labelledby="mission-title" role="article">
+                <div class="d-flex align-items-start">
+                    <div class="icon-wrap me-3 flex-shrink-0" aria-hidden="true">
+                    <!-- simple svg icon -->
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-svg">
+                        <path d="M12 2L3 6v5c0 5 3.8 9.7 9 11 5.2-1.3 9-6 9-11V6l-9-4z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+                        <path d="M9.5 12.5l1.8 1.8L15 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    </div>
+                    <div class="flex-grow-1">
+                    <h3 id="mission-title" class="h5 text-white fw-bold mb-2">Mission</h3>
+                    <p class="card-text text-white mb-0">
+                        The City Government of Imus is committed to delivering a transparent, reliable, and efficient public service that is proactive to the needs of its people while actively pursuing development for a dynamic and unified Imus.
+                    </p>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card bg-primary bg-opacity-75 text-white shadow rounded-4 h-100" style="font-family: 'Archivo', sans-serif;">
-                        <div class="card-body">
-                            <h2 class="card-title text-center">Vision</h2>
-                            <p class="card-text">
-                                The model city in the region, with secured and healthy citizenry, living in a smart, green and sustainable environment in a technology-driven economy, governed with integrity and transparency.
-                            </p>
-                        </div>
+                </article>
+            </div>
+
+            <div class="col-md-6">
+                <article class="mv-card h-100 p-4 rounded-4 shadow-lg" aria-labelledby="vision-title" role="article">
+                <div class="d-flex align-items-start">
+                    <div class="icon-wrap me-3 flex-shrink-0" aria-hidden="true">
+                    <!-- simple svg icon -->
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-svg">
+                        <path d="M12 5a7 7 0 100 14 7 7 0 000-14z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    </div>
+                    <div class="flex-grow-1">
+                    <h3 id="vision-title" class="h5 text-white fw-bold mb-2">Vision</h3>
+                    <p class="card-text text-white mb-0">
+                        The model city in the region, with secured and healthy citizenry, living in a smart, green and sustainable environment in a technology-driven economy, governed with integrity and transparency.
+                    </p>
                     </div>
                 </div>
+                </article>
+            </div>
             </div>
         </div>
+
         <style>
         .missionnvision {
             background-color: #00489a;
-            padding-top: 3rem;
-            padding-bottom: 3rem;
+            padding-top: 3.5rem;
+            padding-bottom: 3.5rem;
         }
-        .missionnvision h2 {
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 1.2rem;
+        .section-title { letter-spacing: 0.6px; }
+        .section-lead { font-size: 0.95rem; }
+
+        .mv-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+            border: 1px solid rgba(255,255,255,0.06);
+            backdrop-filter: blur(6px);
+            transition: transform .22s cubic-bezier(.2,.9,.2,1), box-shadow .22s;
         }
-        .missionnvision p {
-            font-size: 1.15rem;
-            line-height: 1.7;
-            background: rgba(0,72,154,0.10);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            box-shadow: 0 2px 12px rgba(5,55,116,0.10);
+        .mv-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(2,9,29,0.45);
         }
-        @media (max-width: 767px) {
-            .missionnvision {
-                padding-top: 1.5rem;
-                padding-bottom: 1.5rem;
-            }
-            .missionnvision h2 {
-                font-size: 1.2rem;
-            }
-            .missionnvision p {
-                font-size: 1rem;
-                padding: 1rem;
-            }
-            .missionnvision .card {
-                border-radius: 1.5rem;
-                box-shadow: 0 4px 18px rgba(5,55,116,0.12);
-                border: none;
-                margin-bottom: 1.2rem;
-            }
-            .missionnvision .card-title {
-                font-size: 1.1rem;
-                font-weight: 700;
-                letter-spacing: 0.5px;
-            }
-            .missionnvision .card-text {
-                font-size: 1rem;
-                padding: 1rem;
-            }
+        .icon-wrap {
+            width: 56px;
+            height: 56px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .icon-svg { color: #80bb4c; }
+
+        .mv-card .h5 { margin-bottom: .35rem; }
+        .mv-card .card-text { font-size: 1.02rem; line-height: 1.6; }
+
+        @media (max-width: 767.98px) {
+            .missionnvision { padding-top: 2rem; padding-bottom: 2rem; }
+            .icon-wrap { width: 48px; height: 48px; }
+            .mv-card { padding: 1rem; border-radius: 1rem; }
+            .mv-card .card-text { font-size: 0.98rem; }
         }
         </style>
     </section>
