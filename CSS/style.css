@@ -13,9 +13,16 @@
 /* Body Styling */
 body {
     line-height: 1.6;
-    background-color: #f8f9fa; 
     margin: 0;
     padding: 0;
+    background-color: #e7f1ff;
+    background-image:
+        radial-gradient(circle at 15% 10%, rgba(24, 165, 74, 0.2), transparent 28%),
+        radial-gradient(circle at 84% 5%, rgba(0, 72, 154, 0.22), transparent 32%),
+        linear-gradient(165deg, #deebff 0%, #edf5ff 48%, #f8fbff 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 /* Header Styling */
@@ -144,6 +151,12 @@ footer .bi:hover {
     transform: scale(1.2);
 }
 /* Responsive */
+@media (max-width: 991.98px) {
+    body {
+        background-attachment: scroll;
+    }
+}
+
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
