@@ -1,219 +1,25 @@
+<?php
+/**
+ * Business Page - City of Imus
+ * 
+ * This page displays business-related information for the City of Imus
+ * including investment opportunities, accommodation rates, services, and utilities.
+ */
 
+// Set page title for header
+$pageTitle = 'Business Opportunities';
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://cdn.jsdelivr.net; script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; font-src 'self' https://cdn.jsdelivr.net; connect-src 'self';">-->
-    <link rel="icon" href="/IMG/seal_imus_sm100.png">
-    <link rel="stylesheet" href="/CSS/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+// Include configuration and data
+require_once __DIR__ . '/config/data.php';
 
-    <title>City of Imus</title>
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <div id="datetime"></div>
+// Include form handler
+require_once __DIR__ . '/handlers/business-inquiry.php';
 
-<script>
-function updateDateTime() {
-  const now = new Date();
-
-  const optionsDate = {
-    timeZone: 'Asia/Manila',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  };
-
-  const optionsTime = {
-    timeZone: 'Asia/Manila',
-    hour: 'numeric',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: true
-  };
-
-  const formattedDate = now.toLocaleString('en-PH', optionsDate);
-  const formattedTime = now.toLocaleString('en-PH', optionsTime);
-
-  document.getElementById('datetime').textContent = formattedDate + " | " + formattedTime;
-}
-
-setInterval(updateDateTime, 1000);
-updateDateTime();
-</script>
-
-        <div class="header">
-            <div class="header-nav">
-                <nav>
-                    <ul>
-                        <li><a href="./Full-disclosure.html" class="full-disclosures">Full Disclosures</a></li>
-                        <li><a href="./Downloadable-forms.html">Downloadable Forms</a></li>
-                        <li><a href="./Contact-Us.html">Contact Us</a></li>
-                        <li>
-                            <a href="https://www.facebook.com/alexladvincula" target="_blank" aria-label="Facebook">
-                                <i class="bi bi-facebook" style="font-size: 1rem"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
-    <!-- Header -->
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm sticky-top py-0">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="../index.php">
-                <img src="/IMG/Logo_City_Government_of_Imuss.png" alt="City of Imus" height="54" class="me-2" style="background:rgba(255,255,255,0.85); border-radius:8px; padding:2px 8px;">
-            </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="mainNavbar">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
-                    <li class="nav-item">
-                        <a class="nav-link px-3 fw-semibold" href="../index.php">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle px-3 fw-semibold" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            About Imus
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="aboutDropdown">
-                            <li><a class="dropdown-item" href="./AboutImus.html#City-Profile">City Profile</a></li>
-                            <li><a class="dropdown-item" href="./AboutImus.html#City-Government">City Government</a></li>
-                            <li><a class="dropdown-item" href="./AboutImus.html#Brgy-Officials">Barangay Officials</a></li>
-                            <li><a class="dropdown-item" href="./AboutImus.html#History">History</a></li>
-                            <li><a class="dropdown-item" href="./AboutImus.html#Past-Mayors">Past Mayors</a></li>
-                            <li><a class="dropdown-item" href="./AboutImus.html#Dept-and-Units">Departments and Units</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle px-3 fw-semibold" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Services
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="servicesDropdown">
-                            <li><a class="dropdown-item" href="./Services.html#City-Public-Library">City Public Library</a></li>
-                            <li><a class="dropdown-item" href="./Services.html#Assistance">Assistance</a></li>
-                            <li><a class="dropdown-item" href="./Services.html#Citizens-Charter">Citizen's Charter</a></li>
-                            <li><a class="dropdown-item" href="./Services.html#EBOSS">EBOSS</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle px-3 fw-semibold" href="./Tourism.html" id="tourismDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Tourism
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="tourismDropdown">
-                            <li><a class="dropdown-item" href="./Tourism.html">History and Culture</a></li>
-                            <li><a class="dropdown-item" href="./Tourism.html#Visiting-Imus">Visiting Imus</a></li>
-                            <li><a class="dropdown-item" href="./Tourism.html#Heroes-of-Imus">Heroes of Imus</a></li>
-                            <li><a class="dropdown-item" href="./Tourism.html#Notable-Persons">Notable Persons</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle px-3 fw-semibold" href="./Business.html" id="businessDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Business
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="businessDropdown">
-                            <li><a class="dropdown-item" href="./Business.html#Why-invest-in-Imus">Why Invest in Imus</a></li>
-                            <li><a class="dropdown-item" href="./Business.html#Accomodation">Accomodation</a></li>
-                            <li><a class="dropdown-item" href="./Business.html#Communication">Communication</a></li>
-                            <li><a class="dropdown-item" href="./Business.html#Courier-and-Cargo">Courier and Cargo</a></li>
-                            <li><a class="dropdown-item" href="./Business.html#National-Taxes">National Taxes</a></li>
-                            <li><a class="dropdown-item" href="./Business.html#Transportation">Transportation</a></li>
-                            <li><a class="dropdown-item" href="./Business.html#Utilities">Utilities</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item ms-lg-3 d-none d-lg-block">
-                        <a href="https://www.facebook.com/CityofImus" target="_blank" class="btn btn-outline-light btn-sm rounded-pill px-3">
-                            <i class="bi bi-facebook me-1"></i> Facebook
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-3 fw-semibold" href="./Employees-Hub.html">Employees</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <style>
-            .navbar {
-                background-color: #00489a !important;
-            }
-            .navbar .navbar-brand img {
-                box-shadow: 0 2px 8px rgba(5,55,116,0.10);
-            }
-            .navbar-nav .nav-link {
-                color: #fff !important;
-                transition: background 0.15s, color 0.15s;
-                border-radius: 6px;
-                margin: 0 2px;
-            }
-            .navbar-nav .nav-link.active, .navbar-nav .nav-link:focus, .navbar-nav .nav-link:hover {
-                background: rgba(24,165,74,0.18);
-                color: #18a54a !important;
-            }
-            .navbar-nav .dropdown-menu {
-                min-width: 220px;
-                border-radius: 10px;
-                border: none;
-                background: #fff;
-                margin-top: 8px;
-                box-shadow: 0 6px 24px rgba(5,55,116,0.10);
-            }
-            .navbar-nav .dropdown-item {
-                color: #053774;
-                font-weight: 500;
-                transition: background 0.12s, color 0.12s;
-                border-radius: 6px;
-            }
-            .navbar-nav .dropdown-item:hover, .navbar-nav .dropdown-item:focus {
-                background: #18a54a;
-                color: #fff;
-            }
-            .navbar .btn-outline-light {
-                border-color: #fff;
-                color: #fff;
-                font-weight: 600;
-                transition: background 0.15s, color 0.15s;
-            }
-            .navbar .btn-outline-light:hover, .navbar .btn-outline-light:focus {
-                background: #18a54a;
-                color: #fff;
-                border-color: #18a54a;
-            }
-            @media (max-width: 991.98px) {
-                .navbar-brand span {
-                    display: none !important;
-                }
-                .navbar-nav .nav-link {
-                    padding-left: 1rem !important;
-                    padding-right: 1rem !important;
-                }
-                .navbar .btn-outline-light {
-                    margin-top: 1rem;
-                    display: block;
-                    width: 100%;
-                }
-                .navbar-nav .dropdown-menu {
-                    margin-top: 0;
-                }
-            }
-            /* Dropdown on hover for desktop */
-            @media (min-width: 992px) {
-                .navbar-nav .dropdown:hover .dropdown-menu {
-                    display: block;
-                }
-            }
-        </style>
-    </nav>
-    <!-- Navbar -->
+// Include header and navbar
+require_once __DIR__ . '/includes/header.navbar.php';
+?>
     <!-- Main Content -->
-     <!-- Youtube Video Section -->
+    <!-- Youtube Video Section -->
     <div class="d-flex justify-content-center my-4">
         <div style="position: relative; width: 100%; max-width: 940px; aspect-ratio: 16/9; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,72,154,0.10); background: #000;">
             <iframe 
@@ -279,6 +85,100 @@ updateDateTime();
             </div>
         </div>
     </section>
+
+    <!-- Business Inquiry Form Section -->
+    <section class="Business-Inquiry" id="Business-Inquiry">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-sm border-2 mb-4">
+                        <div class="card-body">
+                            <h2 class="text-center mb-4" style="color:#00489a;">Interested in Investing?</h2>
+                            <p class="text-center mb-4">Submit your business inquiry and our team will contact you soon.</p>
+                            
+                            <?php if ($inquiry_result): ?>
+                                <?php if ($inquiry_result['success']): ?>
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <strong>Success!</strong> <?php echo htmlspecialchars($inquiry_result['message']); ?>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                <?php else: ?>
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <strong>Error!</strong> <?php echo htmlspecialchars($inquiry_result['message']); ?>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                            
+                            <form method="POST" action="">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Full Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                    <?php if (isset($inquiry_result['errors']['name'])): ?>
+                                        <div class="text-danger small mt-1"><?php echo htmlspecialchars($inquiry_result['errors']['name']); ?></div>
+                                    <?php endif; ?>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <?php if (isset($inquiry_result['errors']['email'])): ?>
+                                        <div class="text-danger small mt-1"><?php echo htmlspecialchars($inquiry_result['errors']['email']); ?></div>
+                                    <?php endif; ?>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Phone Number <span class="text-danger">*</span></label>
+                                    <input type="tel" class="form-control" id="phone" name="phone" required>
+                                    <?php if (isset($inquiry_result['errors']['phone'])): ?>
+                                        <div class="text-danger small mt-1"><?php echo htmlspecialchars($inquiry_result['errors']['phone']); ?></div>
+                                    <?php endif; ?>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="organization" class="form-label">Organization / Company <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="organization" name="organization" required>
+                                    <?php if (isset($inquiry_result['errors']['organization'])): ?>
+                                        <div class="text-danger small mt-1"><?php echo htmlspecialchars($inquiry_result['errors']['organization']); ?></div>
+                                    <?php endif; ?>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="business_type" class="form-label">Type of Business <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="business_type" name="business_type" required>
+                                        <option value="">-- Select Business Type --</option>
+                                        <option value="Manufacturing">Manufacturing</option>
+                                        <option value="Retail">Retail</option>
+                                        <option value="Services">Services</option>
+                                        <option value="Real Estate">Real Estate</option>
+                                        <option value="Technology">Technology</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                    <?php if (isset($inquiry_result['errors']['business_type'])): ?>
+                                        <div class="text-danger small mt-1"><?php echo htmlspecialchars($inquiry_result['errors']['business_type']); ?></div>
+                                    <?php endif; ?>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message <span class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                                    <?php if (isset($inquiry_result['errors']['message'])): ?>
+                                        <div class="text-danger small mt-1"><?php echo htmlspecialchars($inquiry_result['errors']['message']); ?></div>
+                                    <?php endif; ?>
+                                </div>
+                                
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-primary btn-lg">Send Inquiry</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of Business Inquiry Form Section -->
+
     <section class="Accomodation" id="Accomodation">
         <div class="container py-3">
             <div class="row justify-content-center">
@@ -296,16 +196,13 @@ updateDateTime();
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php foreach ($accommodation_rates['rooms'] as $room): ?>
                                         <tr>
-                                            <td>Standard Room (2 pax)</td>
-                                            <td>1,500.00 - 2,800.00</td>
-                                            <td>25.66 - 47.90</td>
+                                            <td><?php echo htmlspecialchars($room['type']); ?></td>
+                                            <td><?php echo number_format($room['rate_php_min'], 2) . ' - ' . number_format($room['rate_php_max'], 2); ?></td>
+                                            <td><?php echo number_format($room['rate_usd_min'], 2) . ' - ' . number_format($room['rate_usd_max'], 2); ?></td>
                                         </tr>
-                                        <tr>
-                                            <td>Family Room (4 pax)</td>
-                                            <td>3,000.00 - 6,000.00</td>
-                                            <td>51.32 - 102.63</td>
-                                        </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -320,16 +217,13 @@ updateDateTime();
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php foreach ($accommodation_rates['commercial_space'] as $space): ?>
                                         <tr>
-                                            <td>Commercial Zone</td>
-                                            <td>500.00 - 600.00</td>
-                                            <td>8.55 - 10.26</td>
+                                            <td><?php echo htmlspecialchars($space['type']); ?></td>
+                                            <td><?php echo number_format($space['rate_php_min'], 2) . ' - ' . number_format($space['rate_php_max'], 2); ?></td>
+                                            <td><?php echo number_format($space['rate_usd_min'], 2) . ' - ' . number_format($space['rate_usd_max'], 2); ?></td>
                                         </tr>
-                                        <tr>
-                                            <td>Outside Commercial Zone</td>
-                                            <td>400.00 - 500.00</td>
-                                            <td>6.84 - 8.55</td>
-                                        </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -353,34 +247,12 @@ updateDateTime();
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach ($communication_fees as $fee): ?>
                         <tr>
-                            <td>Monthly Fee</td>
-                            <td>₱ 1,699.00</td>
+                            <td><?php echo htmlspecialchars($fee['service']); ?></td>
+                            <td><?php echo htmlspecialchars($fee['rate']); ?></td>
                         </tr>
-                        <tr>
-                            <td>Local Fees</td>
-                            <td>Free and Unlimited</td>
-                        </tr>
-                        <tr>
-                            <td>NDD Calls</td>
-                            <td>₱ 3.00 per minute</td>
-                        </tr>
-                        <tr>
-                            <td>IDD Calls</td>
-                            <td>$ 0.40 per minute</td>
-                        </tr>
-                        <tr>
-                            <td>Cellular Calls</td>
-                            <td>₱ 6.50 per minute</td>
-                        </tr>
-                        <tr>
-                            <td>Local Calls</td>
-                            <td>₱ 2.00 per minute</td>
-                        </tr>
-                        <tr>
-                            <td>Embassy Calls</td>
-                            <td>₱ 36.08* per minute</td>
-                        </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -403,106 +275,13 @@ updateDateTime();
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php foreach ($courier_services as $service => $rates): ?>
                                         <tr>
-                                            <td>LBC Express</td>
-                                            <td>160</td>
-                                            <td>2.74</td>
+                                            <td><?php echo htmlspecialchars($service); ?></td>
+                                            <td><?php echo $rates['minimum_rate_php'] > 0 ? $rates['minimum_rate_php'] : '-'; ?></td>
+                                            <td><?php echo $rates['minimum_rate_usd'] > 0 ? $rates['minimum_rate_usd'] : '-'; ?></td>
                                         </tr>
-                                        <tr>
-                                            <td>Fasttrack</td>
-                                            <td>250</td>
-                                            <td>4.28</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Erim Express</td>
-                                            <td>80</td>
-                                            <td>1.37</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Xend Business Solutions</td>
-                                            <td>89</td>
-                                            <td>1.52</td>
-                                        </tr>
-                                        <tr>
-                                            <td>J&T Express</td>
-                                            <td>80</td>
-                                            <td>1.37</td>
-                                        </tr>
-                                        <tr>
-                                            <td>JRS Express</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Mail</td>
-                                            <td>107</td>
-                                            <td>1.83</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cargo</td>
-                                            <td>165</td>
-                                            <td>2.82</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Box</td>
-                                            <td>350</td>
-                                            <td>5.99</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Pouch</td>
-                                            <td>220</td>
-                                            <td>3.76</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2GO Courier Services</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cash First (Php 5,000)</td>
-                                            <td>120</td>
-                                            <td>2.05</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Box (3kg)</td>
-                                            <td>245</td>
-                                            <td>4.19</td>
-                                        </tr>
-                                        <tr>
-                                            <td>ABest Express</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Document</td>
-                                            <td>60</td>
-                                            <td>1.03</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Parcel</td>
-                                            <td>90</td>
-                                            <td>1.54</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Box</td>
-                                            <td>170</td>
-                                            <td>2.91</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Metrowide Courier Services</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Medium (Min)</td>
-                                            <td>145</td>
-                                            <td>2.48</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Large Pouch (Min)</td>
-                                            <td>190</td>
-                                            <td>3.25</td>
-                                        </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -655,45 +434,24 @@ updateDateTime();
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php 
+                                        foreach ($transportation_rates as $category => $routes): 
+                                        ?>
                                         <tr class="table-group">
-                                            <td colspan="3" class="fw-bold text-primary bg-light">UV EXPRESS</td>
+                                            <td colspan="3" class="fw-bold text-primary bg-light"><?php echo htmlspecialchars($category); ?></td>
                                         </tr>
+                                        <?php 
+                                        foreach ($routes as $route): 
+                                        ?>
                                         <tr>
-                                            <td>Manila - Imus</td>
-                                            <td>70</td>
-                                            <td>1.20</td>
+                                            <td><?php echo htmlspecialchars($route['route']); ?></td>
+                                            <td><?php echo $route['rate_php']; ?></td>
+                                            <td><?php echo $route['rate_usd']; ?></td>
                                         </tr>
-                                        <tr class="table-group">
-                                            <td colspan="3" class="fw-bold text-primary bg-light">PROVINCIAL BUSES</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Manila - Imus (Air-Conditioned)</td>
-                                            <td>40</td>
-                                            <td>0.68</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Manila - Imus (Ordinary)</td>
-                                            <td>30</td>
-                                            <td>0.51</td>
-                                        </tr>
-                                        <tr class="table-group">
-                                            <td colspan="3" class="fw-bold text-primary bg-light">CITY FARE</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Imus Lumina - New City Hall of Imus</td>
-                                            <td>28</td>
-                                            <td>0.48</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Binakayan - New City Hall of Imus</td>
-                                            <td>30</td>
-                                            <td>0.51</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Robinson Imus - New City Hall of Imus</td>
-                                            <td>28</td>
-                                            <td>0.48</td>
-                                        </tr>
+                                        <?php 
+                                        endforeach; 
+                                        endforeach; 
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -930,122 +688,8 @@ updateDateTime();
         </style>
     </section>
     <!-- Content -->
-    <!-- Footer -->
-    <footer class="footer-custom mt-0 pt-0">
-        <div class="container py-5">
-            <div class="row align-items-center gy-4">
-                <div class="col-12 col-md-4 mb-4 mb-md-0 text-center text-md-start">
-                    <img src="/IMG/seal_imus_sm100.png" alt="City Seal" class="img-fluid mb-3" style="max-width: 90px;">
-                    <p class="mb-2 small text-white-50">
-                        The Official Website of the City of Imus<br>
-                        Maintained by the City Information Office
-                    </p>
-                    <a href="https://www.facebook.com/CityofImus" target="_blank" class="btn btn-success btn-sm rounded-pill px-3 mb-2">
-                        <i class="bi bi-facebook me-1"></i> Facebook Page
-                    </a>
-                </div>
-                <div class="col-6 col-md-2">
-                    <h6 class="fw-bold text-white mb-3">Site Map</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="footer-link">Full Disclosures</a></li>
-                        <li><a href="#" class="footer-link">Bids & Awards</a></li>
-                        <li><a href="#" class="footer-link">City Mayor</a></li>
-                        <li><a href="#" class="footer-link">City Council</a></li>
-                        <li><a href="#" class="footer-link">News</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md-3">
-                    <h6 class="fw-bold text-white mb-3">Government Links</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="https://www.officialgazette.gov.ph/" target="_blank" class="footer-link">Official Gazette</a></li>
-                        <li><a href="https://www.gov.ph/the-government/directory-of-departments-and-agencies/" target="_blank" class="footer-link">Directory</a></li>
-                        <li><a href="https://www.officialgazette.gov.ph/calendar/" target="_blank" class="footer-link">Calendar</a></li>
-                        <li><a href="https://op-proper.gov.ph/" target="_blank" class="footer-link">Office of the President</a></li>
-                        <li><a href="http://www.senate.gov.ph/" target="_blank" class="footer-link">Senate</a></li>
-                        <li><a href="https://www.congress.gov.ph/" target="_blank" class="footer-link">House of Representatives</a></li>
-                    </ul>
-                </div>
-                <div class="col-12 col-md-3 text-center text-md-end">
-                    <h6 class="fw-bold text-white mb-3">Connect</h6>
-                    <div class="d-flex justify-content-center justify-content-md-end gap-3 mb-2">
-                        <a href="https://www.facebook.com/CityofImus" target="_blank" aria-label="Facebook" class="footer-social">
-                            <i class="bi bi-facebook"></i>
-                        </a>
-                        <a href="#" aria-label="Twitter" class="footer-social">
-                            <i class="bi bi-twitter"></i>
-                        </a>
-                        <a href="#" aria-label="Instagram" class="footer-social">
-                            <i class="bi bi-instagram"></i>
-                        </a>
-                    </div>
-                    <small class="text-white-50">&copy; 2025 City of Imus</small>
-                </div>
-            </div>
-            <hr class="border-secondary my-4">
-            <div class="row">
-                <div class="col text-center small text-white-50">
-                    All Rights Reserved &nbsp;|&nbsp; 2025 Terms of Use and Privacy Policy
-                </div>
-            </div>
-        </div>
-        <style>
-            .footer-custom {
-                background-color: #00489a;
-                color: #fff;
-                font-size: 1rem;
-                letter-spacing: 0.01em;
-            }
-            .footer-custom h6 {
-                letter-spacing: 0.5px;
-                font-size: 1.1rem;
-            }
-            .footer-link {
-                color: #e0e0e0;
-                text-decoration: none;
-                display: block;
-                padding: 2px 0;
-                transition: color 0.15s;
-                font-size: 0.97rem;
-            }
-            .footer-link:hover, .footer-link:focus {
-                color: #18a54a;
-                text-decoration: underline;
-            }
-            .footer-social {
-                color: #fff;
-                font-size: 1.5rem;
-                transition: color 0.15s;
-                display: inline-block;
-            }
-            .footer-social:hover, .footer-social:focus {
-                color: #18a54a;
-            }
-            .footer-custom .btn-success {
-                background: #18a54a;
-                border: none;
-            }
-            .footer-custom .btn-success:hover, .footer-custom .btn-success:focus {
-                background: #146c36;
-            }
-            @media (max-width: 767.98px) {
-                .footer-custom .container {
-                    padding-left: 1rem !important;
-                    padding-right: 1rem !important;
-                }
-                .footer-custom .row > div {
-                    text-align: center !important;
-                }
-                .footer-custom .text-md-end {
-                    text-align: center !important;
-                }
-            }
-        </style>
-    </footer>
-<!-- Footer -->
-<!-- SCRIPTS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/fontawesome.min.js" integrity="sha512-j12pXc2gXZL/JZw5Mhi6LC7lkiXL0e2h+9ZWpqhniz0DkDrO01VNlBrG3LkPBn6DgG2b8CDjzJT+lxfocsS1Vw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-</body>
-
 </html>
+<?php
+// Include footer
+require_once __DIR__ . '/includes/footer.php';
+?>
