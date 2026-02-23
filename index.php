@@ -90,7 +90,7 @@ $navMenus = [
     [
         'label' => 'About Imus',
         'children' => [
-            ['label' => 'City Profile', 'href' => base_url('pages/about.php#City-Profile')],
+            ['label' => 'City Profile', 'href' => base_url('Pages\AboutImus.php#City-Profile')],
             ['label' => 'City Government', 'href' => base_url('pages/about.php#City-Government')],
             ['label' => 'Barangay Officials', 'href' => base_url('pages/about.php#Brgy-Officials')],
             ['label' => 'History', 'href' => base_url('pages/about.php#History')],
