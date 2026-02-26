@@ -90,12 +90,12 @@ $navMenus = [
     [
         'label' => 'About Imus',
         'children' => [
-            ['label' => 'City Profile', 'href' => base_url('Pages\AboutImus.php#City-Profile')],
-            ['label' => 'City Government', 'href' => base_url('pages/about.php#City-Government')],
-            ['label' => 'Barangay Officials', 'href' => base_url('pages/about.php#Brgy-Officials')],
-            ['label' => 'History', 'href' => base_url('pages/about.php#History')],
-            ['label' => 'Past Mayors', 'href' => base_url('pages/about.php#Past-Mayors')],
-            ['label' => 'Departments and Units', 'href' => base_url('pages/about.php#Dept-and-Units')],
+            ['label' => 'City Profile', 'href' => base_url('Pages/AboutImus.php#City-Profile')],
+            ['label' => 'City Government', 'href' => base_url('Pages/AboutImus.php#City-Government')],
+            ['label' => 'Barangay Officials', 'href' => base_url('Pages/AboutImus.php#Brgy-Officials')],
+            ['label' => 'History', 'href' => base_url('Pages/AboutImus.php#History')],
+            ['label' => 'Past Mayors', 'href' => base_url('Pages/AboutImus.php#Past-Mayors')],
+            ['label' => 'Departments and Units', 'href' => base_url('Pages/AboutImus.php#Dept-and-Units')],
         ],
     ],
     [
@@ -118,7 +118,7 @@ $navMenus = [
     ],
     [
         'label' => 'Business',
-        'href' => base_url('HTML/Business.html'),
+        'href' => base_url('Pages/Business.php'),
     ],
     [
         'label' => 'Employees',

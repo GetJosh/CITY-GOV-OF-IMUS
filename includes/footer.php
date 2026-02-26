@@ -22,11 +22,11 @@
                 <div class="col-6 col-md-2">
                     <h6 class="fw-bold text-white mb-3">Site Map</h6>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="footer-link">Full Disclosures</a></li>
+                        <li><a href="<?= e(base_url('HTML/Full-disclosure.html')) ?>" class="footer-link">Full Disclosures</a></li>
                         <li><a href="#" class="footer-link">Bids & Awards</a></li>
-                        <li><a href="#" class="footer-link">City Mayor</a></li>
-                        <li><a href="#" class="footer-link">City Council</a></li>
-                        <li><a href="#" class="footer-link">News</a></li>
+                        <li><a href="<?= e(base_url('Pages/AboutImus.php#City-Government')) ?>" class="footer-link">City Mayor</a></li>
+                        <li><a href="<?= e(base_url('Pages/AboutImus.php#City-Government')) ?>" class="footer-link">City Council</a></li>
+                        <li><a href="<?= e(base_url('index.php#latest-news')) ?>" class="footer-link">News</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-md-3">

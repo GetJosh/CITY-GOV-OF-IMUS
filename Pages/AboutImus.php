@@ -52,7 +52,7 @@ $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
     || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https');
 $scheme = $isHttps ? 'https' : 'http';
 $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
-$canonicalUrl = $scheme . '://' . $host . base_url('index.php');
+$canonicalUrl = $scheme . '://' . $host . base_url('Pages/AboutImus.php');
 $initialManilaDateTime = (new DateTimeImmutable('now', new DateTimeZone('Asia/Manila')))
     ->format('F j, Y | g:i A') . ' (PHT)';
 $transparentPixel = 'data:image/gif;base64,R0lGODlhAQABAAAAACw=';
@@ -90,12 +90,12 @@ $navMenus = [
     [
         'label' => 'About Imus',
         'children' => [
-            ['label' => 'City Profile', 'href' => base_url('pages/about.php#City-Profile')],
-            ['label' => 'City Government', 'href' => base_url('pages/about.php#City-Government')],
-            ['label' => 'Barangay Officials', 'href' => base_url('pages/about.php#Brgy-Officials')],
-            ['label' => 'History', 'href' => base_url('pages/about.php#History')],
-            ['label' => 'Past Mayors', 'href' => base_url('pages/about.php#Past-Mayors')],
-            ['label' => 'Departments and Units', 'href' => base_url('pages/about.php#Dept-and-Units')],
+            ['label' => 'City Profile', 'href' => base_url('Pages/AboutImus.php#City-Profile')],
+            ['label' => 'City Government', 'href' => base_url('Pages/AboutImus.php#City-Government')],
+            ['label' => 'Barangay Officials', 'href' => base_url('Pages/AboutImus.php#Brgy-Officials')],
+            ['label' => 'History', 'href' => base_url('Pages/AboutImus.php#History')],
+            ['label' => 'Past Mayors', 'href' => base_url('Pages/AboutImus.php#Past-Mayors')],
+            ['label' => 'Departments and Units', 'href' => base_url('Pages/AboutImus.php#Dept-and-Units')],
         ],
     ],
     [
@@ -118,7 +118,7 @@ $navMenus = [
     ],
     [
         'label' => 'Business',
-        'href' => base_url('HTML/Business.html'),
+        'href' => base_url('Pages/Business.php'),
     ],
     [
         'label' => 'Employees',
@@ -156,7 +156,7 @@ $quickLinks = [
     [
         'title' => 'Business and Permits',
         'description' => 'Access business-related information, requirements, and guidance.',
-        'href' => base_url('HTML/Business.html'),
+        'href' => base_url('Pages/Business.php'),
     ],
 ];
 
@@ -185,6 +185,32 @@ $governmentLinks = [
 // Include header and navbar
 require_once __DIR__ . '/includes/header.navbar.php';
 ?>
+    <!-- Hero section similar to home -->
+    <section class="hero bg-imusBlue text-white py-12">
+        <div class="container">
+            <h1 class="text-center display-6 mb-3">About the City of Imus</h1>
+            <p class="text-center mb-5">Discover the history, government, and community that make Imus the Flag Capital of the Philippines.</p>
+            <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6">
+                <?php foreach ($quickLinks as $quickLink): ?>
+                    <a href="<?= e($quickLink['href']) ?>"
+                        class="focusable group glass-card rounded-2xl p-4 transition hover:-translate-y-1 hover:border-imusBlue/20 hover:bg-white">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <h3 class="font-display text-lg font-semibold text-civicInk"><?= e($quickLink['title']) ?></h3>
+                                <p class="mt-2 text-sm text-slate-600"><?= e($quickLink['description']) ?></p>
+                            </div>
+                            <span class="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full bg-imusBlue/10 text-imusBlue transition group-hover:bg-imusBlue group-hover:text-white" aria-hidden="true">
+                                <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none">
+                                    <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="1.7"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
     <!-- Content (City Profile)-->
       <section class="city-profile" id="City-Profile">
         <div class="container py-5">
