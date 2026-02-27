@@ -61,7 +61,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm sticky-top py-0">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="<?= e(base_url('index.php')) ?>">
-            <img src="/IMG/Logo_City_Government_of_Imuss.png" alt="City of Imus" height="54" class="me-2" style="background:rgba(255,255,255,0.85); border-radius:8px; padding:2px 8px;">
+            <img src="<?= e(base_url('IMG/Logo_City_Government_of_Imuss.png')) ?>" alt="City of Imus" height="54" class="me-2" style="background:rgba(255,255,255,0.85); border-radius:8px; padding:2px 8px;">
         </a>
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon" style="filter: invert(1);"></span>

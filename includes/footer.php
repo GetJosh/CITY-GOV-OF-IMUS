@@ -10,7 +10,7 @@
         <div class="container py-5">
             <div class="row align-items-center gy-4">
                 <div class="col-12 col-md-4 mb-4 mb-md-0 text-center text-md-start">
-                    <img src="/IMG/seal_imus_sm100.png" alt="City Seal" class="img-fluid mb-3" style="max-width: 90px;">
+                    <img src="<?= e(base_url('IMG/seal_imus_sm100.png')) ?>" alt="City Seal" class="img-fluid mb-3" style="max-width: 90px;">
                     <p class="mb-2 small text-white-50">
                         The Official Website of the City of Imus<br>
                         Maintained by the City Information Office

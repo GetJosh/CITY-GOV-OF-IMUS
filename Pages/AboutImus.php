@@ -217,7 +217,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
           <h2 class="text-center mb-4" style="color: #00489a;"><strong>City Profile</strong></h2>
           <div class="row align-items-center g-4">
             <div class="col-lg-6 text-center">
-              <img src="/IMG/Cathedral Aerial View.png" alt="Imus Cathedral Aerial View" class="img-fluid rounded shadow" style="max-width: 90%; border: 3px solid #fff;">
+              <img src="<?= e(base_url('IMG/Cathedral Aerial View.png')) ?>" alt="Imus Cathedral Aerial View" class="img-fluid rounded shadow" style="max-width: 90%; border: 3px solid #fff;">
             </div>
             <div class="col-lg-6">
               <div class="bg-dark bg-opacity-75 rounded p-4 h-100 d-flex flex-column justify-content-center" style="min-height: 300px;">
@@ -245,7 +245,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
             <div class="col-12 col-sm-8 col-md-6 col-lg-4">
               <article class="card gov-card h-100 shadow-sm border-0" aria-labelledby="mayor-name" role="group">
               <div class="ratio ratio-4x3 overflow-hidden rounded-top">
-                <img src="/IMG/officials-and-councilors/Mayor-AA.jpg" alt="Hon. Alex L. Advincula — City Mayor" class="card-img-top w-100 h-100" style="object-fit:contain;">
+                <img src="<?= e(base_url('IMG/officials-and-councilors/Mayor-AA.jpg')) ?>" alt="Hon. Alex L. Advincula — City Mayor" class="card-img-top w-100 h-100" style="object-fit:contain;">
               </div>
               <div class="card-body d-flex flex-column">
                 <h3 id="mayor-name" class="h5 mb-1 fw-bold" style="color: #00489a;">Hon. Alex L. Advincula</h3>
@@ -271,7 +271,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
             <div class="col-12 col-sm-8 col-md-6 col-lg-4">
               <article class="card gov-card h-100 shadow-sm border-0" aria-labelledby="vice-mayor-name" role="group">
               <div class="ratio ratio-4x3 overflow-hidden rounded-top">
-                <img src="/IMG/officials-and-councilors/VM-Saki.jpg" alt="Hon. Homer T. Saquilayan — City Vice Mayor" class="card-img-top w-100 h-100" style="object-fit: contain;">
+                <img src="<?= e(base_url('IMG/officials-and-councilors/VM-Saki.jpg')) ?>" alt="Hon. Homer T. Saquilayan — City Vice Mayor" class="card-img-top w-100 h-100" style="object-fit: contain;">
               </div>
               <div class="card-body d-flex flex-column">
                 <h3 id="vice-mayor-name" class="h5 mb-1 fw-bold" style="color: #00489a;">Hon. Homer T. Saquilayan</h3>
@@ -288,7 +288,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
             <div class="col-12 col-sm-8 col-md-6 col-lg-4">
               <article class="card gov-card h-100 shadow-sm border-0" aria-labelledby="congressman-name" role="group">
               <div class="ratio ratio-4x3 overflow-hidden rounded-top">
-                <img src="/IMG/officials-and-councilors/Cong-AJ.jpg" alt="Hon. Adrian Jay C. Advincula — Congressman" class="card-img-top w-100 h-100" style="object-fit: contain;">
+                <img src="<?= e(base_url('IMG/officials-and-councilors/Cong-AJ.jpg')) ?>" alt="Hon. Adrian Jay C. Advincula — Congressman" class="card-img-top w-100 h-100" style="object-fit: contain;">
               </div>
               <div class="card-body d-flex flex-column">
                 <h3 id="congressman-name" class="h5 mb-1 fw-bold" style="color: #00489a;">Hon. Adrian Jay C. Advincula</h3>
@@ -307,7 +307,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
           <div id="boardMembersCards" class="row g-4 justify-content-center">
             <div class="col-12 col-sm-8 col-md-6 col-lg-4">
               <div class="card h-100 border-10 shadow-sm board-member-card">
-                <img src="/IMG/officials-and-councilors/BM-Lloyd.png" class="card-img-top board-member-img" alt="Hon. Lloyd Emman D. Jaro">
+                <img src="<?= e(base_url('IMG/officials-and-councilors/BM-Lloyd.png')) ?>" class="card-img-top board-member-img" alt="Hon. Lloyd Emman D. Jaro">
                 <div class="card-body text-center">
                   <h6 class="card-title mb-1 fw-semibold text-primary">Hon. Lloyd Emman D. Jaro</h6>
                   <p class="card-text small">Represents Imus at the provincial board, supporting local and provincial policies.</p>
@@ -317,7 +317,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
 
             <div class="col-12 col-sm-8 col-md-6 col-lg-4">
               <div class="card h-100 border-10 shadow-sm board-member-card">
-                <img src="/IMG/officials-and-councilors/BM-Oni.png" class="card-img-top board-member-img" alt="Hon. Arnel M. Cantimbuhan">
+                <img src="<?= e(base_url('IMG/officials-and-councilors/BM-Oni.png')) ?>" class="card-img-top board-member-img" alt="Hon. Arnel M. Cantimbuhan">
                 <div class="card-body text-center">
                   <h6 class="card-title mb-1 fw-semibold text-primary">Hon. Arnel M. Cantimbuhan</h6>
                   <p class="card-text small">Works with city and provincial officials to advance community interests.</p>
@@ -327,7 +327,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
 
             <div class="col-12 col-sm-8 col-md-6 col-lg-4">
               <div class="card h-100 border-10 shadow-sm board-member-card">
-                <img src="/IMG/officials-and-councilors/SK-Pres-Chelsea.png" class="card-img-top board-member-img" alt="Hon. Chelsea Jillian Sarno">
+                <img src="<?= e(base_url('IMG/officials-and-councilors/SK-Pres-Chelsea.png')) ?>" class="card-img-top board-member-img" alt="Hon. Chelsea Jillian Sarno">
                 <div class="card-body text-center">
                   <h6 class="card-title mb-1 fw-semibold text-primary">Hon. Chelsea Jillian Sarno</h6>
                   <p class="card-text small">Leads the Sangguniang Kabataan Federation at the provincial level, advocating for youth issues and programs.</p>
@@ -379,7 +379,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
                 <div class="col-12 col-sm-6 col-lg-3">
                 <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
                   <div class="councilor-img-wrapper bg-gradient">
-                  <img src="/IMG/officials-and-councilors/Konsi-Shernan.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Shernan S. Jaro">
+                  <img src="<?= e(base_url('IMG/officials-and-councilors/Konsi-Shernan.png')) ?>" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Shernan S. Jaro">
                   </div>
                   <div class="card-body text-center bg-white rounded-bottom-4">
                   <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Shernan S. Jaro</h6>
@@ -392,7 +392,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
                 <div class="col-12 col-sm-6 col-lg-3">
                 <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
                   <div class="councilor-img-wrapper bg-gradient">
-                  <img src="/IMG/officials-and-councilors/Konsi-Dennis.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Dennis T. Lacson">
+                  <img src="<?= e(base_url('IMG/officials-and-councilors/Konsi-Dennis.png')) ?>" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Dennis T. Lacson">
                   </div>
                   <div class="card-body text-center bg-white rounded-bottom-4">
                   <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Dennis T. Lacson</h6>
@@ -405,7 +405,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
                 <div class="col-12 col-sm-6 col-lg-3 d-none d-lg-block">
                 <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
                   <div class="councilor-img-wrapper bg-gradient">
-                        <img src="/IMG/officials-and-councilors/Konsi-Wency.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Peter Emmanuel C. Lara">
+                        <img src="<?= e(base_url('IMG/officials-and-councilors/Konsi-Wency.png')) ?>" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Peter Emmanuel C. Lara">
                       </div>
                       <div class="card-body text-center bg-white rounded-bottom-4">
                         <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Peter Emmanuel C. Lara</h6>
@@ -418,7 +418,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
                   <div class="col-12 col-sm-6 col-lg-3 d-none d-lg-block">
                     <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
                       <div class="councilor-img-wrapper bg-gradient">
-                        <img src="/IMG/officials-and-councilors/Konsi-Sherwin.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Sherwin L. Comia">
+                        <img src="<?= e(base_url('IMG/officials-and-councilors/Konsi-Sherwin.png')) ?>" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Sherwin L. Comia">
                       </div>
                       <div class="card-body text-center bg-white rounded-bottom-4">
                         <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Sherwin L. Comia</h6>
@@ -436,7 +436,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
                   <div class="col-12 col-sm-6 col-lg-3">
                     <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
                       <div class="councilor-img-wrapper bg-gradient">
-                        <img src="/IMG/officials-and-councilors/Konsi-Yen.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Lloren Dionella G. Saquilayan">
+                        <img src="<?= e(base_url('IMG/officials-and-councilors/Konsi-Yen.png')) ?>" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Lloren Dionella G. Saquilayan">
                       </div>
                       <div class="card-body text-center bg-white rounded-bottom-4">
                         <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Lloren Dionella G. Saquilayan</h6>
@@ -449,7 +449,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
                   <div class="col-12 col-sm-6 col-lg-3">
                     <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
                       <div class="councilor-img-wrapper bg-gradient">
-                        <img src="/IMG/officials-and-councilors/Konsi-Larry.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Larry Boy S. Nato">
+                        <img src="<?= e(base_url('IMG/officials-and-councilors/Konsi-Larry.png')) ?>" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Larry Boy S. Nato">
                       </div>
                       <div class="card-body text-center bg-white rounded-bottom-4">
                         <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Larry Boy S. Nato</h6>
@@ -462,7 +462,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
                   <div class="col-12 col-sm-6 col-lg-3 d-none d-lg-block">
                     <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
                       <div class="councilor-img-wrapper bg-gradient">
-                        <img src="/IMG/officials-and-councilors/Konsi-Darwin.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Darwin Marti M. Remulla">
+                        <img src="<?= e(base_url('IMG/officials-and-councilors/Konsi-Darwin.png')) ?>" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Darwin Marti M. Remulla">
                       </div>
                       <div class="card-body text-center bg-white rounded-bottom-4">
                         <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Darwin Marti M. Remulla</h6>
@@ -475,7 +475,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
                   <div class="col-12 col-sm-6 col-lg-3 d-none d-lg-block">
                     <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
                       <div class="councilor-img-wrapper bg-gradient">
-                        <img src="/IMG/officials-and-councilors/Konsi-Enzo.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Enzo Gaston A. Asistio">
+                        <img src="<?= e(base_url('IMG/officials-and-councilors/Konsi-Enzo.png')) ?>" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Enzo Gaston A. Asistio">
                       </div>
                       <div class="card-body text-center bg-white rounded-bottom-4">
                         <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Enzo Gaston A. Asistio</h6>
@@ -493,7 +493,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
                   <div class="col-12 col-sm-6 col-lg-3">
                     <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
                       <div class="councilor-img-wrapper bg-gradient">
-                        <img src="/IMG/officials-and-councilors/Konsi-Jelyn.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Jogie Lyn L. Maliksi">
+                        <img src="<?= e(base_url('IMG/officials-and-councilors/Konsi-Jelyn.png')) ?>" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Jogie Lyn L. Maliksi">
                       </div>
                       <div class="card-body text-center bg-white rounded-bottom-4">
                         <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Jogie Lyn L. Maliksi</h6>
@@ -506,7 +506,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
                   <div class="col-12 col-sm-6 col-lg-3">
                     <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
                       <div class="councilor-img-wrapper bg-gradient">
-                        <img src="/IMG/officials-and-councilors/Konsi-Mark.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Mark Anthony P. Villanueva">
+                        <img src="<?= e(base_url('IMG/officials-and-councilors/Konsi-Mark.png')) ?>" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Mark Anthony P. Villanueva">
                       </div>
                       <div class="card-body text-center bg-white rounded-bottom-4">
                         <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Mark Anthony P. Villanueva</h6>
@@ -519,7 +519,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
                   <div class="col-12 col-sm-6 col-lg-3 d-none d-lg-block">
                     <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
                       <div class="councilor-img-wrapper bg-gradient">
-                        <img src="/IMG/officials-and-councilors/Konsi-David.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. David Sapitan Jr.">
+                        <img src="<?= e(base_url('IMG/officials-and-councilors/Konsi-David.png')) ?>" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. David Sapitan Jr.">
                       </div>
                       <div class="card-body text-center bg-white rounded-bottom-4">
                         <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. David Sapitan Jr.</h6>
@@ -532,7 +532,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
                   <div class="col-12 col-sm-6 col-lg-3 d-none d-lg-block">
                     <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
                       <div class="councilor-img-wrapper bg-gradient">
-                        <img src="/IMG/officials-and-councilors/Konsi-Igi.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Gregorio Miguel B. Ocampo Jr.">
+                        <img src="<?= e(base_url('IMG/officials-and-councilors/Konsi-Igi.png')) ?>" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Gregorio Miguel B. Ocampo Jr.">
                       </div>
                       <div class="card-body text-center bg-white rounded-bottom-4">
                         <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Gregorio Miguel B. Ocampo Jr.</h6>
@@ -550,7 +550,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
                   <div class="col-12 col-sm-6 col-lg-3">
                     <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
                       <div class="councilor-img-wrapper bg-gradient">
-                        <img src="/IMG/officials-and-councilors/Konsi-Capt-RR.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Reymundo G. Ramirez">
+                        <img src="<?= e(base_url('IMG/officials-and-councilors/Konsi-Capt-RR.png')) ?>" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Reymundo G. Ramirez">
                       </div>
                       <div class="card-body text-center bg-white rounded-bottom-4">
                         <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Reymundo G. Ramirez</h6>
@@ -563,7 +563,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
                   <div class="col-12 col-sm-6 col-lg-3">
                     <div class="card councilor-card h-100 border-0 shadow-lg position-relative overflow-hidden">
                       <div class="councilor-img-wrapper bg-gradient">
-                        <img src="/IMG/officials-and-councilors/Konsi-SK-Glian.png" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Glian Piolo P. Ilagan">
+                        <img src="<?= e(base_url('IMG/officials-and-councilors/Konsi-SK-Glian.png')) ?>" class="card-img-top rounded-circle mx-auto d-block" alt="Hon. Glian Piolo P. Ilagan">
                       </div>
                       <div class="card-body text-center bg-white rounded-bottom-4">
                         <h6 class="card-title mb-1 fw-bold text-primary councilor-name">Hon. Glian Piolo P. Ilagan</h6>
@@ -1371,7 +1371,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
               </div>
             </div>
             <div class="col-lg-6 text-center">
-              <img src="/IMG/Church.png" alt="Imus Church" class="img-fluid rounded-4 shadow-lg border border-3 border-white" style="max-width: 85%;">
+              <img src="<?= e(base_url('IMG/Church.png')) ?>" alt="Imus Church" class="img-fluid rounded-4 shadow-lg border border-3 border-white" style="max-width: 85%;">
             </div>
           </div>
           <div class="row align-items-center flex-lg-row-reverse mb-5">
@@ -1387,7 +1387,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
               </div>
             </div>
             <div class="col-lg-6 text-center">
-              <img src="/IMG/Licerio.png" alt="Licerio" class="img-fluid rounded-4 shadow-lg border border-3 border-white" style="max-width: 65%;">
+              <img src="<?= e(base_url('IMG/Licerio.png')) ?>" alt="Licerio" class="img-fluid rounded-4 shadow-lg border border-3 border-white" style="max-width: 65%;">
             </div>
           </div>
           <div class="row">
