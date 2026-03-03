@@ -185,8 +185,9 @@ $governmentLinks = [
 // Include header and navbar
 require_once __DIR__ . '/includes/header.navbar.php';
 ?>
+
     <!-- Hero section similar to home -->
-    <section class="hero bg-imusBlue text-white py-12">
+    <section class="hero bg-imusBlue text-white py-12 section">
         <div class="container">
             <h1 class="text-center display-6 mb-3">About the City of Imus</h1>
             <p class="text-center mb-5">Discover the history, government, and community that make Imus the Flag Capital of the Philippines.</p>
@@ -212,9 +213,9 @@ require_once __DIR__ . '/includes/header.navbar.php';
         </div>
     </section>
     <!-- Content (City Profile)-->
-      <section class="city-profile" id="City-Profile">
+      <section class="city-profile section" id="City-Profile">
         <div class="container py-5">
-          <h2 class="text-center mb-4" style="color: #00489a;"><strong>City Profile</strong></h2>
+          <h2 class="text-center mb-4 section-title"><strong>City Profile</strong></h2>
           <div class="row align-items-center g-4">
             <div class="col-lg-6 text-center">
               <img src="<?= e(base_url('IMG/Cathedral Aerial View.png')) ?>" alt="Imus Cathedral Aerial View" class="img-fluid rounded shadow" style="max-width: 90%; border: 3px solid #fff;">
@@ -237,9 +238,9 @@ require_once __DIR__ . '/includes/header.navbar.php';
         </div>
       </section>
       <!--Content (City Government)-->
-      <section class="city-government" id="City-Government">
+      <section class="city-government section" id="City-Government">
         <div class="container py-5">
-          <h2 class="text-center mb-4" style="color: #00489a;"><strong>City Government</strong></h2>
+          <h2 class="text-center mb-4 section-title"><strong>City Government</strong></h2>
             <div class="row g-4 justify-content-center">
             <!-- City Executives (improved responsive cards) -->
             <div class="col-12 col-sm-8 col-md-6 col-lg-4">
@@ -248,7 +249,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
                 <img src="<?= e(base_url('IMG/officials-and-councilors/Mayor-AA.jpg')) ?>" alt="Hon. Alex L. Advincula — City Mayor" class="card-img-top w-100 h-100" style="object-fit:contain;">
               </div>
               <div class="card-body d-flex flex-column">
-                <h3 id="mayor-name" class="h5 mb-1 fw-bold" style="color: #00489a;">Hon. Alex L. Advincula</h3>
+                <h3 id="mayor-name" class="h5 mb-1 fw-bold text-imusBlue">Hon. Alex L. Advincula</h3>
                 <p class="mb-2 text-muted small official-role" aria-hidden="true">City Mayor</p>
                 <p class="mb-3 small text-secondary flex-grow-1">Leads the city government and oversees executive functions to ensure the welfare and services for Imus residents.</p>
                 <div class="d-flex gap-2">
@@ -274,7 +275,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
                 <img src="<?= e(base_url('IMG/officials-and-councilors/VM-Saki.jpg')) ?>" alt="Hon. Homer T. Saquilayan — City Vice Mayor" class="card-img-top w-100 h-100" style="object-fit: contain;">
               </div>
               <div class="card-body d-flex flex-column">
-                <h3 id="vice-mayor-name" class="h5 mb-1 fw-bold" style="color: #00489a;">Hon. Homer T. Saquilayan</h3>
+                <h3 id="vice-mayor-name" class="h5 mb-1 fw-bold text-imusBlue">Hon. Homer T. Saquilayan</h3>
                 <p class="mb-2 text-muted small official-role" aria-hidden="true">City Vice Mayor</p>
                 <p class="mb-3 small text-secondary flex-grow-1">Presides over the Sangguniang Panlungsod and champions legislative initiatives that drive local development.</p>
                 <div class="d-flex gap-2">
@@ -291,7 +292,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
                 <img src="<?= e(base_url('IMG/officials-and-councilors/Cong-AJ.jpg')) ?>" alt="Hon. Adrian Jay C. Advincula — Congressman" class="card-img-top w-100 h-100" style="object-fit: contain;">
               </div>
               <div class="card-body d-flex flex-column">
-                <h3 id="congressman-name" class="h5 mb-1 fw-bold" style="color: #00489a;">Hon. Adrian Jay C. Advincula</h3>
+                <h3 id="congressman-name" class="h5 mb-1 fw-bold text-imusBlue">Hon. Adrian Jay C. Advincula</h3>
                 <p class="mb-2 text-muted small official-role" aria-hidden="true">Congressman</p>
                 <p class="mb-3 small text-secondary flex-grow-1">Represents Imus in the House of Representatives and advocates for legislation and national resources that benefit the city.</p>
                 <div class="d-flex gap-2">
@@ -303,7 +304,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
             </div>
             </div>
           <!-- Board Members -->
-          <h4 class="mt-2 mb-5" style="color: #00489a;">Board Members & SK Provincial Federation President</h4>
+          <h4 class="mt-2 mb-5 section-title">Board Members & SK Provincial Federation President</h4>
           <div id="boardMembersCards" class="row g-4 justify-content-center">
             <div class="col-12 col-sm-8 col-md-6 col-lg-4">
               <div class="card h-100 border-10 shadow-sm board-member-card">
@@ -370,7 +371,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
             }
           </style>
           <!-- Councilors -->
-          <h4 class="mt-5 mb-3" style="color: #00489a;">City Councilors</h4>
+          <h4 class="mt-5 mb-3 section-title">City Councilors</h4>
             <div id="councilorsCarousel" class="carousel slide carousel-dark" data-bs-ride="carousel" data-bs-interval="4000">
             <div class="carousel-inner">
               <!-- Slide 1 -->
@@ -714,7 +715,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
       <!--Content (Barangay Officials)-->
       <section class="barangay-officials" id="Brgy-Officials">
         <div class="container py-5">
-          <h2 class="text-center mb-4" style="color: #00489a;"><strong>Barangay Officials</strong></h2>
+          <h2 class="text-center mb-4 section-title"><strong>Barangay Officials</strong></h2>
           <div class="row justify-content-center mb-3">
             <div class="col-12 col-md-8 col-lg-6">
               <input type="text" id="barangayFilterInput" class="form-control form-control-lg rounded-pill shadow-sm" placeholder="🔍 Search barangay or official...">
@@ -1353,9 +1354,9 @@ require_once __DIR__ . '/includes/header.navbar.php';
         </div>
       </section>
       <!--Content (History)-->
-      <section class="history" id="History">
+      <section class="history section" id="History">
         <div class="container py-5">
-          <h2 class="text-center mb-5 fw-bold" style="color: #00489a;">
+          <h2 class="text-center mb-5 fw-bold section-title">
             <i class="bi bi-clock-history me-2"></i>History of Imus
           </h2>
           <div class="row align-items-center mb-5">
@@ -1439,9 +1440,9 @@ require_once __DIR__ . '/includes/header.navbar.php';
         </style>
       </section>
       <!--Content (Past Mayors)-->
-      <section class="past-mayors" id="Past-Mayors">
+      <section class="past-mayors section" id="Past-Mayors">
         <div class="container py-5">
-          <h2 class="text-center mb-4" style="color: #00489a;"><strong>Past Mayors</strong></h2>
+          <h2 class="text-center mb-4 section-title"><strong>Past Mayors</strong></h2>
           <input type="text" id="pastMayorsFilter" class="form-control mb-4 rounded-pill shadow-sm" placeholder="🔍 Search for past mayors...">
           <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
             <table class="table table-hover table-bordered align-middle text-center rounded-4 overflow-hidden shadow-sm" style="border-radius: 1.25rem;">
@@ -1510,7 +1511,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
               padding-bottom: 0.55rem;
             }
             .table thead th {
-              background: linear-gradient(90deg, #18a54a 0%, #00489a 100%) !important;
+              background: linear-gradient(90deg, var(--imus-accent) 0%, var(--imus-primary) 100%) !important;
               color: #fff !important;
               border: none;
               font-weight: 700;
@@ -1549,9 +1550,9 @@ require_once __DIR__ . '/includes/header.navbar.php';
         </div>
       </section>
       <!--Content (Departments and Units)-->
-      <section class="deptandunits" id="Dept-and-Units">
+      <section class="deptandunits section" id="Dept-and-Units">
         <div class="container py-5">
-          <h2 class="text-center mb-4" style="color: #00489a;"><strong>Departments and Units</strong></h2>
+          <h2 class="text-center mb-4 section-title"><strong>Departments and Units</strong></h2>
           <input type="text" id="departmentsFilterInput" class="form-control mb-3" placeholder="Search for departments or units...">
           <div style="height: 400px; overflow-y: auto;">
             <table class="table table-bordered table-striped table-hover align-middle text-center">

@@ -35,13 +35,13 @@ require_once __DIR__ . '/includes/header.navbar.php';
 
      <!-- End of Video Section-->
 
-    <section class="Why-invest-in-Imus" id="Why-invest-in-Imus">
+    <section class="Why-invest-in-Imus section" id="Why-invest-in-Imus">
         <div class="container py-4">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="card shadow-sm border-3 mb-3" style="background: #f8fafc;">
                         <div class="card-body">
-                            <h2 class="text-center mb-4" style="color:#00489a;"><strong>Why Invest in Imus</strong></h2>
+                            <h2 class="text-center mb-4 section-title"><strong>Why Invest in Imus</strong></h2>
                             <p class="text-justify" style="text-align: justify; font-size: 1.08rem;">
                                 <br>
                                 The City of Imus is recognized as one of the country's most Economically Dynamic Component Cities.<br><br>
@@ -87,13 +87,13 @@ require_once __DIR__ . '/includes/header.navbar.php';
     </section>
 
     <!-- Business Inquiry Form Section -->
-    <section class="Business-Inquiry" id="Business-Inquiry">
+    <section class="Business-Inquiry section" id="Business-Inquiry">
         <div class="container py-5">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="card shadow-sm border-2 mb-4">
                         <div class="card-body">
-                            <h2 class="text-center mb-4" style="color:#00489a;">Interested in Investing?</h2>
+                            <h2 class="text-center mb-4 section-title">Interested in Investing?</h2>
                             <p class="text-center mb-4">Submit your business inquiry and our team will contact you soon.</p>
                             
                             <?php if ($inquiry_result): ?>
@@ -179,13 +179,13 @@ require_once __DIR__ . '/includes/header.navbar.php';
     </section>
     <!-- End of Business Inquiry Form Section -->
 
-    <section class="Accomodation" id="Accomodation">
+    <section class="Accomodation section" id="Accomodation">
         <div class="container py-3">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="card shadow-sm border-2 mb-4">
                         <div class="card-body">
-                            <h3 class="text-center mb-3" style="color:#00489a;">Room Rates</h3>
+                            <h3 class="text-center mb-3 text-imusBlue">Room Rates</h3>
                             <div class="table-responsive">
                                 <table class="table table-bordered align-middle mb-4">
                                     <thead class="table-primary">
@@ -206,7 +206,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
                                     </tbody>
                                 </table>
                             </div>
-                            <h3 class="text-center mb-3" style="color:#00489a;">Office and Commercial Space Rental</h3>
+                            <h3 class="text-center mb-3 text-imusBlue">Office and Commercial Space Rental</h3>
                             <div class="table-responsive">
                                 <table class="table table-bordered align-middle">
                                     <thead class="table-primary">
@@ -233,7 +233,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
             </div>
         </div>
     </section>
-    <section class="Communication" id="Communication">
+    <section class="Communication section" id="Communication">
         <div class="d-flex justify-content-center">
             <div class="table-responsive" style="max-width: 420px;">
                 <table class="table table-bordered align-middle mb-4 mx-auto" style="width:100%;">
@@ -258,13 +258,13 @@ require_once __DIR__ . '/includes/header.navbar.php';
             </div>
         </div>
     </section>
-    <section class="Courier-and-Cargo" id="Courier-and-Cargo">
+    <section class="Courier-and-Cargo section" id="Courier-and-Cargo">
         <div class="container py-3">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="card shadow-sm border-2 mb-4">
                         <div class="card-body">
-                            <h3 class="text-center mb-3" style="color:#00489a;">Courier and Cargo Rates</h3>
+                            <h3 class="text-center mb-3 text-imusBlue">Courier and Cargo Rates</h3>
                             <div class="table-responsive">
                                 <table class="table table-bordered align-middle mb-0">
                                     <thead class="table-primary">
@@ -294,13 +294,13 @@ require_once __DIR__ . '/includes/header.navbar.php';
             </div>
         </div>
     </section>
-    <section class="National-Taxes" id="National-Taxes">
+    <section class="National-Taxes section" id="National-Taxes">
         <div class="container py-4">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="card shadow-sm border-2 mb-4" style="background: #f8fafc;">
                         <div class="card-body">
-                            <h2 class="text-center mb-4" style="color:#00489a;">National Taxes</h2>
+                            <h2 class="text-center mb-4 section-title">National Taxes</h2>
                             <div class="accordion" id="taxAccordion">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingVAT">
@@ -417,7 +417,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
             </div>
         </div>
     </section>
-    <section class="Transportation" id="Transportation">
+    <section class="Transportation section" id="Transportation">
         <div class="container py-3">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -464,13 +464,13 @@ require_once __DIR__ . '/includes/header.navbar.php';
             </div>
         </div>
     </section>
-    <section class="Utilities" id="Utilities">
+    <section class="Utilities section" id="Utilities">
         <div class="container py-4">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="card shadow-sm border-2 mb-4">
                         <div class="card-body">
-                            <h2 class="text-center mb-4" style="color:#00489a;">POWER (MERALCO)</h2>
+                            <h2 class="text-center mb-4 section-title">POWER (MERALCO)</h2>
                             <div class="accordion" id="accordionExample">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
@@ -624,7 +624,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
                                     </div>
                                 </div>
                             </div>
-                            <h2 class="text-center mt-5 mb-4" style="color:#00489a;">WATER (MAYNILAD SERVICES)</h2>
+                            <h2 class="text-center mt-5 mb-4 section-title">WATER (MAYNILAD SERVICES)</h2>
                             <h4 class="text-center mb-3" style="color: black;">Application for New and Additional Water Service Connections</h4>
                             <ul style="max-width:600px;margin:0 auto;">
                                 <li>The assigned Business Area will check if the customer meets the following conditions:

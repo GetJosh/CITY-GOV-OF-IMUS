@@ -1,6 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root {
+    --imus-primary: #00489a;
+    --imus-accent: #18a54a;
+    --section-padding: 4rem;
+}
+
+/* utility classes */
+.section-title {
+    color: var(--imus-primary);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+.text-imusBlue {
+    color: var(--imus-primary) !important;
+}
+.bg-imusBlue,
+.hero.bg-imusBlue {
+    background-color: var(--imus-primary) !important;
+}
+.section {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+}
+
 /* General Reset */
 * {
     font-family: Poppins, sans-serif;

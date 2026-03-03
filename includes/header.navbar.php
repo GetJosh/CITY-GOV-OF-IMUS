@@ -133,7 +133,7 @@
     </div>
     <style>
         .navbar {
-            background-color: #00489a !important;
+            background-color: var(--imus-primary) !important;
         }
         .navbar .navbar-brand img {
             box-shadow: 0 2px 8px rgba(5,55,116,0.10);
