@@ -61,7 +61,7 @@ $transparentPixel = 'data:image/gif;base64,R0lGODlhAQABAAAAACw=';
 $utilityLinks = [
     [
         'label' => 'Full Disclosures',
-        'href' => base_url('Pages/FullDisclosureComponents/Full-Disclosure.php'),
+        'href' => base_url('Pages/Full-Disclosure.php'),
         'external' => false,
     ],
     [
@@ -136,7 +136,7 @@ $quickLinks = [
     [
         'title' => 'Full Disclosures',
         'description' => 'Review city disclosures, reports, bids, and governance updates.',
-        'href' => base_url('HTML/Full-disclosure.html'),
+        'href' => base_url('Pages/Full-Disclosure.php'),
     ],
     [
         'title' => 'Contact Us',
@@ -261,7 +261,7 @@ $emergencyContacts = [
 
 /* Footer: Site map links. */
 $siteMapLinks = [
-    ['label' => 'Full Disclosures', 'href' => base_url('Pages\FullDisclosureComponents\Full-Disclosure.php')],
+    ['label' => 'Full Disclosures', 'href' => base_url('Pages/Full-Disclosure.php')],
     ['label' => 'Downloadable Forms', 'href' => base_url('HTML/Downloadable-forms.html')],
     ['label' => 'Contact Us', 'href' => base_url('HTML/Contact-Us.html')],
     ['label' => 'Latest News', 'href' => '#latest-news'],

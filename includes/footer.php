@@ -1,126 +1,421 @@
 <?php
-/**
- * Footer Include
- * This file contains the footer for all pages
- */
+declare(strict_types=1);
+
+$officialFacebook = $officialFacebook ?? 'https://www.facebook.com/CityofImus/';
+$enableLegacyUiSupport = isset($enableLegacyUiSupport) ? (bool) $enableLegacyUiSupport : true;
+
+$siteMapLinks = $siteMapLinks ?? [
+    ['label' => 'Full Disclosures', 'href' => base_url('Pages/Full-Disclosure.php')],
+    ['label' => 'Downloadable Forms', 'href' => base_url('HTML/Downloadable-forms.html')],
+    ['label' => 'Contact Us', 'href' => base_url('HTML/Contact-Us.html')],
+    ['label' => 'Latest News', 'href' => base_url('index.php#latest-news')],
+    ['label' => 'Emergency Contacts', 'href' => base_url('index.php#emergency-contacts')],
+];
+
+$governmentLinks = $governmentLinks ?? [
+    ['label' => 'Official Gazette', 'href' => 'https://www.officialgazette.gov.ph/'],
+    ['label' => 'Government Directory', 'href' => 'https://www.gov.ph/the-government/directory-of-departments-and-agencies/'],
+    ['label' => 'Official Calendar', 'href' => 'https://www.officialgazette.gov.ph/calendar/'],
+    ['label' => 'Office of the President', 'href' => 'https://op-proper.gov.ph/'],
+    ['label' => 'Senate of the Philippines', 'href' => 'http://www.senate.gov.ph/'],
+    ['label' => 'House of Representatives', 'href' => 'https://www.congress.gov.ph/'],
+];
 ?>
+        </main>
 
-    <!-- Footer -->
-    <footer class="footer-custom mt-0 pt-0">
-        <div class="container py-5">
-            <div class="row align-items-center gy-4">
-                <div class="col-12 col-md-4 mb-4 mb-md-0 text-center text-md-start">
-                    <img src="<?= e(base_url('IMG/seal_imus_sm100.png')) ?>" alt="City Seal" class="img-fluid mb-3" style="max-width: 90px;">
-                    <p class="mb-2 small text-white-50">
-                        The Official Website of the City of Imus<br>
-                        Maintained by the City Information Office
-                    </p>
-                    <a href="https://www.facebook.com/CityofImus" target="_blank" class="btn btn-success btn-sm rounded-pill px-3 mb-2">
-                        <i class="bi bi-facebook me-1"></i> Facebook Page
-                    </a>
-                </div>
-                <div class="col-6 col-md-2">
-                    <h6 class="fw-bold text-white mb-3">Site Map</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="<?= e(base_url('HTML/Full-disclosure.html')) ?>" class="footer-link">Full Disclosures</a></li>
-                        <li><a href="#" class="footer-link">Bids & Awards</a></li>
-                        <li><a href="<?= e(base_url('Pages/AboutImus.php#City-Government')) ?>" class="footer-link">City Mayor</a></li>
-                        <li><a href="<?= e(base_url('Pages/AboutImus.php#City-Government')) ?>" class="footer-link">City Council</a></li>
-                        <li><a href="<?= e(base_url('index.php#latest-news')) ?>" class="footer-link">News</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md-3">
-                    <h6 class="fw-bold text-white mb-3">Government Links</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="https://www.officialgazette.gov.ph/" target="_blank" class="footer-link">Official Gazette</a></li>
-                        <li><a href="https://www.gov.ph/the-government/directory-of-departments-and-agencies/" target="_blank" class="footer-link">Directory</a></li>
-                        <li><a href="https://www.officialgazette.gov.ph/calendar/" target="_blank" class="footer-link">Calendar</a></li>
-                        <li><a href="https://op-proper.gov.ph/" target="_blank" class="footer-link">Office of the President</a></li>
-                        <li><a href="http://www.senate.gov.ph/" target="_blank" class="footer-link">Senate</a></li>
-                        <li><a href="https://www.congress.gov.ph/" target="_blank" class="footer-link">House of Representatives</a></li>
-                    </ul>
-                </div>
-                <div class="col-12 col-md-3 text-center text-md-end">
-                    <h6 class="fw-bold text-white mb-3">Connect</h6>
-                    <div class="d-flex justify-content-center justify-content-md-end gap-3 mb-2">
-                        <a href="https://www.facebook.com/CityofImus" target="_blank" aria-label="Facebook" class="footer-social">
-                            <i class="bi bi-facebook"></i>
+        <footer class="relative z-10 bg-imusDeep text-white">
+            <div class="section-shell py-12">
+                <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+                    <section>
+                        <img src="<?= e(base_url('IMG/seal_imus_sm100.png')) ?>"
+                            alt="City Seal of Imus"
+                            width="100" height="100"
+                            class="h-20 w-20 rounded-full border border-white/20 bg-white/90 p-1">
+                        <p class="mt-4 text-sm leading-relaxed text-white/80">
+                            Official website of the City Government of Imus, maintained by the City Information Office.
+                        </p>
+                        <a href="<?= e($officialFacebook) ?>" target="_blank" rel="noopener noreferrer"
+                            class="focusable mt-4 inline-flex items-center rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/20">
+                            Follow Official Page
                         </a>
-                        <a href="#" aria-label="Twitter" class="footer-social">
-                            <i class="bi bi-twitter"></i>
-                        </a>
-                        <a href="#" aria-label="Instagram" class="footer-social">
-                            <i class="bi bi-instagram"></i>
-                        </a>
-                    </div>
-                    <small class="text-white-50">&copy; 2025 City of Imus</small>
+                    </section>
+
+                    <section>
+                        <h3 class="font-display text-lg font-semibold">Site Map</h3>
+                        <ul class="mt-4 space-y-2 text-sm text-white/80">
+                            <?php foreach ($siteMapLinks as $siteMapLink): ?>
+                                <li>
+                                    <a href="<?= e($siteMapLink['href']) ?>"
+                                        class="focusable inline-flex rounded px-1 py-0.5 transition hover:text-imusGreen">
+                                        <?= e($siteMapLink['label']) ?>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3 class="font-display text-lg font-semibold">Government Links</h3>
+                        <ul class="mt-4 space-y-2 text-sm text-white/80">
+                            <?php foreach ($governmentLinks as $governmentLink): ?>
+                                <li>
+                                    <a href="<?= e($governmentLink['href']) ?>" target="_blank" rel="noopener noreferrer"
+                                        class="focusable inline-flex rounded px-1 py-0.5 transition hover:text-imusGreen">
+                                        <?= e($governmentLink['label']) ?>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3 class="font-display text-lg font-semibold">Connect</h3>
+                        <div class="mt-4 flex items-center gap-3">
+                            <a href="<?= e($officialFacebook) ?>" target="_blank" rel="noopener noreferrer"
+                                class="focusable inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-white/10 transition hover:border-imusGreen hover:bg-imusGreen"
+                                aria-label="City Government of Imus on Facebook">
+                                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.2-1.6 1.6-1.6h1.3V4.8c-.2 0-1-.1-2-.1-2 0-3.4 1.2-3.4 3.5V11H9v3h2.1v7h2.4Z" />
+                                </svg>
+                            </a>
+                            <a href="<?= e(base_url('HTML/Contact-Us.html')) ?>"
+                                class="focusable inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-white/10 transition hover:border-imusGreen hover:bg-imusGreen"
+                                aria-label="Contact the City Government of Imus">
+                                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+                                    <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </div>
+                        <p class="mt-4 text-sm text-white/75">City Information Office<br>City of Imus, Cavite</p>
+                    </section>
+                </div>
+
+                <div class="mt-10 flex flex-col gap-2 border-t border-white/20 pt-6 text-sm text-white/70 sm:flex-row sm:items-center sm:justify-between">
+                    <p>&copy; <?= date('Y') ?> City Government of Imus. All rights reserved.</p>
+                    <p>Public information portal for residents, visitors, and stakeholders.</p>
                 </div>
             </div>
-            <hr class="border-secondary my-4">
-            <div class="row">
-                <div class="col text-center small text-white-50">
-                    All Rights Reserved &nbsp;|&nbsp; 2025 Terms of Use and Privacy Policy
-                </div>
-            </div>
-        </div>
-        <style>
-            .footer-custom {
-                background-color: #00489a;
-                color: #fff;
-                font-size: 1rem;
-                letter-spacing: 0.01em;
-            }
-            .footer-custom h6 {
-                letter-spacing: 0.5px;
-                font-size: 1.1rem;
-            }
-            .footer-link {
-                color: #e0e0e0;
-                text-decoration: none;
-                display: block;
-                padding: 2px 0;
-                transition: color 0.15s;
-                font-size: 0.97rem;
-            }
-            .footer-link:hover, .footer-link:focus {
-                color: #18a54a;
-                text-decoration: underline;
-            }
-            .footer-social {
-                color: #fff;
-                font-size: 1.5rem;
-                transition: color 0.15s;
-                display: inline-block;
-            }
-            .footer-social:hover, .footer-social:focus {
-                color: #18a54a;
-            }
-            .footer-custom .btn-success {
-                background: #18a54a;
-                border: none;
-            }
-            .footer-custom .btn-success:hover, .footer-custom .btn-success:focus {
-                background: #146c36;
-            }
-            @media (max-width: 767.98px) {
-                .footer-custom .container {
-                    padding-left: 1rem !important;
-                    padding-right: 1rem !important;
-                }
-                .footer-custom .row > div {
-                    text-align: center !important;
-                }
-                .footer-custom .text-md-end {
-                    text-align: center !important;
-                }
-            }
-        </style>
-    </footer>
-    <!-- Footer -->
-    <!-- SCRIPTS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/fontawesome.min.js" integrity="sha512-j12pXc2gXZL/JZw5Mhi6LC7lkiXL0e2h+9ZWpqhniz0DkDrO01VNlBrG3LkPBn6DgG2b8CDjzJT+lxfocsS1Vw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        </footer>
+    </div>
 
+    <script>
+        (function () {
+            const dateTimeElement = document.getElementById('manila-datetime');
+            const mobileBreakpoint = 1024;
+
+            function updateDateTime() {
+                if (!dateTimeElement) {
+                    return;
+                }
+
+                const now = new Date();
+                const date = now.toLocaleDateString('en-PH', {
+                    timeZone: 'Asia/Manila',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                const time = now.toLocaleTimeString('en-PH', {
+                    timeZone: 'Asia/Manila',
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    hour12: true
+                });
+
+                dateTimeElement.textContent = date + ' | ' + time + ' (PHT)';
+            }
+
+            const now = new Date();
+            const delayUntilNextMinute = (60 - now.getSeconds()) * 1000;
+            window.setTimeout(() => {
+                updateDateTime();
+                window.setInterval(updateDateTime, 60000);
+            }, delayUntilNextMinute);
+
+            const menuToggleButton = document.querySelector('[data-menu-toggle]');
+            const menuPanel = document.getElementById('primary-menu');
+            const dropdownButtons = document.querySelectorAll('[data-dropdown-button]');
+            const menuLinks = menuPanel ? menuPanel.querySelectorAll('a') : [];
+
+            function closeDropdowns(exceptButton = null) {
+                dropdownButtons.forEach((button) => {
+                    if (exceptButton && button === exceptButton) {
+                        return;
+                    }
+
+                    const panelId = button.getAttribute('aria-controls');
+                    const panel = panelId ? document.getElementById(panelId) : null;
+                    button.setAttribute('aria-expanded', 'false');
+                    if (panel) {
+                        panel.classList.add('hidden');
+                    }
+                });
+            }
+
+            function openDropdown(button, panel) {
+                closeDropdowns(button);
+                panel.classList.remove('hidden');
+                button.setAttribute('aria-expanded', 'true');
+            }
+
+            if (menuToggleButton && menuPanel) {
+                menuToggleButton.addEventListener('click', () => {
+                    const willOpen = menuPanel.classList.contains('hidden');
+                    menuPanel.classList.toggle('hidden');
+                    menuToggleButton.setAttribute('aria-expanded', String(willOpen));
+                    if (!willOpen) {
+                        closeDropdowns();
+                    }
+                });
+            }
+
+            dropdownButtons.forEach((button) => {
+                const panelId = button.getAttribute('aria-controls');
+                const panel = panelId ? document.getElementById(panelId) : null;
+                if (!panel) {
+                    return;
+                }
+
+                button.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const isOpen = button.getAttribute('aria-expanded') === 'true';
+                    closeDropdowns();
+                    if (!isOpen) {
+                        openDropdown(button, panel);
+                    }
+                });
+
+                button.addEventListener('keydown', (event) => {
+                    if (event.key !== 'ArrowDown' && event.key !== 'Enter' && event.key !== ' ') {
+                        return;
+                    }
+
+                    event.preventDefault();
+                    if (panel.classList.contains('hidden')) {
+                        openDropdown(button, panel);
+                    }
+
+                    const firstLink = panel.querySelector('a');
+                    if (firstLink) {
+                        firstLink.focus();
+                    }
+                });
+            });
+
+            if (menuLinks.length > 0 && menuToggleButton && menuPanel) {
+                menuLinks.forEach((link) => {
+                    link.addEventListener('click', () => {
+                        if (window.innerWidth >= mobileBreakpoint) {
+                            return;
+                        }
+
+                        closeDropdowns();
+                        menuPanel.classList.add('hidden');
+                        menuToggleButton.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            }
+
+            document.addEventListener('click', (event) => {
+                if (!(event.target instanceof Element)) {
+                    return;
+                }
+
+                if (event.target.closest('[data-dropdown]') || event.target.closest('[data-menu-toggle]')) {
+                    return;
+                }
+
+                closeDropdowns();
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key !== 'Escape') {
+                    return;
+                }
+
+                closeDropdowns();
+
+                if (window.innerWidth < mobileBreakpoint && menuToggleButton && menuPanel && !menuPanel.classList.contains('hidden')) {
+                    menuPanel.classList.add('hidden');
+                    menuToggleButton.setAttribute('aria-expanded', 'false');
+                    menuToggleButton.focus();
+                }
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth < mobileBreakpoint && menuToggleButton && menuPanel && menuToggleButton.getAttribute('aria-expanded') !== 'true') {
+                    menuPanel.classList.add('hidden');
+                }
+
+                if (window.innerWidth >= mobileBreakpoint) {
+                    closeDropdowns();
+                    if (menuToggleButton) {
+                        menuToggleButton.setAttribute('aria-expanded', 'false');
+                    }
+                }
+            });
+
+            <?php if ($enableLegacyUiSupport): ?>
+            function resolveCollapseTarget(trigger) {
+                const rawTarget = trigger.getAttribute('data-bs-target')
+                    || trigger.getAttribute('data-target')
+                    || trigger.getAttribute('href');
+
+                if (!rawTarget || !rawTarget.startsWith('#')) {
+                    return null;
+                }
+
+                return document.querySelector(rawTarget);
+            }
+
+            function hideCollapse(panel) {
+                panel.classList.remove('show');
+                panel.classList.add('hidden');
+            }
+
+            function showCollapse(panel) {
+                panel.classList.add('show');
+                panel.classList.remove('hidden');
+            }
+
+            function closeSiblingPanels(panel, parentSelector) {
+                if (!parentSelector) {
+                    return;
+                }
+
+                const parent = document.querySelector(parentSelector);
+                if (!parent) {
+                    return;
+                }
+
+                const openPanels = parent.querySelectorAll('.collapse.show');
+                openPanels.forEach((openPanel) => {
+                    if (openPanel === panel) {
+                        return;
+                    }
+
+                    hideCollapse(openPanel);
+
+                    const selector = '#' + openPanel.id;
+                    const siblingTriggers = document.querySelectorAll('[data-bs-target="' + selector + '"], [data-target="' + selector + '"]');
+                    siblingTriggers.forEach((btn) => {
+                        btn.setAttribute('aria-expanded', 'false');
+                        btn.classList.add('collapsed');
+                    });
+                });
+            }
+
+            const collapsePanels = document.querySelectorAll('.collapse');
+            collapsePanels.forEach((panel) => {
+                if (panel.classList.contains('show')) {
+                    panel.classList.remove('hidden');
+                } else {
+                    panel.classList.add('hidden');
+                }
+            });
+
+            const collapseTriggers = document.querySelectorAll('[data-bs-toggle="collapse"], [data-toggle="collapse"]');
+            collapseTriggers.forEach((trigger) => {
+                const panel = resolveCollapseTarget(trigger);
+                if (!panel) {
+                    return;
+                }
+
+                trigger.addEventListener('click', (event) => {
+                    event.preventDefault();
+
+                    const willOpen = !panel.classList.contains('show');
+                    const parentSelector = panel.getAttribute('data-bs-parent') || panel.getAttribute('data-parent');
+
+                    if (willOpen) {
+                        closeSiblingPanels(panel, parentSelector);
+                        showCollapse(panel);
+                        trigger.setAttribute('aria-expanded', 'true');
+                        trigger.classList.remove('collapsed');
+                    } else {
+                        hideCollapse(panel);
+                        trigger.setAttribute('aria-expanded', 'false');
+                        trigger.classList.add('collapsed');
+                    }
+                });
+            });
+
+            const alertDismissButtons = document.querySelectorAll('[data-bs-dismiss="alert"]');
+            alertDismissButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    const alert = button.closest('.alert');
+                    if (alert) {
+                        alert.style.display = 'none';
+                    }
+                });
+            });
+
+            function dispatchCarouselEvent(carousel, direction) {
+                const slideEvent = new Event('slide.bs.carousel');
+                slideEvent.direction = direction;
+                carousel.dispatchEvent(slideEvent);
+            }
+
+            function initCarousel(carousel) {
+                const items = Array.from(carousel.querySelectorAll('.carousel-item'));
+                if (items.length === 0) {
+                    return;
+                }
+
+                let activeIndex = Math.max(items.findIndex((item) => item.classList.contains('active')), 0);
+
+                function paint() {
+                    items.forEach((item, index) => {
+                        const isActive = index === activeIndex;
+                        item.classList.toggle('active', isActive);
+                        item.style.display = isActive ? '' : 'none';
+                    });
+                }
+
+                function goTo(nextIndex, direction) {
+                    activeIndex = (nextIndex + items.length) % items.length;
+                    dispatchCarouselEvent(carousel, direction);
+                    paint();
+                }
+
+                const prev = carousel.querySelector('[data-bs-slide="prev"], .carousel-control-prev');
+                const next = carousel.querySelector('[data-bs-slide="next"], .carousel-control-next');
+
+                if (prev) {
+                    prev.addEventListener('click', (event) => {
+                        event.preventDefault();
+                        goTo(activeIndex - 1, 'right');
+                    });
+                }
+
+                if (next) {
+                    next.addEventListener('click', (event) => {
+                        event.preventDefault();
+                        goTo(activeIndex + 1, 'left');
+                    });
+                }
+
+                paint();
+
+                const intervalAttr = carousel.getAttribute('data-bs-interval');
+                const intervalValue = Number(intervalAttr || '5000');
+                const shouldAuto = carousel.getAttribute('data-bs-ride') === 'carousel';
+
+                if (shouldAuto && Number.isFinite(intervalValue) && intervalValue > 0 && items.length > 1) {
+                    window.setInterval(() => {
+                        goTo(activeIndex + 1, 'left');
+                    }, intervalValue);
+                }
+            }
+
+            const carousels = document.querySelectorAll('.carousel');
+            carousels.forEach((carousel) => {
+                initCarousel(carousel);
+            });
+            <?php endif; ?>
+        })();
+    </script>
 </body>
 
 </html>

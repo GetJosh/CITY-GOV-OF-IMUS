@@ -1,205 +1,251 @@
 <?php
-/**
- * Header and Navbar Include
- * This file contains the header and navigation bar for all pages
- */
-?>
+declare(strict_types=1);
 
-<!-- Header -->
-<header>
-    <div id="datetime"></div>
+if (!defined('BASE_URL')) {
+    $scriptName = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '');
+    $scriptDir = trim(str_replace('\\', '/', dirname($scriptName)), '/');
+    $rootDir = preg_replace('~(?:^|/)Pages(?:/.*)?$~i', '', $scriptDir) ?? $scriptDir;
+    $rootDir = trim($rootDir, '/');
+    $baseUrl = ($rootDir === '' || $rootDir === '.') ? '/' : '/' . $rootDir . '/';
+    define('BASE_URL', $baseUrl);
+}
 
-    <script>
-    function updateDateTime() {
-      const now = new Date();
+if (!function_exists('base_url')) {
+    function base_url(string $path = ''): string
+    {
+        $path = ltrim($path, '/');
+        if ($path === '') {
+            return BASE_URL;
+        }
 
-      const optionsDate = {
-        timeZone: 'Asia/Manila',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      };
-
-      const optionsTime = {
-        timeZone: 'Asia/Manila',
-        hour: 'numeric',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: true
-      };
-
-      const formattedDate = now.toLocaleString('en-PH', optionsDate);
-      const formattedTime = now.toLocaleString('en-PH', optionsTime);
-
-      document.getElementById('datetime').textContent = formattedDate + " | " + formattedTime;
+        return BASE_URL . $path;
     }
+}
 
-    setInterval(updateDateTime, 1000);
-    updateDateTime();
-    </script>
+if (!function_exists('e')) {
+    function e(string $value): string
+    {
+        return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+    }
+}
 
-    <div class="header">
-        <div class="header-nav">
-            <nav>
-                <ul>
-                    <li><a href="<?= e(base_url('HTML/Full-disclosure.html')) ?>" class="full-disclosures">Full Disclosures</a></li>
-                    <li><a href="<?= e(base_url('HTML/Downloadable-forms.html')) ?>">Downloadable Forms</a></li>
-                    <li><a href="<?= e(base_url('HTML/Contact-Us.html')) ?>">Contact Us</a></li>
-                    <li>
-                        <a href="https://www.facebook.com/alexladvincula" target="_blank" aria-label="Facebook">
-                            <i class="bi bi-facebook" style="font-size: 1rem"></i>
+$resolvedPageTitle = trim((string) ($pageTitle ?? 'City Government of Imus'));
+if ($resolvedPageTitle === '') {
+    $resolvedPageTitle = 'City Government of Imus';
+}
+if (stripos($resolvedPageTitle, 'City Government of Imus') === false) {
+    $resolvedPageTitle .= ' | City Government of Imus';
+}
+
+$resolvedPageDescription = trim((string) ($pageDescription
+    ?? 'Official City Government of Imus website for services, forms, full disclosures, contacts, emergency hotlines, and verified community updates.'));
+
+$isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+    || (($_SERVER['SERVER_PORT'] ?? '') === '443')
+    || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https');
+$scheme = $isHttps ? 'https' : 'http';
+$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$requestPath = explode('?', $_SERVER['REQUEST_URI'] ?? base_url('index.php'), 2)[0];
+$resolvedCanonicalUrl = (isset($canonicalUrl) && is_string($canonicalUrl) && $canonicalUrl !== '')
+    ? $canonicalUrl
+    : ($scheme . '://' . $host . $requestPath);
+
+$officialFacebook = (isset($officialFacebook) && is_string($officialFacebook) && trim($officialFacebook) !== '')
+    ? $officialFacebook
+    : 'https://www.facebook.com/CityofImus/';
+$loadStyleCss = isset($loadStyleCss) ? (bool) $loadStyleCss : true;
+
+$utilityLinks = [
+    [
+        'label' => 'Full Disclosures',
+        'href' => base_url('Pages/Full-Disclosure.php'),
+        'external' => false,
+    ],
+    [
+        'label' => 'Downloadable Forms',
+        'href' => base_url('HTML/Downloadable-forms.html'),
+        'external' => false,
+    ],
+    [
+        'label' => 'Contact Us',
+        'href' => base_url('HTML/Contact-Us.html'),
+        'external' => false,
+    ],
+    [
+        'label' => 'Official Facebook',
+        'href' => $officialFacebook,
+        'external' => true,
+    ],
+];
+
+$navMenus = [
+    [
+        'label' => 'Home',
+        'href' => base_url('index.php'),
+    ],
+    [
+        'label' => 'About Imus',
+        'children' => [
+            ['label' => 'City Profile', 'href' => base_url('Pages/AboutImus.php#City-Profile')],
+            ['label' => 'City Government', 'href' => base_url('Pages/AboutImus.php#City-Government')],
+            ['label' => 'Barangay Officials', 'href' => base_url('Pages/AboutImus.php#Brgy-Officials')],
+            ['label' => 'History', 'href' => base_url('Pages/AboutImus.php#History')],
+            ['label' => 'Past Mayors', 'href' => base_url('Pages/AboutImus.php#Past-Mayors')],
+            ['label' => 'Departments and Units', 'href' => base_url('Pages/AboutImus.php#Dept-and-Units')],
+        ],
+    ],
+    [
+        'label' => 'Services',
+        'children' => [
+            ['label' => 'City Public Library', 'href' => base_url('HTML/Services.html#City-Public-Library')],
+            ['label' => 'Assistance Programs', 'href' => base_url('HTML/Services.html#Assistance')],
+            ['label' => "Citizen's Charter", 'href' => base_url('HTML/Services.html#Citizens-Charter')],
+            ['label' => 'EBOSS', 'href' => base_url('HTML/Services.html#EBOSS')],
+        ],
+    ],
+    [
+        'label' => 'Tourism',
+        'children' => [
+            ['label' => 'History and Culture', 'href' => base_url('HTML/Tourism.html')],
+            ['label' => 'Visiting Imus', 'href' => base_url('HTML/Tourism.html#Visiting-Imus')],
+            ['label' => 'Heroes of Imus', 'href' => base_url('HTML/Tourism.html#Heroes-of-Imus')],
+            ['label' => 'Notable Persons', 'href' => base_url('HTML/Tourism.html#Notable-Persons')],
+        ],
+    ],
+    [
+        'label' => 'Business',
+        'href' => base_url('Pages/Business.php'),
+    ],
+    [
+        'label' => 'Employees',
+        'href' => base_url('HTML/Employees-Hub.html'),
+    ],
+];
+
+$initialManilaDateTime = (new DateTimeImmutable('now', new DateTimeZone('Asia/Manila')))
+    ->format('F j, Y | g:i A') . ' (PHT)';
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= e($resolvedPageTitle) ?></title>
+    <meta name="description" content="<?= e($resolvedPageDescription) ?>">
+    <meta name="theme-color" content="#062a5d">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="<?= e($resolvedPageTitle) ?>">
+    <meta property="og:description" content="<?= e($resolvedPageDescription) ?>">
+    <meta property="og:url" content="<?= e($resolvedCanonicalUrl) ?>">
+    <link rel="canonical" href="<?= e($resolvedCanonicalUrl) ?>">
+    <link rel="icon" href="<?= e(base_url('IMG/seal_imus_sm100.png')) ?>" sizes="100x100">
+    <link rel="preload" href="<?= e(base_url('CSS/index.tailwind.min.css')) ?>" as="style">
+    <link rel="stylesheet" href="<?= e(base_url('CSS/index.tailwind.min.css')) ?>">
+    <?php if ($loadStyleCss): ?>
+        <link rel="preload" href="<?= e(base_url('CSS/style.css')) ?>" as="style">
+        <link rel="stylesheet" href="<?= e(base_url('CSS/style.css')) ?>">
+    <?php endif; ?>
+</head>
+
+<body class="min-h-screen font-sans text-slate-800 antialiased">
+    <a href="#main-content"
+        class="focusable sr-only absolute left-3 top-3 z-[120] rounded-lg bg-imusDeep px-4 py-2 text-sm font-semibold text-white focus:not-sr-only focus:absolute">
+        Skip to main content
+    </a>
+    <div class="relative isolate overflow-hidden">
+        <div class="pointer-events-none absolute -left-24 top-20 h-72 w-72 rounded-full bg-imusGreen/20 blur-3xl"></div>
+        <div class="pointer-events-none absolute -right-20 top-[22rem] h-80 w-80 rounded-full bg-imusBlue/20 blur-3xl"></div>
+
+        <header class="relative z-40">
+            <div class="bg-imusDeep text-white/95">
+                <div class="section-shell flex flex-col gap-3 py-3 text-sm sm:flex-row sm:items-center sm:justify-between">
+                    <p id="manila-datetime" class="font-medium tracking-wide"><?= e($initialManilaDateTime) ?></p>
+                    <ul class="flex flex-wrap gap-2 sm:justify-end">
+                        <?php foreach ($utilityLinks as $link): ?>
+                            <li>
+                                <a href="<?= e($link['href']) ?>"
+                                    class="focusable inline-flex items-center rounded-full border border-white/25 bg-white/10 px-3 py-1.5 text-xs font-medium uppercase tracking-[0.08em] transition hover:border-white/40 hover:bg-white/20"
+                                    <?= $link['external'] ? 'target="_blank" rel="noopener noreferrer"' : '' ?>>
+                                    <?= e($link['label']) ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sticky top-0 z-50 border-b border-white/20 bg-imusBlue/95 backdrop-blur-lg shadow-soft-xl">
+                <nav class="section-shell" aria-label="Main navigation">
+                    <div class="flex min-h-[78px] flex-wrap items-center justify-between gap-4">
+                        <a href="<?= e(base_url('index.php')) ?>"
+                            class="focusable inline-flex items-center gap-3 rounded-xl px-1 py-1 text-white">
+                            <img src="<?= e(base_url('IMG/Logo_City_Government_of_Imuss.png')) ?>"
+                                alt="City Government of Imus logo"
+                                width="250" height="100" decoding="async" fetchpriority="high"
+                                class="h-10 w-auto rounded-lg bg-white/90 px-2 py-1 shadow-md sm:h-12">
+                            <span class="text-left">
+                                <span class="block font-display text-base font-bold leading-tight sm:text-lg">City Government of
+                                    Imus</span>
+                                <span class="block text-[10px] uppercase tracking-[0.16em] text-white/75 sm:text-xs">Official
+                                    Portal</span>
+                            </span>
                         </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-</header>
-<!-- Header -->
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm sticky-top py-0">
-    <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="<?= e(base_url('index.php')) ?>">
-            <img src="<?= e(base_url('IMG/Logo_City_Government_of_Imuss.png')) ?>" alt="City of Imus" height="54" class="me-2" style="background:rgba(255,255,255,0.85); border-radius:8px; padding:2px 8px;">
-        </a>
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="mainNavbar">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
-                <li class="nav-item">
-                    <a class="nav-link px-3 fw-semibold" href="<?= e(base_url('index.php')) ?>">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle px-3 fw-semibold" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        About Imus
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="aboutDropdown">
-                        <li><a class="dropdown-item" href="<?= e(base_url('Pages/AboutImus.php#City-Profile')) ?>">City Profile</a></li>
-                        <li><a class="dropdown-item" href="<?= e(base_url('Pages/AboutImus.php#City-Government')) ?>">City Government</a></li>
-                        <li><a class="dropdown-item" href="<?= e(base_url('Pages/AboutImus.php#Brgy-Officials')) ?>">Barangay Officials</a></li>
-                        <li><a class="dropdown-item" href="<?= e(base_url('Pages/AboutImus.php#History')) ?>">History</a></li>
-                        <li><a class="dropdown-item" href="<?= e(base_url('Pages/AboutImus.php#Past-Mayors')) ?>">Past Mayors</a></li>
-                        <li><a class="dropdown-item" href="<?= e(base_url('Pages/AboutImus.php#Dept-and-Units')) ?>">Departments and Units</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle px-3 fw-semibold" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Services
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="servicesDropdown">
-                        <li><a class="dropdown-item" href="<?= e(base_url('HTML/Services.html#City-Public-Library')) ?>">City Public Library</a></li>
-                        <li><a class="dropdown-item" href="<?= e(base_url('HTML/Services.html#Assistance')) ?>">Assistance</a></li>
-                        <li><a class="dropdown-item" href="<?= e(base_url('HTML/Services.html#Citizens-Charter')) ?>">Citizen's Charter</a></li>
-                        <li><a class="dropdown-item" href="<?= e(base_url('HTML/Services.html#EBOSS')) ?>">EBOSS</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle px-3 fw-semibold" href="<?= e(base_url('HTML/Tourism.html')) ?>" id="tourismDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Tourism
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="tourismDropdown">
-                        <li><a class="dropdown-item" href="<?= e(base_url('HTML/Tourism.html')) ?>">History and Culture</a></li>
-                        <li><a class="dropdown-item" href="<?= e(base_url('HTML/Tourism.html#Visiting-Imus')) ?>">Visiting Imus</a></li>
-                        <li><a class="dropdown-item" href="<?= e(base_url('HTML/Tourism.html#Heroes-of-Imus')) ?>">Heroes of Imus</a></li>
-                        <li><a class="dropdown-item" href="<?= e(base_url('HTML/Tourism.html#Notable-Persons')) ?>">Notable Persons</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle px-3 fw-semibold" href="<?= e(base_url('Pages/Business.php')) ?>" id="businessDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Business
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="businessDropdown">
-                        <li><a class="dropdown-item" href="<?= e(base_url('Pages/Business.php#Why-invest-in-Imus')) ?>">Why Invest in Imus</a></li>
-                        <li><a class="dropdown-item" href="<?= e(base_url('Pages/Business.php#Accomodation')) ?>">Accomodation</a></li>
-                        <li><a class="dropdown-item" href="<?= e(base_url('Pages/Business.php#Communication')) ?>">Communication</a></li>
-                        <li><a class="dropdown-item" href="<?= e(base_url('Pages/Business.php#Courier-and-Cargo')) ?>">Courier and Cargo</a></li>
-                        <li><a class="dropdown-item" href="<?= e(base_url('Pages/Business.php#National-Taxes')) ?>">National Taxes</a></li>
-                        <li><a class="dropdown-item" href="<?= e(base_url('Pages/Business.php#Transportation')) ?>">Transportation</a></li>
-                        <li><a class="dropdown-item" href="<?= e(base_url('Pages/Business.php#Utilities')) ?>">Utilities</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item ms-lg-3 d-none d-lg-block">
-                    <a href="https://www.facebook.com/CityofImus" target="_blank" class="btn btn-outline-light btn-sm rounded-pill px-3">
-                        <i class="bi bi-facebook me-1"></i> Facebook
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link px-3 fw-semibold" href="<?= e(base_url('HTML/Employees-Hub.html')) ?>">Employees</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <style>
-        .navbar {
-            background-color: var(--imus-primary) !important;
-        }
-        .navbar .navbar-brand img {
-            box-shadow: 0 2px 8px rgba(5,55,116,0.10);
-        }
-        .navbar-nav .nav-link {
-            color: #fff !important;
-            transition: background 0.15s, color 0.15s;
-            border-radius: 6px;
-            margin: 0 2px;
-        }
-        .navbar-nav .nav-link.active, .navbar-nav .nav-link:focus, .navbar-nav .nav-link:hover {
-            background: rgba(24,165,74,0.18);
-            color: #18a54a !important;
-        }
-        .navbar-nav .dropdown-menu {
-            min-width: 220px;
-            border-radius: 10px;
-            border: none;
-            background: #fff;
-            margin-top: 8px;
-            box-shadow: 0 6px 24px rgba(5,55,116,0.10);
-        }
-        .navbar-nav .dropdown-item {
-            color: #053774;
-            font-weight: 500;
-            transition: background 0.12s, color 0.12s;
-            border-radius: 6px;
-        }
-        .navbar-nav .dropdown-item:hover, .navbar-nav .dropdown-item:focus {
-            background: #18a54a;
-            color: #fff;
-        }
-        .navbar .btn-outline-light {
-            border-color: #fff;
-            color: #fff;
-            font-weight: 600;
-            transition: background 0.15s, color 0.15s;
-        }
-        .navbar .btn-outline-light:hover, .navbar .btn-outline-light:focus {
-            background: #18a54a;
-            color: #fff;
-            border-color: #18a54a;
-        }
-        @media (max-width: 991.98px) {
-            .navbar-brand span {
-                display: none !important;
-            }
-            .navbar-nav .nav-link {
-                padding-left: 1rem !important;
-                padding-right: 1rem !important;
-            }
-            .navbar .btn-outline-light {
-                margin-top: 1rem;
-                display: block;
-                width: 100%;
-            }
-            .navbar-nav .dropdown-menu {
-                margin-top: 0;
-            }
-        }
-        /* Dropdown on hover for desktop */
-        @media (min-width: 992px) {
-            .navbar-nav .dropdown:hover .dropdown-menu {
-                display: block;
-            }
-        }
-    </style>
-</nav>
-<!-- Navbar -->
+                        <button type="button" data-menu-toggle aria-controls="primary-menu" aria-expanded="false"
+                            class="focusable inline-flex items-center justify-center rounded-xl border border-white/30 bg-white/10 p-2 text-white transition hover:bg-white/20 lg:hidden">
+                            <span class="sr-only">Toggle navigation menu</span>
+                            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </button>
+
+                        <div id="primary-menu" class="hidden w-full pb-4 lg:block lg:w-auto lg:pb-0">
+                            <ul class="flex flex-col gap-1 lg:flex-row lg:items-center lg:gap-1">
+                                <?php foreach ($navMenus as $index => $item): ?>
+                                    <?php if (isset($item['children'])): ?>
+                                        <li class="relative lg:group" data-dropdown>
+                                            <button type="button"
+                                                class="focusable inline-flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium text-white/95 transition hover:bg-white/15 lg:w-auto"
+                                                data-dropdown-button aria-expanded="false"
+                                                aria-controls="menu-panel-<?= $index ?>">
+                                                <span><?= e($item['label']) ?></span>
+                                                <svg class="ml-2 h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                                                    <path d="m5 8 5 5 5-5" stroke="currentColor" stroke-width="1.6"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                            </button>
+                                            <div id="menu-panel-<?= $index ?>" data-dropdown-panel
+                                                class="hidden overflow-hidden rounded-2xl border border-slate-200 bg-white p-2 shadow-soft-2xl lg:absolute lg:left-1/2 lg:top-[calc(100%+0.35rem)] lg:z-50 lg:min-w-[17rem] lg:-translate-x-1/2">
+                                                <?php foreach ($item['children'] as $child): ?>
+                                                    <a href="<?= e($child['href']) ?>"
+                                                        class="focusable block rounded-xl px-3 py-2 text-sm font-medium text-civicInk transition hover:bg-imusBlue/10 hover:text-imusBlue">
+                                                        <?= e($child['label']) ?>
+                                                    </a>
+                                                <?php endforeach; ?>
+                                            </div>
+                                        </li>
+                                    <?php else: ?>
+                                        <li>
+                                            <a href="<?= e($item['href']) ?>"
+                                                class="focusable inline-flex w-full rounded-xl px-3 py-2.5 text-sm font-medium text-white/95 transition hover:bg-white/15 lg:w-auto">
+                                                <?= e($item['label']) ?>
+                                            </a>
+                                        </li>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                                <li class="pt-2 lg:pl-2 lg:pt-0">
+                                    <a href="<?= e($officialFacebook) ?>" target="_blank" rel="noopener noreferrer"
+                                        class="focusable inline-flex w-full items-center justify-center rounded-xl border border-white/35 bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:border-white/50 hover:bg-white/20 lg:w-auto">
+                                        Official Facebook
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main id="main-content" tabindex="-1">

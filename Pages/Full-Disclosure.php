@@ -1,47 +1,9 @@
 <?php
 declare(strict_types=1);
 
-/* Basic Page Setup (BASE_URL + helpers) */
-$scriptName = $_SERVER['SCRIPT_NAME'] ?? '';
-$scriptDir = str_replace('\\', '/', dirname($scriptName));
-$scriptDir = trim($scriptDir, '/');
-$baseUrl = ($scriptDir === '' || $scriptDir === '.') ? '/' : '/' . $scriptDir . '/';
-
-define('BASE_URL', $baseUrl);
-
-function base_url(string $path = ''): string
-{
-    $path = ltrim($path, '/');
-    if ($path === '') {
-        return BASE_URL;
-    }
-
-    return BASE_URL . $path;
-}
-
-function e(string $value): string
-{
-    return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
-}
-
-function tel_href(string $value): string
-{
-    $normalized = preg_replace('/[^0-9+]/', '', $value) ?? '';
-
-    return $normalized === '' ? '' : 'tel:' . $normalized;
-}
-
 $pageTitle = 'Full Disclosure';
 $pageDescription = 'Full disclosure reports, ordinances, bids, resolutions and other governance documents for the City of Imus.';
-$isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
-    || (($_SERVER['SERVER_PORT'] ?? '') === '443')
-    || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https');
-$scheme = $isHttps ? 'https' : 'http';
-$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
-$canonicalUrl = $scheme . '://' . $host . base_url('Pages/FullDisclosureComponents/Full-Disclosure.php');
-
-// Include shared header (uses base_url() + e())
-require_once __DIR__ . '/../../includes/header.navbar.php';
+require_once __DIR__ . '/../includes/header.navbar.php';
 ?>
 
     <section class="city-ordinances" id="city-ordinances">
@@ -111,12 +73,12 @@ require_once __DIR__ . '/../../includes/header.navbar.php';
             <div class="space-y-3" id="executiveOrdersAccordion">
                 <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                     <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#eoCollapseOne" aria-expanded="true" aria-controls="eoCollapseOne">
+                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#eoCollapseOne" aria-expanded="true" aria-controls="eoCollapseOne">
                             2024 Executive Orders
                             <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                         </button>
                     </h3>
-                    <div id="eoCollapseOne" class="collapse show px-6 py-4 border-t border-imusBlue/10" aria-labelledby="eoHeadingOne" data-parent="#executiveOrdersAccordion">
+                    <div id="eoCollapseOne" class="collapse show px-6 py-4 border-t border-imusBlue/10" aria-labelledby="eoHeadingOne" data-bs-parent="#executiveOrdersAccordion">
                         <ul class="space-y-2 text-sm text-slate-700">
                             <li>EO No. 01, s.2024 - Example Executive Order Title</li>
                             <li>EO No. 02, s.2024 - Example Executive Order Title</li>
@@ -126,12 +88,12 @@ require_once __DIR__ . '/../../includes/header.navbar.php';
                 </div>
                 <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                     <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#eoCollapseTwo" aria-expanded="false" aria-controls="eoCollapseTwo">
+                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#eoCollapseTwo" aria-expanded="false" aria-controls="eoCollapseTwo">
                             2023 Executive Orders
                             <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                         </button>
                     </h3>
-                    <div id="eoCollapseTwo" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="eoHeadingTwo" data-parent="#executiveOrdersAccordion">
+                    <div id="eoCollapseTwo" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="eoHeadingTwo" data-bs-parent="#executiveOrdersAccordion">
                         <ul class="space-y-2 text-sm text-slate-700">
                             <li>EO No. 01, s.2023 - Example Executive Order Title</li>
                             <li>EO No. 02, s.2023 - Example Executive Order Title</li>
@@ -141,12 +103,12 @@ require_once __DIR__ . '/../../includes/header.navbar.php';
                 </div>
                 <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                     <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#eoCollapseThree" aria-expanded="false" aria-controls="eoCollapseThree">
+                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#eoCollapseThree" aria-expanded="false" aria-controls="eoCollapseThree">
                             2022 Executive Orders
                             <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                         </button>
                     </h3>
-                    <div id="eoCollapseThree" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="eoHeadingThree" data-parent="#executiveOrdersAccordion">
+                    <div id="eoCollapseThree" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="eoHeadingThree" data-bs-parent="#executiveOrdersAccordion">
                         <ul class="space-y-2 text-sm text-slate-700">
                             <li>EO No. 01, s.2022 - Example Executive Order Title</li>
                             <li>EO No. 02, s.2022 - Example Executive Order Title</li>
@@ -167,12 +129,12 @@ require_once __DIR__ . '/../../includes/header.navbar.php';
             <!-- For brevity, only first 3 and last 2 items are shown, fill in the rest as needed -->
             <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                 <h3 class="accordion-header">
-                <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#baCollapse1" aria-expanded="true" aria-controls="baCollapse1">
+                <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#baCollapse1" aria-expanded="true" aria-controls="baCollapse1">
                     Bid Opportunity #1
                     <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                 </button>
                 </h3>
-                <div id="baCollapse1" class="collapse show px-6 py-4 border-t border-imusBlue/10" aria-labelledby="baHeading1" data-parent="#bidsAwardsAccordion">
+                <div id="baCollapse1" class="collapse show px-6 py-4 border-t border-imusBlue/10" aria-labelledby="baHeading1" data-bs-parent="#bidsAwardsAccordion">
                     <p class="text-sm text-slate-700 mb-3">Details for Bid Opportunity #1.</p>
                     <a href="<?= e(base_url('docs/bids/bid1.pdf')) ?>" class="focusable inline-flex items-center gap-2 px-3 py-2 rounded text-imusGreen hover:bg-imusGreen/10 transition text-sm font-medium" target="_blank" aria-label="Download Bid File">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 4.5a.5.5 0 01.5.5v7.586l2.293-2.293a.5.5 0 01.707.707l-3.5 3.5a.5.5 0 01-.707 0l-3.5-3.5a.5.5 0 11.707-.707L9 12.586V5a.5.5 0 01.5-.5z"/></svg>
@@ -182,12 +144,12 @@ require_once __DIR__ . '/../../includes/header.navbar.php';
             </div>
             <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                 <h3 class="accordion-header">
-                <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#baCollapse2" aria-expanded="false" aria-controls="baCollapse2">
+                <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#baCollapse2" aria-expanded="false" aria-controls="baCollapse2">
                     Bid Opportunity #2
                     <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                 </button>
                 </h3>
-                <div id="baCollapse2" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="baHeading2" data-parent="#bidsAwardsAccordion">
+                <div id="baCollapse2" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="baHeading2" data-bs-parent="#bidsAwardsAccordion">
                     <p class="text-sm text-slate-700 mb-3">Details for Bid Opportunity #2.</p>
                     <a href="<?= e(base_url('docs/bids/bid2.pdf')) ?>" class="focusable inline-flex items-center gap-2 px-3 py-2 rounded text-imusGreen hover:bg-imusGreen/10 transition text-sm font-medium" target="_blank" aria-label="Download Bid File">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 4.5a.5.5 0 01.5.5v7.586l2.293-2.293a.5.5 0 01.707.707l-3.5 3.5a.5.5 0 01-.707 0l-3.5-3.5a.5.5 0 11.707-.707L9 12.586V5a.5.5 0 01.5-.5z"/></svg>
@@ -197,12 +159,12 @@ require_once __DIR__ . '/../../includes/header.navbar.php';
             </div>
             <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                 <h3 class="accordion-header">
-                <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#baCollapse3" aria-expanded="false" aria-controls="baCollapse3">
+                <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#baCollapse3" aria-expanded="false" aria-controls="baCollapse3">
                     Bid Opportunity #3
                     <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                 </button>
                 </h3>
-                <div id="baCollapse3" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="baHeading3" data-parent="#bidsAwardsAccordion">
+                <div id="baCollapse3" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="baHeading3" data-bs-parent="#bidsAwardsAccordion">
                     <p class="text-sm text-slate-700 mb-3">Details for Bid Opportunity #3.</p>
                     <a href="<?= e(base_url('docs/bids/bid3.pdf')) ?>" class="focusable inline-flex items-center gap-2 px-3 py-2 rounded text-imusGreen hover:bg-imusGreen/10 transition text-sm font-medium" target="_blank" aria-label="Download Bid File">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 4.5a.5.5 0 01.5.5v7.586l2.293-2.293a.5.5 0 01.707.707l-3.5 3.5a.5.5 0 01-.707 0l-3.5-3.5a.5.5 0 11.707-.707L9 12.586V5a.5.5 0 01.5-.5z"/></svg>
@@ -213,12 +175,12 @@ require_once __DIR__ . '/../../includes/header.navbar.php';
             <!-- ...repeat for items 4 to 119... -->
             <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                 <h3 class="accordion-header">
-                <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#baCollapse119" aria-expanded="false" aria-controls="baCollapse119">
+                <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#baCollapse119" aria-expanded="false" aria-controls="baCollapse119">
                     Bid Opportunity #119
                     <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                 </button>
                 </h3>
-                <div id="baCollapse119" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="baHeading119" data-parent="#bidsAwardsAccordion">
+                <div id="baCollapse119" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="baHeading119" data-bs-parent="#bidsAwardsAccordion">
                     <p class="text-sm text-slate-700 mb-3">Details for Bid Opportunity #119.</p>
                     <a href="<?= e(base_url('docs/bids/bid119.pdf')) ?>" class="focusable inline-flex items-center gap-2 px-3 py-2 rounded text-imusGreen hover:bg-imusGreen/10 transition text-sm font-medium" target="_blank" aria-label="Download Bid File">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 4.5a.5.5 0 01.5.5v7.586l2.293-2.293a.5.5 0 01.707.707l-3.5 3.5a.5.5 0 01-.707 0l-3.5-3.5a.5.5 0 11.707-.707L9 12.586V5a.5.5 0 01.5-.5z"/></svg>
@@ -349,89 +311,89 @@ require_once __DIR__ . '/../../includes/header.navbar.php';
             <div class="space-y-3" id="fullDisclosureAccordion">
                 <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                     <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#fdCollapse1" aria-expanded="true" aria-controls="fdCollapse1">
+                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#fdCollapse1" aria-expanded="true" aria-controls="fdCollapse1">
                             Annual Budget
                             <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                         </button>
                     </h3>
-                    <div id="fdCollapse1" class="collapse show px-6 py-4 border-t border-imusBlue/10" aria-labelledby="fdHeading1" data-parent="#fullDisclosureAccordion">
+                    <div id="fdCollapse1" class="collapse show px-6 py-4 border-t border-imusBlue/10" aria-labelledby="fdHeading1" data-bs-parent="#fullDisclosureAccordion">
                         <p class="text-sm text-slate-700">Content for Annual Budget.</p>
                     </div>
                 </div>
                 <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                     <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#fdCollapse2" aria-expanded="false" aria-controls="fdCollapse2">
+                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#fdCollapse2" aria-expanded="false" aria-controls="fdCollapse2">
                             Statement of Receipts and Expenditures
                             <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                         </button>
                     </h3>
-                    <div id="fdCollapse2" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="fdHeading2" data-parent="#fullDisclosureAccordion">
+                    <div id="fdCollapse2" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="fdHeading2" data-bs-parent="#fullDisclosureAccordion">
                         <p class="text-sm text-slate-700">Content for Statement of Receipts and Expenditures.</p>
                     </div>
                 </div>
                 <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                     <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#fdCollapse3" aria-expanded="false" aria-controls="fdCollapse3">
+                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#fdCollapse3" aria-expanded="false" aria-controls="fdCollapse3">
                             Procurement Plan
                             <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                         </button>
                     </h3>
-                    <div id="fdCollapse3" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="fdHeading3" data-parent="#fullDisclosureAccordion">
+                    <div id="fdCollapse3" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="fdHeading3" data-bs-parent="#fullDisclosureAccordion">
                         <p class="text-sm text-slate-700">Content for Procurement Plan.</p>
                     </div>
                 </div>
                 <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                     <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#fdCollapse4" aria-expanded="false" aria-controls="fdCollapse4">
+                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#fdCollapse4" aria-expanded="false" aria-controls="fdCollapse4">
                             Special Purpose Fund Utilization
                             <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                         </button>
                     </h3>
-                    <div id="fdCollapse4" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="fdHeading4" data-parent="#fullDisclosureAccordion">
+                    <div id="fdCollapse4" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="fdHeading4" data-bs-parent="#fullDisclosureAccordion">
                         <p class="text-sm text-slate-700">Content for Special Purpose Fund Utilization.</p>
                     </div>
                 </div>
                 <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                     <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#fdCollapse5" aria-expanded="false" aria-controls="fdCollapse5">
+                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#fdCollapse5" aria-expanded="false" aria-controls="fdCollapse5">
                             Annual Procurement Plan
                             <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                         </button>
                     </h3>
-                    <div id="fdCollapse5" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="fdHeading5" data-parent="#fullDisclosureAccordion">
+                    <div id="fdCollapse5" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="fdHeading5" data-bs-parent="#fullDisclosureAccordion">
                         <p class="text-sm text-slate-700">Content for Annual Procurement Plan.</p>
                     </div>
                 </div>
                 <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                     <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#fdCollapse6" aria-expanded="false" aria-controls="fdCollapse6">
+                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#fdCollapse6" aria-expanded="false" aria-controls="fdCollapse6">
                             SEF Utilization
                             <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                         </button>
                     </h3>
-                    <div id="fdCollapse6" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="fdHeading6" data-parent="#fullDisclosureAccordion">
+                    <div id="fdCollapse6" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="fdHeading6" data-bs-parent="#fullDisclosureAccordion">
                         <p class="text-sm text-slate-700">Content for SEF Utilization.</p>
                     </div>
                 </div>
                 <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                     <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#fdCollapse7" aria-expanded="false" aria-controls="fdCollapse7">
+                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#fdCollapse7" aria-expanded="false" aria-controls="fdCollapse7">
                             20% Development Fund Utilization
                             <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                         </button>
                     </h3>
-                    <div id="fdCollapse7" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="fdHeading7" data-parent="#fullDisclosureAccordion">
+                    <div id="fdCollapse7" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="fdHeading7" data-bs-parent="#fullDisclosureAccordion">
                         <p class="text-sm text-slate-700">Content for 20% Development Fund Utilization.</p>
                     </div>
                 </div>
                 <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                     <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#fdCollapse8" aria-expanded="false" aria-controls="fdCollapse8">
+                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#fdCollapse8" aria-expanded="false" aria-controls="fdCollapse8">
                             Gender and Development Fund Utilization
                             <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                         </button>
                     </h3>
-                    <div id="fdCollapse8" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="fdHeading8" data-parent="#fullDisclosureAccordion">
+                    <div id="fdCollapse8" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="fdHeading8" data-bs-parent="#fullDisclosureAccordion">
                         <p class="text-sm text-slate-700">Content for Gender and Development Fund Utilization.</p>
                     </div>
                 </div>
@@ -624,122 +586,122 @@ require_once __DIR__ . '/../../includes/header.navbar.php';
             <div class="space-y-3" id="lgSupportFundsAccordion">
                 <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                     <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#lgCollapse1" aria-expanded="true" aria-controls="lgCollapse1">
+                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#lgCollapse1" aria-expanded="true" aria-controls="lgCollapse1">
                             Fund Category 1
                             <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                         </button>
                     </h3>
-                    <div id="lgCollapse1" class="collapse show px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading1" data-parent="#lgSupportFundsAccordion">
+                    <div id="lgCollapse1" class="collapse show px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading1" data-bs-parent="#lgSupportFundsAccordion">
                         <p class="text-sm text-slate-700">Details for Fund Category 1.</p>
                     </div>
                 </div>
                 <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                     <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#lgCollapse2" aria-expanded="false" aria-controls="lgCollapse2">
+                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#lgCollapse2" aria-expanded="false" aria-controls="lgCollapse2">
                             Fund Category 2
                             <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                         </button>
                     </h3>
-                    <div id="lgCollapse2" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading2" data-parent="#lgSupportFundsAccordion">
+                    <div id="lgCollapse2" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading2" data-bs-parent="#lgSupportFundsAccordion">
                         <p class="text-sm text-slate-700">Details for Fund Category 2.</p>
                     </div>
                 </div>
                 <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                     <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#lgCollapse3" aria-expanded="false" aria-controls="lgCollapse3">
+                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#lgCollapse3" aria-expanded="false" aria-controls="lgCollapse3">
                             Fund Category 3
                             <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                         </button>
                     </h3>
-                    <div id="lgCollapse3" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading3" data-parent="#lgSupportFundsAccordion">
+                    <div id="lgCollapse3" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading3" data-bs-parent="#lgSupportFundsAccordion">
                         <p class="text-sm text-slate-700">Details for Fund Category 3.</p>
                     </div>
                 </div>
                 <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                     <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#lgCollapse4" aria-expanded="false" aria-controls="lgCollapse4">
+                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#lgCollapse4" aria-expanded="false" aria-controls="lgCollapse4">
                             Fund Category 4
                             <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                         </button>
                     </h3>
-                    <div id="lgCollapse4" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading4" data-parent="#lgSupportFundsAccordion">
+                    <div id="lgCollapse4" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading4" data-bs-parent="#lgSupportFundsAccordion">
                         <p class="text-sm text-slate-700">Details for Fund Category 4.</p>
                     </div>
                 </div>
                 <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                     <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#lgCollapse5" aria-expanded="false" aria-controls="lgCollapse5">
+                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#lgCollapse5" aria-expanded="false" aria-controls="lgCollapse5">
                             Fund Category 5
                             <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                         </button>
                     </h3>
-                    <div id="lgCollapse5" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading5" data-parent="#lgSupportFundsAccordion">
+                    <div id="lgCollapse5" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading5" data-bs-parent="#lgSupportFundsAccordion">
                         <p class="text-sm text-slate-700">Details for Fund Category 5.</p>
                     </div>
                 </div>
                 <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                     <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#lgCollapse6" aria-expanded="false" aria-controls="lgCollapse6">
+                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#lgCollapse6" aria-expanded="false" aria-controls="lgCollapse6">
                             Fund Category 6
                             <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                         </button>
                     </h3>
-                    <div id="lgCollapse6" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading6" data-parent="#lgSupportFundsAccordion">
+                    <div id="lgCollapse6" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading6" data-bs-parent="#lgSupportFundsAccordion">
                         <p class="text-sm text-slate-700">Details for Fund Category 6.</p>
                     </div>
                 </div>
                 <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                     <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#lgCollapse7" aria-expanded="false" aria-controls="lgCollapse7">
+                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#lgCollapse7" aria-expanded="false" aria-controls="lgCollapse7">
                             Fund Category 7
                             <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                         </button>
                     </h3>
-                    <div id="lgCollapse7" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading7" data-parent="#lgSupportFundsAccordion">
+                    <div id="lgCollapse7" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading7" data-bs-parent="#lgSupportFundsAccordion">
                         <p class="text-sm text-slate-700">Details for Fund Category 7.</p>
                     </div>
                 </div>
                 <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                     <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#lgCollapse8" aria-expanded="false" aria-controls="lgCollapse8">
+                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#lgCollapse8" aria-expanded="false" aria-controls="lgCollapse8">
                             Fund Category 8
                             <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                         </button>
                     </h3>
-                    <div id="lgCollapse8" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading8" data-parent="#lgSupportFundsAccordion">
+                    <div id="lgCollapse8" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading8" data-bs-parent="#lgSupportFundsAccordion">
                         <p class="text-sm text-slate-700">Details for Fund Category 8.</p>
                     </div>
                 </div>
                 <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                     <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#lgCollapse9" aria-expanded="false" aria-controls="lgCollapse9">
+                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#lgCollapse9" aria-expanded="false" aria-controls="lgCollapse9">
                             Fund Category 9
                             <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                         </button>
                     </h3>
-                    <div id="lgCollapse9" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading9" data-parent="#lgSupportFundsAccordion">
+                    <div id="lgCollapse9" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading9" data-bs-parent="#lgSupportFundsAccordion">
                         <p class="text-sm text-slate-700">Details for Fund Category 9.</p>
                     </div>
                 </div>
                 <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                     <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#lgCollapse10" aria-expanded="false" aria-controls="lgCollapse10">
+                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#lgCollapse10" aria-expanded="false" aria-controls="lgCollapse10">
                             Fund Category 10
                             <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                         </button>
                     </h3>
-                    <div id="lgCollapse10" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading10" data-parent="#lgSupportFundsAccordion">
+                    <div id="lgCollapse10" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading10" data-bs-parent="#lgSupportFundsAccordion">
                         <p class="text-sm text-slate-700">Details for Fund Category 10.</p>
                     </div>
                 </div>
                 <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
                     <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-toggle="collapse" data-target="#lgCollapse11" aria-expanded="false" aria-controls="lgCollapse11">
+                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#lgCollapse11" aria-expanded="false" aria-controls="lgCollapse11">
                             Fund Category 11
                             <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
                         </button>
                     </h3>
-                    <div id="lgCollapse11" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading11" data-parent="#lgSupportFundsAccordion">
+                    <div id="lgCollapse11" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading11" data-bs-parent="#lgSupportFundsAccordion">
                         <p class="text-sm text-slate-700">Details for Fund Category 11.</p>
                     </div>
                 </div>
@@ -750,5 +712,6 @@ require_once __DIR__ . '/../../includes/header.navbar.php';
     <!-- Inline footer removed; using shared footer include below -->
 <?php
 // Include shared footer (adds scripts and closes the document)
-require_once __DIR__ . '/../../includes/footer.php';
+require_once __DIR__ . '/../includes/footer.php';
 ?>
+

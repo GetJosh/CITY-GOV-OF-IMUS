@@ -10,13 +10,13 @@
 $pageTitle = 'Business Opportunities';
 
 // Include configuration and data
-require_once __DIR__ . '/config/data.php';
+require_once __DIR__ . '/../config/data.php';
 
 // Include form handler
-require_once __DIR__ . '/handlers/business-inquiry.php';
+require_once __DIR__ . '/../handlers/business-inquiry.php';
 
 // Include header and navbar
-require_once __DIR__ . '/includes/header.navbar.php';
+require_once __DIR__ . '/../includes/header.navbar.php';
 ?>
     <!-- Main Content -->
     <!-- Youtube Video Section -->
@@ -688,8 +688,7 @@ require_once __DIR__ . '/includes/header.navbar.php';
         </style>
     </section>
     <!-- Content -->
-</html>
 <?php
 // Include footer
-require_once __DIR__ . '/includes/footer.php';
+require_once __DIR__ . '/../includes/footer.php';
 ?>
