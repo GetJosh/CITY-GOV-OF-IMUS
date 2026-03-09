@@ -1,13 +1,12 @@
 <?php
 declare(strict_types=1);
 
-$officialFacebook = $officialFacebook ?? 'https://www.facebook.com/CityofImus/';
-$enableLegacyUiSupport = isset($enableLegacyUiSupport) ? (bool) $enableLegacyUiSupport : true;
+$officialFacebook = $officialFacebook ?? imus_official_facebook_url();
 
 $siteMapLinks = $siteMapLinks ?? [
     ['label' => 'Full Disclosures', 'href' => base_url('Pages/Full-Disclosure.php')],
-    ['label' => 'Downloadable Forms', 'href' => base_url('HTML/Downloadable-forms.html')],
-    ['label' => 'Contact Us', 'href' => base_url('HTML/Contact-Us.html')],
+    ['label' => 'Downloadable Forms', 'href' => base_url('Pages/Downloadable-Forms.php')],
+    ['label' => 'Contact Us', 'href' => base_url('Pages/Contact-Us.php')],
     ['label' => 'Latest News', 'href' => base_url('index.php#latest-news')],
     ['label' => 'Emergency Contacts', 'href' => base_url('index.php#emergency-contacts')],
 ];
@@ -27,10 +26,11 @@ $governmentLinks = $governmentLinks ?? [
             <div class="section-shell py-12">
                 <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
                     <section>
-                        <img src="<?= e(base_url('IMG/seal_imus_sm100.png')) ?>"
-                            alt="City Seal of Imus"
-                            width="100" height="100"
-                            class="h-20 w-20 rounded-full border border-white/20 bg-white/90 p-1">
+                        <?= imus_image('IMG/city_seal.png', 'City Seal of Imus', [
+                            'loading' => 'lazy',
+                            'decoding' => 'async',
+                            'class' => 'h-20 w-20 rounded-full border border-white/20 bg-white/90 p-1',
+                        ]) ?>
                         <p class="mt-4 text-sm leading-relaxed text-white/80">
                             Official website of the City Government of Imus, maintained by the City Information Office.
                         </p>
@@ -78,7 +78,7 @@ $governmentLinks = $governmentLinks ?? [
                                     <path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.2-1.6 1.6-1.6h1.3V4.8c-.2 0-1-.1-2-.1-2 0-3.4 1.2-3.4 3.5V11H9v3h2.1v7h2.4Z" />
                                 </svg>
                             </a>
-                            <a href="<?= e(base_url('HTML/Contact-Us.html')) ?>"
+                            <a href="<?= e(base_url('Pages/Contact-Us.php')) ?>"
                                 class="focusable inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-white/10 transition hover:border-imusGreen hover:bg-imusGreen"
                                 aria-label="Contact the City Government of Imus">
                                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -255,165 +255,6 @@ $governmentLinks = $governmentLinks ?? [
                     }
                 }
             });
-
-            <?php if ($enableLegacyUiSupport): ?>
-            function resolveCollapseTarget(trigger) {
-                const rawTarget = trigger.getAttribute('data-bs-target')
-                    || trigger.getAttribute('data-target')
-                    || trigger.getAttribute('href');
-
-                if (!rawTarget || !rawTarget.startsWith('#')) {
-                    return null;
-                }
-
-                return document.querySelector(rawTarget);
-            }
-
-            function hideCollapse(panel) {
-                panel.classList.remove('show');
-                panel.classList.add('hidden');
-            }
-
-            function showCollapse(panel) {
-                panel.classList.add('show');
-                panel.classList.remove('hidden');
-            }
-
-            function closeSiblingPanels(panel, parentSelector) {
-                if (!parentSelector) {
-                    return;
-                }
-
-                const parent = document.querySelector(parentSelector);
-                if (!parent) {
-                    return;
-                }
-
-                const openPanels = parent.querySelectorAll('.collapse.show');
-                openPanels.forEach((openPanel) => {
-                    if (openPanel === panel) {
-                        return;
-                    }
-
-                    hideCollapse(openPanel);
-
-                    const selector = '#' + openPanel.id;
-                    const siblingTriggers = document.querySelectorAll('[data-bs-target="' + selector + '"], [data-target="' + selector + '"]');
-                    siblingTriggers.forEach((btn) => {
-                        btn.setAttribute('aria-expanded', 'false');
-                        btn.classList.add('collapsed');
-                    });
-                });
-            }
-
-            const collapsePanels = document.querySelectorAll('.collapse');
-            collapsePanels.forEach((panel) => {
-                if (panel.classList.contains('show')) {
-                    panel.classList.remove('hidden');
-                } else {
-                    panel.classList.add('hidden');
-                }
-            });
-
-            const collapseTriggers = document.querySelectorAll('[data-bs-toggle="collapse"], [data-toggle="collapse"]');
-            collapseTriggers.forEach((trigger) => {
-                const panel = resolveCollapseTarget(trigger);
-                if (!panel) {
-                    return;
-                }
-
-                trigger.addEventListener('click', (event) => {
-                    event.preventDefault();
-
-                    const willOpen = !panel.classList.contains('show');
-                    const parentSelector = panel.getAttribute('data-bs-parent') || panel.getAttribute('data-parent');
-
-                    if (willOpen) {
-                        closeSiblingPanels(panel, parentSelector);
-                        showCollapse(panel);
-                        trigger.setAttribute('aria-expanded', 'true');
-                        trigger.classList.remove('collapsed');
-                    } else {
-                        hideCollapse(panel);
-                        trigger.setAttribute('aria-expanded', 'false');
-                        trigger.classList.add('collapsed');
-                    }
-                });
-            });
-
-            const alertDismissButtons = document.querySelectorAll('[data-bs-dismiss="alert"]');
-            alertDismissButtons.forEach((button) => {
-                button.addEventListener('click', () => {
-                    const alert = button.closest('.alert');
-                    if (alert) {
-                        alert.style.display = 'none';
-                    }
-                });
-            });
-
-            function dispatchCarouselEvent(carousel, direction) {
-                const slideEvent = new Event('slide.bs.carousel');
-                slideEvent.direction = direction;
-                carousel.dispatchEvent(slideEvent);
-            }
-
-            function initCarousel(carousel) {
-                const items = Array.from(carousel.querySelectorAll('.carousel-item'));
-                if (items.length === 0) {
-                    return;
-                }
-
-                let activeIndex = Math.max(items.findIndex((item) => item.classList.contains('active')), 0);
-
-                function paint() {
-                    items.forEach((item, index) => {
-                        const isActive = index === activeIndex;
-                        item.classList.toggle('active', isActive);
-                        item.style.display = isActive ? '' : 'none';
-                    });
-                }
-
-                function goTo(nextIndex, direction) {
-                    activeIndex = (nextIndex + items.length) % items.length;
-                    dispatchCarouselEvent(carousel, direction);
-                    paint();
-                }
-
-                const prev = carousel.querySelector('[data-bs-slide="prev"], .carousel-control-prev');
-                const next = carousel.querySelector('[data-bs-slide="next"], .carousel-control-next');
-
-                if (prev) {
-                    prev.addEventListener('click', (event) => {
-                        event.preventDefault();
-                        goTo(activeIndex - 1, 'right');
-                    });
-                }
-
-                if (next) {
-                    next.addEventListener('click', (event) => {
-                        event.preventDefault();
-                        goTo(activeIndex + 1, 'left');
-                    });
-                }
-
-                paint();
-
-                const intervalAttr = carousel.getAttribute('data-bs-interval');
-                const intervalValue = Number(intervalAttr || '5000');
-                const shouldAuto = carousel.getAttribute('data-bs-ride') === 'carousel';
-
-                if (shouldAuto && Number.isFinite(intervalValue) && intervalValue > 0 && items.length > 1) {
-                    window.setInterval(() => {
-                        goTo(activeIndex + 1, 'left');
-                    }, intervalValue);
-                }
-            }
-
-            const carousels = document.querySelectorAll('.carousel');
-            carousels.forEach((carousel) => {
-                initCarousel(carousel);
-            });
-            <?php endif; ?>
         })();
     </script>
 </body>

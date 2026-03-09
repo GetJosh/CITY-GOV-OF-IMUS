@@ -2,716 +2,353 @@
 declare(strict_types=1);
 
 $pageTitle = 'Full Disclosure';
-$pageDescription = 'Full disclosure reports, ordinances, bids, resolutions and other governance documents for the City of Imus.';
+$pageDescription = 'Full disclosure reports, executive orders, ordinances, bids, resolutions, GAD records, and other governance documents for the City of Imus.';
+
+require_once __DIR__ . '/../includes/document-portal.php';
+
+$disclosureRoot = __DIR__ . '/../DOCS/FULL DISCLOSURE';
+$gadLabels = [
+    'CSWDO' => 'CSWDO',
+    'Demography' => 'Demography',
+    'Education' => 'Education',
+    'Health' => 'Health',
+    'OSCA' => 'OSCA',
+    'PDAO' => 'PDAO',
+];
+
+$sectionDefinitions = [
+    [
+        'id' => 'executive-orders',
+        'title' => 'Executive Orders',
+        'description' => 'Executive issuances published in the disclosure archive and grouped by detected year.',
+        'directory' => 'Executive Orders',
+        'recursive' => false,
+        'grouping' => 'year',
+    ],
+    [
+        'id' => 'resolutions',
+        'title' => 'Resolutions',
+        'description' => 'Published Sangguniang Panlungsod resolutions available for review and download.',
+        'directory' => 'Resolutions',
+        'recursive' => false,
+        'grouping' => 'year',
+    ],
+    [
+        'id' => 'city-ordinances',
+        'title' => 'City Ordinances',
+        'description' => 'Posted city ordinances currently present in the disclosure folder.',
+        'directory' => 'City Ordinances',
+        'recursive' => false,
+        'grouping' => 'year',
+    ],
+    [
+        'id' => 'bids-and-awards',
+        'title' => 'Bids and Awards',
+        'description' => 'Bidding notices, bulletins, and BAC files grouped by the year found in each filename.',
+        'directory' => 'Bids and Awards',
+        'recursive' => false,
+        'grouping' => 'year',
+    ],
+    [
+        'id' => 'full-disclosure-policy',
+        'title' => 'Full Disclosure Policy',
+        'description' => 'Budget, compliance, and supporting disclosure policy files from the posted archive.',
+        'directory' => 'Full Disclosure Policy',
+        'recursive' => false,
+        'grouping' => 'year',
+    ],
+    [
+        'id' => 'local-government-support-funds',
+        'title' => 'Local Government Support Funds',
+        'description' => 'Trust fund and support fund records grouped by year.',
+        'directory' => 'TrustFund',
+        'recursive' => false,
+        'grouping' => 'year',
+    ],
+    [
+        'id' => 'banaag',
+        'title' => 'BanAAg Issuances',
+        'description' => 'BanAAg publications and related issuances available in the local disclosure archive.',
+        'directory' => 'BanAAg',
+        'recursive' => false,
+        'grouping' => 'year',
+    ],
+    [
+        'id' => 'gad-database',
+        'title' => 'GAD Database',
+        'description' => 'Gender and Development records grouped by subject area using the posted folder structure.',
+        'directory' => 'GAD DATABASE',
+        'recursive' => true,
+        'grouping' => 'gad',
+    ],
+    [
+        'id' => 'job-vacancies',
+        'title' => 'Job Vacancies',
+        'description' => 'Published vacancy postings and related job opportunity files from the disclosure archive.',
+        'directory' => 'Job vacancies',
+        'recursive' => false,
+        'grouping' => 'year',
+    ],
+    [
+        'id' => 'disposal-invitations',
+        'title' => 'Disposal Invitations',
+        'description' => 'Disposal notices, invitations, and related files for posted disposal activities.',
+        'directory' => 'Disposal-Invitations',
+        'recursive' => false,
+        'grouping' => 'year',
+    ],
+    [
+        'id' => 'additional-records',
+        'title' => 'Additional Records',
+        'description' => 'Files stored at the top level of the disclosure archive outside the named folders.',
+        'directory' => '',
+        'recursive' => false,
+        'grouping' => 'year',
+    ],
+];
+
+$sections = [];
+$allDisclosureDocuments = [];
+
+foreach ($sectionDefinitions as $definition) {
+    $absoluteDirectory = $definition['directory'] === ''
+        ? $disclosureRoot
+        : $disclosureRoot . '/' . $definition['directory'];
+    $publicDirectory = 'DOCS/FULL DISCLOSURE' . ($definition['directory'] === '' ? '' : '/' . $definition['directory']);
+    $documents = imus_collect_documents($absoluteDirectory, $publicDirectory, $definition['recursive']);
+
+    if ($definition['directory'] === '') {
+        $documents = array_values(
+            array_filter(
+                $documents,
+                static fn(array $document): bool => $document['relative_dir'] === ''
+            )
+        );
+    }
+
+    if ($definition['grouping'] === 'gad') {
+        $groupedDocuments = imus_group_documents(
+            $documents,
+            static function (array $document) use ($gadLabels): string {
+                $groupKey = $document['top_level_dir'];
+
+                if ($groupKey === '') {
+                    return 'General GAD Records';
+                }
+
+                return $gadLabels[$groupKey] ?? imus_document_humanize($groupKey);
+            }
+        );
+    } else {
+        $groupedDocuments = imus_group_documents(
+            $documents,
+            static fn(array $document): string => $document['year']
+        );
+    }
+
+    $sections[] = $definition + [
+        'count' => count($documents),
+        'documents' => $documents,
+        'groups' => $groupedDocuments,
+    ];
+
+    foreach ($documents as $document) {
+        $allDisclosureDocuments[] = $document;
+    }
+}
+
+$latestDisclosureTimestamp = imus_latest_document_timestamp($allDisclosureDocuments);
+$latestDisclosureLabel = $latestDisclosureTimestamp !== null ? date('F j, Y', $latestDisclosureTimestamp) : 'Archive unavailable';
+$latestArchiveYear = 'Undated';
+
+foreach ($allDisclosureDocuments as $document) {
+    if (!ctype_digit($document['year'])) {
+        continue;
+    }
+
+    if (!ctype_digit($latestArchiveYear) || (int) $document['year'] > (int) $latestArchiveYear) {
+        $latestArchiveYear = $document['year'];
+    }
+}
+
+$publishedSectionCount = 0;
+foreach ($sections as $section) {
+    if ($section['count'] > 0) {
+        $publishedSectionCount++;
+    }
+}
+
 require_once __DIR__ . '/../includes/header.navbar.php';
 ?>
 
-    <section class="city-ordinances" id="city-ordinances">
-        <div class="section-shell py-12 sm:py-14 lg:py-16">
-            <h2 class="mb-6 text-2xl sm:text-3xl font-display font-bold text-imusBlue">City Ordinances</h2>
-            <div class="overflow-x-auto rounded-lg border border-imusBlue/20 shadow-soft-xl">
-                <table class="w-full border-collapse">
-                    <thead>
-                        <tr class="bg-imusBlue text-white">
-                            <th scope="col" class="px-4 py-3 text-left text-sm font-semibold w-[120px]">Ordinance No.</th>
-                            <th scope="col" class="px-4 py-3 text-left text-sm font-semibold">Title</th>
-                            <th scope="col" class="px-4 py-3 text-left text-sm font-semibold w-[120px]">Date Approved</th>
-                            <th scope="col" class="px-4 py-3 text-left text-sm font-semibold w-[90px]">Download</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-b border-imusBlue/10 hover:bg-imusBlue/5 transition">
-                            <td class="px-4 py-3 text-sm font-medium">2024-001</td>
-                            <td class="px-4 py-3 text-sm">An Ordinance Adopting the Revised Revenue Code of the City of Imus</td>
-                            <td class="px-4 py-3 text-sm">Jan 15, 2024</td>
-                            <td class="px-4 py-3">
-                                <a href="<?= e(base_url('docs/ordinances/2024-001.pdf')) ?>" class="focusable inline-flex items-center justify-center px-2 py-1.5 rounded text-imusGreen hover:bg-imusGreen/10 transition" target="_blank" aria-label="Download PDF">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 4.5a.5.5 0 01.5.5v7.586l2.293-2.293a.5.5 0 01.707.707l-3.5 3.5a.5.5 0 01-.707 0l-3.5-3.5a.5.5 0 11.707-.707L9 12.586V5a.5.5 0 01.5-.5z"/></svg>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-b border-imusBlue/10 hover:bg-imusBlue/5 transition">
-                            <td class="px-4 py-3 text-sm font-medium">2024-002</td>
-                            <td class="px-4 py-3 text-sm">An Ordinance Providing for the Comprehensive Anti-Smoking Policy in Public Places</td>
-                            <td class="px-4 py-3 text-sm">Feb 10, 2024</td>
-                            <td class="px-4 py-3">
-                                <a href="<?= e(base_url('docs/ordinances/2024-002.pdf')) ?>" class="focusable inline-flex items-center justify-center px-2 py-1.5 rounded text-imusGreen hover:bg-imusGreen/10 transition" target="_blank" aria-label="Download PDF">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 4.5a.5.5 0 01.5.5v7.586l2.293-2.293a.5.5 0 01.707.707l-3.5 3.5a.5.5 0 01-.707 0l-3.5-3.5a.5.5 0 11.707-.707L9 12.586V5a.5.5 0 01.5-.5z"/></svg>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-b border-imusBlue/10 hover:bg-imusBlue/5 transition">
-                            <td class="px-4 py-3 text-sm font-medium">2023-015</td>
-                            <td class="px-4 py-3 text-sm">An Ordinance Regulating the Use of Plastic Bags and Promoting Eco-Friendly Packaging</td>
-                            <td class="px-4 py-3 text-sm">Nov 28, 2023</td>
-                            <td class="px-4 py-3">
-                                <a href="<?= e(base_url('docs/ordinances/2023-015.pdf')) ?>" class="focusable inline-flex items-center justify-center px-2 py-1.5 rounded text-imusGreen hover:bg-imusGreen/10 transition" target="_blank" aria-label="Download PDF">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 4.5a.5.5 0 01.5.5v7.586l2.293-2.293a.5.5 0 01.707.707l-3.5 3.5a.5.5 0 01-.707 0l-3.5-3.5a.5.5 0 11.707-.707L9 12.586V5a.5.5 0 01.5-.5z"/></svg>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-b border-imusBlue/10 hover:bg-imusBlue/5 transition">
-                            <td class="px-4 py-3 text-sm font-medium">2023-010</td>
-                            <td class="px-4 py-3 text-sm">An Ordinance Establishing the Imus City Scholarship Program</td>
-                            <td class="px-4 py-3 text-sm">Aug 5, 2023</td>
-                            <td class="px-4 py-3">
-                                <a href="<?= e(base_url('docs/ordinances/2023-010.pdf')) ?>" class="focusable inline-flex items-center justify-center px-2 py-1.5 rounded text-imusGreen hover:bg-imusGreen/10 transition" target="_blank" aria-label="Download PDF">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 4.5a.5.5 0 01.5.5v7.586l2.293-2.293a.5.5 0 01.707.707l-3.5 3.5a.5.5 0 01-.707 0l-3.5-3.5a.5.5 0 11.707-.707L9 12.586V5a.5.5 0 01.5-.5z"/></svg>
-                                </a>
-                            </td>
-                        </tr>
-                        <!-- Add more ordinances as needed -->
-                    </tbody>
-                </table>
+<section class="relative z-10 py-12 sm:py-14 lg:py-16">
+    <div class="section-shell">
+        <div class="mx-auto w-full max-w-[90rem] overflow-hidden rounded-[2rem] border border-imusBlue/20 bg-gradient-to-br from-imusDeep via-imusBlue to-[#0b3f76] p-5 text-white shadow-soft-2xl sm:p-7 lg:p-8">
+            <div class="grid gap-6 xl:grid-cols-[1.18fr_0.82fr] xl:items-stretch">
+                <div>
+                    <p class="inline-flex rounded-full border border-white/35 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/90">
+                        Public Records
+                    </p>
+                    <h1 class="mt-3 font-display text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
+                        Full disclosure records and governance documents
+                    </h1>
+                    <p class="mt-4 max-w-3xl text-sm leading-relaxed text-white/90 sm:text-base lg:text-lg">
+                        Review executive orders, resolutions, ordinances, bids and awards, GAD records, job vacancies,
+                        and related public disclosures published by the City Government of Imus.
+                    </p>
+
+                    <div class="mt-7 flex flex-wrap gap-3">
+                        <a href="#executive-orders"
+                            class="focusable inline-flex items-center rounded-full bg-imusGreen px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-green-700">
+                            Start with Executive Orders
+                        </a>
+                        <a href="<?= e(base_url('Pages/Contact-Us.php')) ?>"
+                            class="focusable inline-flex items-center rounded-full border border-white/40 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/15">
+                            Contact the City
+                        </a>
+                    </div>
+                </div>
+
+                <aside class="glass-card rounded-3xl p-5 sm:p-6">
+                    <p class="text-xs font-semibold uppercase tracking-[0.14em] text-imusBlue">Archive Snapshot</p>
+                    <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                        <article class="rounded-2xl border border-imusBlue/15 bg-imusBlue/5 px-4 py-4">
+                            <p class="text-xs font-semibold uppercase tracking-[0.12em] text-imusBlue/80">Published Files</p>
+                            <p class="mt-1 font-display text-2xl font-semibold text-civicInk"><?= e((string) count($allDisclosureDocuments)) ?></p>
+                        </article>
+                        <article class="rounded-2xl border border-imusBlue/15 bg-imusBlue/5 px-4 py-4">
+                            <p class="text-xs font-semibold uppercase tracking-[0.12em] text-imusBlue/80">Active Sections</p>
+                            <p class="mt-1 font-display text-2xl font-semibold text-civicInk"><?= e((string) $publishedSectionCount) ?></p>
+                        </article>
+                        <article class="rounded-2xl border border-imusBlue/15 bg-imusBlue/5 px-4 py-4">
+                            <p class="text-xs font-semibold uppercase tracking-[0.12em] text-imusBlue/80">Latest Archive Year</p>
+                            <p class="mt-1 font-display text-xl font-semibold text-civicInk"><?= e($latestArchiveYear) ?></p>
+                        </article>
+                        <article class="rounded-2xl border border-imusBlue/15 bg-imusBlue/5 px-4 py-4">
+                            <p class="text-xs font-semibold uppercase tracking-[0.12em] text-imusBlue/80">Last File Update</p>
+                            <p class="mt-1 font-display text-xl font-semibold text-civicInk"><?= e($latestDisclosureLabel) ?></p>
+                        </article>
+                    </div>
+                    <p class="mt-5 text-sm leading-relaxed text-slate-700">
+                        Files may open as PDF, image, or document formats depending on the published source record.
+                    </p>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="deferred-section relative z-10 pb-12 sm:pb-14 lg:pb-16">
+    <div class="section-shell">
+        <div class="mx-auto grid w-full max-w-[90rem] gap-5 md:grid-cols-2 xl:grid-cols-3">
+            <?php foreach ($sections as $section): ?>
+                <a href="#<?= e($section['id']) ?>"
+                    class="focusable rounded-3xl border border-slate-200 bg-white/90 p-5 shadow-soft-xl transition hover:-translate-y-1 hover:border-imusBlue/25 hover:shadow-soft-2xl">
+                    <p class="text-xs font-semibold uppercase tracking-[0.12em] text-imusBlue"><?= e((string) $section['count']) ?> files</p>
+                    <h2 class="mt-2 font-display text-xl font-semibold leading-snug text-civicInk"><?= e($section['title']) ?></h2>
+                    <p class="mt-3 text-sm leading-relaxed text-slate-600"><?= e($section['description']) ?></p>
+                </a>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+
+<?php foreach ($sections as $sectionIndex => $section): ?>
+    <section id="<?= e($section['id']) ?>" class="deferred-section relative z-10 pb-12 sm:pb-14 lg:pb-16">
+        <div class="section-shell">
+            <div class="mx-auto w-full max-w-[90rem] rounded-[2rem] border border-imusBlue/15 bg-white/90 p-5 shadow-soft-2xl backdrop-blur-sm sm:p-7 lg:p-8">
+                <div class="flex flex-wrap items-start justify-between gap-4">
+                    <div>
+                        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-imusBlue">Disclosure Section</p>
+                        <h2 class="mt-2 font-display text-2xl font-bold text-civicInk sm:text-3xl"><?= e($section['title']) ?></h2>
+                        <p class="mt-3 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
+                            <?= e($section['description']) ?>
+                        </p>
+                    </div>
+                    <span class="inline-flex rounded-full bg-imusBlue px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-white">
+                        <?= e((string) $section['count']) ?> files
+                    </span>
+                </div>
+
+                <?php if ($section['count'] === 0): ?>
+                    <div class="mt-8 rounded-3xl border border-amber-300 bg-amber-50 px-5 py-4 text-sm text-amber-900">
+                        No files are currently published in this archive folder.
+                    </div>
+                <?php else: ?>
+                    <div class="mt-8 space-y-4">
+                        <?php foreach ($section['groups'] as $groupLabel => $documents): ?>
+                            <details class="page-details p-5" <?= $groupLabel === array_key_first($section['groups']) && $sectionIndex < 2 ? 'open' : '' ?>>
+                                <summary class="flex flex-wrap items-start justify-between gap-4">
+                                    <div>
+                                        <p class="text-xs font-semibold uppercase tracking-[0.12em] text-imusBlue">Archive Group</p>
+                                        <h3 class="mt-2 font-display text-xl font-semibold text-civicInk"><?= e((string) $groupLabel) ?></h3>
+                                        <p class="mt-2 text-sm leading-relaxed text-slate-600">
+                                            <?= e(count($documents) . ' published file' . (count($documents) === 1 ? '' : 's')) ?>
+                                        </p>
+                                    </div>
+                                    <span class="inline-flex rounded-full bg-imusBlue/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-imusBlue">
+                                        <?= e((string) count($documents)) ?> items
+                                    </span>
+                                </summary>
+
+                                <div class="mt-5 space-y-3">
+                                    <?php foreach ($documents as $document): ?>
+                                        <article class="document-item">
+                                            <div class="min-w-0">
+                                                <h4 class="font-semibold text-civicInk"><?= e($document['label']) ?></h4>
+                                                <div class="document-meta">
+                                                    <span class="document-pill document-pill-blue"><?= e($document['extension_label']) ?></span>
+                                                    <span class="document-pill document-pill-green"><?= e($document['size_label']) ?></span>
+                                                    <span class="text-sm text-slate-500">Updated <?= e($document['modified_label']) ?></span>
+                                                </div>
+                                            </div>
+                                            <a href="<?= e($document['url']) ?>" target="_blank" rel="noopener noreferrer"
+                                                class="focusable inline-flex flex-none items-center rounded-full bg-imusGreen px-4 py-2 text-sm font-semibold text-white transition hover:bg-green-700">
+                                                Open File
+                                            </a>
+                                        </article>
+                                    <?php endforeach; ?>
+                                </div>
+                            </details>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>
+<?php endforeach; ?>
 
-    <section class="executive-orders" id="executive-orders">
-        <div class="section-shell py-12 sm:py-14 lg:py-16">
-            <h2 class="mb-6 text-2xl sm:text-3xl font-display font-bold text-imusBlue">Executive Orders</h2>
-            <div class="space-y-3" id="executiveOrdersAccordion">
-                <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                    <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#eoCollapseOne" aria-expanded="true" aria-controls="eoCollapseOne">
-                            2024 Executive Orders
-                            <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                        </button>
-                    </h3>
-                    <div id="eoCollapseOne" class="collapse show px-6 py-4 border-t border-imusBlue/10" aria-labelledby="eoHeadingOne" data-bs-parent="#executiveOrdersAccordion">
-                        <ul class="space-y-2 text-sm text-slate-700">
-                            <li>EO No. 01, s.2024 - Example Executive Order Title</li>
-                            <li>EO No. 02, s.2024 - Example Executive Order Title</li>
-                            <!-- Add more executive orders here -->
-                        </ul>
-                    </div>
+<section class="deferred-section relative z-10 pb-12 sm:pb-14 lg:pb-16">
+    <div class="section-shell">
+        <div class="mx-auto w-full max-w-[90rem] overflow-hidden rounded-[2rem] border border-imusBlue/20 bg-gradient-to-br from-imusBlue via-imusDeep to-[#052346] p-5 text-white shadow-soft-2xl sm:p-7 lg:p-8">
+            <div class="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+                <div class="rounded-3xl border border-white/20 bg-white/10 p-5 shadow-soft-xl backdrop-blur-sm">
+                    <p class="text-xs font-semibold uppercase tracking-[0.14em] text-white/75">Need Another Public Resource</p>
+                    <h2 class="mt-2 font-display text-2xl font-bold leading-tight sm:text-3xl">Pair disclosures with forms and service guidance</h2>
+                    <p class="mt-4 text-sm leading-relaxed text-white/85 sm:text-base">
+                        Use the downloadable forms page for public files, the services page for citizen charter access,
+                        or the contact page if you need help finding the correct office.
+                    </p>
                 </div>
-                <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                    <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#eoCollapseTwo" aria-expanded="false" aria-controls="eoCollapseTwo">
-                            2023 Executive Orders
-                            <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                        </button>
-                    </h3>
-                    <div id="eoCollapseTwo" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="eoHeadingTwo" data-bs-parent="#executiveOrdersAccordion">
-                        <ul class="space-y-2 text-sm text-slate-700">
-                            <li>EO No. 01, s.2023 - Example Executive Order Title</li>
-                            <li>EO No. 02, s.2023 - Example Executive Order Title</li>
-                            <!-- Add more executive orders here -->
-                        </ul>
-                    </div>
-                </div>
-                <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                    <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#eoCollapseThree" aria-expanded="false" aria-controls="eoCollapseThree">
-                            2022 Executive Orders
-                            <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                        </button>
-                    </h3>
-                    <div id="eoCollapseThree" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="eoHeadingThree" data-bs-parent="#executiveOrdersAccordion">
-                        <ul class="space-y-2 text-sm text-slate-700">
-                            <li>EO No. 01, s.2022 - Example Executive Order Title</li>
-                            <li>EO No. 02, s.2022 - Example Executive Order Title</li>
-                            <!-- Add more executive orders here -->
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="bids-and-awards" id="bids-and-awards">
-        <div class="section-shell py-12 sm:py-14 lg:py-16">
-            <h2 class="mb-6 text-2xl sm:text-3xl font-display font-bold text-imusBlue">Bids and Awards</h2>
-            <div class="space-y-3" id="bidsAwardsAccordion">
-            <!-- Accordion Items -->
-            <!-- Example for 3 items, repeat pattern up to 120 -->
-            <!-- For brevity, only first 3 and last 2 items are shown, fill in the rest as needed -->
-            <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                <h3 class="accordion-header">
-                <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#baCollapse1" aria-expanded="true" aria-controls="baCollapse1">
-                    Bid Opportunity #1
-                    <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                </button>
-                </h3>
-                <div id="baCollapse1" class="collapse show px-6 py-4 border-t border-imusBlue/10" aria-labelledby="baHeading1" data-bs-parent="#bidsAwardsAccordion">
-                    <p class="text-sm text-slate-700 mb-3">Details for Bid Opportunity #1.</p>
-                    <a href="<?= e(base_url('docs/bids/bid1.pdf')) ?>" class="focusable inline-flex items-center gap-2 px-3 py-2 rounded text-imusGreen hover:bg-imusGreen/10 transition text-sm font-medium" target="_blank" aria-label="Download Bid File">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 4.5a.5.5 0 01.5.5v7.586l2.293-2.293a.5.5 0 01.707.707l-3.5 3.5a.5.5 0 01-.707 0l-3.5-3.5a.5.5 0 11.707-.707L9 12.586V5a.5.5 0 01.5-.5z"/></svg>
-                        Download Bid File
+                <div class="flex flex-wrap gap-3">
+                    <a href="<?= e(base_url('Pages/Downloadable-Forms.php')) ?>"
+                        class="focusable inline-flex items-center rounded-full bg-imusGreen px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-green-700">
+                        Downloadable Forms
+                    </a>
+                    <a href="<?= e(base_url('Pages/Services.php#Citizens-Charter')) ?>"
+                        class="focusable inline-flex items-center rounded-full border border-white/35 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/15">
+                        Citizen's Charter
+                    </a>
+                    <a href="<?= e(base_url('Pages/Contact-Us.php')) ?>"
+                        class="focusable inline-flex items-center rounded-full border border-white/35 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/15">
+                        Contact Us
                     </a>
                 </div>
             </div>
-            <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                <h3 class="accordion-header">
-                <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#baCollapse2" aria-expanded="false" aria-controls="baCollapse2">
-                    Bid Opportunity #2
-                    <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                </button>
-                </h3>
-                <div id="baCollapse2" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="baHeading2" data-bs-parent="#bidsAwardsAccordion">
-                    <p class="text-sm text-slate-700 mb-3">Details for Bid Opportunity #2.</p>
-                    <a href="<?= e(base_url('docs/bids/bid2.pdf')) ?>" class="focusable inline-flex items-center gap-2 px-3 py-2 rounded text-imusGreen hover:bg-imusGreen/10 transition text-sm font-medium" target="_blank" aria-label="Download Bid File">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 4.5a.5.5 0 01.5.5v7.586l2.293-2.293a.5.5 0 01.707.707l-3.5 3.5a.5.5 0 01-.707 0l-3.5-3.5a.5.5 0 11.707-.707L9 12.586V5a.5.5 0 01.5-.5z"/></svg>
-                        Download Bid File
-                    </a>
-                </div>
-            </div>
-            <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                <h3 class="accordion-header">
-                <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#baCollapse3" aria-expanded="false" aria-controls="baCollapse3">
-                    Bid Opportunity #3
-                    <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                </button>
-                </h3>
-                <div id="baCollapse3" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="baHeading3" data-bs-parent="#bidsAwardsAccordion">
-                    <p class="text-sm text-slate-700 mb-3">Details for Bid Opportunity #3.</p>
-                    <a href="<?= e(base_url('docs/bids/bid3.pdf')) ?>" class="focusable inline-flex items-center gap-2 px-3 py-2 rounded text-imusGreen hover:bg-imusGreen/10 transition text-sm font-medium" target="_blank" aria-label="Download Bid File">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 4.5a.5.5 0 01.5.5v7.586l2.293-2.293a.5.5 0 01.707.707l-3.5 3.5a.5.5 0 01-.707 0l-3.5-3.5a.5.5 0 11.707-.707L9 12.586V5a.5.5 0 01.5-.5z"/></svg>
-                        Download Bid File
-                    </a>
-                </div>
-            </div>
-            <!-- ...repeat for items 4 to 119... -->
-            <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                <h3 class="accordion-header">
-                <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#baCollapse119" aria-expanded="false" aria-controls="baCollapse119">
-                    Bid Opportunity #119
-                    <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                </button>
-                </h3>
-                <div id="baCollapse119" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="baHeading119" data-bs-parent="#bidsAwardsAccordion">
-                    <p class="text-sm text-slate-700 mb-3">Details for Bid Opportunity #119.</p>
-                    <a href="<?= e(base_url('docs/bids/bid119.pdf')) ?>" class="focusable inline-flex items-center gap-2 px-3 py-2 rounded text-imusGreen hover:bg-imusGreen/10 transition text-sm font-medium" target="_blank" aria-label="Download Bid File">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 4.5a.5.5 0 01.5.5v7.586l2.293-2.293a.5.5 0 01.707.707l-3.5 3.5a.5.5 0 01-.707 0l-3.5-3.5a.5.5 0 11.707-.707L9 12.586V5a.5.5 0 01.5-.5z"/></svg>
-                        Download Bid File
-                    </a>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="baHeading120">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#baCollapse120" aria-expanded="false" aria-controls="baCollapse120">
-                    Bid Opportunity #120
-                </button>
-                </h2>
-                <div id="baCollapse120" class="accordion-collapse collapse" aria-labelledby="baHeading120" data-bs-parent="#bidsAwardsAccordion">
-                <div class="accordion-body">
-                    Details for Bid Opportunity #120.<br>
-                    <a href="<?= e(base_url('docs/bids/bid120.pdf')) ?>" class="btn btn-outline-success btn-sm mt-2" target="_blank" aria-label="Download Bid File">
-                    <i class="bi bi-file-earmark-arrow-down"></i> Download Bid File
-                    </a>
-                </div>
-                </div>
-            </div>
-            <!-- END ACCORDION ITEMS -->
-            </div>
         </div>
-        <script>
-            // Optionally, you can generate the accordion dynamically with JS for maintainability
-            // Example:
-            /*
-            const accordion = document.getElementById('bidsAwardsAccordion');
-            for(let i=1; i<=120; i++) {
-            const item = document.createElement('div');
-            item.className = 'accordion-item';
-            item.innerHTML = `
-                <h2 class="accordion-header" id="baHeading${i}">
-                <button class="accordion-button${i===1?'':' collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#baCollapse${i}" aria-expanded="${i===1?'true':'false'}" aria-controls="baCollapse${i}">
-                    Bid Opportunity #${i}
-                </button>
-                </h2>
-                <div id="baCollapse${i}" class="accordion-collapse collapse${i===1?' show':''}" aria-labelledby="baHeading${i}" data-bs-parent="#bidsAwardsAccordion">
-                <div class="accordion-body">
-                    Details for Bid Opportunity #${i}.<br>
-                    <a href="<?= e(base_url('docs/bids/')) ?>bid${i}.pdf" class="btn btn-outline-success btn-sm mt-2" target="_blank" aria-label="Download Bid File">
-                    <i class="bi bi-file-earmark-arrow-down"></i> Download Bid File
-                    </a>
-                </div>
-                </div>
-            `;
-            accordion.appendChild(item);
-            }
-            */
-        </script>
-    </section>
+    </div>
+</section>
 
-    <section class="resolutions" id="resolutions">
-        <div class="section-shell py-12 sm:py-14 lg:py-16">
-            <h2 class="mb-6 text-2xl sm:text-3xl font-display font-bold text-imusBlue">Resolutions</h2>
-            <div class="overflow-x-auto rounded-lg border border-imusBlue/20 shadow-soft-xl">
-            <table class="w-full border-collapse">
-                <thead>
-                <tr class="bg-imusBlue text-white">
-                    <th scope="col" class="px-4 py-3 text-left text-sm font-semibold w-[120px]">Resolution No.</th>
-                    <th scope="col" class="px-4 py-3 text-left text-sm font-semibold">Title</th>
-                    <th scope="col" class="px-4 py-3 text-left text-sm font-semibold w-[120px]">Date Passed</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr class="border-b border-imusBlue/10 hover:bg-imusBlue/5 transition">
-                    <td class="px-4 py-3">
-                    <span class="inline-flex items-center rounded-full bg-imusBlue text-white text-xs font-semibold px-3 py-1">2024-010</span>
-                    </td>
-                    <td class="px-4 py-3">
-                    <p class="font-semibold text-sm">Resolution Honoring Outstanding Citizens of Imus</p>
-                    <p class="text-xs text-slate-500 mt-1">Recognizing exemplary contributions to the community</p>
-                    </td>
-                    <td class="px-4 py-3 text-sm">Mar 12, 2024</td>
-                </tr>
-                <tr class="border-b border-imusBlue/10 hover:bg-imusBlue/5 transition">
-                    <td class="px-4 py-3">
-                    <span class="inline-flex items-center rounded-full bg-imusGreen text-white text-xs font-semibold px-3 py-1">2024-005</span>
-                    </td>
-                    <td class="px-4 py-3">
-                    <p class="font-semibold text-sm">Resolution Adopting the City Disaster Risk Reduction Plan</p>
-                    <p class="text-xs text-slate-500 mt-1">For enhanced preparedness and response</p>
-                    </td>
-                    <td class="px-4 py-3 text-sm">Feb 20, 2024</td>
-                </tr>
-                <tr class="border-b border-imusBlue/10 hover:bg-imusBlue/5 transition">
-                    <td class="px-4 py-3">
-                    <span class="inline-flex items-center rounded-full bg-imusGreen text-white text-xs font-semibold px-3 py-1">2023-022</span>
-                    </td>
-                    <td class="px-4 py-3">
-                    <p class="font-semibold text-sm">Resolution Supporting Local Business Recovery Programs</p>
-                    <p class="text-xs text-slate-500 mt-1">Post-pandemic economic initiatives</p>
-                    </td>
-                    <td class="px-4 py-3 text-sm">Nov 8, 2023</td>
-                </tr>
-                <tr class="border-b border-imusBlue/10 hover:bg-imusBlue/5 transition">
-                    <td class="px-4 py-3">
-                    <span class="inline-flex items-center rounded-full bg-imusBlue text-white text-xs font-semibold px-3 py-1">2023-015</span>
-                    </td>
-                    <td class="px-4 py-3">
-                    <p class="font-semibold text-sm">Resolution Approving the Annual Investment Plan</p>
-                    <p class="text-xs text-slate-500 mt-1">Fiscal year development priorities</p>
-                    </td>
-                    <td class="px-4 py-3 text-sm">Sep 18, 2023</td>
-                </tr>
-                <tr class="border-b border-imusBlue/10 hover:bg-imusBlue/5 transition">
-                    <td class="px-4 py-3">
-                    <span class="inline-flex items-center rounded-full bg-slate-600 text-white text-xs font-semibold px-3 py-1">2022-008</span>
-                    </td>
-                    <td class="px-4 py-3">
-                    <p class="font-semibold text-sm">Resolution for the Establishment of Green Spaces</p>
-                    <p class="text-xs text-slate-500 mt-1">Urban environmental sustainability</p>
-                    </td>
-                    <td class="px-4 py-3 text-sm">May 10, 2022</td>
-                </tr>
-                <!-- Add more resolutions as needed -->
-                </tbody>
-            </table>
-            </div>
-        </div>
-    </section>
-        
-    <section class="full-disclosures" id="full-disclosures">
-        <div class="section-shell py-12 sm:py-14 lg:py-16">
-            <h2 class="mb-6 text-2xl sm:text-3xl font-display font-bold text-imusBlue">Full Disclosure Reports</h2>
-            <div class="space-y-3" id="fullDisclosureAccordion">
-                <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                    <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#fdCollapse1" aria-expanded="true" aria-controls="fdCollapse1">
-                            Annual Budget
-                            <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                        </button>
-                    </h3>
-                    <div id="fdCollapse1" class="collapse show px-6 py-4 border-t border-imusBlue/10" aria-labelledby="fdHeading1" data-bs-parent="#fullDisclosureAccordion">
-                        <p class="text-sm text-slate-700">Content for Annual Budget.</p>
-                    </div>
-                </div>
-                <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                    <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#fdCollapse2" aria-expanded="false" aria-controls="fdCollapse2">
-                            Statement of Receipts and Expenditures
-                            <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                        </button>
-                    </h3>
-                    <div id="fdCollapse2" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="fdHeading2" data-bs-parent="#fullDisclosureAccordion">
-                        <p class="text-sm text-slate-700">Content for Statement of Receipts and Expenditures.</p>
-                    </div>
-                </div>
-                <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                    <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#fdCollapse3" aria-expanded="false" aria-controls="fdCollapse3">
-                            Procurement Plan
-                            <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                        </button>
-                    </h3>
-                    <div id="fdCollapse3" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="fdHeading3" data-bs-parent="#fullDisclosureAccordion">
-                        <p class="text-sm text-slate-700">Content for Procurement Plan.</p>
-                    </div>
-                </div>
-                <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                    <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#fdCollapse4" aria-expanded="false" aria-controls="fdCollapse4">
-                            Special Purpose Fund Utilization
-                            <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                        </button>
-                    </h3>
-                    <div id="fdCollapse4" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="fdHeading4" data-bs-parent="#fullDisclosureAccordion">
-                        <p class="text-sm text-slate-700">Content for Special Purpose Fund Utilization.</p>
-                    </div>
-                </div>
-                <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                    <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#fdCollapse5" aria-expanded="false" aria-controls="fdCollapse5">
-                            Annual Procurement Plan
-                            <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                        </button>
-                    </h3>
-                    <div id="fdCollapse5" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="fdHeading5" data-bs-parent="#fullDisclosureAccordion">
-                        <p class="text-sm text-slate-700">Content for Annual Procurement Plan.</p>
-                    </div>
-                </div>
-                <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                    <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#fdCollapse6" aria-expanded="false" aria-controls="fdCollapse6">
-                            SEF Utilization
-                            <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                        </button>
-                    </h3>
-                    <div id="fdCollapse6" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="fdHeading6" data-bs-parent="#fullDisclosureAccordion">
-                        <p class="text-sm text-slate-700">Content for SEF Utilization.</p>
-                    </div>
-                </div>
-                <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                    <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#fdCollapse7" aria-expanded="false" aria-controls="fdCollapse7">
-                            20% Development Fund Utilization
-                            <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                        </button>
-                    </h3>
-                    <div id="fdCollapse7" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="fdHeading7" data-bs-parent="#fullDisclosureAccordion">
-                        <p class="text-sm text-slate-700">Content for 20% Development Fund Utilization.</p>
-                    </div>
-                </div>
-                <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                    <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#fdCollapse8" aria-expanded="false" aria-controls="fdCollapse8">
-                            Gender and Development Fund Utilization
-                            <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                        </button>
-                    </h3>
-                    <div id="fdCollapse8" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="fdHeading8" data-bs-parent="#fullDisclosureAccordion">
-                        <p class="text-sm text-slate-700">Content for Gender and Development Fund Utilization.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="job-opportunities" id="job-opportunities">
-            <div class="section-shell py-12 sm:py-14 lg:py-16">
-                <h2 class="mb-6 text-2xl sm:text-3xl font-display font-bold text-imusBlue">Job Opportunities</h2>
-                <div class="overflow-x-auto rounded-lg border border-imusBlue/20 shadow-soft-xl">
-                    <table class="w-full border-collapse">
-                        <thead>
-                            <tr class="bg-imusGreen text-white">
-                                <th scope="col" class="px-4 py-3 text-left text-sm font-semibold w-[180px]">Position Title</th>
-                                <th scope="col" class="px-4 py-3 text-left text-sm font-semibold">Department/Office</th>
-                                <th scope="col" class="px-4 py-3 text-left text-sm font-semibold w-[120px]">No. of Vacancies</th>
-                                <th scope="col" class="px-4 py-3 text-left text-sm font-semibold w-[160px]">Posting Date</th>
-                                <th scope="col" class="px-4 py-3 text-left text-sm font-semibold w-[120px]">Deadline</th>
-                                <th scope="col" class="px-4 py-3 text-left text-sm font-semibold w-[110px]">Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="border-b border-imusBlue/10 hover:bg-imusBlue/5 transition">
-                                <td class="px-4 py-3 text-sm font-medium">Administrative Aide IV</td>
-                                <td class="px-4 py-3 text-sm">City Human Resource Management Office</td>
-                                <td class="px-4 py-3 text-sm">2</td>
-                                <td class="px-4 py-3 text-sm">Apr 10, 2024</td>
-                                <td class="px-4 py-3 text-sm">Apr 25, 2024</td>
-                                <td class="px-4 py-3">
-                                    <a href="<?= e(base_url('docs/jobs/admin-aide-iv.pdf')) ?>" class="focusable inline-flex items-center justify-center px-2 py-1.5 rounded text-imusBlue hover:bg-imusBlue/10 transition" target="_blank" aria-label="View Details">
-                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M4 12a1 1 0 011 1v6H3a2 2 0 01-2-2V5a2 2 0 012-2h10a2 2 0 012 2v7a1 1 0 11-2 0V5H4v12a1 1 0 001 1h6a1 1 0 011-1v-6a1 1 0 011-1z"/></svg>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="border-b border-imusBlue/10 hover:bg-imusBlue/5 transition">
-                                <td class="px-4 py-3 text-sm font-medium">City Planning Officer</td>
-                                <td class="px-4 py-3 text-sm">City Planning and Development Office</td>
-                                <td class="px-4 py-3 text-sm">1</td>
-                                <td class="px-4 py-3 text-sm">Apr 5, 2024</td>
-                                <td class="px-4 py-3 text-sm">Apr 20, 2024</td>
-                                <td class="px-4 py-3">
-                                    <a href="<?= e(base_url('docs/jobs/city-planning-officer.pdf')) ?>" class="focusable inline-flex items-center justify-center px-2 py-1.5 rounded text-imusBlue hover:bg-imusBlue/10 transition" target="_blank" aria-label="View Details">
-                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M4 12a1 1 0 011 1v6H3a2 2 0 01-2-2V5a2 2 0 012-2h10a2 2 0 012 2v7a1 1 0 11-2 0V5H4v12a1 1 0 001 1h6a1 1 0 011-1v-6a1 1 0 011-1z"/></svg>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="border-b border-imusBlue/10 hover:bg-imusBlue/5 transition">
-                                <td class="px-4 py-3 text-sm font-medium">Medical Technologist I</td>
-                                <td class="px-4 py-3 text-sm">City Health Office</td>
-                                <td class="px-4 py-3 text-sm">3</td>
-                                <td class="px-4 py-3 text-sm">Mar 28, 2024</td>
-                                <td class="px-4 py-3 text-sm">Apr 15, 2024</td>
-                                <td class="px-4 py-3">
-                                    <a href="<?= e(base_url('docs/jobs/medtech-i.pdf')) ?>" class="focusable inline-flex items-center justify-center px-2 py-1.5 rounded text-imusBlue hover:bg-imusBlue/10 transition" target="_blank" aria-label="View Details">
-                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M4 12a1 1 0 011 1v6H3a2 2 0 01-2-2V5a2 2 0 012-2h10a2 2 0 012 2v7a1 1 0 11-2 0V5H4v12a1 1 0 001 1h6a1 1 0 011-1v-6a1 1 0 011-1z"/></svg>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="border-b border-imusBlue/10 hover:bg-imusBlue/5 transition">
-                                <td class="px-4 py-3 text-sm font-medium">Social Welfare Officer II</td>
-                                <td class="px-4 py-3 text-sm">City Social Welfare and Development Office</td>
-                                <td class="px-4 py-3 text-sm">1</td>
-                                <td class="px-4 py-3 text-sm">Mar 20, 2024</td>
-                                <td class="px-4 py-3 text-sm">Apr 5, 2024</td>
-                                <td class="px-4 py-3">
-                                    <a href="<?= e(base_url('docs/jobs/social-welfare-officer-ii.pdf')) ?>" class="focusable inline-flex items-center justify-center px-2 py-1.5 rounded text-imusBlue hover:bg-imusBlue/10 transition" target="_blank" aria-label="View Details">
-                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M4 12a1 1 0 011 1v6H3a2 2 0 01-2-2V5a2 2 0 012-2h10a2 2 0 012 2v7a1 1 0 11-2 0V5H4v12a1 1 0 001 1h6a1 1 0 011-1v-6a1 1 0 011-1z"/></svg>
-                                    </a>
-                                </td>
-                            </tr>
-                            <!-- Add more job opportunities as needed -->
-                        </tbody>
-                    </table>
-                </div>
-                <div class="mt-6 p-4 rounded-lg border border-sky-200 bg-sky-50">
-                    <p class="text-sm text-slate-700">For application procedures and requirements, please visit the <a href="https://www.cityofimus.gov.ph/careers" target="_blank" class="text-imusBlue font-medium hover:underline">official careers page</a> or contact the City Human Resource Management Office.</p>
-                </div>
-            </div>
-    </section>
-
-    <section class="GAD-database" id="gad-database">
-        <div class="section-shell py-12 sm:py-14 lg:py-16">
-            <h2 class="mb-6 text-2xl sm:text-3xl font-display font-bold text-imusBlue">GAD Database</h2>
-            <div class="overflow-x-auto rounded-lg border border-imusBlue/20 shadow-soft-xl">
-                <table class="w-full border-collapse">
-                    <thead>
-                        <tr class="bg-sky-500 text-white">
-                            <th scope="col" class="px-4 py-3 text-left text-sm font-semibold w-[180px]">Year</th>
-                            <th scope="col" class="px-4 py-3 text-left text-sm font-semibold">Program/Project</th>
-                            <th scope="col" class="px-4 py-3 text-left text-sm font-semibold w-[180px]">Budget</th>
-                            <th scope="col" class="px-4 py-3 text-left text-sm font-semibold w-[180px]">Status</th>
-                            <th scope="col" class="px-4 py-3 text-left text-sm font-semibold w-[120px]">Download</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-b border-imusBlue/10 hover:bg-imusBlue/5 transition">
-                            <td class="px-4 py-3 text-sm">2024</td>
-                            <td class="px-4 py-3 text-sm">Women Empowerment and Livelihood Training</td>
-                            <td class="px-4 py-3 text-sm font-medium">₱1,200,000</td>
-                            <td class="px-4 py-3"><span class="inline-flex items-center rounded-full bg-imusGreen text-white text-xs font-semibold px-3 py-1">Ongoing</span></td>
-                            <td class="px-4 py-3">
-                                <a href="<?= e(base_url('docs/gad/2024-women-empowerment.pdf')) ?>" class="focusable inline-flex items-center justify-center px-2 py-1.5 rounded text-sky-500 hover:bg-sky-100 transition" target="_blank" aria-label="Download PDF">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 4.5a.5.5 0 01.5.5v7.586l2.293-2.293a.5.5 0 01.707.707l-3.5 3.5a.5.5 0 01-.707 0l-3.5-3.5a.5.5 0 11.707-.707L9 12.586V5a.5.5 0 01.5-.5z"/></svg>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-b border-imusBlue/10 hover:bg-imusBlue/5 transition">
-                            <td class="px-4 py-3 text-sm">2023</td>
-                            <td class="px-4 py-3 text-sm">Gender Sensitivity Seminar for City Employees</td>
-                            <td class="px-4 py-3 text-sm font-medium">₱500,000</td>
-                            <td class="px-4 py-3"><span class="inline-flex items-center rounded-full bg-slate-500 text-white text-xs font-semibold px-3 py-1">Completed</span></td>
-                            <td class="px-4 py-3">
-                                <a href="<?= e(base_url('docs/gad/2023-gender-sensitivity.pdf')) ?>" class="focusable inline-flex items-center justify-center px-2 py-1.5 rounded text-sky-500 hover:bg-sky-100 transition" target="_blank" aria-label="Download PDF">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 4.5a.5.5 0 01.5.5v7.586l2.293-2.293a.5.5 0 01.707.707l-3.5 3.5a.5.5 0 01-.707 0l-3.5-3.5a.5.5 0 11.707-.707L9 12.586V5a.5.5 0 01.5-.5z"/></svg>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr class="border-b border-imusBlue/10 hover:bg-imusBlue/5 transition">
-                            <td class="px-4 py-3 text-sm">2022</td>
-                            <td class="px-4 py-3 text-sm">Anti-Violence Against Women Campaign</td>
-                            <td class="px-4 py-3 text-sm font-medium">₱800,000</td>
-                            <td class="px-4 py-3"><span class="inline-flex items-center rounded-full bg-slate-500 text-white text-xs font-semibold px-3 py-1">Completed</span></td>
-                            <td class="px-4 py-3">
-                                <a href="<?= e(base_url('docs/gad/2022-anti-violence.pdf')) ?>" class="focusable inline-flex items-center justify-center px-2 py-1.5 rounded text-sky-500 hover:bg-sky-100 transition" target="_blank" aria-label="Download PDF">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 4.5a.5.5 0 01.5.5v7.586l2.293-2.293a.5.5 0 01.707.707l-3.5 3.5a.5.5 0 01-.707 0l-3.5-3.5a.5.5 0 11.707-.707L9 12.586V5a.5.5 0 01.5-.5z"/></svg>
-                                </a>
-                            </td>
-                        </tr>
-                        <!-- Add more GAD entries as needed -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <section class="BANAAG" id="banaag">
-            <div class="section-shell py-12 sm:py-14 lg:py-16">
-                <h2 class="mb-6 text-2xl sm:text-3xl font-display font-bold text-imusBlue">BANAAG Issuances</h2>
-                <div class="overflow-x-auto rounded-lg border border-imusBlue/20 shadow-soft-xl">
-                    <table class="w-full border-collapse">
-                        <thead>
-                            <tr class="bg-amber-500 text-white">
-                                <th scope="col" class="px-4 py-3 text-left text-sm font-semibold w-[60px]">#</th>
-                                <th scope="col" class="px-4 py-3 text-left text-sm font-semibold">BANAAG Name</th>
-                                <th scope="col" class="px-4 py-3 text-left text-sm font-semibold w-[140px]">Download File</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="border-b border-imusBlue/10 hover:bg-imusBlue/5 transition">
-                                <td class="px-4 py-3 text-sm font-medium">1</td>
-                                <td class="px-4 py-3 text-sm">BANAAG 2024-01: Guidelines on Barangay Reporting</td>
-                                <td class="px-4 py-3">
-                                    <a href="<?= e(base_url('docs/banaag/2024-01.pdf')) ?>" class="focusable inline-flex items-center gap-2 px-3 py-1.5 rounded text-imusGreen hover:bg-imusGreen/10 transition text-sm font-medium" target="_blank" aria-label="Download BANAAG 2024-01">
-                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 4.5a.5.5 0 01.5.5v7.586l2.293-2.293a.5.5 0 01.707.707l-3.5 3.5a.5.5 0 01-.707 0l-3.5-3.5a.5.5 0 11.707-.707L9 12.586V5a.5.5 0 01.5-.5z"/></svg>
-                                        Download
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="border-b border-imusBlue/10 hover:bg-imusBlue/5 transition">
-                                <td class="px-4 py-3 text-sm font-medium">2</td>
-                                <td class="px-4 py-3 text-sm">BANAAG 2023-05: Community Health Initiatives</td>
-                                <td class="px-4 py-3">
-                                    <a href="<?= e(base_url('docs/banaag/2023-05.pdf')) ?>" class="focusable inline-flex items-center gap-2 px-3 py-1.5 rounded text-imusGreen hover:bg-imusGreen/10 transition text-sm font-medium" target="_blank" aria-label="Download BANAAG 2023-05">
-                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 4.5a.5.5 0 01.5.5v7.586l2.293-2.293a.5.5 0 01.707.707l-3.5 3.5a.5.5 0 01-.707 0l-3.5-3.5a.5.5 0 11.707-.707L9 12.586V5a.5.5 0 01.5-.5z"/></svg>
-                                        Download
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="border-b border-imusBlue/10 hover:bg-imusBlue/5 transition">
-                                <td class="px-4 py-3 text-sm font-medium">3</td>
-                                <td class="px-4 py-3 text-sm">BANAAG 2022-03: Environmental Protection Measures</td>
-                                <td class="px-4 py-3">
-                                    <a href="<?= e(base_url('docs/banaag/2022-03.pdf')) ?>" class="focusable inline-flex items-center gap-2 px-3 py-1.5 rounded text-imusGreen hover:bg-imusGreen/10 transition text-sm font-medium" target="_blank" aria-label="Download BANAAG 2022-03">
-                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 4.5a.5.5 0 01.5.5v7.586l2.293-2.293a.5.5 0 01.707.707l-3.5 3.5a.5.5 0 01-.707 0l-3.5-3.5a.5.5 0 11.707-.707L9 12.586V5a.5.5 0 01.5-.5z"/></svg>
-                                        Download
-                                    </a>
-                                </td>
-                            </tr>
-                            <!-- Add more BANAAG issuances as needed -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-    </section>
-
-    <section class="local-government-support-funds" id="local-government-support-funds">
-        <div class="section-shell py-12 sm:py-14 lg:py-16">
-            <h2 class="mb-6 text-2xl sm:text-3xl font-display font-bold text-imusBlue">Local Government Support Funds</h2>
-            <div class="space-y-3" id="lgSupportFundsAccordion">
-                <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                    <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#lgCollapse1" aria-expanded="true" aria-controls="lgCollapse1">
-                            Fund Category 1
-                            <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                        </button>
-                    </h3>
-                    <div id="lgCollapse1" class="collapse show px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading1" data-bs-parent="#lgSupportFundsAccordion">
-                        <p class="text-sm text-slate-700">Details for Fund Category 1.</p>
-                    </div>
-                </div>
-                <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                    <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#lgCollapse2" aria-expanded="false" aria-controls="lgCollapse2">
-                            Fund Category 2
-                            <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                        </button>
-                    </h3>
-                    <div id="lgCollapse2" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading2" data-bs-parent="#lgSupportFundsAccordion">
-                        <p class="text-sm text-slate-700">Details for Fund Category 2.</p>
-                    </div>
-                </div>
-                <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                    <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#lgCollapse3" aria-expanded="false" aria-controls="lgCollapse3">
-                            Fund Category 3
-                            <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                        </button>
-                    </h3>
-                    <div id="lgCollapse3" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading3" data-bs-parent="#lgSupportFundsAccordion">
-                        <p class="text-sm text-slate-700">Details for Fund Category 3.</p>
-                    </div>
-                </div>
-                <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                    <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#lgCollapse4" aria-expanded="false" aria-controls="lgCollapse4">
-                            Fund Category 4
-                            <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                        </button>
-                    </h3>
-                    <div id="lgCollapse4" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading4" data-bs-parent="#lgSupportFundsAccordion">
-                        <p class="text-sm text-slate-700">Details for Fund Category 4.</p>
-                    </div>
-                </div>
-                <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                    <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#lgCollapse5" aria-expanded="false" aria-controls="lgCollapse5">
-                            Fund Category 5
-                            <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                        </button>
-                    </h3>
-                    <div id="lgCollapse5" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading5" data-bs-parent="#lgSupportFundsAccordion">
-                        <p class="text-sm text-slate-700">Details for Fund Category 5.</p>
-                    </div>
-                </div>
-                <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                    <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#lgCollapse6" aria-expanded="false" aria-controls="lgCollapse6">
-                            Fund Category 6
-                            <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                        </button>
-                    </h3>
-                    <div id="lgCollapse6" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading6" data-bs-parent="#lgSupportFundsAccordion">
-                        <p class="text-sm text-slate-700">Details for Fund Category 6.</p>
-                    </div>
-                </div>
-                <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                    <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#lgCollapse7" aria-expanded="false" aria-controls="lgCollapse7">
-                            Fund Category 7
-                            <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                        </button>
-                    </h3>
-                    <div id="lgCollapse7" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading7" data-bs-parent="#lgSupportFundsAccordion">
-                        <p class="text-sm text-slate-700">Details for Fund Category 7.</p>
-                    </div>
-                </div>
-                <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                    <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#lgCollapse8" aria-expanded="false" aria-controls="lgCollapse8">
-                            Fund Category 8
-                            <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                        </button>
-                    </h3>
-                    <div id="lgCollapse8" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading8" data-bs-parent="#lgSupportFundsAccordion">
-                        <p class="text-sm text-slate-700">Details for Fund Category 8.</p>
-                    </div>
-                </div>
-                <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                    <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#lgCollapse9" aria-expanded="false" aria-controls="lgCollapse9">
-                            Fund Category 9
-                            <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                        </button>
-                    </h3>
-                    <div id="lgCollapse9" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading9" data-bs-parent="#lgSupportFundsAccordion">
-                        <p class="text-sm text-slate-700">Details for Fund Category 9.</p>
-                    </div>
-                </div>
-                <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                    <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#lgCollapse10" aria-expanded="false" aria-controls="lgCollapse10">
-                            Fund Category 10
-                            <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                        </button>
-                    </h3>
-                    <div id="lgCollapse10" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading10" data-bs-parent="#lgSupportFundsAccordion">
-                        <p class="text-sm text-slate-700">Details for Fund Category 10.</p>
-                    </div>
-                </div>
-                <div class="border border-imusBlue/20 rounded-lg overflow-hidden">
-                    <h3 class="accordion-header">
-                        <button class="w-full px-6 py-4 text-left font-semibold text-imusBlue hover:bg-imusBlue/5 flex items-center justify-between" type="button" data-bs-toggle="collapse" data-bs-target="#lgCollapse11" aria-expanded="false" aria-controls="lgCollapse11">
-                            Fund Category 11
-                            <svg class="w-5 h-5 transition" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                        </button>
-                    </h3>
-                    <div id="lgCollapse11" class="collapse px-6 py-4 border-t border-imusBlue/10" aria-labelledby="lgHeading11" data-bs-parent="#lgSupportFundsAccordion">
-                        <p class="text-sm text-slate-700">Details for Fund Category 11.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Inline footer removed; using shared footer include below -->
 <?php
-// Include shared footer (adds scripts and closes the document)
 require_once __DIR__ . '/../includes/footer.php';
 ?>
-

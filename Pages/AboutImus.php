@@ -7,10 +7,12 @@ $pageDescription = 'City profile, local government overview, barangay informatio
 $profileFacts = [
     ['label' => 'Classification', 'value' => '1st Class Component City'],
     ['label' => 'Province', 'value' => 'Cavite'],
+    ['label' => 'Population', 'value' => '539,743'],
+    ['label' => 'Estimated Households', 'value' => '130,814'],
+    ['label' => 'Population Growth Rate', 'value' => '4.24%'],
+    ['label' => 'Barangays', 'value' => '97'],
     ['label' => 'Known As', 'value' => 'Flag Capital of the Philippines'],
-    ['label' => 'Barangays', 'value' => '97 Barangays'],
-    ['label' => 'Festival', 'value' => 'Wagayway Festival'],
-    ['label' => 'Timezone', 'value' => 'Philippine Time (UTC+8)'],
+    ['label' => 'Cityhood', 'value' => 'Ratified June 30, 2012'],
 ];
 
 $cityOfficials = [
@@ -47,19 +49,34 @@ $barangayClusters = [
 ];
 
 $historyTimeline = [
-    ['period' => '1896 to 1898', 'event' => 'Imus became a key location during the Philippine Revolution.'],
-    ['period' => 'May 28, 1898', 'event' => 'Battle of Alapan took place, one of the significant revolutionary battles.'],
-    ['period' => 'June 30, 2012', 'event' => 'Imus was officially converted from municipality to component city.'],
-    ['period' => 'Present', 'event' => 'Imus continues as a major residential, commercial, and service center in Cavite.'],
+    ['period' => 'October 30, 1776', 'event' => 'The Royal Order separating Imus from Cavite Viejo marked the first major step toward its full municipal independence.'],
+    ['period' => 'October 7, 1795', 'event' => 'Imus became an independent municipality, separate from Cavite El Viejo (now Kawit).'],
+    ['period' => 'September 1, 1896', 'event' => 'The Battle of Imus became one of the decisive revolutionary victories against Spanish forces in Cavite.'],
+    ['period' => 'May 28, 1898', 'event' => 'The Battle of Alapan marked the first battle use of the Philippine flag and reinforced Imus as the Flag Capital of the Philippines.'],
+    ['period' => 'October 22, 2009', 'event' => 'Republic Act No. 9727 created the lone legislative district of Imus as the Third District of Cavite.'],
+    ['period' => 'April 12 and June 30, 2012', 'event' => 'Republic Act No. 10161 converted Imus into a component city, later ratified by plebiscite on June 30, 2012.'],
+    ['period' => '2022', 'event' => 'The Imus City Government Center was completed and inaugurated.'],
 ];
 
 $pastMayors = [
-    ['name' => 'Emmanuel L. Maliksi', 'term' => '2010 to 2019'],
-    ['name' => 'Homer T. Saquilayan', 'term' => '2007 to 2010'],
-    ['name' => 'Reynaldo D. Maliksi', 'term' => '1998 to 2007'],
-    ['name' => 'Oscar B. Malicdem', 'term' => '1992 to 1998'],
-    ['name' => 'Licerio N. Topacio', 'term' => '1988 to 1992'],
-    ['name' => 'Lito C. Camerino', 'term' => '1980 to 1986'],
+    ['name' => 'Alex L. Advincula', 'status' => 'Elected', 'term' => 'July 2022 - Present'],
+    ['name' => 'Emmanuel L. Maliksi', 'status' => 'Elected', 'term' => 'January 2012 - 2022'],
+    ['name' => 'Homer T. Saquilayan', 'status' => 'Elected', 'term' => 'July 2010 - December 2011'],
+    ['name' => 'Emmanuel L. Maliksi', 'status' => 'Elected', 'term' => 'July 2007 - June 2010'],
+    ['name' => 'Oscar A. Jaro', 'status' => 'Elected', 'term' => 'April - June 2007'],
+    ['name' => 'Homer T. Saquilayan', 'status' => 'Elected', 'term' => 'July 2001 - March 2007'],
+    ['name' => 'Oscar A. Jaro', 'status' => 'Elected', 'term' => 'July 1998 - June 2001'],
+    ['name' => 'Ricardo Paredes', 'status' => 'Appointed', 'term' => 'April - June 1998'],
+    ['name' => 'Erineo S. Maliksi', 'status' => 'Elected', 'term' => 'February 1988 - March 1998'],
+    ['name' => 'Wilfredo Garde', 'status' => 'OIC', 'term' => 'October 1986 - February 1988'],
+    ['name' => 'Atty. Damian Villaseca', 'status' => 'OIC', 'term' => 'May 1986 - October 1986'],
+    ['name' => 'Jose Jamir', 'status' => 'Elected', 'term' => '1968 - May 15, 1986'],
+    ['name' => 'Dominador Camerino', 'status' => 'Elected', 'term' => 'January 1946 - September 1967'],
+    ['name' => 'Pantaleon Garcia', 'status' => 'Elected', 'term' => '1904 - 1905'],
+    ['name' => 'Jose Tagle', 'status' => 'Appointed', 'term' => '1896 - 1898'],
+    ['name' => 'Bernardino Paredes', 'status' => 'Appointed', 'term' => '1894 - 1896'],
+    ['name' => 'Cayetano Topacio', 'status' => 'Appointed', 'term' => '1890 - 1892'],
+    ['name' => 'Licerio Topacio', 'status' => 'Appointed', 'term' => '1888 - 1890'],
 ];
 
 $departments = [
@@ -73,18 +90,8 @@ $departments = [
     ['office' => 'Office of the City Social Welfare and Development', 'head' => 'Ms. Josephine G. Villanueva, RSW', 'location' => 'Ground Floor'],
 ];
 
-$loadStyleCss = false;
-$enableLegacyUiSupport = false;
-
 require_once __DIR__ . '/../includes/header.navbar.php';
 ?>
-
-<style>
-    .deferred-section {
-        content-visibility: auto;
-        contain-intrinsic-size: 950px;
-    }
-</style>
 
 <section class="relative z-10 py-12 sm:py-14 lg:py-16">
     <div class="section-shell">
@@ -98,8 +105,8 @@ require_once __DIR__ . '/../includes/header.navbar.php';
                         City Profile and Local Government Overview
                     </h1>
                     <p class="mt-4 max-w-3xl text-sm leading-relaxed text-white/90 sm:text-base lg:text-lg">
-                        This page is a beginner-friendly guide to core city information, local government leadership,
-                        key history milestones, and departments of the City of Imus.
+                        View the city profile, elected leadership, major historical milestones, and selected public
+                        offices of the City of Imus.
                     </p>
 
                     <div class="mt-7 flex flex-wrap gap-3">
@@ -115,14 +122,16 @@ require_once __DIR__ . '/../includes/header.navbar.php';
                 </div>
 
                 <aside class="glass-card rounded-3xl p-4 sm:p-5">
-                    <img src="<?= e(base_url('IMG/optimized/about-cathedral-aerial.jpg')) ?>"
-                        alt="Aerial view of Imus Cathedral"
-                        width="1200" height="675"
-                        fetchpriority="high" loading="eager" decoding="async"
-                        class="h-64 w-full rounded-2xl object-cover sm:h-72 lg:h-80">
+                    <?= imus_image('IMG/optimized/about-cathedral-aerial.jpg', 'Aerial view of Imus Cathedral', [
+                        'loading' => 'eager',
+                        'decoding' => 'async',
+                        'fetchpriority' => 'high',
+                        'class' => 'h-64 w-full rounded-2xl object-cover sm:h-72 lg:h-80',
+                    ]) ?>
                     <p class="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-imusBlue">Imus, Cavite</p>
                     <p class="mt-2 text-sm leading-relaxed text-slate-700">
-                        Strategic gateway city in Cavite with deep historical value and steadily expanding urban services.
+                        Imus is a gateway city in Cavite with major revolutionary landmarks, a growing urban core, and
+                        expanding public services.
                     </p>
                 </aside>
             </div>
@@ -136,8 +145,8 @@ require_once __DIR__ . '/../includes/header.navbar.php';
             <p class="text-xs font-semibold uppercase tracking-[0.16em] text-imusBlue">Section 1</p>
             <h2 class="mt-2 font-display text-2xl font-bold text-civicInk sm:text-3xl">City Profile</h2>
             <p class="mt-3 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
-                Imus is a first-class component city in Cavite known for its major contribution to Philippine history
-                and its role as a growth center near Metro Manila.
+                Imus is the de jure capital of Cavite, a first-class component city, and a major residential,
+                commercial, and service center in the province.
             </p>
 
             <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -158,17 +167,18 @@ require_once __DIR__ . '/../includes/header.navbar.php';
             <p class="text-xs font-semibold uppercase tracking-[0.16em] text-imusBlue">Section 2</p>
             <h2 class="mt-2 font-display text-2xl font-bold text-civicInk sm:text-3xl">City Government</h2>
             <p class="mt-3 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
-                Current key city leaders and their core public responsibilities.
+                Current elected city leaders and their core public responsibilities.
             </p>
 
             <div class="mt-8 grid gap-5 lg:grid-cols-3">
                 <?php foreach ($cityOfficials as $official): ?>
                     <article class="rounded-3xl border border-slate-200 bg-white p-4 shadow-soft-xl sm:p-5">
-                        <img src="<?= e(base_url($official['image'])) ?>"
-                            alt="<?= e($official['name']) ?>"
-                            width="600" height="600"
-                            loading="lazy" decoding="async" fetchpriority="low"
-                            class="h-56 w-full rounded-2xl bg-imusGreen/10 object-contain p-3">
+                        <?= imus_image($official['image'], $official['name'], [
+                            'loading' => 'lazy',
+                            'decoding' => 'async',
+                            'fetchpriority' => 'low',
+                            'class' => 'h-72 w-full rounded-2xl bg-imusGreen/10 object-contain p-4 sm:h-80',
+                        ]) ?>
                         <p class="mt-4 text-xs font-semibold uppercase tracking-[0.12em] text-imusBlue"><?= e($official['position']) ?></p>
                         <h3 class="mt-1 font-display text-xl font-semibold leading-snug text-civicInk"><?= e($official['name']) ?></h3>
                         <p class="mt-2 text-sm leading-relaxed text-slate-600"><?= e($official['summary']) ?></p>
@@ -183,9 +193,9 @@ require_once __DIR__ . '/../includes/header.navbar.php';
     <div class="section-shell">
         <div class="mx-auto w-full max-w-[90rem] rounded-[2rem] border border-imusBlue/15 bg-white/90 p-5 shadow-soft-2xl backdrop-blur-sm sm:p-7 lg:p-8">
             <p class="text-xs font-semibold uppercase tracking-[0.16em] text-imusBlue">Section 3</p>
-            <h2 class="mt-2 font-display text-2xl font-bold text-civicInk sm:text-3xl">Barangay Officials</h2>
+            <h2 class="mt-2 font-display text-2xl font-bold text-civicInk sm:text-3xl">Barangay Clusters</h2>
             <p class="mt-3 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
-                Imus has 97 barangays grouped into nine local coordination clusters.
+                The official barangay directory groups the city's 97 barangays into nine coordination clusters.
             </p>
 
             <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -229,10 +239,11 @@ require_once __DIR__ . '/../includes/header.navbar.php';
 
             <div class="mt-8 overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
                 <table class="w-full border-collapse text-left">
-                    <caption class="sr-only">Past mayors of Imus and their terms</caption>
+                    <caption class="sr-only">Past mayors of Imus, their appointment status, and terms</caption>
                     <thead>
                         <tr class="bg-imusBlue text-white">
                             <th scope="col" class="px-4 py-3 text-sm font-semibold">Name</th>
+                            <th scope="col" class="px-4 py-3 text-sm font-semibold">Status</th>
                             <th scope="col" class="px-4 py-3 text-sm font-semibold">Term</th>
                         </tr>
                     </thead>
@@ -240,6 +251,7 @@ require_once __DIR__ . '/../includes/header.navbar.php';
                         <?php foreach ($pastMayors as $mayor): ?>
                             <tr class="border-t border-slate-200">
                                 <td class="px-4 py-3 text-sm text-slate-700"><?= e($mayor['name']) ?></td>
+                                <td class="px-4 py-3 text-sm text-slate-700"><?= e($mayor['status']) ?></td>
                                 <td class="px-4 py-3 text-sm text-slate-700"><?= e($mayor['term']) ?></td>
                             </tr>
                         <?php endforeach; ?>

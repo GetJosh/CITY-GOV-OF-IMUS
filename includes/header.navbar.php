@@ -1,33 +1,7 @@
 <?php
 declare(strict_types=1);
 
-if (!defined('BASE_URL')) {
-    $scriptName = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '');
-    $scriptDir = trim(str_replace('\\', '/', dirname($scriptName)), '/');
-    $rootDir = preg_replace('~(?:^|/)Pages(?:/.*)?$~i', '', $scriptDir) ?? $scriptDir;
-    $rootDir = trim($rootDir, '/');
-    $baseUrl = ($rootDir === '' || $rootDir === '.') ? '/' : '/' . $rootDir . '/';
-    define('BASE_URL', $baseUrl);
-}
-
-if (!function_exists('base_url')) {
-    function base_url(string $path = ''): string
-    {
-        $path = ltrim($path, '/');
-        if ($path === '') {
-            return BASE_URL;
-        }
-
-        return BASE_URL . $path;
-    }
-}
-
-if (!function_exists('e')) {
-    function e(string $value): string
-    {
-        return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
-    }
-}
+require_once __DIR__ . '/bootstrap.php';
 
 $resolvedPageTitle = trim((string) ($pageTitle ?? 'City Government of Imus'));
 if ($resolvedPageTitle === '') {
@@ -52,8 +26,10 @@ $resolvedCanonicalUrl = (isset($canonicalUrl) && is_string($canonicalUrl) && $ca
 
 $officialFacebook = (isset($officialFacebook) && is_string($officialFacebook) && trim($officialFacebook) !== '')
     ? $officialFacebook
-    : 'https://www.facebook.com/CityofImus/';
-$loadStyleCss = isset($loadStyleCss) ? (bool) $loadStyleCss : true;
+    : imus_official_facebook_url();
+$resolvedOgImage = (isset($ogImagePath) && is_string($ogImagePath) && trim($ogImagePath) !== '')
+    ? imus_absolute_url($ogImagePath)
+    : imus_absolute_url('IMG/city_seal.png');
 
 $utilityLinks = [
     [
@@ -63,12 +39,12 @@ $utilityLinks = [
     ],
     [
         'label' => 'Downloadable Forms',
-        'href' => base_url('HTML/Downloadable-forms.html'),
+        'href' => base_url('Pages/Downloadable-Forms.php'),
         'external' => false,
     ],
     [
         'label' => 'Contact Us',
-        'href' => base_url('HTML/Contact-Us.html'),
+        'href' => base_url('Pages/Contact-Us.php'),
         'external' => false,
     ],
     [
@@ -97,28 +73,24 @@ $navMenus = [
     [
         'label' => 'Services',
         'children' => [
-            ['label' => 'City Public Library', 'href' => base_url('HTML/Services.html#City-Public-Library')],
-            ['label' => 'Assistance Programs', 'href' => base_url('HTML/Services.html#Assistance')],
-            ['label' => "Citizen's Charter", 'href' => base_url('HTML/Services.html#Citizens-Charter')],
-            ['label' => 'EBOSS', 'href' => base_url('HTML/Services.html#EBOSS')],
+            ['label' => 'City Public Library', 'href' => base_url('Pages/Services.php#City-Public-Library')],
+            ['label' => 'Assistance Programs', 'href' => base_url('Pages/Services.php#Assistance')],
+            ['label' => "Citizen's Charter", 'href' => base_url('Pages/Services.php#Citizens-Charter')],
+            ['label' => 'EBOSS', 'href' => base_url('Pages/Services.php#EBOSS')],
         ],
     ],
     [
         'label' => 'Tourism',
         'children' => [
-            ['label' => 'History and Culture', 'href' => base_url('HTML/Tourism.html')],
-            ['label' => 'Visiting Imus', 'href' => base_url('HTML/Tourism.html#Visiting-Imus')],
-            ['label' => 'Heroes of Imus', 'href' => base_url('HTML/Tourism.html#Heroes-of-Imus')],
-            ['label' => 'Notable Persons', 'href' => base_url('HTML/Tourism.html#Notable-Persons')],
+            ['label' => 'History and Culture', 'href' => base_url('Pages/Tourism.php#History-and-Culture')],
+            ['label' => 'Visiting Imus', 'href' => base_url('Pages/Tourism.php#Visiting-Imus')],
+            ['label' => 'Heroes of Imus', 'href' => base_url('Pages/Tourism.php#Heroes-of-Imus')],
+            ['label' => 'Notable Persons', 'href' => base_url('Pages/Tourism.php#Notable-Persons')],
         ],
     ],
     [
         'label' => 'Business',
         'href' => base_url('Pages/Business.php'),
-    ],
-    [
-        'label' => 'Employees',
-        'href' => base_url('HTML/Employees-Hub.html'),
     ],
 ];
 
@@ -138,14 +110,12 @@ $initialManilaDateTime = (new DateTimeImmutable('now', new DateTimeZone('Asia/Ma
     <meta property="og:title" content="<?= e($resolvedPageTitle) ?>">
     <meta property="og:description" content="<?= e($resolvedPageDescription) ?>">
     <meta property="og:url" content="<?= e($resolvedCanonicalUrl) ?>">
+    <meta property="og:image" content="<?= e($resolvedOgImage) ?>">
+    <meta property="og:image:alt" content="City Government of Imus">
     <link rel="canonical" href="<?= e($resolvedCanonicalUrl) ?>">
-    <link rel="icon" href="<?= e(base_url('IMG/seal_imus_sm100.png')) ?>" sizes="100x100">
+    <link rel="icon" href="<?= e(imus_asset_url('IMG/city_seal.png')) ?>" sizes="100x100">
     <link rel="preload" href="<?= e(base_url('CSS/index.tailwind.min.css')) ?>" as="style">
     <link rel="stylesheet" href="<?= e(base_url('CSS/index.tailwind.min.css')) ?>">
-    <?php if ($loadStyleCss): ?>
-        <link rel="preload" href="<?= e(base_url('CSS/style.css')) ?>" as="style">
-        <link rel="stylesheet" href="<?= e(base_url('CSS/style.css')) ?>">
-    <?php endif; ?>
 </head>
 
 <body class="min-h-screen font-sans text-slate-800 antialiased">
@@ -180,10 +150,12 @@ $initialManilaDateTime = (new DateTimeImmutable('now', new DateTimeZone('Asia/Ma
                     <div class="flex min-h-[78px] flex-wrap items-center justify-between gap-4">
                         <a href="<?= e(base_url('index.php')) ?>"
                             class="focusable inline-flex items-center gap-3 rounded-xl px-1 py-1 text-white">
-                            <img src="<?= e(base_url('IMG/Logo_City_Government_of_Imuss.png')) ?>"
-                                alt="City Government of Imus logo"
-                                width="250" height="100" decoding="async" fetchpriority="high"
-                                class="h-10 w-auto rounded-lg bg-white/90 px-2 py-1 shadow-md sm:h-12">
+                            <?= imus_image('IMG/Logo_City_Government_of_Imuss.png', 'City Government of Imus logo', [
+                                'loading' => 'eager',
+                                'decoding' => 'async',
+                                'fetchpriority' => 'high',
+                                'class' => 'h-10 w-auto rounded-lg bg-white/90 px-2 py-1 shadow-md sm:h-12',
+                            ]) ?>
                             <span class="text-left">
                                 <span class="block font-display text-base font-bold leading-tight sm:text-lg">City Government of
                                     Imus</span>
