@@ -8,6 +8,7 @@ $profileFacts = [
     ['label' => 'Classification', 'value' => '1st Class Component City'],
     ['label' => 'Province', 'value' => 'Cavite'],
     ['label' => 'Population', 'value' => '539,743'],
+    ['label' => 'Population Density', 'value' => '101.56 persons/sq.km.'],
     ['label' => 'Estimated Households', 'value' => '130,814'],
     ['label' => 'Population Growth Rate', 'value' => '4.24%'],
     ['label' => 'Barangays', 'value' => '97'],
@@ -36,16 +37,249 @@ $cityOfficials = [
     ],
 ];
 
+$cityCouncilors = [
+    [
+        'name' => 'Hon. Shernan S. Jaro',
+        'committee' => 'Committee on Finance, Budget and Appropriations / Committee on Ways and Means',
+        'image' => 'IMG/officials-and-councilors/Konsi-Shernan.png',
+    ],
+    [
+        'name' => 'Hon. Dennis T. Lacson',
+        'committee' => 'Committee on Land Utilization, Zoning, and Housing / Human Settlements',
+        'image' => 'IMG/officials-and-councilors/Konsi-Dennis.png',
+    ],
+    [
+        'name' => 'Hon. Peter Emmanuel C. Lara',
+        'committee' => 'Committee on Ordinances, Rules, Privileges, and Legal Matters',
+        'image' => 'IMG/officials-and-councilors/Konsi-Wency.png',
+    ],
+    [
+        'name' => 'Hon. Lloren Dionella G. Saquilayan',
+        'committee' => 'Committee on Social Services, Family, Women, and Children',
+        'image' => 'IMG/officials-and-councilors/Konsi-Yen.png',
+    ],
+    [
+        'name' => 'Hon. Larry Boy S. Nato',
+        'committee' => 'Committee on Games and Amusement / Franchise / Transportations and Communications / Information and Communication Technology',
+        'image' => 'IMG/officials-and-councilors/Konsi-Larry.png',
+    ],
+    [
+        'name' => 'Hon. Sherwin L. Comia',
+        'committee' => 'Committee on Public Works and Infrastructures, Special Projects',
+        'image' => 'IMG/officials-and-councilors/Konsi-Sherwin.png',
+    ],
+    [
+        'name' => 'Hon. Darwin Marti M. Remulla',
+        'committee' => 'Committee on Agriculture and Agrarian Reforms / Environment Protection and Ecology / Market and Slaughterhouses',
+        'image' => 'IMG/officials-and-councilors/Konsi-Darwin.png',
+    ],
+    [
+        'name' => 'Hon. Enzo Gaston A. Asistio',
+        'committee' => 'Committee on Health, Nutrition, Population, and Sanitation',
+        'image' => 'IMG/officials-and-councilors/Konsi-Enzo.png',
+    ],
+    [
+        'name' => 'Hon. Jogie Lyn L. Maliksi',
+        'committee' => 'Committee on Tourism and Culture',
+        'image' => 'IMG/officials-and-councilors/Konsi-Jelyn.png',
+    ],
+    [
+        'name' => 'Hon. Gregorio Miguel B. Ocampo Jr.',
+        'committee' => 'Committee on Education',
+        'image' => 'IMG/officials-and-councilors/Konsi-Igi.png',
+    ],
+    [
+        'name' => 'Hon. David Sapitan Jr.',
+        'committee' => 'Committee on Cooperatives / People\'s Organization Accreditation Livelihood / Elderly',
+        'image' => 'IMG/officials-and-councilors/Konsi-David.png',
+    ],
+    [
+        'name' => 'Hon. Mark Anthony P. Villanueva',
+        'committee' => 'Committee on Trade, Commerce, and Industry / Labor and Employment and Industrial Peace',
+        'image' => 'IMG/officials-and-councilors/Konsi-Mark.png',
+    ],
+    [
+        'name' => 'Hon. Reymundo Ramirez',
+        'committee' => 'Committee on Peace and Order, Public Welfare and Safety and Fire Protection / Human Rights / Barangay Affairs',
+        'image' => 'IMG/officials-and-councilors/Konsi-Capt-RR.png',
+    ],
+    [
+        'name' => 'Hon. Glian Ilagan',
+        'committee' => 'Committee on Sports and Youth Development',
+        'image' => 'IMG/officials-and-councilors/Konsi-SK-Glian.png',
+    ],
+];
+
+$provincialReps = [
+    [
+        'name' => 'Hon. Ony Cantimbuhan',
+        'committee' => 'Provincial Board Member, 3rd District of Cavite',
+        'image' => 'IMG/officials-and-councilors/BM-Oni.png',
+    ],
+    [
+        'name' => 'Hon. Lloyd Emman D. Jaro',
+        'committee' => 'Provincial Board Member, 3rd District of Cavite',
+        'image' => 'IMG/officials-and-councilors/BM-Lloyd.png',
+    ],
+    [
+        'name' => 'Hon. Chelsea Jillian Sarno',
+        'committee' => 'Cavite SK Provincial Federation President',
+        'image' => 'IMG/officials-and-councilors/SK-Pres-Chelsea.png',
+    ],
+];
+
 $barangayClusters = [
-    ['name' => 'Cluster 1', 'coverage' => 'Alapan area and nearby barangays'],
-    ['name' => 'Cluster 2', 'coverage' => 'Bantayan and Bucandala area'],
-    ['name' => 'Cluster 3', 'coverage' => 'Carsadang Bago and neighboring barangays'],
-    ['name' => 'Cluster 4', 'coverage' => 'Malagasang area'],
-    ['name' => 'Cluster 5', 'coverage' => 'Medicion and nearby barangays'],
-    ['name' => 'Cluster 6', 'coverage' => 'Poblacion area'],
-    ['name' => 'Cluster 7', 'coverage' => 'Pasong Buaya area'],
-    ['name' => 'Cluster 8', 'coverage' => 'Tanzang Luma and neighboring barangays'],
-    ['name' => 'Cluster 9', 'coverage' => 'Anabu and surrounding barangays'],
+    [
+        'name' => 'Cluster 1',
+        'coverage' => 'Alapan area and nearby barangays',
+        'barangays' => [
+            ['name' => 'Alapan I-A', 'captain' => 'Aman, Jeffrey Primero'],
+            ['name' => 'Alapan I-B', 'captain' => 'Santos, Rico David'],
+            ['name' => 'Alapan I-C', 'captain' => 'Marcial, Noriel Santiaguel'],
+            ['name' => 'Alapan II-A', 'captain' => 'Barzaga, Marc Albert Didal'],
+            ['name' => 'Alapan II-B', 'captain' => 'Camia, Benedicto Dayrit'],
+            ['name' => 'Bucandala I', 'captain' => 'Santiaguel, Ferdinand Apolinar'],
+            ['name' => 'Bucandala II', 'captain' => 'Vilbar, Mark Jefferson Legaspi'],
+            ['name' => 'Bucandala III', 'captain' => 'Sarreál, Amado Saria'],
+            ['name' => 'Bucandala IV', 'captain' => 'Bacos, Gary Olaes'],
+            ['name' => 'Bucandala V', 'captain' => 'Saliba, Reynaldo Obispo'],
+        ],
+    ],
+    [
+        'name' => 'Cluster 2',
+        'coverage' => 'Bantayan and Bucandala area',
+        'barangays' => [
+            ['name' => 'Carsadang Bago I', 'captain' => 'Cubillo, Laila Papa'],
+            ['name' => 'Carsadang Bago II', 'captain' => 'Candalla, Eliseo Jarin'],
+            ['name' => 'Pag-Asa I', 'captain' => 'Galang, Rolito Jarin'],
+            ['name' => 'Pag-Asa II', 'captain' => 'Medina, Ernesto Jarin'],
+            ['name' => 'Pag-Asa III', 'captain' => 'Dagumboy, Joemar Felix'],
+            ['name' => 'Medicion I-A', 'captain' => 'Camat, Leomar Viña'],
+            ['name' => 'Medicion I-B', 'captain' => 'Condalor, Ferdinand Dayson'],
+            ['name' => 'Medicion I-C', 'captain' => 'Dominguez, Roberto Toledo'],
+            ['name' => 'Medicion I-D', 'captain' => 'Igtiben, Mark Luigi Monreal'],
+            ['name' => 'Medicion II-A', 'captain' => 'Jarin, Alexander Monzon'],
+            ['name' => 'Medicion II-B', 'captain' => 'Monzon, Eduardo Frias'],
+            ['name' => 'Medicion II-C', 'captain' => 'Bella, Riciel Barzaga'],
+            ['name' => 'Medicion II-D', 'captain' => 'Nas, Rommel Cairme'],
+            ['name' => 'Medicion II-E', 'captain' => 'Monzon, Lamberto Episioco'],
+            ['name' => 'Medicion II-F', 'captain' => 'Octavo, Eugenio Risco'],
+        ],
+    ],
+    [
+        'name' => 'Cluster 3',
+        'coverage' => 'Carsadang Bago and neighboring barangays',
+        'barangays' => [
+            ['name' => 'Anabu I-A', 'captain' => 'Saratan, Jan Wilmher Cuenca'],
+            ['name' => 'Anabu I-B', 'captain' => 'Minaldo, Rafael Ochoa'],
+            ['name' => 'Anabu I-C', 'captain' => 'Ramos, Romeo Ignacio'],
+            ['name' => 'Anabu I-D', 'captain' => 'Lares, Joven A.'],
+            ['name' => 'Anabu I-E', 'captain' => 'Camungol, Antonio Barco'],
+            ['name' => 'Anabu I-F', 'captain' => 'Sarte, Rocky Marciano A.'],
+            ['name' => 'Anabu I-G', 'captain' => 'Silla, Robinson Papa'],
+        ],
+    ],
+    [
+        'name' => 'Cluster 4',
+        'coverage' => 'Malagasang area',
+        'barangays' => [
+            ['name' => 'Anabu II-A', 'captain' => 'Atanacio, James Bryan Remulla'],
+            ['name' => 'Anabu II-B', 'captain' => 'Diato, Christian Rementilla'],
+            ['name' => 'Anabu II-C', 'captain' => 'Sarte, Joey Bernardo'],
+            ['name' => 'Anabu II-D', 'captain' => 'Lares, Geraldo Calitis'],
+            ['name' => 'Anabu II-E', 'captain' => 'Paredes, Lorenzo Genido'],
+            ['name' => 'Anabu II-F', 'captain' => 'Parreñas, Bernadette Gaborro'],
+        ],
+    ],
+    [
+        'name' => 'Cluster 5',
+        'coverage' => 'Medicion and nearby barangays',
+        'barangays' => [
+            ['name' => 'Bayan Luma I', 'captain' => 'Canaynay, Melquiades Tala Tala'],
+            ['name' => 'Bayan Luma II', 'captain' => 'Bautista, Reuben Jesse Magsaysay'],
+            ['name' => 'Bayan Luma III', 'captain' => 'Borromeo, Reynaldo Pastor'],
+            ['name' => 'Bayan Luma IV', 'captain' => 'Aquilino, Natividad Chua'],
+            ['name' => 'Bayan Luma V', 'captain' => 'Reyes, Edgardo Dela Cruz'],
+            ['name' => 'Bayan Luma VI', 'captain' => 'Salvador, Kent Lewis Cani'],
+            ['name' => 'Bayan Luma VII', 'captain' => 'Camia, Zosimo Jr. Cruz'],
+            ['name' => 'Bayan Luma VIII', 'captain' => 'Esguerra, Efren Jr. Bautista'],
+            ['name' => 'Bayan Luma IX', 'captain' => 'Tined, Ruben Jr. De Guzman'],
+        ],
+    ],
+    [
+        'name' => 'Cluster 6',
+        'coverage' => 'Poblacion area',
+        'barangays' => [
+            ['name' => 'Bagong Silang', 'captain' => 'Cariño, Carlito Dumalanta'],
+            ['name' => 'Magdalo', 'captain' => 'Jardin, Kaizer Lozada'],
+            ['name' => 'Maharlika', 'captain' => 'Hynson, Gina Delos Reyes'],
+            ['name' => 'Mariano Espeleta I', 'captain' => 'Cruz, Alnair Macahilig'],
+            ['name' => 'Mariano Espeleta II', 'captain' => 'Punzalan, Nelson Jr. Dagum'],
+            ['name' => 'Mariano Espeleta III', 'captain' => 'Nato, Silvestre Campaña'],
+            ['name' => 'Pinagbuklod', 'captain' => 'Ocampo, Ricardo Salvador'],
+            ['name' => 'Pasong Buaya I', 'captain' => 'Ramos, Wilfredo Esguerra'],
+            ['name' => 'Pasong Buaya II', 'captain' => 'Tagle, Carlito Camantigue'],
+        ],
+    ],
+    [
+        'name' => 'Cluster 7',
+        'coverage' => 'Pasong Buaya area',
+        'barangays' => [
+            ['name' => 'Buhay Na Tubig', 'captain' => 'Ramirez, Reymundo De Guzman'],
+            ['name' => 'Palico I', 'captain' => 'Olives, Nicanor Zaragosa'],
+            ['name' => 'Palico II', 'captain' => 'Sapanghila, Ryan Jay Gayamo'],
+            ['name' => 'Palico III', 'captain' => 'Dominguez, Luisito Zapanta'],
+            ['name' => 'Palico Iv', 'captain' => 'Dominguez, Marlo Espiritu'],
+            ['name' => 'Tanzang Luma I', 'captain' => 'Dones, Reynante Dominguez'],
+            ['name' => 'Tanzang Luma II', 'captain' => 'Lacson, Carlo Rey Perez'],
+            ['name' => 'Tanzang Luma III', 'captain' => 'Manela, Marty Landas'],
+            ['name' => 'Tanzang Luma Iv', 'captain' => 'Cinto, Jhun Gaña'],
+            ['name' => 'Tanzang Luma V', 'captain' => 'Acuña, Bienvenido Camaclang'],
+            ['name' => 'Tanzang Luma VI', 'captain' => 'Crisologo, Redentor Magsakay'],
+        ],
+    ],
+    [
+        'name' => 'Cluster 8',
+        'coverage' => 'Tanzang Luma and neighboring barangays',
+        'barangays' => [
+            ['name' => 'Poblacion I-A', 'captain' => 'Tacus, Gregorio Escobido'],
+            ['name' => 'Poblacion I-B', 'captain' => 'Dominguez, Kristel Joy De Leon'],
+            ['name' => 'Poblacion I-C', 'captain' => 'Constantino, Hilario Sapin'],
+            ['name' => 'Poblacion II-A', 'captain' => 'Sauler, Gary Dela Cruz'],
+            ['name' => 'Poblacion II-B', 'captain' => 'Ravelo, Ferdinand Tambio'],
+            ['name' => 'Poblacion III-A', 'captain' => 'Maluto, Carlos Serviano'],
+            ['name' => 'Poblacion III-B', 'captain' => 'Ramirez, Elmer Diones'],
+            ['name' => 'Poblacion IV-A', 'captain' => 'Figueras, Perpetua Fernandez'],
+            ['name' => 'Poblacion IV-B', 'captain' => 'Caimol, John Orly Gonzaga'],
+            ['name' => 'Poblacion IV-C', 'captain' => 'Kamantigue, Imelda Gacos'],
+            ['name' => 'Poblacion IV-D', 'captain' => 'Virata, Michael Samonte'],
+            ['name' => 'Toclong I-A', 'captain' => 'Sañez, Oktubre Camandang'],
+            ['name' => 'Toclong I-B', 'captain' => 'Badion, Nerrie Salem'],
+            ['name' => 'Toclong I-C', 'captain' => 'Santos, Joey Remulla'],
+            ['name' => 'Toclong II-A', 'captain' => 'Sañez, Abraham Jr. Santos'],
+            ['name' => 'Toclong II-B', 'captain' => 'Remulla, Joseph Regalado'],
+        ],
+    ],
+    [
+        'name' => 'Cluster 9',
+        'coverage' => 'Anabu and surrounding barangays',
+        'barangays' => [
+            ['name' => 'Malagasang I-A', 'captain' => 'Parnala, Pedro Manimbao'],
+            ['name' => 'Malagasang I-B', 'captain' => 'Reyes, Mario Jr. Palajos'],
+            ['name' => 'Malagasang I-C', 'captain' => 'Saulog, Gerardo Sanchez'],
+            ['name' => 'Malagasang I-D', 'captain' => 'Tapawan, Manuel Saquilayan'],
+            ['name' => 'Malagasang I-E', 'captain' => 'Sayaman, Josefino Macalawa'],
+            ['name' => 'Malagasang I-F', 'captain' => 'Lara, Randy Sapinoso'],
+            ['name' => 'Malagasang I-G', 'captain' => 'Valerio, Mark Oliver Jarin'],
+            ['name' => 'Malagasang II-A', 'captain' => 'Progoso, Aldrin Olivarez'],
+            ['name' => 'Malagasang II-B', 'captain' => 'Andallon, Lenie Herrera'],
+            ['name' => 'Malagasang II-C', 'captain' => 'Herrera, Danilo Magsino'],
+            ['name' => 'Malagasang II-D', 'captain' => 'Servida, Alexander Vasquez'],
+            ['name' => 'Malagasang II-E', 'captain' => 'Topacio, Jose Zanido Camarce'],
+            ['name' => 'Malagasang II-F', 'captain' => 'Fauni, Edward Dayuta'],
+            ['name' => 'Malagasang II-G', 'captain' => 'Fauni, Armando Saquilayan'],
+        ],
+    ],
 ];
 
 $historyTimeline = [
@@ -89,6 +323,12 @@ $departments = [
     ['office' => 'Office of the City Health', 'head' => 'Dr. Ferdinand P. Mina', 'location' => '2nd Floor'],
     ['office' => 'Office of the City Social Welfare and Development', 'head' => 'Ms. Josephine G. Villanueva, RSW', 'location' => 'Ground Floor'],
 ];
+
+$vision = 'The model city in the region, with secured and healthy citizenry, living in a smart, green and sustainable environment in a technology-driven economy, governed with integrity and transparency.';
+
+$mission = 'The City Government of Imus is committed to delivering a transparent, reliable, and efficient public service that is proactive to the needs of its people while actively pursuing development for a dynamic and unified Imus.';
+
+$mayorMessage = 'Welcome to the City of Imus! Explore the official website of the City Government of Imus, where we showcase our commitment to good governance and transparency. Here, you\'ll find essential information about our programs, services, and projects aligned with our mission, AAngat ang Imus. We warmly invite you to dive into our City\'s rich history and vibrant culture, taste our local flavors, visit our must-see attractions, and feel the genuine hospitality that makes Imuseños proud. Start planning your visit today, and experience the charm of Imus—proudly known as the Flag Capital of the Philippines!';
 
 require_once __DIR__ . '/../includes/header.navbar.php';
 ?>
@@ -161,18 +401,54 @@ require_once __DIR__ . '/../includes/header.navbar.php';
     </div>
 </section>
 
-<section id="City-Government" class="deferred-section relative z-10 pb-12 sm:pb-14 lg:pb-16">
+<section id="Vision" class="deferred-section relative z-10 pb-12 sm:pb-14 lg:pb-16">
     <div class="section-shell">
         <div class="mx-auto w-full max-w-[90rem] rounded-[2rem] border border-imusBlue/15 bg-white/90 p-5 shadow-soft-2xl backdrop-blur-sm sm:p-7 lg:p-8">
             <p class="text-xs font-semibold uppercase tracking-[0.16em] text-imusBlue">Section 2</p>
+            <h2 class="mt-2 font-display text-2xl font-bold text-civicInk sm:text-3xl">Vision</h2>
+            <p class="mt-3 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
+                <?= e($vision) ?>
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="Mission" class="deferred-section relative z-10 pb-12 sm:pb-14 lg:pb-16">
+    <div class="section-shell">
+        <div class="mx-auto w-full max-w-[90rem] rounded-[2rem] border border-imusBlue/15 bg-white/90 p-5 shadow-soft-2xl backdrop-blur-sm sm:p-7 lg:p-8">
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-imusBlue">Section 3</p>
+            <h2 class="mt-2 font-display text-2xl font-bold text-civicInk sm:text-3xl">Mission</h2>
+            <p class="mt-3 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
+                <?= e($mission) ?>
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="Mayor-Message" class="deferred-section relative z-10 pb-12 sm:pb-14 lg:pb-16">
+    <div class="section-shell">
+        <div class="mx-auto w-full max-w-[90rem] rounded-[2rem] border border-imusBlue/15 bg-white/90 p-5 shadow-soft-2xl backdrop-blur-sm sm:p-7 lg:p-8">
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-imusBlue">Section 4</p>
+            <h2 class="mt-2 font-display text-2xl font-bold text-civicInk sm:text-3xl">Message from the Mayor</h2>
+            <p class="mt-3 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
+                <?= e($mayorMessage) ?>
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="City-Government" class="deferred-section relative z-10 pb-12 sm:pb-14 lg:pb-16">
+    <div class="section-shell">
+        <div class="mx-auto w-full max-w-[90rem] rounded-[2rem] border border-imusBlue/15 bg-white/90 p-5 shadow-soft-2xl backdrop-blur-sm sm:p-7 lg:p-8">
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-imusBlue">Section 5</p>
             <h2 class="mt-2 font-display text-2xl font-bold text-civicInk sm:text-3xl">City Government</h2>
             <p class="mt-3 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
                 Current elected city leaders and their core public responsibilities.
             </p>
 
-            <div class="mt-8 grid gap-5 lg:grid-cols-3">
+            <div class="mt-8 grid gap-6 lg:grid-cols-3">
                 <?php foreach ($cityOfficials as $official): ?>
-                    <article class="rounded-3xl border border-slate-200 bg-white p-4 shadow-soft-xl sm:p-5">
+                    <article class="rounded-3xl border border-slate-200 bg-white p-5 shadow-soft-xl sm:p-6">
                         <?= imus_image($official['image'], $official['name'], [
                             'loading' => 'lazy',
                             'decoding' => 'async',
@@ -185,6 +461,44 @@ require_once __DIR__ . '/../includes/header.navbar.php';
                     </article>
                 <?php endforeach; ?>
             </div>
+
+            <div class="mt-16">
+                <h3 class="font-display text-xl font-bold text-civicInk sm:text-2xl">Provincial Representatives</h3>
+                <p class="mt-2 text-sm leading-relaxed text-slate-600">Provincial board members and youth leaders representing Imus at the provincial level.</p>
+                <div class="mt-6 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                    <?php foreach ($provincialReps as $rep): ?>
+                        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                            <?= imus_image($rep['image'], $rep['name'], [
+                                'loading' => 'lazy',
+                                'decoding' => 'async',
+                                'fetchpriority' => 'low',
+                                'class' => 'h-56 w-full rounded-xl bg-imusGreen/10 object-contain',
+                            ]) ?>
+                            <h4 class="mt-3 font-display text-lg font-semibold text-civicInk"><?= e($rep['name']) ?></h4>
+                            <p class="mt-1 text-xs leading-relaxed text-slate-600"><?= e($rep['committee']) ?></p>
+                        </article>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
+            <div class="mt-16">
+                <h3 class="font-display text-xl font-bold text-civicInk sm:text-2xl">City Councilors</h3>
+                <p class="mt-2 text-sm leading-relaxed text-slate-600">Meet the members of the Sangguniang Panlungsod and their committee assignments.</p>
+                <div class="mt-6 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+                    <?php foreach ($cityCouncilors as $councilor): ?>
+                        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                            <?= imus_image($councilor['image'], $councilor['name'], [
+                                'loading' => 'lazy',
+                                'decoding' => 'async',
+                                'fetchpriority' => 'low',
+                                'class' => 'h-56 w-full rounded-xl bg-imusGreen/10 object-contain',
+                            ]) ?>
+                            <h4 class="mt-3 font-display text-lg font-semibold text-civicInk"><?= e($councilor['name']) ?></h4>
+                            <p class="mt-1 text-xs leading-relaxed text-slate-600"><?= e($councilor['committee']) ?></p>
+                        </article>
+                    <?php endforeach; ?>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -192,18 +506,33 @@ require_once __DIR__ . '/../includes/header.navbar.php';
 <section id="Brgy-Officials" class="deferred-section relative z-10 pb-12 sm:pb-14 lg:pb-16">
     <div class="section-shell">
         <div class="mx-auto w-full max-w-[90rem] rounded-[2rem] border border-imusBlue/15 bg-white/90 p-5 shadow-soft-2xl backdrop-blur-sm sm:p-7 lg:p-8">
-            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-imusBlue">Section 3</p>
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-imusBlue">Section 6</p>
             <h2 class="mt-2 font-display text-2xl font-bold text-civicInk sm:text-3xl">Barangay Clusters</h2>
             <p class="mt-3 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
                 The official barangay directory groups the city's 97 barangays into nine coordination clusters.
             </p>
 
-            <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                <?php foreach ($barangayClusters as $cluster): ?>
-                    <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                        <h3 class="font-display text-lg font-semibold text-civicInk"><?= e($cluster['name']) ?></h3>
-                        <p class="mt-2 text-sm leading-relaxed text-slate-600"><?= e($cluster['coverage']) ?></p>
-                    </article>
+            <div class="mt-8 space-y-4">
+                <?php foreach ($barangayClusters as $index => $cluster): ?>
+                    <details class="group rounded-2xl border border-slate-200 bg-white shadow-sm" <?= $index < 2 ? 'open' : '' ?>>
+                        <summary class="flex flex-col gap-2 px-5 py-4 text-left cursor-pointer sm:flex-row sm:items-center sm:justify-between">
+                            <div>
+                                <p class="text-lg font-semibold text-civicInk"><?= e($cluster['name']) ?></p>
+                                <p class="text-sm text-slate-600"><?= e($cluster['coverage']) ?></p>
+                            </div>
+                            <span class="text-xs font-semibold text-imusBlue transition group-open:rotate-180">▼</span>
+                        </summary>
+                        <div class="border-t border-slate-200 bg-slate-50 px-5 py-5">
+                            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                                <?php foreach ($cluster['barangays'] as $barangay): ?>
+                                    <div class="rounded-xl bg-white p-4 shadow-sm">
+                                        <p class="font-semibold text-sm text-civicInk"><?= e($barangay['name']) ?></p>
+                                        <p class="mt-1 text-xs text-slate-600"><?= e($barangay['captain']) ?></p>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    </details>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -213,7 +542,7 @@ require_once __DIR__ . '/../includes/header.navbar.php';
 <section id="History" class="deferred-section relative z-10 pb-12 sm:pb-14 lg:pb-16">
     <div class="section-shell">
         <div class="mx-auto w-full max-w-[90rem] rounded-[2rem] border border-imusBlue/15 bg-white/90 p-5 shadow-soft-2xl backdrop-blur-sm sm:p-7 lg:p-8">
-            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-imusBlue">Section 4</p>
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-imusBlue">Section 7</p>
             <h2 class="mt-2 font-display text-2xl font-bold text-civicInk sm:text-3xl">History</h2>
             <p class="mt-3 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
                 Key dates and milestones in the city history.
@@ -234,7 +563,7 @@ require_once __DIR__ . '/../includes/header.navbar.php';
 <section id="Past-Mayors" class="deferred-section relative z-10 pb-12 sm:pb-14 lg:pb-16">
     <div class="section-shell">
         <div class="mx-auto w-full max-w-[90rem] rounded-[2rem] border border-imusBlue/15 bg-white/90 p-5 shadow-soft-2xl backdrop-blur-sm sm:p-7 lg:p-8">
-            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-imusBlue">Section 5</p>
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-imusBlue">Section 8</p>
             <h2 class="mt-2 font-display text-2xl font-bold text-civicInk sm:text-3xl">Past Mayors</h2>
 
             <div class="mt-8 overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
@@ -265,7 +594,7 @@ require_once __DIR__ . '/../includes/header.navbar.php';
 <section id="Dept-and-Units" class="deferred-section relative z-10 pb-12 sm:pb-14 lg:pb-16">
     <div class="section-shell">
         <div class="mx-auto w-full max-w-[90rem] rounded-[2rem] border border-imusBlue/15 bg-white/90 p-5 shadow-soft-2xl backdrop-blur-sm sm:p-7 lg:p-8">
-            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-imusBlue">Section 6</p>
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-imusBlue">Section 9</p>
             <h2 class="mt-2 font-display text-2xl font-bold text-civicInk sm:text-3xl">Departments and Units</h2>
             <p class="mt-3 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
                 Key city offices and their reported office locations.
