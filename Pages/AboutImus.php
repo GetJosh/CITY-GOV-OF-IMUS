@@ -512,29 +512,115 @@ require_once __DIR__ . '/../includes/header.navbar.php';
                 The official barangay directory groups the city's 97 barangays into nine coordination clusters.
             </p>
 
-            <div class="mt-8 space-y-4">
-                <?php foreach ($barangayClusters as $index => $cluster): ?>
-                    <details class="group rounded-2xl border border-slate-200 bg-white shadow-sm" <?= $index < 2 ? 'open' : '' ?>>
-                        <summary class="flex flex-col gap-2 px-5 py-4 text-left cursor-pointer sm:flex-row sm:items-center sm:justify-between">
-                            <div>
-                                <p class="text-lg font-semibold text-civicInk"><?= e($cluster['name']) ?></p>
-                                <p class="text-sm text-slate-600"><?= e($cluster['coverage']) ?></p>
+            <div class="mt-8">
+                <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                    <div class="flex gap-2">
+                        <button id="expand-all" class="inline-flex items-center rounded-lg border border-imusBlue bg-imusBlue px-4 py-2 text-sm font-semibold text-white transition hover:bg-imusBlue/90">
+                            Expand All
+                        </button>
+                        <button id="collapse-all" class="inline-flex items-center rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">
+                            Collapse All
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <input type="text" id="barangay-search" placeholder="Search barangays or captains..." class="w-full rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm focus:border-imusBlue focus:outline-none sm:w-80">
+                        <svg class="absolute right-3 top-2.5 h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="mt-6 space-y-4" id="barangay-clusters">
+                    <?php foreach ($barangayClusters as $index => $cluster): ?>
+                        <details class="group rounded-2xl border border-slate-200 bg-white shadow-sm cluster-item" <?= $index < 2 ? 'open' : '' ?>>
+                            <summary class="flex flex-col gap-2 px-5 py-4 text-left cursor-pointer sm:flex-row sm:items-center sm:justify-between">
+                                <div>
+                                    <p class="text-lg font-semibold text-civicInk cluster-name"><?= e($cluster['name']) ?></p>
+                                    <p class="text-sm text-slate-600 cluster-coverage"><?= e($cluster['coverage']) ?></p>
+                                </div>
+                                <span class="text-xs font-semibold text-imusBlue transition group-open:rotate-180">▼</span>
+                            </summary>
+                            <div class="border-t border-slate-200 bg-slate-50 px-5 py-5 cluster-content">
+                                <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 barangay-grid">
+                                    <?php foreach ($cluster['barangays'] as $barangay): ?>
+                                        <div class="rounded-xl bg-white p-4 shadow-sm barangay-item">
+                                            <p class="font-semibold text-sm text-civicInk barangay-name"><?= e($barangay['name']) ?></p>
+                                            <p class="mt-1 text-xs text-slate-600 barangay-captain"><?= e($barangay['captain']) ?></p>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
                             </div>
-                            <span class="text-xs font-semibold text-imusBlue transition group-open:rotate-180">▼</span>
-                        </summary>
-                        <div class="border-t border-slate-200 bg-slate-50 px-5 py-5">
-                            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                                <?php foreach ($cluster['barangays'] as $barangay): ?>
-                                    <div class="rounded-xl bg-white p-4 shadow-sm">
-                                        <p class="font-semibold text-sm text-civicInk"><?= e($barangay['name']) ?></p>
-                                        <p class="mt-1 text-xs text-slate-600"><?= e($barangay['captain']) ?></p>
-                                    </div>
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
-                    </details>
-                <?php endforeach; ?>
+                        </details>
+                    <?php endforeach; ?>
+                </div>
             </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const searchInput = document.getElementById('barangay-search');
+                    const expandAllBtn = document.getElementById('expand-all');
+                    const collapseAllBtn = document.getElementById('collapse-all');
+                    const clusters = document.querySelectorAll('.cluster-item');
+
+                    // Search functionality
+                    searchInput.addEventListener('input', function() {
+                        const searchTerm = this.value.toLowerCase().trim();
+                        let hasVisibleClusters = false;
+
+                        clusters.forEach(cluster => {
+                            const clusterName = cluster.querySelector('.cluster-name').textContent.toLowerCase();
+                            const clusterCoverage = cluster.querySelector('.cluster-coverage').textContent.toLowerCase();
+                            const barangayItems = cluster.querySelectorAll('.barangay-item');
+                            let hasVisibleBarangays = false;
+
+                            barangayItems.forEach(item => {
+                                const barangayName = item.querySelector('.barangay-name').textContent.toLowerCase();
+                                const barangayCaptain = item.querySelector('.barangay-captain').textContent.toLowerCase();
+
+                                const matches = barangayName.includes(searchTerm) ||
+                                               barangayCaptain.includes(searchTerm) ||
+                                               clusterName.includes(searchTerm) ||
+                                               clusterCoverage.includes(searchTerm);
+
+                                item.style.display = matches ? '' : 'none';
+                                if (matches) hasVisibleBarangays = true;
+                            });
+
+                            cluster.style.display = hasVisibleBarangays || searchTerm === '' ? '' : 'none';
+                            if (hasVisibleBarangays || searchTerm === '') hasVisibleClusters = true;
+
+                            // Auto-expand clusters with matches
+                            if (hasVisibleBarangays && searchTerm !== '') {
+                                cluster.setAttribute('open', '');
+                            }
+                        });
+
+                        // Show/hide no results message
+                        let noResultsMsg = document.getElementById('no-results');
+                        if (!hasVisibleClusters && searchTerm !== '') {
+                            if (!noResultsMsg) {
+                                noResultsMsg = document.createElement('p');
+                                noResultsMsg.id = 'no-results';
+                                noResultsMsg.className = 'mt-4 text-center text-slate-500';
+                                noResultsMsg.textContent = 'No barangays found matching your search.';
+                                document.getElementById('barangay-clusters').appendChild(noResultsMsg);
+                            }
+                        } else if (noResultsMsg) {
+                            noResultsMsg.remove();
+                        }
+                    });
+
+                    // Expand All button
+                    expandAllBtn.addEventListener('click', function() {
+                        clusters.forEach(cluster => cluster.setAttribute('open', ''));
+                    });
+
+                    // Collapse All button
+                    collapseAllBtn.addEventListener('click', function() {
+                        clusters.forEach(cluster => cluster.removeAttribute('open'));
+                    });
+                });
+            </script>
         </div>
     </div>
 </section>
