@@ -99,6 +99,15 @@ $governmentLinks = $governmentLinks ?? [
         </footer>
     </div>
 
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" type="button"
+        class="fixed bottom-8 right-8 z-[100] h-14 w-14 items-center justify-center rounded-full border-2 border-white/40 bg-imusDeep text-white shadow-2xl backdrop-blur-sm transition-all duration-300 hover:bg-imusBlue hover:shadow-3xl hover:scale-110 focus:outline-none focus:ring-2 focus:ring-imusGreen focus:ring-offset-2 opacity-50 scale-90"
+        aria-label="Back to top">
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 4v16m0 0l-8-8m8 8l8-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </button>
+
     <script>
         (function () {
             const dateTimeElement = document.getElementById('manila-datetime');
@@ -255,6 +264,33 @@ $governmentLinks = $governmentLinks ?? [
                     }
                 }
             });
+
+            // Scroll to Top Button Functionality
+            const scrollToTopBtn = document.getElementById('scroll-to-top');
+
+            function toggleScrollToTop() {
+                if (window.pageYOffset > 150) {
+                    scrollToTopBtn.classList.remove('opacity-50', 'scale-90');
+                    scrollToTopBtn.classList.add('opacity-100', 'scale-100');
+                } else {
+                    scrollToTopBtn.classList.remove('opacity-100', 'scale-100');
+                    scrollToTopBtn.classList.add('opacity-50', 'scale-90');
+                }
+            }
+
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+
+            // Initial check
+            toggleScrollToTop();
+
+            // Event listeners
+            window.addEventListener('scroll', toggleScrollToTop);
+            scrollToTopBtn.addEventListener('click', scrollToTop);
         })();
     </script>
 </body>
