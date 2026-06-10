@@ -100,14 +100,9 @@ $governmentLinks = $governmentLinks ?? [
     </div>
 
     <!-- Scroll to Top Button -->
-    <button id="scroll-to-top" type="button"
-        class="fixed bottom-8 right-8 z-[100] h-14 w-14 items-center justify-center rounded-full border-2 border-white/40 bg-imusDeep text-white shadow-2xl backdrop-blur-sm transition-all duration-300 hover:bg-imusBlue hover:shadow-3xl hover:scale-110 focus:outline-none focus:ring-2 focus:ring-imusGreen focus:ring-offset-2 opacity-50 scale-90"
-        aria-label="Back to top">
-        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 4v16m0 0l-8-8m8 8l8-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-    </button>
-
+     <button onclick="topFunction()" id="myBtn" title="Go to top"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up" viewBox="0 0 16 16">
+        <path d="M3.204 11h9.592L8 5.519 3.204 11zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z"/>
+      </svg></button>
     <script>
         (function () {
             const dateTimeElement = document.getElementById('manila-datetime');
@@ -266,32 +261,26 @@ $governmentLinks = $governmentLinks ?? [
             });
 
             // Scroll to Top Button Functionality
-            const scrollToTopBtn = document.getElementById('scroll-to-top');
-
-            function toggleScrollToTop() {
-                if (window.pageYOffset > 150) {
-                    scrollToTopBtn.classList.remove('opacity-50', 'scale-90');
-                    scrollToTopBtn.classList.add('opacity-100', 'scale-100');
-                } else {
-                    scrollToTopBtn.classList.remove('opacity-100', 'scale-100');
-                    scrollToTopBtn.classList.add('opacity-50', 'scale-90');
-                }
+             //Get the button
+            var mybutton = document.getElementById("myBtn");
+  
+             // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function() {scrollFunction()};
+  
+            function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+            } else {
+            mybutton.style.display = "none";
             }
-
-            function scrollToTop() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
             }
-
-            // Initial check
-            toggleScrollToTop();
-
-            // Event listeners
-            window.addEventListener('scroll', toggleScrollToTop);
-            scrollToTopBtn.addEventListener('click', scrollToTop);
-        })();
+  
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+            }
+            })();
     </script>
 </body>
 
